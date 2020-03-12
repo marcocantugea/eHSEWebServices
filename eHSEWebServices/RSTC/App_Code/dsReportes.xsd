@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsReportes" targetNamespace="http://tempuri.org/dsReportes.xsd" xmlns:mstns="http://tempuri.org/dsReportes.xsd" xmlns="http://tempuri.org/dsReportes.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsReportes" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsReportes" msprop:Generator_DataSetName="dsReportes">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="qSOCDpto" msprop:Generator_UserTableName="qSOCDpto" msprop:Generator_RowDeletedName="qSOCDptoRowDeleted" msprop:Generator_RowChangedName="qSOCDptoRowChanged" msprop:Generator_RowClassName="qSOCDptoRow" msprop:Generator_RowChangingName="qSOCDptoRowChanging" msprop:Generator_RowEvArgName="qSOCDptoRowChangeEvent" msprop:Generator_RowEvHandlerName="qSOCDptoRowChangeEventHandler" msprop:Generator_TableClassName="qSOCDptoDataTable" msprop:Generator_TableVarName="tableqSOCDpto" msprop:Generator_RowDeletingName="qSOCDptoRowDeleting" msprop:Generator_TablePropName="qSOCDpto">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Desc" msprop:Generator_UserColumnName="Desc" msprop:Generator_ColumnPropNameInRow="Desc" msprop:Generator_ColumnVarNameInTable="columnDesc" msprop:Generator_ColumnPropNameInTable="DescColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Qty" msprop:Generator_UserColumnName="Qty" msprop:Generator_ColumnPropNameInRow="Qty" msprop:Generator_ColumnVarNameInTable="columnQty" msprop:Generator_ColumnPropNameInTable="QtyColumn" type="xs:short" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="qSOCDpto2" msprop:Generator_UserTableName="qSOCDpto2" msprop:Generator_RowDeletedName="qSOCDpto2RowDeleted" msprop:Generator_TableClassName="qSOCDpto2DataTable" msprop:Generator_RowChangedName="qSOCDpto2RowChanged" msprop:Generator_RowClassName="qSOCDpto2Row" msprop:Generator_RowChangingName="qSOCDpto2RowChanging" msprop:Generator_RowEvArgName="qSOCDpto2RowChangeEvent" msprop:Generator_RowEvHandlerName="qSOCDpto2RowChangeEventHandler" msprop:Generator_TablePropName="qSOCDpto2" msprop:Generator_TableVarName="tableqSOCDpto2" msprop:Generator_RowDeletingName="qSOCDpto2RowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Desc" msprop:Generator_UserColumnName="Desc" msprop:Generator_ColumnPropNameInRow="Desc" msprop:Generator_ColumnVarNameInTable="columnDesc" msprop:Generator_ColumnPropNameInTable="DescColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Qty" msprop:Generator_UserColumnName="Qty" msprop:Generator_ColumnPropNameInRow="Qty" msprop:Generator_ColumnVarNameInTable="columnQty" msprop:Generator_ColumnPropNameInTable="QtyColumn" type="xs:short" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

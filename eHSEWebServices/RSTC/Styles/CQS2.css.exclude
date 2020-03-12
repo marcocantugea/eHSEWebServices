@@ -1,0 +1,285 @@
+/* CSS Document */
+.estiloEtiquetasA{ 
+    background-color:#ffffff; 
+    color:#333333; 
+    font-weight:bold; 
+    font-size:7pt; 
+    text-indent:3px;
+    font-family: Verdana;
+}
+td { 
+    font-family:verdana,arial; 
+    font-size:8pt;
+	}
+input.Button    
+{
+	color:#e0e0e0;   
+	font: bold 84% 'trebuchet ms',helvetica,sans-serif;   
+	background-color:#444;   
+	border:1px solid;
+	font-size:10px;
+	border-color: #5a5959 #5a5959 #282828 #282828;  
+	text-align: left;  
+	padding: 0px 20px 20px 20px;
+	}
+input.btnhov    
+{
+	color:#fff;   
+	font: bold 84% 'trebuchet ms',helvetica,sans-serif;   
+	background-color:#0a5e89;  
+	background-image: url('../images/hover.gif');
+	background-repeat:no-repeat;
+	background-position:left;
+	border:1px solid;
+	font-size:10px;
+	border-color: #5a5959 #5a5959 #282828 #282828; 
+	text-align: left;   
+	padding: 0px 20px 20px 20px;
+}
+/*	<input type="button" value="Submit" class="btn"   
+	onmouseover="this.className='btn btnhov'" 
+	onmouseout="this.className='btn'"/> */
+    	
+.Button2
+{
+	background: #2580a2;
+	color: #fff;
+	font-size: xx-small;
+	font-weight: 700;
+	}
+.ButtonVerde
+{
+	background: #009900;
+	color: #fff;
+	font-size: xx-small;
+	font-weight: 700;
+	height: 20px;
+}
+.estiloRojo
+{
+background-color:#810000; /*443e39*/
+color: #fff;
+font-size: xx-small;
+font-weight: 700;
+}
+.mainCreadas
+{
+	color:#ffffff;
+	font-size:14px;
+	border-bottom:2px solid #fff; 
+	padding: 0px 0px 0px 0px;
+	height:10px;
+	font-style:italic;
+	}
+.mainRepetidas
+{
+	color:#ffffff;
+	font-size:14px;
+	border-bottom:2px solid #fff; 
+	padding: 0px 0px 0px 0px;
+	height:19px;
+	font-style:italic;
+	}
+.menu
+{
+	color:#e0e0e0;   
+	font: bold 84% 'trebuchet ms',helvetica,sans-serif;   
+	background-color:#444;   
+	border:1px solid;
+	font-size:10px;
+	border-color: #5a5959 #5a5959 #282828 #282828;  
+	text-align: left;  
+	padding: 0px 20px 20px 20px;
+	}
+
+.menu
+{
+	color:#e0e0e0;   
+	font: bold 84% 'trebuchet ms',helvetica,sans-serif;   
+	background-color:#444;   
+	border:1px solid;
+	font-size:10px;
+	border-color: #5a5959 #5a5959 #282828 #282828;  
+	text-align: left;  
+	padding: 0px 20px 20px 20px;
+	}
+
+.estiloEti{ 
+    background-color:#ddeeff; 
+    color:#333333; 
+    font-weight:bold; 
+    font-size:7pt; 
+}
+.estiloEti2{ 
+    background-color:#e2dfdf; 
+    color:#333333; 
+    font-weight:bold; 
+    font-size:7pt; 
+    text-indent:3px;
+    height:20px;
+}
+.estiloEti3{ 
+    background-color:#ddeeff; 
+    color:#333333; 
+    font-weight:bold; 
+    font-size:7pt; 
+}
+.estiloEtiquetasTitulos{ 
+    background-color:#A8D2FD; 
+    color:#333333; 
+    font-weight:bold; 
+    font-size:8pt; 
+}
+.estiloTitulos
+{
+font:Verdana, Arial, Helvetica, sans-serif;
+color:#524125;
+font-size:18px;
+background-image: url(../images/bulletDoc.gif);
+background:#3333}
+.estiloTitulos
+{
+color:#524125;
+font-size:18px;
+background-image: url('../images/bulletDoc.gif');
+background-repeat: no-repeat;
+background-position:left;
+text-indent:31px;
+height:30px;
+	text-align: left;
+}
+.estiloError
+{
+color:#FF0000;
+font-weight:bold;
+font:Verdana;
+font-size:16px;
+text-indent:3px;
+font-style:italic;
+}
+/*border-bottom:double;*/
+.estiloRptHD
+{
+background-color:#333333;
+color:#FFF;
+font-weight:bold;
+font-size:small;
+text-indent:3px;
+	text-align: center;
+}
+.estiloRptHD2
+{
+background-color:#009FC2;
+color:#FFF;
+font-weight:bold;
+font-size:larger;
+text-indent:3px;
+padding: 0px 0px 0px 5px;
+height:30px;
+	text-align: left;
+}
+
+.estiloNormal
+{
+color:#000000;
+font-size:12px;
+text-indent:3px;
+	text-align: left;
+}
+
+.estiloPregunta
+{
+background-color:#810000; /*443e39*/
+color:#FFFFFF;
+font-size:x-small;
+text-indent:3px;
+            font-family: Verdana;
+        }
+        
+        
+.estiloRespuesta
+{
+width:181px;
+font:Verdana, Arial, Helvetica, sans-serif;
+color:#000000;
+font-size:12px;
+text-indent:3px;
+}
+.repeaterTitleSpace
+{
+background-color:#DBD8D6;
+}
+.normalBold
+{
+font:Verdana, Arial, Helvetica, sans-serif;
+color:#000000;
+font-size:12px;
+font-weight:bold;
+}
+.estiloSubTituBorder
+{
+color:#524125;
+background-color:#DBD8D6;
+font-size:12px;
+font-weight:bold;
+border-style:groove;
+border-color:#443F3B;
+	width: 2px;
+}
+.repeater
+{
+background-color:#e2dfdf;
+vertical-align:middle;
+color: #444;
+font: normal 10px arial, sans-serif;
+height: 18px;
+padding: 0px 0px 0px 5px;
+
+font-size:small;
+text-indent:3px;
+}
+.repeaterAlterno
+{
+background-color:#FFFFFF;
+vertical-align:middle;
+color: #444;
+font: normal 10px arial, sans-serif;
+height: 18px;
+padding: 0px 0px 0px 5px;
+font-size:small;
+text-indent:3px;
+}
+.txtPopUp {
+	background-color:#F1EBE0;
+	/*px double #443E39;*/
+	padding:2px 1px;
+	margin-bottom:0px;
+}
+.Identificadores
+{
+color:#443E39;
+font-weight:bold;
+font:Verdana, Arial, Helvetica, sans-serif;
+font-size:12px;
+text-indent:8px;
+}
+a.button, a.buttonDis {
+display: block;
+background-color: transparent;
+background-image: url(../images/button.jpg);
+background-repeat: no-repeat;
+width: 132px;
+height: 28px;
+margin: 5px auto;
+padding: 5px 0 0 0;
+text-align: center;
+font-family: Helvetica, Calibri, Arial, sans-serif;
+font-size: 100%;
+font-weight: bold;
+text-decoration: none;
+}
+
+.newStyle1
+{
+}
+

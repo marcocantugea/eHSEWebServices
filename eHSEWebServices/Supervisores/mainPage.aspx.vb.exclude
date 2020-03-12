@@ -1,0 +1,208 @@
+﻿'Imports clsDataBase
+Imports System.IO
+Imports System.Data.OleDb
+Imports System.Data.Odbc
+Imports System.Data
+Imports System.Diagnostics.Process
+Imports System.Diagnostics
+Imports System
+Imports System.Web.UI.WebControls
+Imports System.ComponentModel
+Imports System.Security
+Partial Class mainPage
+    Inherits System.Web.UI.Page
+    Public clsDB As New clsDataBase 'clsDataHome
+    Public Url As String
+    Protected Sub Page_Init(sender As Object, e As EventArgs) Handles Me.Init
+        If Not Page.IsPostBack Then
+            rptMenu.Visible = False
+            Dim tipo As String
+            tipo = tipoUsuario(Context.User.Identity.Name)
+            If tipo = "RSTC" Or tipo = "OIM" Then
+                Raiz()
+            Else
+                Url = "TRA/TRA_Not_Authorized.aspx"
+            End If
+        End If
+    End Sub
+    Function Raiz()
+        Dim ds As DataSet
+        Try
+            Dim Sql As String = "SELECT Menu_ID,Menu_Name FROM qMenudeUsuarios Where UsuUser='" & Context.User.Identity.Name & "' order by Menu_ID asc" 'SELECT AreaName FROM tArea order by ID asc"
+            ds = clsDB.QueryDataSet(Sql)
+            clsDB.Close()
+            If ds.Tables(0).Rows.Count > 0 Then
+                rptMenu.Visible = True
+                rptMenu.DataSource = ds.Tables(0).DefaultView
+                rptMenu.DataBind()
+                'Response.Write("Have been found " & ds.Tables(0).Rows.Count & " buttons")
+            Else
+                Response.Write("Is not Menu available for your user")
+            End If
+
+        Catch ex As Exception
+            Response.Write("Error getting Menu: Error Descripcion" & ex.Message)
+        End Try
+        tipoUsuario(Context.User.Identity.Name)
+    End Function
+    Function tipoUsuario(ByRef usuario As String) As String
+        Dim dts As New DataSet
+        Dim sql As String
+        sql = "SELECT MembersOf,JobDescription,UsuDep From tblUsuarios Where UsuUser='" & usuario & "'"
+        dts = clsDB.QueryDataSet(sql)
+        clsDB.Close()
+        If dts.Tables(0).Rows.Count > 0 Then
+            For Each row As DataRow In dts.Tables(0).Rows
+                tipoUsuario = row("MembersOf")
+                lblUser.Text = "Welcome " + row("JobDescription") & "."
+                lblDeptAuthority.Text = row("UsuDep") & " Department"
+                Exit For
+            Next
+        End If
+        Return tipoUsuario
+    End Function
+    'Function CargarDatos()
+    '    Dim Sql As String
+    '    Dim Archivos As DataSet
+    '    If llave.Text = 0 Then 'General
+    '        Sql = "SELECT ID,Sistema_ID,Nombre,Codigo,Path,ctgFormatos.English FROM qryDocuments order by Nombre asc"
+    '    End If
+    '    If llave.Text = 1 Then 'Busqueda
+    '        Sql = "SELECT ID,Sistema_ID,Nombre,Codigo,Path,English FROM qryDocuments where Nombre like '%" & txtSearch.Text.Trim & "%' order by Nombre asc"
+    '    End If
+    '    If llave.Text = 2 Then 'Busqueda por Genero
+    '        Sql = "SELECT ID,Sistema_ID,Nombre,Codigo,Path,English FROM qryDocuments where Genero_ID = " & lblPadre.Text & " order by Nombre asc"
+    '    End If
+    '    If llave.Text = 3 Then 'Busqueda Avanzada
+    '        Sql = "SELECT ID,Sistema_ID,Nombre,Codigo,Path,English FROM qryDocuments order by Nombre asc"
+    '    End If
+
+    '    Archivos = clsDB.QueryDataSet(Sql)
+
+    '    Dim dtsItems As New DataSet
+
+    '    Dim Lista As New Data.DataTable("Items")
+    '    Dim col13 As New Data.DataColumn("ID")
+    '    Dim col23 As New Data.DataColumn("System")
+    '    Dim col33 As New Data.DataColumn("Titule")
+    '    Dim col43 As New Data.DataColumn("Code")
+    '    Dim col53 As New Data.DataColumn("Format")
+    '    Dim col63 As New Data.DataColumn("Accion")
+    '    Dim col73 As New Data.DataColumn("img")
+
+    '    Lista.Columns.Add(col13)
+    '    Lista.Columns.Add(col23)
+    '    Lista.Columns.Add(col33)
+    '    Lista.Columns.Add(col43)
+    '    Lista.Columns.Add(col53)
+    '    Lista.Columns.Add(col63)
+    '    Lista.Columns.Add(col73)
+
+    '    Dim Tipo, Code, Abrir, IMG, System, Nombre, Dibujo, Manual, No, Titulo, Accion, Formato As String
+    '    Dim item As Integer
+    '    Dim up, tp As Decimal
+    '    Dim UOM As String
+    '    Dim rptRow As DataRow
+    '    Dim i As Integer = 1
+    '    Dim cero As String = 0
+    '    Dim count As Integer = 1
+    '    Manual = "images/icoDocuments.png"
+    '    Dibujo = "images/icoDrawings.png"
+    '    If Archivos.Tables(0).Rows.Count > 0 Then
+    '        For Each rows As DataRow In Archivos.Tables(0).Rows
+    '            No = count
+    '            If Not IsDBNull(rows("Sistema_ID")) Then
+    '                System = rows("Sistema_ID")
+    '            End If
+
+    '            Titulo = rows("Nombre")
+    '            Code = rows("Codigo")
+    '            Accion = rows("Path")
+    '            item = rows("ID")
+    '            Formato = rows("English")
+    '            'lblPadre.Text = rows("Carpeta")
+
+    '            rptRow = Lista.NewRow
+    '            rptRow("ID") = item
+    '            rptRow("System") = System
+    '            rptRow("Titule") = UCase(Titulo)
+    '            rptRow("Code") = UCase(Code)
+    '            rptRow("Format") = Formato
+    '            rptRow("Accion") = Accion
+    '            rptRow("IMG") = icono(Formato)
+
+    '            Lista.Rows.Add(rptRow)
+    '            i = i + 1
+    '            count = count + 1
+    '        Next
+    '    End If
+
+    '    dtsItems.Tables.Add(Lista)
+    '    clsDB.Close()
+
+
+
+    '    ' Populate the repeater control with the datatable
+    '    Dim objPds As PagedDataSource = New PagedDataSource()
+    '    objPds.DataSource = dtsItems.Tables(0).DefaultView
+
+    '    ' Indicate that the data should be paged
+    '    objPds.AllowPaging = True
+
+    '    ' Set the pagesize
+    '    objPds.PageSize = 20
+
+    '    Dim curpage As Integer
+
+    '    ' we'll use ViewState to track the currentindex
+    '    If Not (ViewState("Page") Is Nothing) Then
+    '        curpage = Convert.ToInt32(ViewState("Page"))
+    '    Else
+    '        ViewState("Page") = 1
+    '        curpage = 1
+    '    End If
+    '    ' Set the currentindex
+    '    objPds.CurrentPageIndex = curpage - 1
+
+    '    ' Display the current page
+    '    lblCurrentPage.Text = "Page: " & (curpage).ToString() & " of " & objPds.PageCount.ToString()
+
+    '    ' Bind the repeater
+    '    rptCarpetas.DataSource = objPds
+    '    rptCarpetas.DataBind()
+
+    'End Function
+    Protected Sub openURLs(ByVal liga As Integer)
+        Dim a As String
+        Dim ds As DataSet
+        Dim sql As String = "Select Menu_URL FROM tSupvMenu Where Menu_ID=" & liga
+        ds = clsDB.QueryDataSet(sql)
+        clsDB.Close()
+        If ds.Tables(0).Rows.Count > 0 Then
+            For Each row As DataRow In ds.Tables(0).Rows
+                a = Page.ResolveUrl(row("Menu_URL"))
+            Next
+        End If
+        Url = a
+    End Sub
+
+    Protected Sub rptMenu_ItemCommand(ByVal source As Object, ByVal e As System.Web.UI.WebControls.RepeaterCommandEventArgs) Handles rptMenu.ItemCommand
+        Dim liga As Integer
+        liga = e.CommandArgument
+        openURLs(liga)
+    End Sub
+
+    Protected Sub lnkLogout_Click(sender As Object, e As EventArgs) Handles lnkLogout.Click
+        FormsAuthentication.SignOut()
+        Session.Abandon()
+
+        'Limpiar la cookie de autenticación
+        Dim cookie1 As New HttpCookie(FormsAuthentication.FormsCookieName, "")
+        Response.Cookies.Add(cookie1)
+
+        'Limpiar la cookie de session
+        Dim cookie2 As New HttpCookie(FormsAuthentication.FormsCookieName, "")
+        Response.Cookies.Add(cookie2)
+        Response.Redirect(Request.RawUrl)
+    End Sub
+End Class

@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>LA MURALLA | WEB SERVICES | IT DEPARTMENT</title>
+<link href="Styles/CQS.css" rel="stylesheet" type="text/css" />
+<script src="Scripts/jquery-3.1.1.min.js"></script>
+</head>
+
+<body bgcolor="#CCCCCC" leftmargin="0" topmargin="00" marginwidth="0" marginheight="0">
+<table bgcolor="#FFFFFF" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td><img src="Images/main.jpg" width="854" height="53" /></td>
+  </tr>
+  <tr>
+    <td height="33"><table width="100%" border="0" cellpadding="0" cellspacing="0" class="nuevoMenu">
+    <tr>
+      <td background="Images/menuBorder.jpg" colspan="9"><img src="Images/menuBorder.jpg" width="1" height="1" /></td>
+      </tr>
+      <tr align="center" height="28px" valign="middle">
+        <td></td>
+        <td><a href="Default.html" target="mascara"><img src="Images/homeIcon.jpg" width="28" height="27" class="nuevoMenu" 				             style="border:none"/></a></td>
+        <td><a href="StopCard.aspx" target="mascara" class="nuevoMenu" >SOC</a></td>
+        <td><a href="TRA/main.aspx" target="new" class="nuevoMenu">TRAs</a></td>
+        <td><a href="../RSTC/mainPage.aspx" target="new" class="nuevoMenu">SAFETY DEPT</a></td>
+        <td><a href="../Super/main.aspx" target="new" class="nuevoMenu">SUPERVISORS</a></td>
+        <td></td>
+    </tr>
+    <tr>
+      <td background="Images/menuBorder.jpg" colspan="9"><img src="Images/menuBorder.jpg" width="1" height="1" /></td>
+      </tr>
+    </table></td>
+  </tr>
+  <TR>
+  <td>
+    <img src="Images/menuEspacio.jpg" width="2" height="2" /></td>
+  </TR>
+    <tr>
+     <td align="center" valign="top" class="style1">
+                    <iframe name="mascara" id="iframe1" src="Default.html" align="left" frameborder="0" 
+                        marginheight="0" marginwidth="0" width="854" height="500px"></iframe>
+                    </td>
+  </tr>
+  <tr>
+    <td align="center" background="Images/footer.jpg"><img src="Images/footer.jpg" width="4" height="12" /><span class="estiloRptHD">IT SERVICES | 2016</span></td>
+  </tr>
+</table>
+    <script type="text/javascript">
+        var windowheight = $(window).height();
+        $("#iframe1").height(windowheight - 110);
+        $(window).resize(function () {
+            var windowheight = $(window).height();
+            if (windowheight>350) {
+                $("#iframe1").height(windowheight - 110);
+            }
+            //alert("Resiziando");
+        }
+        );
+
+    </script>
+</body>
+</html>

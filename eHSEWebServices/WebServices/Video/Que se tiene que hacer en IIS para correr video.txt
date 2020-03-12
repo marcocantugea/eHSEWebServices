@@ -1,0 +1,8 @@
+Open Internet Information Services Manager (IIS) on your desktop 
+Expand the server and websites 
+Right-click on the website you are working with and click properties 
+Click the tab HTTP Headers 
+Click MIME Types 
+Click New and add the following MIME type 
+Extension: .flv 
+MIME Type: video/x-flv 

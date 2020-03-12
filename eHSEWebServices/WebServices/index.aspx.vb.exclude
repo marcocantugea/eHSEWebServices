@@ -1,0 +1,49 @@
+﻿
+Partial Class index
+    Inherits System.Web.UI.Page
+    Public Url As String
+
+    Protected Sub Button1_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles Button1.Click
+        Dim a As String = Page.ResolveUrl("Library/TechManuals.aspx")
+        Url = a
+    End Sub
+
+    Protected Sub btnPhone_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnPhone.Click
+        Dim a As String = Page.ResolveUrl("pBicDirectory.aspx")
+        Url = a
+    End Sub
+
+    Protected Sub btnPhone0_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnPhone0.Click
+        Response.Redirect("Super/index.aspx")
+    End Sub
+
+    'Protected Sub btnLogin_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnLogin.Click
+    '    Dim a As String = Page.ResolveUrl("Login.aspx")
+    '    Url = a
+    'End Sub
+
+    Protected Sub btnTips_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnTips.Click
+        Dim a As String = Page.ResolveUrl("Tips.aspx")
+        Url = a
+    End Sub
+
+    Protected Sub btnTips0_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnTips0.Click
+        Response.Redirect("/RSTC/LogIn.aspx")
+    End Sub
+
+    Protected Sub btnPhone1_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnPhone1.Click
+        Dim a As String = Page.ResolveUrl("StopCard.aspx")
+        Url = a
+    End Sub
+
+    Protected Sub btnPhone2_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnPhone2.Click
+        Response.Write("<script>")
+        Response.Write("window.open('/Certificates/','_blank')")
+        Response.Write("</script>")
+    End Sub
+
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        Dim a As String = Page.ResolveUrl("Default.aspx")
+        Url = a
+    End Sub
+End Class
