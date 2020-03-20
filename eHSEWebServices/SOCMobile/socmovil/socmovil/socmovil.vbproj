@@ -89,6 +89,7 @@
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\jquery-ui.css" />
     <Content Include="css\socmovil.css" />
+    <Content Include="favicon.png" />
     <Content Include="images\gr-logo1.png" />
     <Content Include="images\soc-card-pic-300px.jpg" />
     <Content Include="index.html" />
