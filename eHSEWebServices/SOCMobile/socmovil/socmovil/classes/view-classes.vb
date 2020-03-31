@@ -1,7 +1,7 @@
 ﻿Public Class view_classes
     Public Sub ParseMenusItems(strmenus As String, Menus As Dictionary(Of String, String))
         If strmenus.Contains("{") And strmenus.Contains("}") Then
-            Dim formated_Values As String = strmenus.Substring(1, strmenus.Length - 1)
+            Dim formated_Values As String = strmenus.Substring(1, strmenus.Length - 2)
             If formated_Values.Contains(";") Then
                 Dim var_values As String() = formated_Values.Split(";")
                 If var_values.Length > 0 Then

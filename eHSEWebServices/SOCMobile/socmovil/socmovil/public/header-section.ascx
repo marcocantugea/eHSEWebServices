@@ -4,7 +4,7 @@
     Dim GlobalConfigReader As New socmobile_core.com.configuration.GlobalConfReader
     GlobalConfigReader.LoadFileSetting(HttpContext.Current.Request.PhysicalApplicationPath & System.Configuration.ConfigurationManager.AppSettings("GlobalConfigFile"))
 %>
-<div class="containter-fluid text-center border p-2">
+<div class="containter-fluid text-center p-2">
 <img src="../<% Response.Write(GlobalConfigReader.GetValue("logo"))%>" alt="Grupo R Exploracion Marina" style="width:310px;height:40px;">
 </div>
 <div class="containter-fluid text-center border" style="background-color:yellow ">

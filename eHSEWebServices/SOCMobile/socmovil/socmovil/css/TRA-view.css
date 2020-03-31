@@ -1,0 +1,231 @@
+﻿@page { 
+        size: landscape;
+        
+    }
+
+@media print {
+body {-webkit-print-color-adjust: exact;}
+.pagebreak { page-break-before: always; } /* page-break-after works, as well */
+}
+@media (min-width: 801px) {
+    #smallscreenver {
+        display:none;
+    }
+    #container_soc_card {
+        width:800px;
+    }
+    #footer_soc_card {
+         width:800px;
+    }
+}
+@media (max-width: 800px)  {
+    #desktopver {
+        display:none;
+    }
+    #smallscreenver {
+        display:block;
+    }
+    [id^="sendspoolprint"] {
+        display:none;
+    }
+    .maincontainer_soc {
+       
+    }
+}
+
+body {
+    font-family:Calibri,Arial,Tahoma;
+     /*'writing-mode: tb-rl;*/
+}
+
+#TRAMainTable{
+    border:solid ;
+    border-width:1px;
+    margin:0;
+    padding:0;
+    width:10.9in;
+}
+#TRAMainTable td{
+    border:solid ;
+    border-width:1px;
+    margin:0;
+    padding:0;
+    font-size:9pt;
+}
+
+.RotateText {
+    /*position:relative;*/
+    /*transform: rotate(-90deg);*/
+    border:solid;
+    width:20px;
+    padding:0px;
+    margin:0px;
+    font-size:7px;
+    position: relative ;
+    transform: rotate(-90deg);
+}
+#InitialLabel {
+    background-color:lightblue;
+    margin:0px;
+    padding:0px;
+    border: solid;
+}
+#tbl_planning {
+    margin:0px;
+    padding:0px;
+     width:100%;
+}
+
+.cell-header {
+    background-color:lightgray;
+    text-align:center;
+}
+.cell-value {
+   padding-left :10px;
+}
+
+#Tasklist{
+    border:solid ;
+    border-width:1px;
+    margin:0;
+    padding:0;
+    width:10.9in;
+}
+
+#Tasklist .first-col{
+    width:10px;
+    font-weight:bold;
+    
+}
+
+#Tasklist .first-col span{
+        margin:4px;
+ }
+#Tasklist .cell-header span{
+    font-weight:bold;
+}
+.microSubtitle{
+    width:70px;
+    text-align:center;
+    font-weight:bold;
+}
+.microSubtitle  td {
+    width:70px;
+    text-align:center;
+}
+.microSubtitle  td span{
+    padding :4px;
+}
+
+#Tasklist .table-values{
+    height:50px;
+    min-height:50px;
+
+}
+#Tasklist .table-values td{
+    text-align:center;
+    font-size:x-small ;
+}
+#AditionalRiskinSite {
+    margin:0;
+    padding:0;
+    width:10.9in;
+}
+#AditionalRiskinSite .table-values{
+    height:45px;
+    min-height:45px;
+}
+#AditionalRiskinSite .first-col {
+    width:20px;
+    text-align:center;
+}
+#AditionalRiskinSite .first-col span {
+    font-weight:bold;
+}
+#TableMandatory {
+    margin:0;
+    padding:0;
+}
+
+#TableMandatory .cell-header h6 {
+    /*padding:5px;*/
+    font-size:11pt;
+
+}
+#TableRiskMatrix {
+    width:5.2in;
+}
+#TableRiskMatrix .microSubtitle td {
+    
+    font-weight:bold;
+}
+.text-verysmall {
+    font-size :6pt;
+}
+.cell-green{
+
+    background-color:limegreen;
+    color:white;
+    font-weight:bold;
+    text-align:center;
+    border-color:black;
+    
+}
+.cell-yellow{
+    background-color:yellow;
+    color:black ;
+    font-weight:bold;
+    text-align:center;
+    border-color:black;
+}
+.cell-red{
+    background-color:red;
+    color:white ;
+    font-weight:bold;
+    text-align:center;
+    border-color:black;
+}
+#TableMandatory #RowsMandatory-content {
+    height:50PX;
+}
+#TableMandatory #RowsMandatory-content td {
+    padding-left:5px;
+    padding-right :5px;
+}
+#TableMandatory #RowsMandatory-content td span{
+    font-size:9pt;
+}
+#TableMandatory #RowsMandatory-content .cell-value{
+    font-size:18pt;
+    font-weight:bold;
+    text-align:center;
+}
+#TableMandatory #RowsMandatory-content .colored{
+    color:blue;
+}
+#Tablecontrol-header {
+    margin:0;
+    padding:0;
+    width:10.88in;
+}
+#Tablecontrol-names {
+    margin:0;
+    padding:0;
+    width:10.89in;
+}
+#Tablecontrol-names tr {
+   height:20px;
+}
+#Tablecontrol-names tr td {
+    text-align:center;
+}
+
+
+
+
+
+
+
+
+
+

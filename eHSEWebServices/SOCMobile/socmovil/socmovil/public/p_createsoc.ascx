@@ -213,7 +213,7 @@
 <%
     If show_sendinfo Then
 %>
-<div class="container text-center mt-2 p-2 border border-danger">
+<div class="container text-center mt-2 p-2 border border-danger" >
    <p class="h3"><% Response.Write(lang_configreader.GetValue("p_createsoc_lbl_createsoc"))%> </p>
    <div class="row">
        <div class="col text-left">
@@ -230,7 +230,8 @@ End If
 <div class="containter-fluid text-center m-1 mb-3">
     <span class="h4"><% Response.Write(lang_configreader.GetValue("lbl_title_createsoccard")) %></span>
 </div>
-<div class="container-fluid bg-danger p-2">
+<div  id="maincontainer_soc" style="width:100%; align-content:center;"  >
+<div class="container-fluid bg-danger p-2" id="container_soc_card">
 <div class="container">
     <div class="row">
         <div class="col  text-center p-1 align-middle">
@@ -388,16 +389,15 @@ End If
     <button type="submit" class="btn btn-primary btn-lg btn-block"> <% Response.Write(lang_configreader.GetValue("p_createsoc_lbl_continue"))%> </button>
     <input type="hidden" value="false" name="sendinfo"  id="sendinfo_flag"/>
 </form>
-
-</div>
 <div class="content p-1">
     <div class="row">
         <div class="col text-left" style="font-size:small"><%Response.Write(lang_configreader.GetValue("p_createsoc_lbl_formatnumber"))%></div>
          <div class="col text-right" style="font-size:small"><%Response.Write(lang_configreader.GetValue("p_createsoc_lbl_revisionnum"))%></div>
     </div>
 </div>
+</div>
 
-
+</div>
 <%
     If show_sendinfo Then
 %>

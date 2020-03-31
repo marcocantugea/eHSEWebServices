@@ -9,6 +9,7 @@
                 Dim control As Control = Page.LoadControl(pagename)
                 ContentControl.Controls.Add(control)
             Catch ex As Exception
+                'Throw
                 Dim control As Control = Page.LoadControl("pagenotfound.ascx")
                 ContentControl.Controls.Add(control)
             End Try

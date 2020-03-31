@@ -9,11 +9,14 @@
     Else
         If Request.Cookies("LANG") Is Nothing Then
             Dim aCookie As New HttpCookie("LANG")
-            aCookie.Value = "ES"
+            aCookie.Value = Me.Session("LANG")
             aCookie.Expires = DateTime.Now.AddDays(60)
             Response.Cookies.Add(aCookie)
         Else
             Dim cookie As HttpCookie = HttpContext.Current.Request.Cookies("LANG")
+            cookie.Value = Me.Session("LANG")
+            cookie.Expires = DateTime.Now.AddDays(60)
+            Response.Cookies.Add(cookie)
             Me.Session("LANG") = cookie.Value
         End If
     End If
@@ -43,7 +46,7 @@
 <%@ Register Src="~/public/menu-control.ascx" TagPrefix="menucontrol" TagName="MenuC" %>
 
 <% Response.WriteFile("~/public/views/themes/basic/public/header.html")%>
-<div class="p-1 text-right mr-4">
+<div class="container p-1 text-right mr-4">
 <span class="navbar-text">
           <%Response.Write(lang_configreader.GetValue("lbl_idioma"))%> <a href="change_lang.aspx?lang=ES">ES</a> | <a href="change_lang.aspx?lang=EN"> EN </a>
 </span>

@@ -89,9 +89,16 @@
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\jquery-ui.css" />
     <Content Include="css\socmovil.css" />
+    <Content Include="css\TRA-view.css" />
     <Content Include="favicon.png" />
     <Content Include="images\gr-logo1.png" />
+    <Content Include="images\img-tra-control.png" />
+    <Content Include="images\img-tra-desarrolloactividad.png" />
+    <Content Include="images\img-tra-planificacion.png" />
+    <Content Include="images\img-tra-probabilidad.png" />
+    <Content Include="images\img-tra-riesgospotentciales.png" />
     <Content Include="images\soc-card-pic-300px.jpg" />
+    <Content Include="images\tbl-hazardseverity.JPG" />
     <Content Include="index.html" />
     <Content Include="js\bootstrap.bundle.js" />
     <Content Include="js\bootstrap.bundle.min.js" />
@@ -103,7 +110,15 @@
     <Content Include="public\menu-control.ascx" />
     <Content Include="public\pagenotfound.ascx" />
     <Content Include="public\p_createsoc.ascx" />
+    <Content Include="public\p_createTRA.ascx" />
+    <Content Include="public\p_hsedep.ascx" />
     <Content Include="public\p_index.ascx" />
+    <Content Include="public\p_tras.ascx" />
+    <Content Include="public\TRAFormatWord.aspx" />
+    <Content Include="public\TRAFormat.aspx" />
+    <Content Include="public\t_loadtra.aspx" />
+    <Content Include="public\t_saveTRAinstorage.aspx" />
+    <Content Include="public\t_tra_saveitem.aspx" />
     <Content Include="public\views\themes\basic\public\footer.html" />
     <Content Include="public\views\themes\basic\public\header.html" />
     <Content Include="public\views\themes\basic\public\layout-footer.html" />
@@ -178,6 +193,20 @@
       <DependentUpon>p_createsoc.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="public\p_createTRA.ascx.designer.vb">
+      <DependentUpon>p_createTRA.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="public\p_createTRA.ascx.vb">
+      <DependentUpon>p_createTRA.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="public\p_hsedep.ascx.designer.vb">
+      <DependentUpon>p_hsedep.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="public\p_hsedep.ascx.vb">
+      <DependentUpon>p_hsedep.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="public\p_index.ascx.designer.vb">
       <DependentUpon>p_index.ascx</DependentUpon>
     </Compile>
@@ -185,12 +214,54 @@
       <DependentUpon>p_index.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="public\p_tras.ascx.designer.vb">
+      <DependentUpon>p_tras.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="public\p_tras.ascx.vb">
+      <DependentUpon>p_tras.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="public\TRAFormatWord.aspx.designer.vb">
+      <DependentUpon>TRAFormatWord.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="public\TRAFormatWord.aspx.vb">
+      <DependentUpon>TRAFormatWord.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="public\TRAFormat.aspx.designer.vb">
+      <DependentUpon>TRAFormat.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="public\TRAFormat.aspx.vb">
+      <DependentUpon>TRAFormat.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="public\t_createsoc.ascx.designer.vb">
       <DependentUpon>t_createsoc.ascx</DependentUpon>
     </Compile>
     <Compile Include="public\t_createsoc.ascx.vb">
       <DependentUpon>t_createsoc.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="public\t_loadtra.aspx.designer.vb">
+      <DependentUpon>t_loadtra.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="public\t_loadtra.aspx.vb">
+      <DependentUpon>t_loadtra.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="public\t_saveTRAinstorage.aspx.designer.vb">
+      <DependentUpon>t_saveTRAinstorage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="public\t_saveTRAinstorage.aspx.vb">
+      <DependentUpon>t_saveTRAinstorage.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="public\t_tra_saveitem.aspx.designer.vb">
+      <DependentUpon>t_tra_saveitem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="public\t_tra_saveitem.aspx.vb">
+      <DependentUpon>t_tra_saveitem.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="_DebugPage.aspx.designer.vb">
       <DependentUpon>_DebugPage.aspx</DependentUpon>
@@ -239,13 +310,21 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="admin\views\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\eservices\eservices-sol\eservices_core\eservices_core\eservices_core.vbproj">
+      <Project>{8637c518-b23c-48df-9d0f-ffe6e462c980}</Project>
+      <Name>eservices_core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\eservices\eservices-sol\etras_core\etra\etra.vbproj">
+      <Project>{0b393039-3aa6-4b37-a16c-111d061bd6c7}</Project>
+      <Name>etra</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\socmobile_core\socmobile_core\socmobile_core.vbproj">
       <Project>{6a959de1-23e9-4b71-a240-a74b1dd46be9}</Project>
       <Name>socmobile_core</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="admin\views\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
