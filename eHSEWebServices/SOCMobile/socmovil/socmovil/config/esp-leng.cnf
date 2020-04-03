@@ -1,4 +1,4 @@
-menus={|  HOME  |:index.aspx;|  Crea Tu Tarjeta SOC |:index.aspx?p=p_createsoc;|  TRAs |:index.aspx?p=p_tras;|  DEP. DE SEGURIDAD |:index.aspx?p=p_hsedep;|  SUPERVISORES |:index.aspx?p=p_super}
+menus={|  HOME  |:index.aspx;|  Crea Tu Tarjeta SOC |:index.aspx?p=p_createsoc;|  TRAs |:index.aspx?p=p_tras;|  DEP. DE SEGURIDAD |:index.aspx?p=p_hsedep;|  SUPERVISORES |:index.aspx?p=p_super;|  TUTORIALES |:index.aspx?p=tutorials/tutorials}
 lbl_idioma=Idioma
 lbl_title_createsoccard= Tarjeta SOC
 p_createsoc_title_SOCCard=TARJETA DE OBSERVACION DE SEGURIDAD
@@ -66,3 +66,12 @@ p_tras_value_all=Todos
 p_tras_lbl_opentra=Abrir TRA PIN No.
 p_tras_lbl_btn_opentra=Abrir
 p_tras_lbl_titletable=TRA Establecidos
+p_createTRA_lblMainTitle=Solicitud de nuevo TRA
+p_index_lbltramain=e-TRA solucion en linea
+p_index_lbltrasubtitile=e-TRA en linea
+p_index_lblhowtocreatetra= &#191;Como crear un TRA?
+p_index_lblmoretutorials=Ver m&aacute;s tutoriales
+p_index_lbltext1= Ahora puedes crear tu TRA en linea, en tu computador, portail y mobil.<br />
+p_index_lbltext2=Preciona aqu&iacute; para crear tu TRA
+p_tutorials_lblMain=Tutoriales
+p_tutorials_lblTitleTRA=Valoraci&oacute;n de Riesgo en la Tarea (TRA)

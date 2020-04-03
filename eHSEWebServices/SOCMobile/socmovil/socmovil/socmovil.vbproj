@@ -91,6 +91,7 @@
     <Content Include="css\socmovil.css" />
     <Content Include="css\TRA-view.css" />
     <Content Include="favicon.png" />
+    <Content Include="images\background_electronic_tra.jpg" />
     <Content Include="images\gr-logo1.png" />
     <Content Include="images\img-tra-control.png" />
     <Content Include="images\img-tra-desarrolloactividad.png" />
@@ -99,12 +100,19 @@
     <Content Include="images\img-tra-riesgospotentciales.png" />
     <Content Include="images\soc-card-pic-300px.jpg" />
     <Content Include="images\tbl-hazardseverity.JPG" />
+    <Content Include="images\tra_electronic.JPG" />
     <Content Include="index.html" />
     <Content Include="js\bootstrap.bundle.js" />
     <Content Include="js\bootstrap.bundle.min.js" />
     <Content Include="js\bootstrap.js" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\jquery-3.4.1.min.js" />
+    <Content Include="media\eHSEWebServices TRA How to create.mp4" />
+    <Content Include="media\TRA-ES-CREAR TRA MOBIL.mp4" />
+    <Content Include="media\TRA-ES-Abrir TRA.mp4" />
+    <Content Include="media\TRA-ES-Copiar TRA.mp4" />
+    <Content Include="media\TRA-ES-Crear nuevo.mp4" />
+    <Content Include="media\TRA-ES-NAVEGACION.mp4" />
     <Content Include="public\change_lang.aspx" />
     <Content Include="public\header-section.ascx" />
     <Content Include="public\menu-control.ascx" />
@@ -116,6 +124,7 @@
     <Content Include="public\p_tras.ascx" />
     <Content Include="public\TRAFormatWord.aspx" />
     <Content Include="public\TRAFormat.aspx" />
+    <Content Include="public\tutorials\tutorials.ascx" />
     <Content Include="public\t_loadtra.aspx" />
     <Content Include="public\t_saveTRAinstorage.aspx" />
     <Content Include="public\t_tra_saveitem.aspx" />
@@ -234,6 +243,13 @@
     <Compile Include="public\TRAFormat.aspx.vb">
       <DependentUpon>TRAFormat.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="public\tutorials\tutorials.ascx.designer.vb">
+      <DependentUpon>tutorials.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="public\tutorials\tutorials.ascx.vb">
+      <DependentUpon>tutorials.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="public\t_createsoc.ascx.designer.vb">
       <DependentUpon>t_createsoc.ascx</DependentUpon>

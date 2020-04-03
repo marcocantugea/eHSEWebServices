@@ -1,4 +1,4 @@
-menus={|  HOME  |:index.aspx;|  Create a SOC Card |:index.aspx?p=p_createsoc;|  TRAs |:index.aspx?p=p_tras;|  HSE Deparment |:index.aspx?p=p_hsedep;|  SUPERVISORS |:index.aspx?p=p_super}
+menus={|  HOME  |:index.aspx;|  Create a SOC Card |:index.aspx?p=p_createsoc;|  TRAs |:index.aspx?p=p_tras;|  HSE Deparment |:index.aspx?p=p_hsedep;|  SUPERVISORS |:index.aspx?p=p_super;|  TUTORIALS |:index.aspx?p=tutorials/tutorials}
 lbl_idioma=Language :
 lbl_title_createsoccard=SOC Card
 p_createsoc_title_SOCCard=SAFETY OBSERVATION CARD
@@ -66,3 +66,12 @@ p_tras_value_all=All
 p_tras_lbl_opentra=Open TRA PIN No.
 p_tras_lbl_btn_opentra=Open
 p_tras_lbl_titletable=Established TRAs
+p_createTRA_lblMainTitle=New TRA Format Request.
+p_index_lbltramain=e-TRA online solution
+p_index_lbltrasubtitile=e-TRA online
+p_index_lblhowtocreatetra= How to create a TRA?
+p_index_lblmoretutorials=More Tutorials
+p_index_lbltext1= Now you can create your TRA online, from your computer, tablet or mobile.<br />
+p_index_lbltext2=Click Here to create a new TRA.
+p_tutorials_lblMain=Tutorials
+p_tutorials_lblTitleTRA=Task Risk Assessment (TRA)

@@ -5,6 +5,8 @@
     'Obtiene la configuracion global
     Dim GlobalConfigReader As New socmobile_core.com.configuration.GlobalConfReader
     GlobalConfigReader.LoadFileSetting(HttpContext.Current.Request.PhysicalApplicationPath & System.Configuration.ConfigurationManager.AppSettings("GlobalConfigFile"))
+    'obtiene el lenguaje que esta en session.
+    Dim lang_configreader As socmobile_core.com.configuration.GlobalConfReader = CType(Me.Session("lang_obj"), socmobile_core.com.configuration.GlobalConfReader)
     Dim ADOTRA As New etra.com.ado.ole.ADOTRA    
     Dim PINGenerator As New eservices_core.com.utilities.PINGenerator
     Dim showloadeddata As Boolean = False
@@ -65,7 +67,7 @@
   <span class="h4  text-success" id="messagesave"></span>
 </div>
 <div class="container-fluid mt-3 mb-3">
-    <span class="h4 ">Solicitud de nuevo TRA</span>
+    <span class="h4 "><%Response.Write(lang_configreader.GetValue("p_createTRA_lblMainTitle"))%></span>
 </div>
 
 <div class="ml-2" >
