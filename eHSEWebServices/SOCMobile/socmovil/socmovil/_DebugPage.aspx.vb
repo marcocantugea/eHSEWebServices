@@ -76,8 +76,51 @@ Public Class _DebugPage
         Dim list_Task As New List(Of etra.com.objects.TRATaskObj)
         Dim ADOTRA As New ADOTRA
         ADOTRA.GetTRAActivities(1, list_Task)
+        Dim encript As New eservices_core.com.utilities.EncriptWrapper(System.Configuration.ConfigurationSettings.AppSettings("enc-key"))
         For Each item As etra.com.objects.TRATaskObj In list_Task
-            Response.Write(item.traR_TaskSteps & "<br/>")
+            Dim value As String = encript.EncryptData(item.traR_TaskSteps)
+            Response.Write("Encryp=" & value & "<br/>")
+            Response.Write("Dencryp=" & encript.DecryptData(value) & "<br/>")
+        Next
+    End Sub
+
+    Protected Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        'Dim ADOUser As New eservices_core.com.ado.ADOUser
+        'ADOUser.RegisterUser(New eservices_core.com.objects.UserObj)
+
+        Dim adoUserutilities As New eservices_core.com.ado.ADOUserUtilities
+
+        Dim newlist As New Dictionary(Of String, String)
+
+        adoUserutilities.GetEmployeeNumberList(newlist)
+
+        For Each item As KeyValuePair(Of String, String) In newlist
+            Response.Write(item.Key & " - " & item.Value & "<br/>")
+        Next
+
+    End Sub
+
+    Protected Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+        Dim encript As New eservices_core.com.utilities.EncriptWrapper(System.Configuration.ConfigurationSettings.AppSettings("enc-key"))
+        Dim adouser As New eservices_core.com.ado.ADOUser
+
+        Dim userobj As New eservices_core.com.objects.UserObj
+        userobj.user_login = "10009825"
+        userobj.user_pwd = encript.EncryptData("123sdfsdfsf")
+
+        adouser.LoginUser(userobj)
+
+    End Sub
+
+    Protected Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
+        Dim adocompanies As New eservices_core.com.ado.ADOCompany
+
+        Dim list_companies As New List(Of eservices_core.com.objects.CompanyObj)
+        adocompanies.GetAllCompanies(list_companies)
+
+        Response.Write(list_companies.ToString())
+        For Each company As eservices_core.com.objects.CompanyObj In list_companies
+            Response.Write(company.CompanyName & "<br/>")
         Next
     End Sub
 End Class

@@ -1,8 +1,9 @@
 ﻿<%@ Control Language="vb" AutoEventWireup="false" CodeBehind="t_createsoc.ascx.vb" Inherits="socmovil.t_createsoc" %>
 <% 
     
-    'obtiene el lenguaje que esta en session.
-    Dim lang_configreader As socmobile_core.com.configuration.GlobalConfReader = CType(Me.Session("lang_obj"), socmobile_core.com.configuration.GlobalConfReader)
+    'obtiene el lenguaje que esta en session y la configuracion
+    LoadConfiguration()
+    LoadLanguage()
     
     Dim showsuccess_msg As Boolean = False
     Dim error_message As String

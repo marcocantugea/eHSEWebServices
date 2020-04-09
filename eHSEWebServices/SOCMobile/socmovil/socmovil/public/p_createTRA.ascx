@@ -2,12 +2,12 @@
 
 <%
     
-    'Obtiene la configuracion global
-    Dim GlobalConfigReader As New socmobile_core.com.configuration.GlobalConfReader
-    GlobalConfigReader.LoadFileSetting(HttpContext.Current.Request.PhysicalApplicationPath & System.Configuration.ConfigurationManager.AppSettings("GlobalConfigFile"))
-    'obtiene el lenguaje que esta en session.
-    Dim lang_configreader As socmobile_core.com.configuration.GlobalConfReader = CType(Me.Session("lang_obj"), socmobile_core.com.configuration.GlobalConfReader)
-    Dim ADOTRA As New etra.com.ado.ole.ADOTRA    
+    'Obtiene la configuracion global y el lenguaje que esta en session.
+    LoadConfiguration()
+    LoadLanguage()
+    
+    
+    Dim ADOTRA As New etra.com.ado.ole.ADOTRA
     Dim PINGenerator As New eservices_core.com.utilities.PINGenerator
     Dim showloadeddata As Boolean = False
     

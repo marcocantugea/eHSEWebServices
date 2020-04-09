@@ -13,4 +13,19 @@
     #Tutorials_desktop {
         display:none;
     }
+
+    #p_usreg_lbl_titlepage {
+        font-size:xx-large;
+    }
+
+    #p_usreg_lbl_titleform{
+        font-size:large;
+    }
+    #frm_userreg span {
+        font-size:medium;
+    }
+}
+
+#frm_userreg input {
+    background-color:lightyellow;
 }

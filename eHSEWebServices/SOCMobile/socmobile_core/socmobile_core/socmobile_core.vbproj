@@ -81,13 +81,6 @@
     <Compile Include="com\ado\ADOUsuarios.vb" />
     <Compile Include="com\configuration\AppConfigFileSettings.vb" />
     <Compile Include="com\configuration\GlobalConfReader.vb" />
-    <Compile Include="com\database\ConnectionProperties.vb" />
-    <Compile Include="com\database\MySQLConnectionObj.vb" />
-    <Compile Include="com\database\MySQLConnectionProperties.vb" />
-    <Compile Include="com\database\ODBCConnectionObj.vb" />
-    <Compile Include="com\database\ODBCConnectionProperties.vb" />
-    <Compile Include="com\database\OleDBConnectionObj.vb" />
-    <Compile Include="com\database\QueryBuilder.vb" />
     <Compile Include="com\objects\SOCCardObj.vb" />
     <Compile Include="com\objects\UsuariosObj.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -126,7 +119,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="com\database\" />
     <Folder Include="com\files\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\eservices\eservices-sol\eservices_core\eservices_core\eservices_core.vbproj">
+      <Project>{8637c518-b23c-48df-9d0f-ffe6e462c980}</Project>
+      <Name>eservices_core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

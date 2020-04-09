@@ -2,8 +2,8 @@
 
 Namespace com.ado.ole
 
-    Public Class ADOTRA
-        Inherits eservices_core.com.database.OleDBConnectionObj
+    Public NotInheritable Class ADOTRA
+        Inherits eservices_core.com.database.ole.OleDBConnectionObj
 
 
         Public Sub SaveTRA(TRAObject As com.objects.TRAObj)
@@ -22,30 +22,6 @@ Namespace com.ado.ole
                                     SaveTRATasks(Task)
                                     GetLastIDTRATask(Task)
                                 Next
-                                '    If Task.traR_Id > 0 Then
-                                '        Try
-                                '            If ExistTRATask(Task) Then
-                                '                UpdateTRATasks(Task)
-                                '            Else
-                                '                SaveTRATasks(Task)
-                                '            End If
-
-                                '        Catch ex As Exception
-                                '            Throw
-                                '        End Try
-                                '    Else
-                                '        Try
-                                '            If ExistTRATask(Task) Then
-                                '                UpdateTRATasks(Task)
-                                '            Else
-                                '                SaveTRATasks(Task)
-                                '            End If
-                                '        Catch ex As Exception
-
-                                '        End Try
-
-                                '    End If
-                                'Next
                             End If
                         End If
 
@@ -93,7 +69,7 @@ Namespace com.ado.ole
 
             Try
                 OpenDB("DB-RSTC")
-                connection.Command = New OleDb.OleDbCommand(qbuilder.Query, connection.Connection)
+                SetCommand(qbuilder.Query)
                 connection.Command.ExecuteNonQuery()
             Catch ex As Exception
                 Throw
@@ -111,7 +87,7 @@ Namespace com.ado.ole
 
             Try
                 OpenDB("DB-RSTC")
-                connection.Command = New OleDb.OleDbCommand(qbuilder.Query, connection.Connection)
+                SetCommand(qbuilder.Query)
                 connection.Command.ExecuteNonQuery()
             Catch ex As Exception
                 Throw
@@ -129,7 +105,7 @@ Namespace com.ado.ole
 
             Try
                 OpenDB("DB-RSTC")
-                connection.Command = New OleDb.OleDbCommand(qbuilder.Query, connection.Connection)
+                SetCommand(qbuilder.Query)
                 connection.Command.ExecuteNonQuery()
             Catch ex As Exception
                 Throw
@@ -146,7 +122,7 @@ Namespace com.ado.ole
 
             Try
                 OpenDB("DB-RSTC")
-                connection.Command = New OleDb.OleDbCommand(qbuilder.Query, connection.Connection)
+                SetCommand(qbuilder.Query)
                 connection.Command.ExecuteNonQuery()
             Catch ex As Exception
                 Throw
@@ -159,8 +135,8 @@ Namespace com.ado.ole
             Dim result As Integer = -1
             Try
                 OpenDB("DB-RSTC")
-                connection.Command = New OleDb.OleDbCommand("select count(traR_ID) as CountID from traTasks where tra_ID=" & TRAObj.tra_ID.ToString, connection.Connection)
-                connection.Adap = New OleDb.OleDbDataAdapter(connection.Command)
+                SetCommand("select count(traR_ID) as CountID from traTasks where tra_ID=" & TRAObj.tra_ID.ToString)
+                SetDataAdapter()
                 Dim dts As New DataSet
                 connection.Adap.Fill(dts)
                 If dts.Tables.Count > 0 Then
@@ -184,8 +160,8 @@ Namespace com.ado.ole
             Dim result As Boolean = False
             Try
                 OpenDB("DB-RSTC")
-                connection.Command = New OleDb.OleDbCommand("select count(1) as CountID from traTasks where tra_ID=" & Task.tra_ID.ToString & " and traR_Consecutivo=" & Task.traR_Consecutivo.ToString, connection.Connection)
-                connection.Adap = New OleDb.OleDbDataAdapter(connection.Command)
+                SetCommand("select count(1) as CountID from traTasks where tra_ID=" & Task.tra_ID.ToString & " and traR_Consecutivo=" & Task.traR_Consecutivo.ToString)
+                SetDataAdapter()
                 Dim dts As New DataSet
                 connection.Adap.Fill(dts)
                 If dts.Tables.Count > 0 Then
@@ -216,7 +192,7 @@ Namespace com.ado.ole
 
             Try
                 OpenDB("DB-RSTC")
-                connection.Command = New OleDb.OleDbCommand("delete from traTasks where tra_id=" & TRAObj.tra_ID.ToString, connection.Connection)
+                SetCommand("delete from traTasks where tra_id=" & TRAObj.tra_ID.ToString)
                 connection.Command.ExecuteNonQuery()
             Catch ex As Exception
                 Throw
@@ -228,8 +204,8 @@ Namespace com.ado.ole
         Private Sub GetLastIDTRATask(TaskObj As com.objects.TRATaskObj)
             Try
                 OpenDB("DB-RSTC")
-                connection.Command = New OleDb.OleDbCommand("select max(traR_ID) as MAXID from traTasks", connection.Connection)
-                connection.Adap = New OleDb.OleDbDataAdapter(connection.Command)
+                SetCommand("select max(traR_ID) as MAXID from traTasks")
+                SetDataAdapter()
                 Dim dts As New DataSet
                 connection.Adap.Fill(dts)
                 If dts.Tables.Count > 0 Then
@@ -250,8 +226,8 @@ Namespace com.ado.ole
         Private Sub GetLastIDTRA(TRAObject As com.objects.TRAObj)
             Try
                 OpenDB("DB-RSTC")
-                connection.Command = New OleDb.OleDbCommand("select max(tra_ID) as MAXID from traRecords", connection.Connection)
-                connection.Adap = New OleDb.OleDbDataAdapter(connection.Command)
+                SetCommand("select max(tra_ID) as MAXID from traRecords")
+                SetDataAdapter()
                 Dim dts As New DataSet
                 connection.Adap.Fill(dts)
                 If dts.Tables.Count > 0 Then
@@ -280,8 +256,8 @@ Namespace com.ado.ole
                     qbuilder.AddToQueryParameterForSelect(searchoption)
                 End If
 
-                connection.Command = New OleDb.OleDbCommand(qbuilder.Query, connection.Connection)
-                connection.Adap = New OleDb.OleDbDataAdapter(connection.Command)
+                SetCommand(qbuilder.Query)
+                SetDataAdapter()
                 Dim dts As New DataSet
                 connection.Adap.Fill(dts)
                 If dts.Tables.Count > 0 Then
@@ -318,8 +294,8 @@ Namespace com.ado.ole
                 End If
 
                 Dim table_cam As List(Of String) = qbuilder.Fields
-                connection.Command = New OleDb.OleDbCommand(qbuilder.Query, connection.Connection)
-                connection.Adap = New OleDb.OleDbDataAdapter(connection.Command)
+                SetCommand(qbuilder.Query)
+                SetDataAdapter()
                 Dim dts As New DataSet
                 connection.Adap.Fill(dts)
                 If dts.Tables.Count > 0 Then
@@ -353,8 +329,8 @@ Namespace com.ado.ole
                 qbuilder.BuildSelect("traRecords", True)
 
                 Dim table_cam As List(Of String) = qbuilder.Fields
-                connection.Command = New OleDb.OleDbCommand(qbuilder.Query, connection.Connection)
-                connection.Adap = New OleDb.OleDbDataAdapter(connection.Command)
+                SetCommand(qbuilder.Query)
+                SetDataAdapter()
                 Dim dts As New DataSet
                 connection.Adap.Fill(dts)
                 If dts.Tables.Count > 0 Then
@@ -380,8 +356,8 @@ Namespace com.ado.ole
             Try
                 OpenDB("DB-RSTC")
 
-                connection.Command = New OleDb.OleDbCommand("select cDep_Id,cDep_name from ctgDepartTRA where cDep_id>1", connection.Connection)
-                connection.Adap = New OleDb.OleDbDataAdapter(connection.Command)
+                SetCommand("select cDep_Id,cDep_name from ctgDepartTRA where cDep_id>1")
+                SetDataAdapter()
                 Dim dts As New DataSet
                 connection.Adap.Fill(dts)
                 If dts.Tables.Count > 0 Then
@@ -413,8 +389,8 @@ Namespace com.ado.ole
 
                 Dim table_cam As List(Of String) = qbuilder.Fields
 
-                connection.Command = New OleDb.OleDbCommand(qbuilder.Query, connection.Connection)
-                connection.Adap = New OleDb.OleDbDataAdapter(connection.Command)
+                SetCommand(qbuilder.Query)
+                SetDataAdapter()
                 Dim dts As New DataSet
                 connection.Adap.Fill(dts)
                 If dts.Tables.Count > 0 Then
@@ -447,8 +423,8 @@ Namespace com.ado.ole
 
                 Dim table_cam As List(Of String) = qbuilder.Fields
 
-                connection.Command = New OleDb.OleDbCommand(qbuilder.Query, connection.Connection)
-                connection.Adap = New OleDb.OleDbDataAdapter(connection.Command)
+                SetCommand(qbuilder.Query)
+                SetDataAdapter()
                 Dim dts As New DataSet
                 connection.Adap.Fill(dts)
                 If dts.Tables.Count > 0 Then
@@ -475,8 +451,8 @@ Namespace com.ado.ole
             Dim duplicated As Boolean = False
             Try
                 OpenDB("DB-RSTC")
-                connection.Command = New OleDb.OleDbCommand("select count(1) as CPIN from traRecords where pin_save=" & pin.ToString, connection.Connection)
-                connection.Adap = New OleDb.OleDbDataAdapter(connection.Command)
+                SetCommand("select count(1) as CPIN from traRecords where pin_save=" & pin.ToString)
+                SetDataAdapter()
                 Dim dts As New DataSet
                 connection.Adap.Fill(dts)
                 If dts.Tables.Count > 0 Then

@@ -1,6 +1,6 @@
 ﻿Imports MySql.Data.MySqlClient
 Imports System.Data.OleDb
-Namespace com.database
+Namespace com.database.mysql
 
     Public Class MySQLConnectionProperties
         Dim _Name As String

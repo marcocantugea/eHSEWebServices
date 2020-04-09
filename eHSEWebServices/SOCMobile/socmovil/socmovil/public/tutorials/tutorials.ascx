@@ -3,7 +3,10 @@
 <% 
 
     'obtiene el lenguaje que esta en session.
-    Dim lang_configreader As socmobile_core.com.configuration.GlobalConfReader = CType(Me.Session("lang_obj"), socmobile_core.com.configuration.GlobalConfReader)
+    'Dim lang_configreader As socmobile_core.com.configuration.GlobalConfReader = CType(Me.Session("lang_obj"), socmobile_core.com.configuration.GlobalConfReader)
+    LoadConfiguration()
+    LoadLanguage()
+    
 %>
 
 <div class="containter-fluid text-center" id="Tutorials_desktop">

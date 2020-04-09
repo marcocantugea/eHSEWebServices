@@ -1,6 +1,6 @@
 ﻿Imports System.Data.Odbc
 
-Namespace com.database
+Namespace com.database.odbc
     Public Class ODBCConnectionProperties
         Dim _Name As String
         Dim _ConectionString As String

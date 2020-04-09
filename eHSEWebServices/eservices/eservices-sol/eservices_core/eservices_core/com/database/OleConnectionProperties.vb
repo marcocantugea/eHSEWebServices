@@ -1,7 +1,7 @@
 ﻿Imports System.Data.OleDb
 
-Namespace com.database
-    Public Class ConnectionsProperty
+Namespace com.database.ole
+    Public Class OleConnectionsProperty
         Dim _Name As String
         Dim _ConectionString As String
         Dim _Connection As OleDbConnection

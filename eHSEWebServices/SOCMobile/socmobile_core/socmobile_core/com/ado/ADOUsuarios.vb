@@ -1,9 +1,9 @@
 ﻿Imports socmobile_core.com.objects
-Imports socmobile_core.com.database
+Imports eservices_core.com.database
 
 Namespace com.ado.ole
     Public Class ADOUsuarios
-        Inherits OleDBConnectionObj
+        Inherits eservices_core.com.database.ole.OleDBConnectionObj
 
         Public Sub GetUserNames(list_users As Dictionary(Of String, UsuariosObj))
             Dim Usuario As New UsuariosObj
@@ -16,8 +16,8 @@ Namespace com.ado.ole
             qbuilder.BuildSelect("ctgEmpleados")
             Try
                 OpenDB("DB-USUARIOS")
-                connection.Command = New OleDb.OleDbCommand(qbuilder.Query, connection.Connection)
-                connection.Adap = New OleDb.OleDbDataAdapter(connection.Command)
+                SetCommand(qbuilder.Query)
+                SetDataAdapter()
                 Dim dts As New DataSet
                 connection.Adap.Fill(dts)
                 If dts.Tables.Count > 0 Then

@@ -5,11 +5,9 @@
     Dim Load_info As Boolean = False
     Dim saveinfo As Boolean = False
     
-    'obtiene el lenguaje que esta en session.
-    Dim lang_configreader As socmobile_core.com.configuration.GlobalConfReader = CType(Me.Session("lang_obj"), socmobile_core.com.configuration.GlobalConfReader)
-    'Obtiene la configuracion global
-    Dim GlobalConfigReader As New socmobile_core.com.configuration.GlobalConfReader
-    GlobalConfigReader.LoadFileSetting(HttpContext.Current.Request.PhysicalApplicationPath & System.Configuration.ConfigurationManager.AppSettings("GlobalConfigFile"))
+    ''obtiene el lenguaje que esta en session y la configuracion global
+    LoadLanguage()
+    LoadConfiguration()
     
     
     'Obtiene el nombre de todos los empleados registrados.

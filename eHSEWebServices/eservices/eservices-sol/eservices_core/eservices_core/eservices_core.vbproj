@@ -67,9 +67,17 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="com\ado\ADOCategory.vb" />
+    <Compile Include="com\ado\ADOCompany.vb" />
+    <Compile Include="com\ado\ADODeparments.vb" />
+    <Compile Include="com\ado\ADOProfile.vb" />
+    <Compile Include="com\ado\ADOUser.vb" />
+    <Compile Include="com\ado\ADOUserUtilities.vb" />
+    <Compile Include="com\ado\ADOWorkUnit.vb" />
     <Compile Include="com\configuration\AppConfigFileSettings.vb" />
     <Compile Include="com\configuration\GlobalConfReader.vb" />
-    <Compile Include="com\database\ConnectionProperties.vb" />
+    <Compile Include="com\database\OleConnectionProperties.vb" />
+    <Compile Include="com\database\DatabaseInterface.vb" />
     <Compile Include="com\database\MySQLConnectionObj.vb" />
     <Compile Include="com\database\MySQLConnectionProperties.vb" />
     <Compile Include="com\database\ODBCConnectionObj.vb" />
@@ -77,13 +85,16 @@
     <Compile Include="com\database\OleDBConnectionObj.vb" />
     <Compile Include="com\database\QueryBuilder.vb" />
     <Compile Include="com\database\SQLSanitizeClass.vb" />
+    <Compile Include="com\objects\CategoryObj.vb" />
+    <Compile Include="com\objects\InfoUserObj.vb" />
     <Compile Include="com\objects\CompanyObj.vb" />
     <Compile Include="com\objects\DeparmentsObj.vb" />
-    <Compile Include="com\objects\EmployeesObj.vb" />
-    <Compile Include="com\objects\NationalityObj.vb" />
+    <Compile Include="com\objects\ProfileObj.vb" />
+    <Compile Include="com\objects\UserInfoCompanyObj.vb" />
     <Compile Include="com\objects\UserObj.vb" />
     <Compile Include="com\objects\WorkUnitObj.vb" />
     <Compile Include="com\utilities\Base64Conversions.vb" />
+    <Compile Include="com\utilities\EncriptWrapper.vb" />
     <Compile Include="com\utilities\PINGenerator.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -121,7 +132,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="com\ado\" />
     <Folder Include="com\files\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

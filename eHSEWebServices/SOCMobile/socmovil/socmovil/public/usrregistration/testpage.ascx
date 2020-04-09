@@ -1,0 +1,1 @@
+﻿<%@ Control Language="vb" AutoEventWireup="false" CodeBehind="testpage.ascx.vb" Inherits="socmovil.testpage" %>

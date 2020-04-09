@@ -16,7 +16,7 @@ Namespace com.configuration
                 Dim v() As String = textline.Split("=")
                 If v.Length >= 3 Then
                     Dim parameter As String = textline.Substring(0, textline.IndexOf("="))
-                    Dim value As String = textline.Substring(textline.IndexOf("=") + 1, textline.Length - 6)
+                    Dim value As String = textline.Substring(textline.IndexOf("=") + 1)
                     _GlobalValues.Add(parameter, value)
                 Else
                     _GlobalValues.Add(v(0), v(1))

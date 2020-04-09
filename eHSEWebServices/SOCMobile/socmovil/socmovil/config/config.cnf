@@ -2,3 +2,6 @@ logo=images/gr-logo1.png
 MainTitle=La Muralla IV <br/> Servicios HSE
 language=ES;EN
 main_unit=PSSP LA Muralla IV
+DefaultIDWorkUnit=1
+publicprofileid=1
+DefaultIdCompany=1

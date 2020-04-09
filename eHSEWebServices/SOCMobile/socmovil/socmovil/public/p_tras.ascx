@@ -1,14 +1,11 @@
 ﻿<%@ Control Language="vb" AutoEventWireup="false" CodeBehind="p_tras.ascx.vb" Inherits="socmovil.p_tras" %>
 <%
     
-    'obtiene el lenguaje que esta en session.
-    Dim lang_configreader As socmobile_core.com.configuration.GlobalConfReader = CType(Me.Session("lang_obj"), socmobile_core.com.configuration.GlobalConfReader)
-    'Obtiene la configuracion global
-    Dim GlobalConfigReader As New socmobile_core.com.configuration.GlobalConfReader
-    GlobalConfigReader.LoadFileSetting(HttpContext.Current.Request.PhysicalApplicationPath & System.Configuration.ConfigurationManager.AppSettings("GlobalConfigFile"))
-
-    Dim SQLSanitize As New eservices_core.com.database.SQLSanitizeClass
+    'obtiene el lenguaje que esta en session y la configuracion global
+    LoadConfiguration()
+    LoadLanguage()
     
+    Dim SQLSanitize As New eservices_core.com.database.SQLSanitizeClass
     
     'utilidad para convertir string a base64
     Dim Base64Con As New eservices_core.com.utilities.Base64Conversions

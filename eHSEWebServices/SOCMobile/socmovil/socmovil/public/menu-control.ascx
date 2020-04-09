@@ -1,12 +1,26 @@
 ﻿<%@ Control Language="vb" AutoEventWireup="false" CodeBehind="menu-control.ascx.vb" Inherits="socmovil.menu_control" %>
 <%
     'obtiene el lenguaje que esta en session.
-    Dim lang_configreader As socmobile_core.com.configuration.GlobalConfReader = CType(Me.Session("lang_obj"), socmobile_core.com.configuration.GlobalConfReader)
+    LoadLanguage()
     
     'Carga menu en un objeto diccionario.
     Dim viewclass As New socmovil.view_classes
     Dim menus As New Dictionary(Of String, String)
     viewclass.ParseMenusItems(lang_configreader.GetValue("menus"), menus)
+    
+    'Carga menu de usuario
+    Dim usr_menus As New Dictionary(Of String, String)
+    viewclass.ParseMenusItems(lang_configreader.GetValue("menus_user"), usr_menus)
+    
+    ' revisa la session del usuario
+    
+    Dim user_loged As eservices_core.com.objects.UserObj
+    Dim userlogged As Boolean = False
+    
+    If Not IsNothing(Me.Session("user_loged")) Then
+        user_loged = CType(Me.Session("user_loged"), eservices_core.com.objects.UserObj)
+        userlogged = True
+    End If
     
 %>
 
@@ -28,10 +42,45 @@
     <% 
     Next
     %>
+       <%-- <li class="nav-item">
+            <a  class="nav-link active" href="#">
+                
+               <img src="../images/log2-icon-png.png" style="vertical-align: middle; height:15px; width:15px;"  />  INICIAR SESSION
+            </a>
+        </li>--%>
+
+         <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         <img src="../images/log2-icon-png.png" style="vertical-align: middle; height:15px; width:15px;"  /> <%Response.Write(lang_configreader.GetValue("lbl_myprofile"))%>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <% If Not userlogged Then%>
+          <a class="dropdown-item" href="index.aspx?p=p_login"><%Response.Write(lang_configreader.GetValue("lbl_login"))%></a>
+         <%
+         Else
+             For Each Menu As KeyValuePair(Of String, String) In usr_menus
+          %>
+            <a class="dropdown-item" href="<%Response.Write(Menu.Value)%>"><%Response.Write(Menu.Key)%></a>
+            <% 
+            Next
+            %>
+            <hr />
+            <a class="dropdown-item" href="t_logoff.aspx"><%Response.Write(lang_configreader.GetValue("lbl_logout"))%></a>
+            <%
+        End If
+            %>
+            
+        </div>
+      </li>
+
     </ul>
       <%--<span class="navbar-text ">
           <%Response.Write(lang_configreader.GetValue("lbl_idioma"))%> <a href="change_lang.aspx?lang=ES">ES</a> | <a href="change_lang.aspx?lang=EN"> EN </a>
        </span>--%>
+     
+      
+
+
   </div>
 </nav>
 

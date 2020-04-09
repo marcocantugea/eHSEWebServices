@@ -2,7 +2,9 @@
 <% 
 
     'obtiene el lenguaje que esta en session.
-    Dim lang_configreader As socmobile_core.com.configuration.GlobalConfReader = CType(Me.Session("lang_obj"), socmobile_core.com.configuration.GlobalConfReader)
+    'Dim lang_configreader As socmobile_core.com.configuration.GlobalConfReader = CType(Me.Session("lang_obj"), socmobile_core.com.configuration.GlobalConfReader)
+    LoadLanguage()
+    
 %>
 <div class="content text-center">
     <div class="content  border p-2">

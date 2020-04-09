@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="index.aspx.vb" Inherits="socmovil.WebForm1" %>
 <% 
+    'lenguaje
     If IsNothing(Me.Session("LANG")) Then
         Me.Session("LANG") = "ES"
         Dim aCookie As New HttpCookie("LANG")
@@ -21,7 +22,6 @@
         End If
     End If
     
-    ' Crea el objeto para el lenguaje y lo anexa en session
     
     'Obtiene el lenguaje seleccionado
     Dim lang As String = Me.Session("LANG")
@@ -40,16 +40,38 @@
     End If
     
     Me.Session("lang_obj") = lang_configreader
+    
+
+    'Session de usuario
+    Dim user_loged As eservices_core.com.objects.UserObj
+    Dim userlogged As Boolean = False
+    
+    If Not IsNothing(Me.Session("user_loged")) Then
+        user_loged = CType(Me.Session("user_loged"), eservices_core.com.objects.UserObj)
+        userlogged = True
+    End If
 %>
 
 <%@ Register Src="~/public/header-section.ascx" TagPrefix="headercontrol" TagName="HeaderC" %>
 <%@ Register Src="~/public/menu-control.ascx" TagPrefix="menucontrol" TagName="MenuC" %>
 
 <% Response.WriteFile("~/public/views/themes/basic/public/header.html")%>
-<div class="container p-1 text-right mr-4">
-<span class="navbar-text">
+<div class="container-fluid p-1 text-left">
+    <div class="row">
+        <div class="col text-left">
+            <span>
+                <% If userlogged Then Response.Write(lang_configreader.GetValue("lbl_gretings") & ", " & user_loged.InfoUserObj.Nombre & " " & user_loged.InfoUserObj.apellido_pat)%>
+            </span>
+        </div>
+        <div class="col text-right">
+            <span class="navbar-text">
+                <%Response.Write(lang_configreader.GetValue("lbl_idioma"))%> <a href="change_lang.aspx?lang=ES">ES</a> | <a href="change_lang.aspx?lang=EN">EN </a>
+            </span>
+        </div>
+    </div>
+<%--<span class="navbar-text">
           <%Response.Write(lang_configreader.GetValue("lbl_idioma"))%> <a href="change_lang.aspx?lang=ES">ES</a> | <a href="change_lang.aspx?lang=EN"> EN </a>
-</span>
+</span>--%>
 </div>
 
 <%--Header of the page--%>

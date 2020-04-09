@@ -98,6 +98,9 @@
     <Content Include="images\img-tra-planificacion.png" />
     <Content Include="images\img-tra-probabilidad.png" />
     <Content Include="images\img-tra-riesgospotentciales.png" />
+    <Content Include="images\log-icon-png.png" />
+    <Content Include="images\log2-icon-png.png" />
+    <Content Include="images\login-icon.gif" />
     <Content Include="images\soc-card-pic-300px.jpg" />
     <Content Include="images\tbl-hazardseverity.JPG" />
     <Content Include="images\tra_electronic.JPG" />
@@ -121,13 +124,27 @@
     <Content Include="public\p_createTRA.ascx" />
     <Content Include="public\p_hsedep.ascx" />
     <Content Include="public\p_index.ascx" />
+    <Content Include="public\p_login.ascx" />
     <Content Include="public\p_tras.ascx" />
     <Content Include="public\TRAFormatWord.aspx" />
     <Content Include="public\TRAFormat.aspx" />
     <Content Include="public\tutorials\tutorials.ascx" />
     <Content Include="public\t_loadtra.aspx" />
+    <Content Include="public\t_loginuser.aspx" />
+    <Content Include="public\t_logoff.aspx" />
     <Content Include="public\t_saveTRAinstorage.aspx" />
     <Content Include="public\t_tra_saveitem.aspx" />
+    <Content Include="public\userinfo\p_useraccount.ascx" />
+    <Content Include="public\userinfo\p_userinfo.ascx" />
+    <Content Include="public\userinfo\t_changepass.aspx" />
+    <Content Include="public\userinfo\t_updateusercompanyinfo.aspx" />
+    <Content Include="public\userinfo\t_updateuserinfo.aspx" />
+    <Content Include="public\usrregistration\p_confirmregistration.ascx" />
+    <Content Include="public\usrregistration\p_messagesavereg.ascx" />
+    <Content Include="public\usrregistration\p_userregistration.ascx" />
+    <Content Include="public\usrregistration\testpage.ascx" />
+    <Content Include="public\usrregistration\t_confirmtrans.aspx" />
+    <Content Include="public\usrregistration\t_saveuserreg.aspx" />
     <Content Include="public\views\themes\basic\public\footer.html" />
     <Content Include="public\views\themes\basic\public\header.html" />
     <Content Include="public\views\themes\basic\public\layout-footer.html" />
@@ -140,6 +157,16 @@
     <Content Include="_DebugPage.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="classes\ConfigurationClass.vb" />
+    <Compile Include="classes\IntConfig.vb" />
+    <Compile Include="classes\IntLanguage.vb" />
+    <Compile Include="classes\IntPageControllerClass.vb" />
+    <Compile Include="classes\IntUserSession.vb" />
+    <Compile Include="classes\LanguageClass.vb">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="classes\PageControllerClass.vb" />
+    <Compile Include="classes\UserStateClass.vb" />
     <Compile Include="classes\view-classes.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -223,6 +250,13 @@
       <DependentUpon>p_index.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="public\p_login.ascx.designer.vb">
+      <DependentUpon>p_login.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="public\p_login.ascx.vb">
+      <DependentUpon>p_login.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="public\p_tras.ascx.designer.vb">
       <DependentUpon>p_tras.ascx</DependentUpon>
     </Compile>
@@ -265,6 +299,20 @@
       <DependentUpon>t_loadtra.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="public\t_loginuser.aspx.designer.vb">
+      <DependentUpon>t_loginuser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="public\t_loginuser.aspx.vb">
+      <DependentUpon>t_loginuser.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="public\t_logoff.aspx.designer.vb">
+      <DependentUpon>t_logoff.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="public\t_logoff.aspx.vb">
+      <DependentUpon>t_logoff.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="public\t_saveTRAinstorage.aspx.designer.vb">
       <DependentUpon>t_saveTRAinstorage.aspx</DependentUpon>
     </Compile>
@@ -277,6 +325,83 @@
     </Compile>
     <Compile Include="public\t_tra_saveitem.aspx.vb">
       <DependentUpon>t_tra_saveitem.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="public\userinfo\p_useraccount.ascx.designer.vb">
+      <DependentUpon>p_useraccount.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="public\userinfo\p_useraccount.ascx.vb">
+      <DependentUpon>p_useraccount.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="public\userinfo\p_userinfo.ascx.designer.vb">
+      <DependentUpon>p_userinfo.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="public\userinfo\p_userinfo.ascx.vb">
+      <DependentUpon>p_userinfo.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="public\userinfo\t_changepass.aspx.designer.vb">
+      <DependentUpon>t_changepass.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="public\userinfo\t_changepass.aspx.vb">
+      <DependentUpon>t_changepass.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="public\userinfo\t_updateusercompanyinfo.aspx.designer.vb">
+      <DependentUpon>t_updateusercompanyinfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="public\userinfo\t_updateusercompanyinfo.aspx.vb">
+      <DependentUpon>t_updateusercompanyinfo.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="public\userinfo\t_updateuserinfo.aspx.designer.vb">
+      <DependentUpon>t_updateuserinfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="public\userinfo\t_updateuserinfo.aspx.vb">
+      <DependentUpon>t_updateuserinfo.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="public\usrregistration\p_confirmregistration.ascx.designer.vb">
+      <DependentUpon>p_confirmregistration.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="public\usrregistration\p_confirmregistration.ascx.vb">
+      <DependentUpon>p_confirmregistration.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="public\usrregistration\p_messagesavereg.ascx.designer.vb">
+      <DependentUpon>p_messagesavereg.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="public\usrregistration\p_messagesavereg.ascx.vb">
+      <DependentUpon>p_messagesavereg.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="public\usrregistration\p_userregistration.ascx.designer.vb">
+      <DependentUpon>p_userregistration.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="public\usrregistration\p_userregistration.ascx.vb">
+      <DependentUpon>p_userregistration.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="public\usrregistration\testpage.ascx.designer.vb">
+      <DependentUpon>testpage.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="public\usrregistration\testpage.ascx.vb">
+      <DependentUpon>testpage.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="public\usrregistration\t_confirmtrans.aspx.designer.vb">
+      <DependentUpon>t_confirmtrans.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="public\usrregistration\t_confirmtrans.aspx.vb">
+      <DependentUpon>t_confirmtrans.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="public\usrregistration\t_saveuserreg.aspx.designer.vb">
+      <DependentUpon>t_saveuserreg.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="public\usrregistration\t_saveuserreg.aspx.vb">
+      <DependentUpon>t_saveuserreg.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="_DebugPage.aspx.designer.vb">

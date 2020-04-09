@@ -7,6 +7,7 @@ Namespace com.database
         Private _Values As New List(Of String)
         Private _TypeQuery As Integer
         Private _Entity As T
+        Private _OrderByFields As New List(Of String)
 
         Public ReadOnly Property Fields As List(Of String)
             Get
@@ -52,6 +53,33 @@ Namespace com.database
         Public Sub AddToQueryParameterInsertUpdate(ByVal variable As String, ByVal value As String)
             _Fields.Add(variable)
             _Values.Add(value)
+        End Sub
+
+        Public Sub AddOrderByField(fields As String)
+            '_OrderByFields.Add(field)
+
+            'If _OrderByFields.Count > 0 Then
+            '    Dim index As Integer = 0
+            '    Dim orderby As String = " order by "
+            '    For Each item As String In _OrderByFields
+            '        If index = 0 Then
+            '            orderby = orderby & item
+            '        Else
+            '            orderby = orderby & "," & item
+            '        End If
+            '    Next
+            '    _Query = _Query & orderby
+            'End If
+
+            If Not IsNothing(_Query) Then
+                If Not _Query.Contains("order by") Then
+                    Dim orderby As String = " order by " & fields
+                    _Query = Query & orderby
+                Else
+                    _Query = Query & fields
+                End If
+            End If
+
         End Sub
 
         Public Sub BuildInsert(ByVal Table As String)
@@ -402,7 +430,7 @@ Namespace com.database
 
             End If
 
-
+           
         End Sub
 
         Public Sub BuildSelect(ByVal Table As String, Optional allfields As Boolean = False)
@@ -474,6 +502,8 @@ Namespace com.database
                 End If
 
             End If
+
+           
 
 
         End Sub

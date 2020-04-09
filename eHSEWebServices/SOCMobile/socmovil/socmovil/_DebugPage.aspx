@@ -50,6 +50,18 @@
         <asp:Button ID="Button2" runat="server" Text="Button" />
         <asp:Button ID="Button3" runat="server" Text="Button" />
         <asp:Button ID="Button4" runat="server" Text="Button" />
+        <br />
+        <br />
+        <br />
+        <asp:Button ID="Button5" runat="server" Text="Button" />
+        <br />
+        <br />
+        <asp:Button ID="Button6" runat="server" Text="test login" />
+        <br />
+        <br />
+        <br />
+        <asp:Button ID="Button7" runat="server" Text="Test get companies" />
+        <br />
     </form>
 </body>
 </html>
