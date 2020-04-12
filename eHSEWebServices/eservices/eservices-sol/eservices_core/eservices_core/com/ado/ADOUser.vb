@@ -156,6 +156,22 @@ Namespace com.ado
             End Try
         End Sub
 
+        Private Sub AddUserSignature(eSignatureObj As eSignatureObj)
+            Dim qbuilder As New eservices_core.com.database.QueryBuilder(Of eSignatureObj)
+            qbuilder.TypeQuery = eservices_core.com.database.TypeQuery.Insert
+            qbuilder.Entity = eSignatureObj
+            qbuilder.BuildInsert("tbl_usersignature")
+            Try
+                OpenDB("DB-EWEBSERVICES")
+                SetCommand(qbuilder.Query)
+                connection.Command.ExecuteNonQuery()
+            Catch ex As Exception
+                Throw
+            Finally
+                CloseDB()
+            End Try
+        End Sub
+
         Private Sub GetUserLastID(UserObj As UserObj)
             Try
                 OpenDB("DB-EWEBSERVICES")
@@ -286,7 +302,7 @@ Namespace com.ado
                 getUserLoginByID(UserObj)
                 'load user info
                 UserObj.InfoUserObj = New InfoUserObj
-                getUserInfoByID(UserObj.InfoUserObj, UserObj.idInfoUser)
+                GetUserInfoByID(UserObj.InfoUserObj, UserObj.idInfoUser)
                 'load user company info
                 UserObj.UserInfoCompanyObj = New UserInfoCompanyObj
                 getCompanyUserInfoByID(UserObj.UserInfoCompanyObj, UserObj.idinfocompany)
@@ -398,20 +414,7 @@ Namespace com.ado
         End Sub
 
         Public Sub UpdateUserPass(UserObj As UserObj)
-            Dim qbuilder As New eservices_core.com.database.QueryBuilder(Of UserObj)
-            qbuilder.TypeQuery = eservices_core.com.database.TypeQuery.Insert
-            qbuilder.Entity = UserObj
-            qbuilder.BuildUpdate("tbl_userslogin", "userid", UserObj.userid)
-            Try
-                OpenDB("DB-EWEBSERVICES")
-                SetCommand(qbuilder.Query)
-                connection.Command.ExecuteNonQuery()
-            Catch ex As Exception
-                Throw
-            Finally
-                CloseDB()
-
-            End Try
+            UpdateUserLogin(UserObj)
         End Sub
 
         Public Sub UpdateInfoUserCompany(InfoUsesrCompanyObj As UserInfoCompanyObj)
@@ -435,7 +438,7 @@ Namespace com.ado
             Dim qbuilder As New eservices_core.com.database.QueryBuilder(Of InfoUserObj)
             qbuilder.TypeQuery = eservices_core.com.database.TypeQuery.Insert
             qbuilder.Entity = Userinfo
-            qbuilder.BuildUpdate("tbl_infouser", "idInfoUser", Userinfo.idInfoUser)
+            qbuilder.BuildUpdate("tbl_usersignature", "idInfoUser", Userinfo.idInfoUser)
             Try
                 OpenDB("DB-EWEBSERVICES")
                 SetCommand(qbuilder.Query)
@@ -448,5 +451,38 @@ Namespace com.ado
             End Try
         End Sub
 
+        Public Sub UpdateUserSignature(eSignatureObj As eSignatureObj)
+            Dim qbuilder As New eservices_core.com.database.QueryBuilder(Of eSignatureObj)
+            qbuilder.TypeQuery = eservices_core.com.database.TypeQuery.Insert
+            qbuilder.Entity = eSignatureObj
+            qbuilder.BuildUpdate("tbl_infouser", "idsignature", eSignatureObj.idsignature)
+            Try
+                OpenDB("DB-EWEBSERVICES")
+                SetCommand(qbuilder.Query)
+                connection.Command.ExecuteNonQuery()
+            Catch ex As Exception
+                Throw
+            Finally
+                CloseDB()
+
+            End Try
+        End Sub
+
+        Public Sub UpdateUserLogin(UserObj As UserObj)
+            Dim qbuilder As New eservices_core.com.database.QueryBuilder(Of UserObj)
+            qbuilder.TypeQuery = eservices_core.com.database.TypeQuery.Update
+            qbuilder.Entity = UserObj
+            qbuilder.BuildUpdate("tbl_userslogin", "userid", UserObj.userid)
+            Try
+                OpenDB("DB-EWEBSERVICES")
+                SetCommand(qbuilder.Query)
+                connection.Command.ExecuteNonQuery()
+            Catch ex As Exception
+                Throw
+            Finally
+                CloseDB()
+
+            End Try
+        End Sub
     End Class
 End Namespace

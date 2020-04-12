@@ -23,7 +23,7 @@
     End Sub
 
     Public Sub LoadConfiguration() Implements IntPageControllerClass.LoadConfiguration
-
+        pagecontrollerclass.LoadConfiguration(HttpContext.Current.Request.PhysicalApplicationPath & System.Configuration.ConfigurationManager.AppSettings("GlobalConfigFile"))
     End Sub
 
     Public ReadOnly Property GlobalConfigReader As socmobile_core.com.configuration.GlobalConfReader Implements IntPageControllerClass.GlobalConfigReader

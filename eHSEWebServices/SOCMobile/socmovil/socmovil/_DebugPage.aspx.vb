@@ -123,4 +123,25 @@ Public Class _DebugPage
             Response.Write(company.CompanyName & "<br/>")
         Next
     End Sub
+
+    Protected Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
+
+        Dim tmpfile As New System.IO.FileInfo(HttpContext.Current.Request.PhysicalApplicationPath & System.Configuration.ConfigurationSettings.AppSettings("imgtempfolder") & "\" & "log-icon-png.png")
+        Dim folderout As String = HttpContext.Current.Request.PhysicalApplicationPath & System.Configuration.ConfigurationSettings.AppSettings("dsignaturesfolder") & "\"
+        Dim encrypter As New eservices_core.com.utilities.EncriptWrapper(System.Configuration.ConfigurationSettings.AppSettings("enc-key"))
+
+        encrypter.EncryptFile(tmpfile, folderout)
+
+    End Sub
+
+    Protected Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
+
+        Dim imgenct As New System.IO.FileInfo(HttpContext.Current.Request.PhysicalApplicationPath & System.Configuration.ConfigurationSettings.AppSettings("dsignaturesfolder") & "\" & "log-icon-png.png.dat")
+        Dim folderout As String = HttpContext.Current.Request.PhysicalApplicationPath & System.Configuration.ConfigurationSettings.AppSettings("imgtempfolder") & "\"
+        Dim encrypter As New eservices_core.com.utilities.EncriptWrapper(System.Configuration.ConfigurationSettings.AppSettings("enc-key"))
+
+        encrypter.DecryptFile(imgenct, folderout)
+
+
+    End Sub
 End Class

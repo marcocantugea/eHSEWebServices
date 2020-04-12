@@ -55,7 +55,7 @@
         <tr>
             <td id="InitialLabel">
                <div style="width:20px;">
-                   <img src="../images/img-tra-planificacion.png" /  >
+                   <img src="../images/img-tra-planificacion.png" />
                </div>
             </td>
             <td>
@@ -63,7 +63,7 @@
                     <tr>
                         <td colspan="8">
                             <div style="display:flex; align-items:center; padding:5px;">
-                                <img src="../images/gr-logo1.png" / height="40px" width="250px" >
+                                <img src="../images/gr-logo1.png" height="40px" width="250px" />
                                 <h5 style="padding-left:15px;">TASK RISK ASSESSMENT FORM /</h5>
                                 <span>Valoraci&oacute;n de Riesgo en la Tarea</span>
                                 <h5 style="padding-left:15px;">(TRA)</h5>
@@ -1138,7 +1138,7 @@
         <tr>
             <td id="InitialLabel">
                 <div style="width:20px;">
-                   <img src="../images/img-tra-control.png" /  >
+                   <img src="../images/img-tra-control.png" />
                </div>
             </td>
             <td>

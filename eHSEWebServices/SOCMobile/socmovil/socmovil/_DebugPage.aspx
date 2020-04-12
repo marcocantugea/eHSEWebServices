@@ -62,6 +62,13 @@
         <br />
         <asp:Button ID="Button7" runat="server" Text="Test get companies" />
         <br />
+        <br />
+        <br />
+        <asp:Button ID="Button8" runat="server" Text="test img encrip" />
+        <br />
+        <br />
+        <asp:Button ID="Button9" runat="server" Text="test img dencript" />
+        <br />
     </form>
 </body>
 </html>

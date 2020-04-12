@@ -1,4 +1,5 @@
 ﻿Imports System.Security.Cryptography
+Imports System.IO
 
 Namespace com.utilities
 
@@ -50,8 +51,35 @@ Namespace com.utilities
             Return Convert.ToBase64String(ms.ToArray)
         End Function
 
-        Public Function DecryptData(
-            ByVal encryptedtext As String) As String
+        Public Sub EncryptFile(ByVal fileobj As System.IO.FileInfo, folderoutput As String)
+
+
+            Dim outfile As String = folderoutput & fileobj.Name & ".dat"
+            Dim fsInput As New FileStream(fileobj.FullName, FileMode.Open, FileAccess.Read)
+            Dim fsEncrypted As New FileStream(outfile, FileMode.Create, FileAccess.Write)
+
+            ' Create the stream.
+            Dim ms As New System.IO.MemoryStream
+            ' Create the encoder to write to the stream.
+            Dim encStream As New CryptoStream(fsEncrypted,
+                TripleDes.CreateEncryptor(),
+                System.Security.Cryptography.CryptoStreamMode.Write)
+
+            'create the binary info
+            Dim bytearrayinput(fsInput.Length) As Byte
+            fsInput.Read(bytearrayinput, 0, bytearrayinput.Length)
+
+            ' Use the crypto stream to write the byte array to the stream.
+            encStream.Write(bytearrayinput, 0, bytearrayinput.Length)
+            encStream.Flush()
+            encStream.Close()
+
+            fsInput.Close()
+            fsEncrypted.Close()
+
+        End Sub
+
+        Public Function DecryptData(ByVal encryptedtext As String)
 
             ' Convert the encrypted text string to a byte array.
             Dim encryptedBytes() As Byte = Convert.FromBase64String(encryptedtext)
@@ -70,5 +98,29 @@ Namespace com.utilities
             ' Convert the plaintext stream to a string.
             Return System.Text.Encoding.Unicode.GetString(ms.ToArray)
         End Function
+
+        Public Sub DecryptFile(ByVal fileobj As System.IO.FileInfo, folderoutput As String)
+
+            ' Convert the plaintext string to a byte array.
+            Dim outfile As String = folderoutput & fileobj.Name.Substring(0, fileobj.Name.Length - 3) & "sig"
+            Dim fsoutput As New FileStream(outfile, FileMode.Create, FileAccess.Write)
+            Dim fsInput As New FileStream(fileobj.FullName, FileMode.Open, FileAccess.Read)
+
+            'create the binary info
+            Dim bytearrayinput(fsInput.Length) As Byte
+            fsInput.Read(bytearrayinput, 0, bytearrayinput.Length)
+
+            ' Create the decoder to write to the stream.
+            Dim decStream As New CryptoStream(fsoutput,
+                TripleDes.CreateDecryptor(),
+                System.Security.Cryptography.CryptoStreamMode.Write)
+
+            decStream.Write(bytearrayinput, 0, bytearrayinput.Length)
+            decStream.Flush()
+
+            fsInput.Close()
+            fsoutput.Close()
+
+        End Sub
     End Class
 End Namespace

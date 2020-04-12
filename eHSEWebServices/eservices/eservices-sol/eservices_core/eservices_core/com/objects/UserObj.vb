@@ -12,11 +12,46 @@ Namespace com.objects
         Private _InfoUserObj As InfoUserObj
         Private _ProfileObj As ProfileObj
         Private _UserInfoCompanyObj As UserInfoCompanyObj
+        Private _AgreeSignatureTerms As Boolean
+        Private _idsignature As Integer
+        Private _eSignature As eSignatureObj
+
+        Public Property eSignature As eSignatureObj
+            Get
+                Return _eSignature
+            End Get
+            Set(value As eSignatureObj)
+                _eSignature = value
+            End Set
+        End Property
+
+        Public Property idsignature As Integer
+            Get
+                Return _idsignature
+            End Get
+            Set(value As Integer)
+                _idsignature = value
+            End Set
+        End Property
 
         Public Sub Loadinfo()
             GetProfileObj()
             GetInfoUser()
             GetInfoCompany()
+            GetSignature()
+        End Sub
+
+        Public Sub GetSignature()
+            Try
+                Dim ADOSignatures As New ADOeSignatures
+                _eSignature = New eSignatureObj
+                _eSignature.idsignature = _idsignature
+                If _idsignature > 0 Then
+                    ADOSignatures.GetUserSignatureById(_eSignature)
+                End If
+            Catch ex As Exception
+
+            End Try
         End Sub
 
         Public Sub GetInfoCompany()
@@ -66,6 +101,15 @@ Namespace com.objects
             End If
             Return str_name
         End Function
+
+        Public Property AgreeSignatureTerms As Boolean
+            Get
+                Return _AgreeSignatureTerms
+            End Get
+            Set(value As Boolean)
+                _AgreeSignatureTerms = value
+            End Set
+        End Property
 
         Public Property UserInfoCompanyObj As UserInfoCompanyObj
             Get

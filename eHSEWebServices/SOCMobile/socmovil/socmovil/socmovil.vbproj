@@ -126,6 +126,12 @@
     <Content Include="public\p_index.ascx" />
     <Content Include="public\p_login.ascx" />
     <Content Include="public\p_tras.ascx" />
+    <Content Include="public\signatures\img_signature.aspx" />
+    <Content Include="public\signatures\p_usersignature.ascx" />
+    <Content Include="public\signatures\t_agreeconditions.aspx" />
+    <Content Include="public\signatures\t_savesignature.aspx" />
+    <Content Include="public\signatures\t_updatesignature.aspx" />
+    <Content Include="public\signatures\t_uploadimage.aspx" />
     <Content Include="public\TRAFormatWord.aspx" />
     <Content Include="public\TRAFormat.aspx" />
     <Content Include="public\tutorials\tutorials.ascx" />
@@ -263,6 +269,48 @@
     <Compile Include="public\p_tras.ascx.vb">
       <DependentUpon>p_tras.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="public\signatures\img_signature.aspx.designer.vb">
+      <DependentUpon>img_signature.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="public\signatures\img_signature.aspx.vb">
+      <DependentUpon>img_signature.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="public\signatures\p_usersignature.ascx.designer.vb">
+      <DependentUpon>p_usersignature.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="public\signatures\p_usersignature.ascx.vb">
+      <DependentUpon>p_usersignature.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="public\signatures\t_agreeconditions.aspx.designer.vb">
+      <DependentUpon>t_agreeconditions.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="public\signatures\t_agreeconditions.aspx.vb">
+      <DependentUpon>t_agreeconditions.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="public\signatures\t_savesignature.aspx.designer.vb">
+      <DependentUpon>t_savesignature.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="public\signatures\t_savesignature.aspx.vb">
+      <DependentUpon>t_savesignature.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="public\signatures\t_updatesignature.aspx.designer.vb">
+      <DependentUpon>t_updatesignature.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="public\signatures\t_updatesignature.aspx.vb">
+      <DependentUpon>t_updatesignature.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="public\signatures\t_uploadimage.aspx.designer.vb">
+      <DependentUpon>t_uploadimage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="public\signatures\t_uploadimage.aspx.vb">
+      <DependentUpon>t_uploadimage.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="public\TRAFormatWord.aspx.designer.vb">
       <DependentUpon>TRAFormatWord.aspx</DependentUpon>
@@ -452,6 +500,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="admin\views\" />
+    <Folder Include="images\encsignatures\" />
+    <Folder Include="images\tmp\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\eservices\eservices-sol\eservices_core\eservices_core\eservices_core.vbproj">

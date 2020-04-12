@@ -2,6 +2,8 @@
 <%
     'obtiene el lenguaje que esta en session.
     LoadLanguage()
+    LoadConfiguration()
+    
     
     'Carga menu en un objeto diccionario.
     Dim viewclass As New socmovil.view_classes
@@ -65,6 +67,11 @@
             Next
             %>
             <hr />
+            <%--Menu comun de usuarios con privilegios--%>
+            <% If userlogged And user_loged.idprofile <> Integer.Parse(GlobalConfigReader.GetValue("publicprofileid")) Then%>
+            <a class="dropdown-item" href="index.aspx?p=signatures/p_usersignature"><%GetLbl("menu-control_lbl_electronicsignature") %></a>
+             <hr />
+            <% End If%>
             <a class="dropdown-item" href="t_logoff.aspx"><%Response.Write(lang_configreader.GetValue("lbl_logout"))%></a>
             <%
         End If

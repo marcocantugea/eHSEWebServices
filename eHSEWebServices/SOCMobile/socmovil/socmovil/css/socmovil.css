@@ -5,6 +5,12 @@
     #Tutorials_desktop {
         display:block;
     }
+    #p_usersignature_fillform {
+        width:65%;
+    }
+    #btn_continuar {
+       width:15%;
+    }
 }
 @media (max-width: 800px) {
     #Tutorials_movil {
@@ -23,6 +29,12 @@
     }
     #frm_userreg span {
         font-size:medium;
+    }
+    #p_usersignature_fillform {
+        width:100%;
+    }
+    #btn_continuar {
+        width:100%;
     }
 }
 

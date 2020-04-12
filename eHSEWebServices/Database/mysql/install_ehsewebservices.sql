@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 09-04-2020 a las 14:18:20
+-- Tiempo de generación: 11-04-2020 a las 19:09:28
 -- Versión del servidor: 5.6.34-log
 -- Versión de PHP: 7.2.1
 
@@ -248,6 +248,19 @@ CREATE TABLE `tbl_userinfocompany` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `tbl_usersignature`
+--
+
+CREATE TABLE `tbl_usersignature` (
+  `idsignature` int(11) NOT NULL,
+  `password` text NOT NULL,
+  `signaturepath` varchar(255) NOT NULL,
+  `iduser` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin2;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `tbl_userslogin`
 --
 
@@ -259,7 +272,9 @@ CREATE TABLE `tbl_userslogin` (
   `active` tinyint(1) NOT NULL,
   `idprofile` int(11) NOT NULL,
   `idInfoUser` int(11) NOT NULL,
-  `idinfocompany` int(11) NOT NULL
+  `idinfocompany` int(11) NOT NULL,
+  `AgreeSignatureTerms` tinyint(1) NOT NULL,
+  `idsignature` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin2;
 
 -- --------------------------------------------------------
@@ -336,6 +351,12 @@ ALTER TABLE `tbl_userinfocompany`
   ADD PRIMARY KEY (`idinfocompany`);
 
 --
+-- Indices de la tabla `tbl_usersignature`
+--
+ALTER TABLE `tbl_usersignature`
+  ADD PRIMARY KEY (`idsignature`);
+
+--
 -- Indices de la tabla `tbl_userslogin`
 --
 ALTER TABLE `tbl_userslogin`
@@ -391,6 +412,11 @@ ALTER TABLE `tbl_profiles`
 --
 ALTER TABLE `tbl_userinfocompany`
   MODIFY `idinfocompany` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+--
+-- AUTO_INCREMENT de la tabla `tbl_usersignature`
+--
+ALTER TABLE `tbl_usersignature`
+  MODIFY `idsignature` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT de la tabla `tbl_userslogin`
 --
