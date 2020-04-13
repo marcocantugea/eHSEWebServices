@@ -87,6 +87,7 @@ Namespace com.objects
                 _ProfileObj.idprofile = Me._idprofile
                 If _idprofile > 0 Then
                     ADOProfile.GetProfileById(_ProfileObj)
+                    _ProfileObj.LoadModules(True)
                 End If
 
             Catch ex As Exception
@@ -94,6 +95,16 @@ Namespace com.objects
             End Try
         End Sub
 
+        Public Sub LoadModulesFrontUI()
+            If Not IsNothing(_ProfileObj) Then
+                _ProfileObj.LoadModules(True)
+            End If
+        End Sub
+        Public Sub LoadModulesBackUI()
+            If Not IsNothing(_ProfileObj) Then
+                _ProfileObj.LoadModules(False)
+            End If
+        End Sub
         Public Function FullName() As String
             Dim str_name As String = ""
             If Not IsNothing(_InfoUserObj) Then

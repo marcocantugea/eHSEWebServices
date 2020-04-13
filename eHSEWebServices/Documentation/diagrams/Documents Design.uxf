@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>6</zoom_level>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>102</x>
+      <y>780</y>
+      <w>1026</w>
+      <h>600</h>
+    </coordinates>
+    <panel_attributes>eservices_core.com.object
+Objects Entities
+bg=white
+layer=-2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>456</x>
+      <y>1080</y>
+      <w>216</w>
+      <h>282</h>
+    </coordinates>
+    <panel_attributes>bg=white
+DocumentObj
+--
+_idDocument: Integer
+_DocumentDate: Date
+_DocumentAprovalByID:Integer {iduser}
+_DocumentAprovalDate: Date
+_TypeOfObj: String {Classname}
+_IDObjField: String {idfield}
+_IdOfDocument: Integer {value id)
+_eSignatureFile: String
+--
+public mustoverride sub getObjData()
+Sub New()
+public function getidDocument() as Integer
+public sub setidDocument(value as Integer)
+public function getDocumentDate() as Date
+public sub setDocumentDate(value as Date)
+public function getDocumentAprovalByID() as Integer
+public sub setDocumentAprovalByID(value as Integer)
+public function getDocumentAprovalDate() as Date
+public sub setDocumentAprovalDate(value as Date)
+public function getTypeOfObj() as String
+Public Sub setTypeOfObj(value As String)
+public function getIDObjField() as String
+public sub setIDObjField(value as String)
+public function getIdOfDocument() as Integer
+public sub setIdOfDocument(value as Integer)
+public function geteSignatureFile() as String
+public sub seteSignatureFile(value as String) 
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>618</x>
+      <y>1470</y>
+      <w>270</w>
+      <h>462</h>
+    </coordinates>
+    <panel_attributes>TRAObj
+--
+Private _tra_ID As Integer = -1
+Private _tra_Unit As String
+        Private _tra_Dept As String
+        Private _tra_Location As String
+        Private _tra_Activity_Job As String
+        Private _tra_Date As Date
+        Private _tra_Hazard_Subs_NA As Boolean
+        Private _tra_Hazard_Noise_NA As Boolean
+        Private _tra_Hazard_Hand_NA As Boolean
+        Private _tra_Hazard_Access_NA As Boolean
+        Private _tra_Hazard_Equip_NA As Boolean
+        Private _tra_Hazard_Overhead_NA As Boolean
+        Private _tra_Hazard_Factors_NA As Boolean
+        Private _tra_Hazard_Comms_NA As Boolean
+        Private _tra_Hazard_Environ_NA As Boolean
+        Private _tra_Hazard_Process_NA As Boolean
+        Private _tra_Hazard_Vibration_NA As Boolean
+        Private _tra_Hazard_Subs_Eval As Boolean
+        Private _tra_Hazard_Noise_Eval As Boolean
+        Private _tra_Hazard_Hand_Eval As Boolean
+        Private _tra_Hazard_Access_Eval As Boolean
+        Private _tra_Hazard_Equip_Eval As Boolean
+        Private _tra_Hazard_Overhead_Eval As Boolean
+        Private _tra_Hazard_Factors_Eval As Boolean
+        Private _tra_Hazard_Comms_Eval As Boolean
+        Private _tra_Hazard_Environ_Eval As Boolean
+        Private _tra_Hazard_Process_Eval As Boolean
+        Private _tra_Hazard_Vibration_Eval As Boolean
+        Private _tra_FinalAssessment As String
+        Private _tra_OveralRisk As String
+        Private _tra_ApplicableProcedure As String
+        Private _tra_Status As String
+        Private _tra_AuthorityApproveDate As Date
+        Private _tra_SafetyApproveDate As Date
+        Private _tra_permitnumber As String
+        Private _tra_Hazard_Weather_NA As Boolean
+        Private _tra_Hazard_Weather_Eval As Boolean
+        Private _tra_manning_required As String
+        Private _tra_permit_holder As String
+        Private _tra_permit_autority As String
+        Private _traTasks As List(Of TRATaskObj)
+        Private _tra_SentBack_Reason As String
+        Private _pin_save As Integer
+layer=-3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>582</x>
+      <y>1428</y>
+      <w>378</w>
+      <h>534</h>
+    </coordinates>
+    <panel_attributes>etra.com.objects
+--
+layer=-3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>546</x>
+      <y>1356</y>
+      <w>216</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0;340.0;80.0;340.0;190.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>648</x>
+      <y>822</y>
+      <w>216</w>
+      <h>216</h>
+    </coordinates>
+    <panel_attributes>ModuleObj
+--
+private _id_module as integer =-1
+private _label as String
+private _pathlink as String
+private _title as String
+private _active as boolean
+private _MenusList as List(of MenuObj)
+
+public property id_module as integer
+public property label as String
+public property pathlink as String
+public property title as String
+public property active as boolean
+public property MenuList as list(of MenuObj)
+--
+Public Sub LoadMenus()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>906</x>
+      <y>828</y>
+      <w>180</w>
+      <h>156</h>
+    </coordinates>
+    <panel_attributes>MenuObj
+--
+private _id_menu as integer =-1
+private _label as String
+private _pathlink as String
+private _title as String
+private _active as boolean
+
+public property id_menu as integer
+public property label as String
+public property pathlink as String
+public property title as String
+public property active as boolean
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>462</x>
+      <y>822</y>
+      <w>156</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>ProfileObj
+--
+Private _idprofile As Integer = -1
+Private _profile As String
+Private _active As Boolean
+Private _Modules As New Dictionary(Of Integer, ModuleObj)
+
+Public Property active As Boolean
+Public Property profile As String
+Public Property idprofile As Integer
+public Property Modules as Dictionary(Of Integer, ModuleObj)
+
+--
+
+Public Sub LoadModules(Optional frontui As Boolean = False)
+Sub New()
+Sub New(idprofile as integer)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>324</x>
+      <y>486</y>
+      <w>738</w>
+      <h>270</h>
+    </coordinates>
+    <panel_attributes>eservices_core.com.ado
+Access Data Objects
+bg=white
+layer=-2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>570</x>
+      <y>546</y>
+      <w>252</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>ADOModulesMenus
+--
+
+Private Const table_modules As String = "tbl_modules"
+Private Const table_menus As String = "tbl_menus"
+Private Const Database As String = "DB-EWEBSERVICES"
+
+--
+
+public Sub AddModule(ModuleObj as ModuleObj)
+public Sub AddMenu(MenuObj as MenuObj)
+private Sub GetLastIDModule(ModuleObj as ModuleObj)
+private Sub GetLastIDMenu(MenuObj as MenuObj)
+public Sub GetModulesMenusByProfile(ProfileObj as ProfileObj)
+public Sub GetModuleByID(ModuleObj as ModuleObj,Optional frontui As Boolean = False)
+public Sub GetMenuByID(MenuObj as MenuObj,Optional frontui As Boolean = False)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>474</x>
+      <y>168</y>
+      <w>666</w>
+      <h>276</h>
+    </coordinates>
+    <panel_attributes>eservices_core.com.database.mysql
+Mysql Databases Controler
+bg=white
+layer=-2
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>498</x>
+      <y>234</y>
+      <w>294</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>MySQLConnectionObj
+--
+Protected connections As New Collection
+Protected connection As MySQLConnectionProperties
+--
+
+Public Sub New()
+Public Sub New(ConnectionProperty As MySQLConnectionProperties)
+
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLInterface</id>
+    <coordinates>
+      <x>222</x>
+      <y>24</y>
+      <w>360</w>
+      <h>102</h>
+    </coordinates>
+    <panel_attributes>DatabaseInterface
+--
+Sub OpenDB(ByVal DB As String)
+Sub CreateConnection(ByVal ConnectionName As String, ByVal DatabaseToOpen As String)
+Sub CloseDB()
+Sub CloseDB(ByVal DB As String)
+Sub setCommand(Query As String)
+Sub setDataAdapter()
+fg=gray
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>870</x>
+      <y>216</y>
+      <w>246</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>MySQLConnectionProperties
+--
+Dim _Name As String
+Dim _ConectionString As String
+Dim _Connection As MySqlConnection
+Dim _Adap As MySqlDataAdapter
+Dim _Command As MySqlCommand
+
+Public Property Name() As String
+Public Property ConectionString() As String
+Public ReadOnly Property Connection() As MySqlConnection
+Public Property Adap() As MySqlDataAdapter
+Public Property Command() As MySqlCommand
+--
+
+Public Sub SetUpConnection()
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>786</x>
+      <y>276</y>
+      <w>96</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;instanceOf&gt;&gt;
+group=1</panel_attributes>
+    <additional_attributes>10.0;20.0;140.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>396</x>
+      <y>36</y>
+      <w>114</w>
+      <h>246</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;170.0;390.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>198</x>
+      <y>0</y>
+      <w>954</w>
+      <h>456</h>
+    </coordinates>
+    <panel_attributes>com.database
+--
+layer=-4
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>630</x>
+      <y>348</y>
+      <w>114</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;210.0;170.0;210.0;170.0;330.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>696</x>
+      <y>720</y>
+      <w>306</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=0..n</panel_attributes>
+    <additional_attributes>490.0;180.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>690</x>
+      <y>720</y>
+      <w>90</w>
+      <h>114</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=0..n</panel_attributes>
+    <additional_attributes>120.0;170.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>540</x>
+      <y>720</y>
+      <w>60</w>
+      <h>114</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=0..n</panel_attributes>
+    <additional_attributes>10.0;170.0;80.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>132</x>
+      <y>804</y>
+      <w>300</w>
+      <h>426</h>
+    </coordinates>
+    <panel_attributes>UserObj
+--
+Private _userid As Integer = -1
+Private _user_login As String
+Private _user_pwd As String
+Private _user_email As String
+Private _active As Boolean
+Private _idprofile As Integer
+Private _idInfoUser As Integer
+Private _idinfocompany As Integer
+Private _InfoUserObj As InfoUserObj
+Private _ProfileObj As ProfileObj
+Private _UserInfoCompanyObj As UserInfoCompanyObj
+Private _AgreeSignatureTerms As Boolean
+Private _idsignature As Integer
+Private _eSignature As eSignatureObj
+
+Public Property eSignature As eSignatureObj
+Public Property idsignature As Integer
+Public Property AgreeSignatureTerms As Boolean
+Public Property UserInfoCompanyObj As UserInfoCompanyObj
+Public Property ProfileObj As ProfileObj
+Public Property InfoUserObj As InfoUserObj
+Public Property idinfocompany As Integer
+Public Property idInfoUser As Integer
+Public Property idprofile As Integer
+Public Property active As Boolean
+Public Property user_email As String
+Public Property user_pwd As String
+Public Property user_login As String
+Public Property userid As Integer
+ 
+
+--
+
+Public Sub Loadinfo()
+Public Sub GetSignature()
+Public Sub GetInfoCompany()
+Public Sub GetInfoUser()
+Public Sub GetProfileObj()
+Public Function FullName() As String
+Public Sub LoadModulesFrontUI()
+Public Sub LoadModulesBackUI()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>426</x>
+      <y>894</y>
+      <w>48</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1..1</panel_attributes>
+    <additional_attributes>60.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>858</x>
+      <y>906</y>
+      <w>60</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;80.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>612</x>
+      <y>900</y>
+      <w>48</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;60.0;10.0</additional_attributes>
+  </element>
+</diagram>

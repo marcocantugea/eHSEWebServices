@@ -144,4 +144,48 @@ Public Class _DebugPage
 
 
     End Sub
+
+    Protected Sub Button10_Click(sender As Object, e As EventArgs) Handles Button10.Click
+        Dim ADO As New etra.com.ado.ole.ADOTRA
+        Dim tra_fields As New etra.com.objects.TRAObj
+        tra_fields.tra_ID = -7
+        tra_fields.tra_Activity_Job = "-7"
+        tra_fields.tra_Dept = "-7"
+        tra_fields.tra_Location = "-7"
+
+        Dim listoftra As New List(Of etra.com.objects.TRAObj)
+        Dim listofdocuments As New List(Of eservices_core.com.objects.DoclumentObj)
+        ADO.GetTRABy(tra_fields, listoftra, "tra_ID>0")
+
+        For Each item As etra.com.objects.TRAObj In listoftra
+            'Response.Write(item.ToString + "<br/>")
+            listofdocuments.Add(item)
+        Next
+
+        For Each document As eservices_core.com.objects.DoclumentObj In listofdocuments
+            Response.Write(document.getTypeOfObj & ":" & document.getIDObjField & "<br/>")
+        Next
+    End Sub
+
+    Protected Sub Button11_Click(sender As Object, e As EventArgs) Handles Button11.Click
+        Dim profile As New eservices_core.com.objects.ProfileObj
+        profile.idprofile = 1
+
+        Dim ADOModulesMenu As New eservices_core.com.ado.ADOModulesMenus
+
+        ADOModulesMenu.GetModulesMenusByProfile(profile)
+
+        For Each item As KeyValuePair(Of Integer, eservices_core.com.objects.ModuleObj) In profile.Modules
+            Response.Write(item.Value.title & "---><br />")
+            If Not IsNothing(item.Value.MenuList) Then
+                If item.Value.MenuList.Count > 0 Then
+                    For Each Menu As eservices_core.com.objects.MenuObj In item.Value.MenuList
+                        Response.Write("&emsp;" & Menu.title & "<br />")
+                    Next
+                End If
+            End If
+            Response.Write("<hr />")
+        Next
+
+    End Sub
 End Class

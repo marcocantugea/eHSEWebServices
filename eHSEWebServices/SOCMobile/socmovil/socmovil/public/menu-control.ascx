@@ -50,9 +50,9 @@
                <img src="../images/log2-icon-png.png" style="vertical-align: middle; height:15px; width:15px;"  />  INICIAR SESSION
             </a>
         </li>--%>
-
+<%--Menu de inicio--%>
          <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
          <img src="../images/log2-icon-png.png" style="vertical-align: middle; height:15px; width:15px;"  /> <%Response.Write(lang_configreader.GetValue("lbl_myprofile"))%>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -66,10 +66,27 @@
             <% 
             Next
             %>
-            <hr />
+            <hr /> 
+             <% 
+                If Not IsNothing(user_loged.ProfileObj.Modules) And user_loged.ProfileObj.Modules.Count > 0 Then
+                    For Each item As KeyValuePair(Of Integer, eservices_core.com.objects.ModuleObj) In user_loged.ProfileObj.Modules
+                        If item.Key <> 5 Then
+             %>
+             <a class="dropdown-item" href="<%Response.Write(item.Value.pathlink)%>"><% Response.Write(item.Value.title)%></a>
+            
+            <%
+            End If
+        Next
+            %>
+             <hr />
+            <%
+                End If
+             %>
+           
             <%--Menu comun de usuarios con privilegios--%>
             <% If userlogged And user_loged.idprofile <> Integer.Parse(GlobalConfigReader.GetValue("publicprofileid")) Then%>
             <a class="dropdown-item" href="index.aspx?p=signatures/p_usersignature"><%GetLbl("menu-control_lbl_electronicsignature") %></a>
+           
              <hr />
             <% End If%>
             <a class="dropdown-item" href="t_logoff.aspx"><%Response.Write(lang_configreader.GetValue("lbl_logout"))%></a>
@@ -79,7 +96,28 @@
             
         </div>
       </li>
-
+<%--Boton de documentos usuarios publicos--%>
+    <% If userlogged Then
+            If user_loged.ProfileObj.Modules.ContainsKey(5) Then
+                Dim ModuleDocument As eservices_core.com.objects.ModuleObj = user_loged.ProfileObj.Modules.Item(5)
+    %>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         <% Response.Write(ModuleDocument.title)%>  </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <%
+                If ModuleDocument.MenuList.Count > 0 Then
+                    For Each item As eservices_core.com.objects.MenuObj In ModuleDocument.MenuList
+             %>
+             <a class="dropdown-item" href="<% Response.Write(item.pathlink)%>"><% Response.Write(item.title)%></a>
+            <%
+            Next
+            End If
+             %>
+        </div>
+    </li>
+    <% End If
+    End If%>
     </ul>
       <%--<span class="navbar-text ">
           <%Response.Write(lang_configreader.GetValue("lbl_idioma"))%> <a href="change_lang.aspx?lang=ES">ES</a> | <a href="change_lang.aspx?lang=EN"> EN </a>

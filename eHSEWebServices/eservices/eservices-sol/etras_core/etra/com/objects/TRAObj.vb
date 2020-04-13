@@ -1,5 +1,6 @@
 ﻿Namespace com.objects
     Public Class TRAObj
+        Inherits eservices_core.com.objects.DoclumentObj
 
         Private _tra_ID As Integer = -1
         Private _tra_Unit As String
@@ -413,6 +414,7 @@
             End Get
             Set(value As Integer)
                 _tra_ID = value
+                setIdOfDocument(value)
             End Set
         End Property
 
@@ -437,5 +439,14 @@
             'Return MyBase.ToString()
         End Function
 
+        Sub New()
+            getObjData()
+        End Sub
+
+        Public Overrides Sub getObjData()
+            Dim type As Type = Me.GetType()
+            Me.setTypeOfObj(type.Name)
+            Me.setIDObjField("tra_ID")
+        End Sub
     End Class
 End Namespace

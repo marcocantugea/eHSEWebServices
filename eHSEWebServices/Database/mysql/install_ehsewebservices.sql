@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 11-04-2020 a las 19:09:28
+-- Tiempo de generación: 13-04-2020 a las 16:02:22
 -- Versión del servidor: 5.6.34-log
 -- Versión de PHP: 7.2.1
 
@@ -33,6 +33,16 @@ CREATE TABLE `rel_profiles_modules_menus` (
   `id_module` int(11) NOT NULL,
   `id_menu` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin2;
+
+--
+-- Volcado de datos para la tabla `rel_profiles_modules_menus`
+--
+
+INSERT INTO `rel_profiles_modules_menus` (`idprofile`, `id_module`, `id_menu`) VALUES
+(1, 5, 1),
+(1, 5, 2),
+(1, 1, -1),
+(1, 2, -1);
 
 -- --------------------------------------------------------
 
@@ -190,8 +200,17 @@ CREATE TABLE `tbl_menus` (
   `label` varchar(255) NOT NULL,
   `pathlink` varchar(255) NOT NULL,
   `title` varchar(255) NOT NULL,
-  `active` tinyint(1) NOT NULL
+  `active` tinyint(1) NOT NULL,
+  `frontui` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin2;
+
+--
+-- Volcado de datos para la tabla `tbl_menus`
+--
+
+INSERT INTO `tbl_menus` (`id_menu`, `label`, `pathlink`, `title`, `active`, `frontui`) VALUES
+(1, 'lbl_menu_mysoccards', '#', 'Mis Tarjetas SOC', 1, 1),
+(2, 'lbl_menu_mytras', '#', 'Mis TRAs', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -204,8 +223,18 @@ CREATE TABLE `tbl_modules` (
   `label` varchar(255) NOT NULL,
   `pathlink` varchar(255) NOT NULL,
   `title` varchar(255) NOT NULL,
-  `active` tinyint(1) NOT NULL
+  `active` tinyint(1) NOT NULL,
+  `frontui` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin2;
+
+--
+-- Volcado de datos para la tabla `tbl_modules`
+--
+
+INSERT INTO `tbl_modules` (`id_module`, `label`, `pathlink`, `title`, `active`, `frontui`) VALUES
+(1, 'lbl_menu_mysoccards', '#', 'Mis Tarjetas SOC', 1, 1),
+(2, 'lbl_menu_mytras', '#', 'Mis TRAs', 1, 1),
+(5, 'lbl_menu_mydocuments', '#', 'Documentos', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -396,12 +425,12 @@ ALTER TABLE `tbl_infouser`
 -- AUTO_INCREMENT de la tabla `tbl_menus`
 --
 ALTER TABLE `tbl_menus`
-  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `tbl_modules`
 --
 ALTER TABLE `tbl_modules`
-  MODIFY `id_module` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_module` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `tbl_profiles`
 --
@@ -416,7 +445,7 @@ ALTER TABLE `tbl_userinfocompany`
 -- AUTO_INCREMENT de la tabla `tbl_usersignature`
 --
 ALTER TABLE `tbl_usersignature`
-  MODIFY `idsignature` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `idsignature` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT de la tabla `tbl_userslogin`
 --

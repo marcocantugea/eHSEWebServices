@@ -438,24 +438,7 @@ Namespace com.ado
             Dim qbuilder As New eservices_core.com.database.QueryBuilder(Of InfoUserObj)
             qbuilder.TypeQuery = eservices_core.com.database.TypeQuery.Insert
             qbuilder.Entity = Userinfo
-            qbuilder.BuildUpdate("tbl_usersignature", "idInfoUser", Userinfo.idInfoUser)
-            Try
-                OpenDB("DB-EWEBSERVICES")
-                SetCommand(qbuilder.Query)
-                connection.Command.ExecuteNonQuery()
-            Catch ex As Exception
-                Throw
-            Finally
-                CloseDB()
-
-            End Try
-        End Sub
-
-        Public Sub UpdateUserSignature(eSignatureObj As eSignatureObj)
-            Dim qbuilder As New eservices_core.com.database.QueryBuilder(Of eSignatureObj)
-            qbuilder.TypeQuery = eservices_core.com.database.TypeQuery.Insert
-            qbuilder.Entity = eSignatureObj
-            qbuilder.BuildUpdate("tbl_infouser", "idsignature", eSignatureObj.idsignature)
+            qbuilder.BuildUpdate("tbl_infouser", "idInfoUser", Userinfo.idInfoUser)
             Try
                 OpenDB("DB-EWEBSERVICES")
                 SetCommand(qbuilder.Query)

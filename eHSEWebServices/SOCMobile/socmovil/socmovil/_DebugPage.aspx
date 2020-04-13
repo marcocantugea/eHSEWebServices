@@ -18,6 +18,7 @@
     tra_fields.tra_Activity_Job = "-7"
     tra_fields.tra_Dept = "-7"
     tra_fields.tra_Location = "-7"
+
     
     Dim dept As New etra.com.objects.TRADeparment
     dept.cDep_Name = "Electrical"
@@ -25,7 +26,8 @@
     Dim listoftra As New List(Of etra.com.objects.TRAObj)
     
     'ADO.GetTRAsByDeparment(tra_fields, dept, listoftra, "tra_id=954")
-    'ADO.GetTRABy(tra_fields, listoftra, "tra_activity_job like ""%abrir%""")
+    
+    'ADO.GetTRABy(tra_fields, listoftra, "tra_ID>0")
     
     'Response.Write("<h3> Total of records: " & listoftra.Count & "</h3>")
     
@@ -68,6 +70,14 @@
         <br />
         <br />
         <asp:Button ID="Button9" runat="server" Text="test img dencript" />
+        <br />
+        <br />
+        <br />
+        <asp:Button ID="Button10" runat="server" Text="test document imp" />
+        <br />
+        <br />
+        <br />
+        <asp:Button ID="Button11" runat="server" Text="Test profile module obj" />
         <br />
     </form>
 </body>

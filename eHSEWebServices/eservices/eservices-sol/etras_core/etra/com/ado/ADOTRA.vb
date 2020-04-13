@@ -245,7 +245,7 @@ Namespace com.ado.ole
 
         End Sub
 
-        Private Sub GetTRABy(fields As com.objects.TRAObj, listoftra As List(Of com.objects.TRAObj), Optional searchoption As String = "")
+        Public Sub GetTRABy(fields As com.objects.TRAObj, listoftra As List(Of com.objects.TRAObj), Optional searchoption As String = "")
             Try
                 OpenDB("DB-RSTC")
                 Dim qbuilder As New QueryBuilder(Of com.objects.TRAObj)
