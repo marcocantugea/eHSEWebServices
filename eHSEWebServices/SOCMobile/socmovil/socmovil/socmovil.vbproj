@@ -120,7 +120,7 @@
     <Content Include="public\header-section.ascx" />
     <Content Include="public\menu-control.ascx" />
     <Content Include="public\pagenotfound.ascx" />
-    <Content Include="public\p_createsoc.ascx" />
+    <Content Include="public\soc\p_createsoc.ascx" />
     <Content Include="public\p_createTRA.ascx" />
     <Content Include="public\p_hsedep.ascx" />
     <Content Include="public\p_index.ascx" />
@@ -156,7 +156,7 @@
     <Content Include="public\views\themes\basic\public\layout-footer.html" />
     <Content Include="public\views\themes\basic\public\layout-header.html" />
     <Content Include="public\index.aspx" />
-    <Content Include="public\t_createsoc.ascx" />
+    <Content Include="public\soc\t_createsoc.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -228,10 +228,10 @@
       <DependentUpon>pagenotfound.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="public\p_createsoc.ascx.designer.vb">
+    <Compile Include="public\soc\p_createsoc.ascx.designer.vb">
       <DependentUpon>p_createsoc.ascx</DependentUpon>
     </Compile>
-    <Compile Include="public\p_createsoc.ascx.vb">
+    <Compile Include="public\soc\p_createsoc.ascx.vb">
       <DependentUpon>p_createsoc.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -333,10 +333,10 @@
       <DependentUpon>tutorials.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="public\t_createsoc.ascx.designer.vb">
+    <Compile Include="public\soc\t_createsoc.ascx.designer.vb">
       <DependentUpon>t_createsoc.ascx</DependentUpon>
     </Compile>
-    <Compile Include="public\t_createsoc.ascx.vb">
+    <Compile Include="public\soc\t_createsoc.ascx.vb">
       <DependentUpon>t_createsoc.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>

@@ -188,4 +188,23 @@ Public Class _DebugPage
         Next
 
     End Sub
+
+    Protected Sub Button12_Click(sender As Object, e As EventArgs) Handles Button12.Click
+        Dim user As New eservices_core.com.objects.InfoUserObj
+        user.Nombre = "Marco Antonio"
+        user.apellido_pat = "Cantu"
+        user.apellido_mat = "Gea"
+
+        Dim ADOSOc As New socmobile_core.com.ado.ole.ADOSOCCard
+        Dim listofsocs As List(Of socmobile_core.com.objects.SOCCardObj) = ADOSOc.GetSocCardByUserName(user)
+
+        If Not IsNothing(listofsocs) Then
+            For Each soc As socmobile_core.com.objects.SOCCardObj In listofsocs
+                Response.Write("<hr />")
+                Response.Write(soc.Observacion & "<br/>")
+                Response.Write("<hr />")
+            Next
+        End If
+
+    End Sub
 End Class

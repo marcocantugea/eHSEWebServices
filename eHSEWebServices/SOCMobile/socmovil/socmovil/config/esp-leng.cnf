@@ -1,4 +1,4 @@
-menus={|  HOME  |:index.aspx;|  Crea Tu Tarjeta SOC |:index.aspx?p=p_createsoc;|  TRAs |:index.aspx?p=p_tras;|  DEP. DE SEGURIDAD |:index.aspx?p=p_hsedep;|  SUPERVISORES |:index.aspx?p=p_super;|  TUTORIALES |:index.aspx?p=tutorials/tutorials}
+menus={|  HOME  |:index.aspx;|  Crea Tu Tarjeta SOC |:index.aspx?p=soc/p_createsoc;|  TRAs |:index.aspx?p=p_tras;|  DEP. DE SEGURIDAD |:index.aspx?p=p_hsedep;|  SUPERVISORES |:index.aspx?p=p_super;|  TUTORIALES |:index.aspx?p=tutorials/tutorials}
 menus_user={Mi Perfil:index.aspx?p=userinfo/p_useraccount;Mis Datos:index.aspx?p=userinfo/p_userinfo}
 lbl_gretings=Hola
 lbl_logout=Cerrar Sessi&oacute;n

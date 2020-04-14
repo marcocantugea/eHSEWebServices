@@ -79,6 +79,10 @@
         <br />
         <asp:Button ID="Button11" runat="server" Text="Test profile module obj" />
         <br />
+        <br />
+        <br />
+        <asp:Button ID="Button12" runat="server" Text="SOC Card by name" />
+        <br />
     </form>
 </body>
 </html>

@@ -120,4 +120,13 @@ Partial Public Class _DebugPage
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents Button11 As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Button12 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Button12 As Global.System.Web.UI.WebControls.Button
 End Class
