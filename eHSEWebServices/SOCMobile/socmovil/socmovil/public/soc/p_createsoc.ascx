@@ -16,11 +16,19 @@
     ADOUsuarios.GetUserNames(list_nombres)
     Dim capt_soc As New socmobile_core.com.objects.SOCCardObj
     
+    'modificacion para obtener el nombre si el usuario esta en session
+    Dim user_logged As eservices_core.com.objects.UserObj
     'revisa si el nombre esta guardado en una cookie
     Dim name_by_cookie As String = ""
-    If Not IsNothing(Request.Cookies("NombreSOCCard")) Then
+    If Not IsNothing(Request.Cookies("NombreSOCCard")) And IsNothing(Me.Session("user_loged")) Then
         Dim cookie As HttpCookie = HttpContext.Current.Request.Cookies("NombreSOCCard")
         name_by_cookie = cookie.Value
+    Else
+        user_logged = CType(Me.Session("user_loged"), eservices_core.com.objects.UserObj)
+        If Not IsNothing(user_logged) Then
+            name_by_cookie = user_logged.FullName
+        End If
+        
     End If
     
     'Recive los datos capturados

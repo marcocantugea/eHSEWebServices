@@ -132,6 +132,8 @@
     <Content Include="public\signatures\t_savesignature.aspx" />
     <Content Include="public\signatures\t_updatesignature.aspx" />
     <Content Include="public\signatures\t_uploadimage.aspx" />
+    <Content Include="public\soc\p_mysoccards.ascx" />
+    <Content Include="public\soc\p_viewsoccard.ascx" />
     <Content Include="public\TRAFormatWord.aspx" />
     <Content Include="public\TRAFormat.aspx" />
     <Content Include="public\tutorials\tutorials.ascx" />
@@ -311,6 +313,20 @@
     <Compile Include="public\signatures\t_uploadimage.aspx.vb">
       <DependentUpon>t_uploadimage.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="public\soc\p_mysoccards.ascx.designer.vb">
+      <DependentUpon>p_mysoccards.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="public\soc\p_mysoccards.ascx.vb">
+      <DependentUpon>p_mysoccards.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="public\soc\p_viewsoccard.ascx.designer.vb">
+      <DependentUpon>p_viewsoccard.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="public\soc\p_viewsoccard.ascx.vb">
+      <DependentUpon>p_viewsoccard.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="public\TRAFormatWord.aspx.designer.vb">
       <DependentUpon>TRAFormatWord.aspx</DependentUpon>

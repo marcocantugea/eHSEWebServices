@@ -1,7 +1,8 @@
-﻿
+﻿Imports eservices_core.com.objects
 Namespace com.objects
 
     Public Class SOCCardObj
+        Inherits DoclumentObj
 
         Private _id As Integer = -1
         Private _Nombre As String
@@ -395,6 +396,7 @@ Namespace com.objects
             End Get
             Set(value As Integer)
                 _id = value
+                setIdOfDocument(_id)
             End Set
         End Property
 
@@ -416,6 +418,14 @@ Namespace com.objects
             End Set
         End Property
 
+        Public Sub New()
+            getObjData()
+        End Sub
 
+        Public Overrides Sub getObjData()
+            setTypeOfObj(Me.GetType.Name)
+            setIDObjField("_id")
+            setIdOfDocument(_id)
+        End Sub
     End Class
 End Namespace

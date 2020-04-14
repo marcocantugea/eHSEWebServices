@@ -196,13 +196,16 @@ Public Class _DebugPage
         user.apellido_mat = "Gea"
 
         Dim ADOSOc As New socmobile_core.com.ado.ole.ADOSOCCard
-        Dim listofsocs As List(Of socmobile_core.com.objects.SOCCardObj) = ADOSOc.GetSocCardByUserName(user)
+        Dim listofsocs As List(Of eservices_core.com.objects.DoclumentObj) = ADOSOc.GetSocCardByUserName(user)
 
         If Not IsNothing(listofsocs) Then
-            For Each soc As socmobile_core.com.objects.SOCCardObj In listofsocs
+            For Each document As eservices_core.com.objects.DoclumentObj In listofsocs
                 Response.Write("<hr />")
-                Response.Write(soc.Observacion & "<br/>")
-                Response.Write("<hr />")
+                Response.Write("Object Type: " & document.getTypeOfObj)
+                If document.getTypeOfObj.Equals("SOCCardObj") Then
+                    Dim soc As socmobile_core.com.objects.SOCCardObj = CType(document, socmobile_core.com.objects.SOCCardObj)
+                    Response.Write("<br/>" & soc.Observacion & "<br/>")
+                End If
             Next
         End If
 

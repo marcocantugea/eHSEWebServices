@@ -395,7 +395,7 @@ Namespace com.database
                                     _Fields.Add(member.Name)
                                 End If
                             Case "DateTime"
-                                If Not CType(member.GetValue(_Entity, Nothing), Date).ToString("mmddyyyy").Equals("00010001") Then
+                                If Not CType(member.GetValue(_Entity, Nothing), Date).ToString("mmddyyyy").Equals("01010001") Then
                                     _Fields.Add(member.Name)
                                 End If
                             Case "Boolean"
