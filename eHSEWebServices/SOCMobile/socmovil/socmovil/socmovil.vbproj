@@ -121,11 +121,11 @@
     <Content Include="public\menu-control.ascx" />
     <Content Include="public\pagenotfound.ascx" />
     <Content Include="public\soc\p_createsoc.ascx" />
-    <Content Include="public\p_createTRA.ascx" />
+    <Content Include="public\tra\p_createTRA.ascx" />
     <Content Include="public\p_hsedep.ascx" />
     <Content Include="public\p_index.ascx" />
     <Content Include="public\p_login.ascx" />
-    <Content Include="public\p_tras.ascx" />
+    <Content Include="public\tra\p_tras.ascx" />
     <Content Include="public\signatures\img_signature.aspx" />
     <Content Include="public\signatures\p_usersignature.ascx" />
     <Content Include="public\signatures\t_agreeconditions.aspx" />
@@ -134,14 +134,14 @@
     <Content Include="public\signatures\t_uploadimage.aspx" />
     <Content Include="public\soc\p_mysoccards.ascx" />
     <Content Include="public\soc\p_viewsoccard.ascx" />
-    <Content Include="public\TRAFormatWord.aspx" />
-    <Content Include="public\TRAFormat.aspx" />
+    <Content Include="public\tra\TRAFormatWord.aspx" />
+    <Content Include="public\tra\TRAFormat.aspx" />
     <Content Include="public\tutorials\tutorials.ascx" />
-    <Content Include="public\t_loadtra.aspx" />
+    <Content Include="public\tra\t_loadtra.aspx" />
     <Content Include="public\t_loginuser.aspx" />
     <Content Include="public\t_logoff.aspx" />
-    <Content Include="public\t_saveTRAinstorage.aspx" />
-    <Content Include="public\t_tra_saveitem.aspx" />
+    <Content Include="public\tra\t_saveTRAinstorage.aspx" />
+    <Content Include="public\tra\t_tra_saveitem.aspx" />
     <Content Include="public\userinfo\p_useraccount.ascx" />
     <Content Include="public\userinfo\p_userinfo.ascx" />
     <Content Include="public\userinfo\t_changepass.aspx" />
@@ -237,10 +237,10 @@
       <DependentUpon>p_createsoc.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="public\p_createTRA.ascx.designer.vb">
+    <Compile Include="public\tra\p_createTRA.ascx.designer.vb">
       <DependentUpon>p_createTRA.ascx</DependentUpon>
     </Compile>
-    <Compile Include="public\p_createTRA.ascx.vb">
+    <Compile Include="public\tra\p_createTRA.ascx.vb">
       <DependentUpon>p_createTRA.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -265,10 +265,10 @@
       <DependentUpon>p_login.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="public\p_tras.ascx.designer.vb">
+    <Compile Include="public\tra\p_tras.ascx.designer.vb">
       <DependentUpon>p_tras.ascx</DependentUpon>
     </Compile>
-    <Compile Include="public\p_tras.ascx.vb">
+    <Compile Include="public\tra\p_tras.ascx.vb">
       <DependentUpon>p_tras.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -328,17 +328,17 @@
       <DependentUpon>p_viewsoccard.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="public\TRAFormatWord.aspx.designer.vb">
+    <Compile Include="public\tra\TRAFormatWord.aspx.designer.vb">
       <DependentUpon>TRAFormatWord.aspx</DependentUpon>
     </Compile>
-    <Compile Include="public\TRAFormatWord.aspx.vb">
+    <Compile Include="public\tra\TRAFormatWord.aspx.vb">
       <DependentUpon>TRAFormatWord.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="public\TRAFormat.aspx.designer.vb">
+    <Compile Include="public\tra\TRAFormat.aspx.designer.vb">
       <DependentUpon>TRAFormat.aspx</DependentUpon>
     </Compile>
-    <Compile Include="public\TRAFormat.aspx.vb">
+    <Compile Include="public\tra\TRAFormat.aspx.vb">
       <DependentUpon>TRAFormat.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
@@ -356,10 +356,10 @@
       <DependentUpon>t_createsoc.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="public\t_loadtra.aspx.designer.vb">
+    <Compile Include="public\tra\t_loadtra.aspx.designer.vb">
       <DependentUpon>t_loadtra.aspx</DependentUpon>
     </Compile>
-    <Compile Include="public\t_loadtra.aspx.vb">
+    <Compile Include="public\tra\t_loadtra.aspx.vb">
       <DependentUpon>t_loadtra.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
@@ -377,17 +377,17 @@
       <DependentUpon>t_logoff.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="public\t_saveTRAinstorage.aspx.designer.vb">
+    <Compile Include="public\tra\t_saveTRAinstorage.aspx.designer.vb">
       <DependentUpon>t_saveTRAinstorage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="public\t_saveTRAinstorage.aspx.vb">
+    <Compile Include="public\tra\t_saveTRAinstorage.aspx.vb">
       <DependentUpon>t_saveTRAinstorage.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="public\t_tra_saveitem.aspx.designer.vb">
+    <Compile Include="public\tra\t_tra_saveitem.aspx.designer.vb">
       <DependentUpon>t_tra_saveitem.aspx</DependentUpon>
     </Compile>
-    <Compile Include="public\t_tra_saveitem.aspx.vb">
+    <Compile Include="public\tra\t_tra_saveitem.aspx.vb">
       <DependentUpon>t_tra_saveitem.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>

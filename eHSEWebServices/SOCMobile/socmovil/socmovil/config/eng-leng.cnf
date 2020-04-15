@@ -1,4 +1,4 @@
-menus={|  HOME  |:index.aspx;|  Create a SOC Card |:index.aspx?p=soc/p_createsoc;|  TRAs |:index.aspx?p=p_tras;|  HSE Deparment |:index.aspx?p=p_hsedep;|  SUPERVISORS |:index.aspx?p=p_super;|  TUTORIALS |:index.aspx?p=tutorials/tutorials}
+menus={|  HOME  |:index.aspx;|  Create a SOC Card |:index.aspx?p=soc/p_createsoc;|  TRAs |:index.aspx?p=tra/p_tras;|  HSE Deparment |:index.aspx?p=p_hsedep;|  SUPERVISORS |:index.aspx?p=p_super;|  TUTORIALS |:index.aspx?p=tutorials/tutorials}
 menus_user={My Profile:index.aspx?p=userinfo/p_useraccount;Personal Info.:index.aspx?p=userinfo/p_userinfo}
 lbl_gretings=Hi
 lbl_logout=Sign out.

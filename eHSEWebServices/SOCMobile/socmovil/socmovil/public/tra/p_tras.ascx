@@ -179,21 +179,21 @@
     $("button[id*='showtra_']").click(function () {
         var selop = $(this).attr("id");
         var values = selop.split("_");
-        window.open("TRAFormat.aspx?tra_id=" + values[1]);
+        window.open("tra/TRAFormat.aspx?tra_id=" + values[1]);
         
     });
     $("button[id*='sendspoolprint_']").click(function () {
         var selop = $(this).attr("id");
         var values = selop.split("_");
-        window.open("TRAFormat.aspx?tra_id=" + values[1] + "&printview=true");
+        window.open("tra/TRAFormat.aspx?tra_id=" + values[1] + "&printview=true");
     });
     $("button[id*='clonetra_']").click(function () {
         var selop = $(this).attr("id");
         var values = selop.split("_");
-        window.open("t_loadtra.aspx?tra_id=" + values[1]);
+        window.open("tra/t_loadtra.aspx?tra_id=" + values[1]);
     });
     $("#departments_option").change(function () {
-        document.location.href = "index.aspx?p=p_tras&dep=" + $(this).val();
+        document.location.href = "index.aspx?p=tra/p_tras&dep=" + $(this).val();
     });
     $("#setfilter").click(function () {
 
@@ -222,13 +222,13 @@
         document.location.href = new_location_str;
     });
     $("#createnewtra").click(function () {
-        window.location.href="index.aspx?p=p_createTRA&newtra=true"
+        window.location.href="index.aspx?p=tra/p_createTRA&newtra=true"
     });
 
     $("#btn_opentra").click(function () {
         var trapin = $("#txt_loadTRA").val();
         var redirect = false;
-        window.location.href = "t_loadtra.aspx?trapin=" + trapin
+        window.location.href = "tra/t_loadtra.aspx?trapin=" + trapin
         //$.ajax({
         //    method: "GET",
         //    url: "t_loadtra.aspx?trapin=" + trapin,

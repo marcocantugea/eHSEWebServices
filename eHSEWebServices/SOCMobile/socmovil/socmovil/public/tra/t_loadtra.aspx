@@ -21,10 +21,10 @@
                 load_success = True
                 'Response.Write("TRA_Loaded")
             Else
-                Response.Redirect("index.aspx?p=p_tras")
+                Response.Redirect("../index.aspx?p=tra/p_tras")
             End If
         Catch ex As Exception
-            Response.Redirect("index.aspx?p=p_tras")
+            Response.Redirect("../index.aspx?p=tra/p_tras")
         End Try
     End If
     
@@ -67,7 +67,7 @@
             End If
             
         Catch ex As Exception
-            Response.Redirect("index.aspx?p=p_tras")
+            Response.Redirect("../index.aspx?p=tra/p_tras")
         End Try
     End If
 %>
@@ -77,7 +77,7 @@
    
  %>
 <script>
-    window.location.href = "index.aspx?p=p_createTRA";
+    window.location.href = "../index.aspx?p=tra/p_createTRA";
 </script>
 <%
 End If

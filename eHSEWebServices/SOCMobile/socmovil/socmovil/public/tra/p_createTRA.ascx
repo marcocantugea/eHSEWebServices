@@ -2288,11 +2288,11 @@
     });
 
     $("#btn_viewformat").click(function(){
-        window.open("TRAFormat.aspx");
+        window.open("tra/TRAFormat.aspx");
     });
 
     $("#btn_printformat").click(function(){
-        window.open("TRAFormat.aspx?printview=true");
+        window.open("tra/TRAFormat.aspx?printview=true");
     });
     
     $("#Tasklist textarea").change(function(){
@@ -2383,7 +2383,7 @@
     });
 
     $("#btn_sm_viewformat").click(function(){
-        window.open("TRAFormat.aspx");
+        window.open("tra/TRAFormat.aspx");
     });
 
     $("#btn_sm_savetra").click(function(){
@@ -2573,7 +2573,7 @@
     function updatevalue(param, value) {
         $.ajax({
             method: "GET",
-            url: "t_tra_saveitem.aspx?p="+param+"&v="+value,
+            url: "tra/t_tra_saveitem.aspx?p="+param+"&v="+value,
             dataType: "html"
         }).done(function (msg) {
             //alert("response:" + msg);
@@ -2583,7 +2583,7 @@
     function updatevaluepost(param, value) {
         $.ajax({
             method: "POST",
-            url: "t_tra_saveitem.aspx",
+            url: "tra/t_tra_saveitem.aspx",
             data :{p:param,v:value},
             dataType: "html",
             async: false
@@ -2716,7 +2716,7 @@
     function SaveTRA(){
         $.ajax({
             method: "GET",
-            url: "t_saveTRAinstorage.aspx",
+            url: "tra/t_saveTRAinstorage.aspx",
             dataType: "html",
             async: false
         }).done(function (msg) {

@@ -13,11 +13,11 @@
             Response.Write("TRA-Saved:PIN:" & tra_new.pin_save)
         Catch ex As Exception
             'Throw
-            Response.Redirect("index.aspx?p=errorcode")
+            Response.Redirect("../index.aspx?p=errorcode")
         End Try
         
     Else
-        Response.Redirect("index.aspx")
+        Response.Redirect("../index.aspx")
     End If
     
 %>

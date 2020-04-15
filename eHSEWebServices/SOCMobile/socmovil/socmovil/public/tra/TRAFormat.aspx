@@ -23,7 +23,7 @@
                 ADOTRA.GetTRAbyID(tra_found)
             Catch ex As Exception
                 'Throw
-                Response.Redirect("index.aspx")
+                Response.Redirect("../index.aspx")
             End Try
         Else
             If Not IsNothing(Me.Session("new_tra_insession")) Then
@@ -31,14 +31,14 @@
                 tra_found = CType(Me.Session("new_tra_insession"), etra.com.objects.TRAObj)
                 loadfromsession = True
             Else
-                Response.Redirect("index.aspx")
+                Response.Redirect("../index.aspx")
             End If
         End If
     Else
         If Not IsNothing(Me.Session("new_tra_insession")) Then
             tra_found = CType(Me.Session("new_tra_insession"), etra.com.objects.TRAObj)
         Else
-            Response.Redirect("index.aspx")
+            Response.Redirect("../index.aspx")
         End If
         
     End If
@@ -47,7 +47,23 @@
     End If
     
 %>
-<% Response.WriteFile("~/public/views/themes/basic/public/header.html")%>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<meta name="viewport" content="width=device-width, initial-scale=.5">
+<head>
+    
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/jquery-ui.css">
+    <link rel="stylesheet" href="../../css/socmovil.css" />
+    <link rel="stylesheet" href="../../css/TRA-view.css" /> 
+    <title>Muralla IV - Servicios de HSE en linea.</title>
+    <script src="../../js/jquery-3.4.1.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/jquery-ui-1.12.1/jquery-ui.js"></script>
+    <link rel="icon" type="image/png" href="../../favicon.png">
+</head>
+<body>
+
 
 <div class="container-left" id="maindiv"  >
     <table id="TRAMainTable" > 
@@ -55,7 +71,7 @@
         <tr>
             <td id="InitialLabel">
                <div style="width:20px;">
-                   <img src="../images/img-tra-planificacion.png" />
+                   <img src="../../images/img-tra-planificacion.png" />
                </div>
             </td>
             <td>
@@ -63,7 +79,7 @@
                     <tr>
                         <td colspan="8">
                             <div style="display:flex; align-items:center; padding:5px;">
-                                <img src="../images/gr-logo1.png" height="40px" width="250px" />
+                                <img src="../../images/gr-logo1.png" height="40px" width="250px" />
                                 <h5 style="padding-left:15px;">TASK RISK ASSESSMENT FORM /</h5>
                                 <span>Valoraci&oacute;n de Riesgo en la Tarea</span>
                                 <h5 style="padding-left:15px;">(TRA)</h5>
@@ -134,7 +150,7 @@
         <%--Seccion de Actividades--%>
         <tr>
             <td id="InitialLabel">
-                <img src="../images/img-tra-desarrolloactividad.png" />
+                <img src="../../images/img-tra-desarrolloactividad.png" />
             </td>
             <td>
                 <table id="Tasklist">
@@ -493,7 +509,7 @@
        <%-- Seccion de Riesgos adicionales en sitio--%>
         <tr>
             <td id="InitialLabel">
-                <img src="../images/img-tra-riesgospotentciales.png" />
+                <img src="../../images/img-tra-riesgospotentciales.png" />
             </td>
             <td>
                 <table id="AditionalRiskinSite">
@@ -593,7 +609,7 @@
         <%--Seccion de peligros evaluados--%>
         <tr>
              <td id="InitialLabel">
-                <img src="../images/img-tra-desarrolloactividad.png" />
+                <img src="../../images/img-tra-desarrolloactividad.png" />
             </td>
             <td>
                 <table style="width:10.9in">
@@ -991,7 +1007,7 @@
                                 </tr>
                                 <tr>
                                     <td rowspan="5" class="cell-header">
-                                        <img src="../images/img-tra-probabilidad.png" />
+                                        <img src="../../images/img-tra-probabilidad.png" />
                                     </td>
                                     <td rowspan="2" class="microSubtitle">
                                         <span>LOW<br />BAJO</span>
@@ -1138,7 +1154,7 @@
         <tr>
             <td id="InitialLabel">
                 <div style="width:20px;">
-                   <img src="../images/img-tra-control.png" />
+                   <img src="../../images/img-tra-control.png" />
                </div>
             </td>
             <td>
@@ -1306,4 +1322,5 @@
 <%
 End If
     %>
-<% Response.WriteFile("~/public/views/themes/basic/public/footer.html")%>
+</body>
+</html>
