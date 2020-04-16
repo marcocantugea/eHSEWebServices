@@ -49,11 +49,11 @@
                 _active = value
             End Set
         End Property
-        Public Property frontui As Boolean
+        Public Property frontui As Integer
             Get
                 Return _frontui
             End Get
-            Set(value As Boolean)
+            Set(value As Integer)
                 _frontui = value
             End Set
         End Property

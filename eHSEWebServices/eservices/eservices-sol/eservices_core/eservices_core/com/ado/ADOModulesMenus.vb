@@ -124,7 +124,11 @@ Namespace com.ado
             qbuilder.Entity = ModuleObj
             qbuilder.BuildSelect(table_modules, True)
             qbuilder.AddToQueryParameterForSelect("id_module=" & ModuleObj.id_module & "")
-            qbuilder.AddToQueryParameterForSelect("frontui=" & frontui & "")
+            Dim frontui_val As Integer = 0
+            If frontui Then
+                frontui_val = 1
+            End If
+            qbuilder.AddToQueryParameterForSelect("frontui=" & frontui_val.ToString & "")
             Try
                 OpenDB(Database)
                 SetCommand(qbuilder.Query)
@@ -155,7 +159,11 @@ Namespace com.ado
             qbuilder.Entity = MenuObj
             qbuilder.BuildSelect(table_menus, True)
             qbuilder.AddToQueryParameterForSelect("id_menu=" & MenuObj.id_menu & "")
-            qbuilder.AddToQueryParameterForSelect("frontui=" & frontui & "")
+            Dim frontui_val As Integer = 0
+            If frontui Then
+                frontui_val = 1
+            End If
+            qbuilder.AddToQueryParameterForSelect("frontui=" & frontui_val.ToString & "")
             Try
                 OpenDB(Database)
                 SetCommand(qbuilder.Query)
