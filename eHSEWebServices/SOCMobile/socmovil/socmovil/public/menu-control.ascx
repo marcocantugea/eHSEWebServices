@@ -66,7 +66,7 @@
             <% 
             Next
             %>
-            <hr /> 
+            <%--<hr /> 
              <% 
                 If Not IsNothing(user_loged.ProfileObj.Modules) And user_loged.ProfileObj.Modules.Count > 0 Then
                     For Each item As KeyValuePair(Of Integer, eservices_core.com.objects.ModuleObj) In user_loged.ProfileObj.Modules
@@ -78,11 +78,11 @@
             End If
         Next
             %>
-             <hr />
+            
             <%
                 End If
-             %>
-           
+             %>--%>
+            <hr />
             <%--Menu comun de usuarios con privilegios--%>
             <% If userlogged And user_loged.idprofile <> Integer.Parse(GlobalConfigReader.GetValue("publicprofileid")) Then%>
             <a class="dropdown-item" href="index.aspx?p=signatures/p_usersignature"><%GetLbl("menu-control_lbl_electronicsignature") %></a>
@@ -98,8 +98,10 @@
       </li>
 <%--Boton de documentos usuarios publicos--%>
     <% If userlogged Then
-            If user_loged.ProfileObj.Modules.ContainsKey(5) Then
-                Dim ModuleDocument As eservices_core.com.objects.ModuleObj = user_loged.ProfileObj.Modules.Item(5)
+            'If user_loged.ProfileObj.Modules.ContainsKey(5) Then
+            For Each itemmodules As KeyValuePair(Of Integer, eservices_core.com.objects.ModuleObj) In user_loged.ProfileObj.Modules
+                'Dim ModuleDocument As eservices_core.com.objects.ModuleObj = user_loged.ProfileObj.Modules.Item(5)
+                Dim ModuleDocument As eservices_core.com.objects.ModuleObj = itemmodules.Value
     %>
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -116,8 +118,8 @@
              %>
         </div>
     </li>
-    <% End If
-    End If%>
+    <% Next 'End If
+    End if%>
     </ul>
       <%--<span class="navbar-text ">
           <%Response.Write(lang_configreader.GetValue("lbl_idioma"))%> <a href="change_lang.aspx?lang=ES">ES</a> | <a href="change_lang.aspx?lang=EN"> EN </a>

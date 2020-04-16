@@ -1,5 +1,4 @@
 ﻿Imports eservices_core.com.database
-
 Namespace com.ado.ole
 
     Public NotInheritable Class ADOTRA
@@ -36,6 +35,16 @@ Namespace com.ado.ole
                     SaveTRAHeader(TRAObject)
                     'get the ID
                     GetLastIDTRA(TRAObject)
+
+                    'guarda documento en bandeja de documentos del usuario 
+
+                    'revisa si el que creo el documento es un usuraio en session
+                    If TRAObject.getUserID > 0 Then
+                        'guarda documento para el usuario
+                        Dim ADODocument As New eservices_core.com.ado.ADODocument
+                        ADODocument.AddDocument(TRAObject)
+                    End If
+
 
                     'save tasks
                     Try

@@ -1,6 +1,7 @@
 ﻿Imports socmobile_core.com
 Imports etra.com.objects
 Imports etra.com.ado.ole
+Imports System.Runtime.Remoting
 Public Class _DebugPage
     Inherits System.Web.UI.Page
 
@@ -154,7 +155,7 @@ Public Class _DebugPage
         tra_fields.tra_Location = "-7"
 
         Dim listoftra As New List(Of etra.com.objects.TRAObj)
-        Dim listofdocuments As New List(Of eservices_core.com.objects.DoclumentObj)
+        Dim listofdocuments As New List(Of eservices_core.com.objects.DocumentObj)
         ADO.GetTRABy(tra_fields, listoftra, "tra_ID>0")
 
         For Each item As etra.com.objects.TRAObj In listoftra
@@ -162,7 +163,7 @@ Public Class _DebugPage
             listofdocuments.Add(item)
         Next
 
-        For Each document As eservices_core.com.objects.DoclumentObj In listofdocuments
+        For Each document As eservices_core.com.objects.DocumentObj In listofdocuments
             Response.Write(document.getTypeOfObj & ":" & document.getIDObjField & "<br/>")
         Next
     End Sub
@@ -196,10 +197,10 @@ Public Class _DebugPage
         user.apellido_mat = "Gea"
 
         Dim ADOSOc As New socmobile_core.com.ado.ole.ADOSOCCard
-        Dim listofsocs As List(Of eservices_core.com.objects.DoclumentObj) = ADOSOc.GetSocCardByUserName(user)
+        Dim listofsocs As List(Of eservices_core.com.objects.DocumentObj) = ADOSOc.GetSocCardByUserName(user)
 
         If Not IsNothing(listofsocs) Then
-            For Each document As eservices_core.com.objects.DoclumentObj In listofsocs
+            For Each document As eservices_core.com.objects.DocumentObj In listofsocs
                 Response.Write("<hr />")
                 Response.Write("Object Type: " & document.getTypeOfObj)
                 If document.getTypeOfObj.Equals("SOCCardObj") Then
@@ -210,4 +211,72 @@ Public Class _DebugPage
         End If
 
     End Sub
+
+    Protected Sub Button13_Click(sender As Object, e As EventArgs) Handles Button13.Click
+
+        Dim ADODocuments As New eservices_core.com.ado.ADODocument
+        Dim Document As New socmobile_core.com.objects.SOCCardObj
+        Document.id = 38
+        Document.setCreatedByUserObj(New eservices_core.com.objects.UserObj())
+        Document.getCreatedByUserObj.userid = 3
+        Document.setDocumentDate(Date.Now)
+        'Document.setidDocument(39)
+
+        Dim where As New Dictionary(Of String, String)
+        where.Add("TypeOfObj", "='SOCCardObj'")
+        where.Add("IDObjField", "='id'")
+        where.Add("IdOfDocument", "=67")
+
+        'Response.Write(ADODocuments.GetQueryStr(Document, eservices_core.com.ado.TypeQuery.Insert, where))
+
+    End Sub
+
+    Protected Sub Button14_Click(sender As Object, e As EventArgs) Handles Button14.Click
+
+        Dim ADODocuments As New eservices_core.com.ado.ADODocument
+        Dim Userobj As New eservices_core.com.objects.UserObj
+        Userobj.userid = 3
+
+        Dim list As SortedList(Of Integer, eservices_core.com.objects.DocumentObj) = ADODocuments.GetDocuemntsByUser(Userobj, "TRA")
+        Response.Write(list.Count)
+
+        For Each item As KeyValuePair(Of Integer, eservices_core.com.objects.DocumentObj) In list
+            item.Value.LoadInfoByID()
+            If item.Value.getTypeOfObj().Contains("SOCCard") Then
+                Response.Write("<br/>" & item.Value.ToString)
+                'Response.Write("<br/>" & item.Value.GetType.GetProperty("Ubicacion").GetValue(item.Value, Nothing))
+            End If
+            If item.Value.getTypeOfObj().Contains("TRA") Then
+                Response.Write("<br/>" & item.Value.ToString)
+                'Response.Write("<br/>" & item.Value.GetType.GetProperty("pin_save").GetValue(item.Value, Nothing))
+            End If
+
+        Next
+
+        'Dim handler As ObjectHandle = CreateObject("socmobile_core", "SOCCardObj")
+        'Dim o As Object = handler.Unwrap
+        'Dim currentdomain As AppDomain = AppDomain.CurrentDomain
+        'Dim asevidence As System.Security.Policy.Evidence = currentdomain.Evidence
+        'currentdomain.Load("eservices_core", asevidence)
+        'Dim assm() As System.Reflection.Assembly = currentdomain.GetAssemblies
+
+        'Dim asm As System.Reflection.Assembly = System.Reflection.Assembly.Load("socmobile_core")
+        'If Not IsNothing(asm) Then
+        '    Dim o As Object = asm.CreateInstance("socmobile_core.com.objects.SOCCardObj")
+        '    'System.Activator.CreateInstance(asm.GetTypes(9))
+        '    Response.Write(o.GetType.Name)
+        'End If
+        'Object o = new Object();
+        '    dim asm As Assemb = Assembly.Load("QReporting");
+        '    if (asm != null)
+        '    {
+        '        Type hai = asm.GetType();
+        '        o = System.Activator.CreateInstance(hai); 
+        '    }
+    End Sub
+
+    Function CreateObject(ensambly As String, classtypename As String) As Object
+        'Dim oType As Type = Type.GetType(ClassName)
+        Return Activator.CreateInstance(ensambly, classtypename)
+    End Function
 End Class

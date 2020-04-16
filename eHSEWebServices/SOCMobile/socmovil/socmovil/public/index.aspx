@@ -57,7 +57,7 @@
 
 <% Response.WriteFile("~/public/views/themes/basic/public/header.html")%>
 <div class="container-fluid p-1 text-left">
-    <div class="row">
+    <div class="row m-0">
         <div class="col text-left">
             <span>
                 <% If userlogged Then Response.Write(lang_configreader.GetValue("lbl_gretings") & ", " & user_loged.InfoUserObj.Nombre & " " & user_loged.InfoUserObj.apellido_pat)%>
@@ -65,13 +65,12 @@
         </div>
         <div class="col text-right">
             <span class="navbar-text">
-                <%Response.Write(lang_configreader.GetValue("lbl_idioma"))%> <a href="change_lang.aspx?lang=ES">ES</a> | <a href="change_lang.aspx?lang=EN">EN </a>
+                <%Response.Write(lang_configreader.GetValue("lbl_idioma"))%> <a href="change_lang.aspx?lang=ES">
+                    <img src="../images/ES-LANG-FLAG.gif" height="15px" />&nbsp;ES</a> | <a href="change_lang.aspx?lang=EN"> <img src="../images/EN-LANG-FLAG.gif" height="15px" />&nbsp;EN </a>
             </span>
         </div>
     </div>
-<%--<span class="navbar-text">
-          <%Response.Write(lang_configreader.GetValue("lbl_idioma"))%> <a href="change_lang.aspx?lang=ES">ES</a> | <a href="change_lang.aspx?lang=EN"> EN </a>
-</span>--%>
+
 </div>
 
 <%--Header of the page--%>
@@ -80,7 +79,7 @@
  <menucontrol:MenuC runat="server" id="menucontrol" />
 
 <%--Panel de contenido se carga con el query string--%>
- <asp:panel ID="ContentControl" runat="server"></asp:panel>  
+ <asp:panel ID="ContentControl" runat="server"></asp:panel>
 
 <% Response.WriteFile("~/public/views/themes/basic/public/layout-footer.html")%>
 <% Response.WriteFile("~/public/views/themes/basic/public/footer.html")%>

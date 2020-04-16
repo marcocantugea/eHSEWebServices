@@ -104,6 +104,15 @@ Partial Public Class _DebugPage
     Protected WithEvents Button9 As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
+    '''Button13 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Button13 As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
     '''Button10 control.
     '''</summary>
     '''<remarks>
@@ -129,4 +138,13 @@ Partial Public Class _DebugPage
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents Button12 As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Button14 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Button14 As Global.System.Web.UI.WebControls.Button
 End Class

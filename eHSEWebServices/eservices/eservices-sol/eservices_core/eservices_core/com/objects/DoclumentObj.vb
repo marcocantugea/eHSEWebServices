@@ -1,5 +1,5 @@
 ﻿Namespace com.objects
-    Public MustInherit Class DoclumentObj
+    Public MustInherit Class DocumentObj
 
         Private _idDocument As Integer = -1
         Private _DocumentDate As Date
@@ -9,9 +9,11 @@
         Private _IDObjField As String ' Store the id file of the class{idfield}
         Private _IdOfDocument As Integer ' Store the input id value {value id)
         Private _eSignatureFile As String 'save the file name of the signature 
-
+        Private _CreatedByUserObj As UserObj
 
         Public MustOverride Sub getObjData()
+        Public MustOverride Sub LoadInfoByID()
+
         Sub New()
 
         End Sub
@@ -66,6 +68,34 @@
             _eSignatureFile = value
         End Sub
 
+        Public Sub setCreatedByUserObj(UserObj As UserObj)
+            If Not IsNothing(UserObj) Then
+                _CreatedByUserObj = UserObj
+            End If
+        End Sub
+        Public Function getCreatedByUserObj() As UserObj
+            Return _CreatedByUserObj
+        End Function
+
+        Public Function getUserID() As Integer
+            If Not IsNothing(_CreatedByUserObj) Then
+                Return _CreatedByUserObj.userid
+            End If
+            Return -1
+        End Function
+        Public Function GetFields() As List(Of String)
+            Dim list_offields As New List(Of String)
+            list_offields.Add("idDocument")
+            list_offields.Add("DocumentDate")
+            list_offields.Add("DocumentAprovalByID")
+            list_offields.Add("DocumentAprovalDate")
+            list_offields.Add("TypeOfObj")
+            list_offields.Add("IDObjField")
+            list_offields.Add("IdOfDocument")
+            list_offields.Add("eSignatureFile")
+            list_offields.Add("userid")
+            Return list_offields
+        End Function
 
     End Class
 End Namespace

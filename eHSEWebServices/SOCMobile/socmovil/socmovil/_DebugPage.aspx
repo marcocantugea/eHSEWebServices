@@ -34,7 +34,7 @@
     'For Each item As etra.com.objects.TRAObj In listoftra
     '    Response.Write(item.ToString + "<br/>")
     'Next
-    
+   
 %>
 <!DOCTYPE html>
 
@@ -69,7 +69,13 @@
         <asp:Button ID="Button8" runat="server" Text="test img encrip" />
         <br />
         <br />
+        <br />
+        <br />
         <asp:Button ID="Button9" runat="server" Text="test img dencript" />
+        <br />
+        <br />
+        <br />
+        <asp:Button ID="Button13" runat="server" Text="debug ADODocuments insert query" />
         <br />
         <br />
         <br />
@@ -82,6 +88,13 @@
         <br />
         <br />
         <asp:Button ID="Button12" runat="server" Text="SOC Card by name" />
+        <br />
+        <br />
+        <br />
+        <asp:Button ID="Button14" runat="server" Text="test adodocuments getdocumentsbyuser" />
+        <br />
+        <br />
+        <br />
         <br />
     </form>
 </body>

@@ -92,6 +92,8 @@
     <Content Include="css\TRA-view.css" />
     <Content Include="favicon.png" />
     <Content Include="images\background_electronic_tra.jpg" />
+    <Content Include="images\EN-LANG-FLAG.gif" />
+    <Content Include="images\ES-LANG-FLAG.gif" />
     <Content Include="images\gr-logo1.png" />
     <Content Include="images\img-tra-control.png" />
     <Content Include="images\img-tra-desarrolloactividad.png" />
@@ -125,6 +127,7 @@
     <Content Include="public\p_hsedep.ascx" />
     <Content Include="public\p_index.ascx" />
     <Content Include="public\p_login.ascx" />
+    <Content Include="public\tra\p_mytras.ascx" />
     <Content Include="public\tra\p_tras.ascx" />
     <Content Include="public\signatures\img_signature.aspx" />
     <Content Include="public\signatures\p_usersignature.ascx" />
@@ -263,6 +266,13 @@
     </Compile>
     <Compile Include="public\p_login.ascx.vb">
       <DependentUpon>p_login.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="public\tra\p_mytras.ascx.designer.vb">
+      <DependentUpon>p_mytras.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="public\tra\p_mytras.ascx.vb">
+      <DependentUpon>p_mytras.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="public\tra\p_tras.ascx.designer.vb">

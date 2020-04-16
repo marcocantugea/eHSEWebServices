@@ -1,8 +1,10 @@
 ﻿Imports eservices_core.com.objects
+Imports socmobile_core.com.ado.ole
+
 Namespace com.objects
 
     Public Class SOCCardObj
-        Inherits DoclumentObj
+        Inherits DocumentObj
 
         Private _id As Integer = -1
         Private _Nombre As String
@@ -423,9 +425,39 @@ Namespace com.objects
         End Sub
 
         Public Overrides Sub getObjData()
-            setTypeOfObj(Me.GetType.Name)
-            setIDObjField("_id")
+            setTypeOfObj(Me.GetType.FullName)
+            setIDObjField("id")
             setIdOfDocument(_id)
+        End Sub
+
+        Public Overrides Function ToString() As String
+            Dim strbulider As New Text.StringBuilder
+            strbulider.Append("{")
+            Dim index As Integer = -1
+            For Each member In Me.GetType.GetProperties
+                index = index + 1
+
+                If member.CanRead Then
+
+                    If index = 0 Then
+                        strbulider.Append("""" & member.Name & ":" & member.GetValue(Me, Nothing) & """")
+                    Else
+                        strbulider.Append(",""" & member.Name & ":" & member.GetValue(Me, Nothing) & """")
+                    End If
+                End If
+            Next
+            strbulider.Append("}")
+            Return strbulider.ToString
+            'Return MyBase.ToString()
+        End Function
+
+        Public Overrides Sub LoadInfoByID()
+            Dim idfromdocument As Integer = Me.getIdOfDocument
+            If idfromdocument > 0 Then
+                _id = Me.getIdOfDocument
+                Dim ADOSOCCard As New ADOSOCCard
+                ADOSOCCard.GetSocCardByID(Me)
+            End If
         End Sub
     End Class
 End Namespace

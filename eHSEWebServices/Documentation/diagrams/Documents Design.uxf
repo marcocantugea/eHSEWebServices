@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>6</zoom_level>
+  <zoom_level>7</zoom_level>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>102</x>
-      <y>780</y>
-      <w>1026</w>
-      <h>600</h>
+      <x>0</x>
+      <y>924</y>
+      <w>1197</w>
+      <h>721</h>
     </coordinates>
     <panel_attributes>eservices_core.com.object
 Objects Entities
-bg=white
+bg=#74b9ff
 layer=-2</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>456</x>
-      <y>1080</y>
-      <w>216</w>
-      <h>282</h>
+      <x>427</x>
+      <y>1232</y>
+      <w>252</w>
+      <h>392</h>
     </coordinates>
     <panel_attributes>bg=white
 DocumentObj
@@ -34,8 +34,10 @@ _TypeOfObj: String {Classname}
 _IDObjField: String {idfield}
 _IdOfDocument: Integer {value id)
 _eSignatureFile: String
+private _CreatedByUserObj as UserObj
 --
 public mustoverride sub getObjData()
+Public MustOverride Sub LoadInfoByID()
 Sub New()
 public function getidDocument() as Integer
 public sub setidDocument(value as Integer)
@@ -53,18 +55,20 @@ public function getIdOfDocument() as Integer
 public sub setIdOfDocument(value as Integer)
 public function geteSignatureFile() as String
 public sub seteSignatureFile(value as String) 
-
-
+public sub setCreatedByUserObj(UserObj as UserObj)
+public function getCreatedByUserObj() as UserObj
+Public Function GetFields() As List(Of String)
+Public Function getUserID() As Integer
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>618</x>
-      <y>1470</y>
-      <w>270</w>
-      <h>462</h>
+      <x>602</x>
+      <y>1729</y>
+      <w>315</w>
+      <h>539</h>
     </coordinates>
     <panel_attributes>TRAObj
 --
@@ -111,40 +115,42 @@ Private _tra_Unit As String
         Private _traTasks As List(Of TRATaskObj)
         Private _tra_SentBack_Reason As String
         Private _pin_save As Integer
-layer=-3</panel_attributes>
+layer=-3
+bg=white</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>582</x>
-      <y>1428</y>
-      <w>378</w>
-      <h>534</h>
+      <x>560</x>
+      <y>1680</y>
+      <w>441</w>
+      <h>623</h>
     </coordinates>
     <panel_attributes>etra.com.objects
 --
-layer=-3</panel_attributes>
+layer=-3
+bg=#0984e3</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>546</x>
-      <y>1356</y>
-      <w>216</w>
+      <x>532</x>
+      <y>1617</y>
+      <w>238</w>
       <h>126</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;80.0;340.0;80.0;340.0;190.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0;320.0;50.0;320.0;160.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>648</x>
-      <y>822</y>
-      <w>216</w>
-      <h>216</h>
+      <x>637</x>
+      <y>973</y>
+      <w>252</w>
+      <h>252</h>
     </coordinates>
     <panel_attributes>ModuleObj
 --
@@ -163,16 +169,17 @@ public property active as boolean
 public property MenuList as list(of MenuObj)
 --
 Public Sub LoadMenus()
-</panel_attributes>
+
+bg=white</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>906</x>
-      <y>828</y>
-      <w>180</w>
-      <h>156</h>
+      <x>938</x>
+      <y>980</y>
+      <w>210</w>
+      <h>182</h>
     </coordinates>
     <panel_attributes>MenuObj
 --
@@ -187,16 +194,17 @@ public property label as String
 public property pathlink as String
 public property title as String
 public property active as boolean
-</panel_attributes>
+
+bg=white</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>462</x>
-      <y>822</y>
-      <w>156</w>
-      <h>168</h>
+      <x>420</x>
+      <y>973</y>
+      <w>182</w>
+      <h>196</h>
     </coordinates>
     <panel_attributes>ProfileObj
 --
@@ -214,30 +222,32 @@ public Property Modules as Dictionary(Of Integer, ModuleObj)
 
 Public Sub LoadModules(Optional frontui As Boolean = False)
 Sub New()
-Sub New(idprofile as integer)</panel_attributes>
+Sub New(idprofile as integer)
+bg=white</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>324</x>
-      <y>486</y>
-      <w>738</w>
-      <h>270</h>
+      <x>385</x>
+      <y>581</y>
+      <w>910</w>
+      <h>315</h>
     </coordinates>
     <panel_attributes>eservices_core.com.ado
 Access Data Objects
-bg=white
-layer=-2</panel_attributes>
+bg=#fdcb6e
+layer=-2
+group=4</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>570</x>
-      <y>546</y>
-      <w>252</w>
-      <h>180</h>
+      <x>637</x>
+      <y>651</y>
+      <w>294</w>
+      <h>210</h>
     </coordinates>
     <panel_attributes>ADOModulesMenus
 --
@@ -255,20 +265,23 @@ private Sub GetLastIDMenu(MenuObj as MenuObj)
 public Sub GetModulesMenusByProfile(ProfileObj as ProfileObj)
 public Sub GetModuleByID(ModuleObj as ModuleObj,Optional frontui As Boolean = False)
 public Sub GetMenuByID(MenuObj as MenuObj,Optional frontui As Boolean = False)
-</panel_attributes>
+
+layer=2
+bg=#fab1a0
+group=4</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>474</x>
-      <y>168</y>
-      <w>666</w>
-      <h>276</h>
+      <x>84</x>
+      <y>175</y>
+      <w>777</w>
+      <h>322</h>
     </coordinates>
     <panel_attributes>eservices_core.com.database.mysql
 Mysql Databases Controler
-bg=white
+bg=#0984e3
 layer=-2
 group=1</panel_attributes>
     <additional_attributes/>
@@ -276,10 +289,10 @@ group=1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>498</x>
-      <y>234</y>
-      <w>294</w>
-      <h>120</h>
+      <x>112</x>
+      <y>252</y>
+      <w>343</w>
+      <h>140</h>
     </coordinates>
     <panel_attributes>MySQLConnectionObj
 --
@@ -290,16 +303,17 @@ Protected connection As MySQLConnectionProperties
 Public Sub New()
 Public Sub New(ConnectionProperty As MySQLConnectionProperties)
 
+bg=white
 group=1</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLInterface</id>
     <coordinates>
-      <x>222</x>
-      <y>24</y>
-      <w>360</w>
-      <h>102</h>
+      <x>630</x>
+      <y>35</y>
+      <w>420</w>
+      <h>119</h>
     </coordinates>
     <panel_attributes>DatabaseInterface
 --
@@ -310,16 +324,16 @@ Sub CloseDB(ByVal DB As String)
 Sub setCommand(Query As String)
 Sub setDataAdapter()
 fg=gray
-group=1</panel_attributes>
+group=5</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>870</x>
-      <y>216</y>
-      <w>246</w>
-      <h>168</h>
+      <x>546</x>
+      <y>231</y>
+      <w>287</w>
+      <h>196</h>
     </coordinates>
     <panel_attributes>MySQLConnectionProperties
 --
@@ -337,16 +351,17 @@ Public Property Command() As MySqlCommand
 --
 
 Public Sub SetUpConnection()
+bg=white
 group=1</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>786</x>
-      <y>276</y>
-      <w>96</w>
-      <h>24</h>
+      <x>448</x>
+      <y>301</y>
+      <w>112</w>
+      <h>28</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;instanceOf&gt;&gt;
@@ -356,82 +371,85 @@ group=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>396</x>
-      <y>36</y>
-      <w>114</w>
-      <h>246</h>
+      <x>280</x>
+      <y>42</y>
+      <w>574</w>
+      <h>224</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;170.0;390.0</additional_attributes>
+    <additional_attributes>800.0;10.0;10.0;300.0</additional_attributes>
   </element>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>198</x>
+      <x>63</x>
       <y>0</y>
-      <w>954</w>
-      <h>456</h>
+      <w>1645</w>
+      <h>511</h>
     </coordinates>
-    <panel_attributes>com.database
+    <panel_attributes>
+com.database
+Database connections options
 --
 layer=-4
-group=1</panel_attributes>
+bg=#ffeaa7
+group=5</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>630</x>
-      <y>348</y>
-      <w>114</w>
-      <h>210</h>
+      <x>266</x>
+      <y>385</y>
+      <w>574</w>
+      <h>280</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;210.0;170.0;210.0;170.0;330.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;260.0;280.0;260.0;800.0;380.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>696</x>
-      <y>720</y>
-      <w>306</w>
-      <h>120</h>
+      <x>784</x>
+      <y>854</y>
+      <w>266</w>
+      <h>140</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..n</panel_attributes>
-    <additional_attributes>490.0;180.0;10.0;10.0</additional_attributes>
+    <additional_attributes>360.0;180.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>690</x>
-      <y>720</y>
-      <w>90</w>
-      <h>114</h>
+      <x>763</x>
+      <y>854</y>
+      <w>35</w>
+      <h>133</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..n</panel_attributes>
-    <additional_attributes>120.0;170.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;170.0;30.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>540</x>
-      <y>720</y>
-      <w>60</w>
-      <h>114</h>
+      <x>511</x>
+      <y>854</y>
+      <w>161</w>
+      <h>133</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..n</panel_attributes>
-    <additional_attributes>10.0;170.0;80.0;10.0</additional_attributes>
+    <additional_attributes>10.0;170.0;210.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>132</x>
-      <y>804</y>
-      <w>300</w>
-      <h>426</h>
+      <x>35</x>
+      <y>952</y>
+      <w>350</w>
+      <h>497</h>
     </coordinates>
     <panel_attributes>UserObj
 --
@@ -475,16 +493,17 @@ Public Sub GetInfoUser()
 Public Sub GetProfileObj()
 Public Function FullName() As String
 Public Sub LoadModulesFrontUI()
-Public Sub LoadModulesBackUI()</panel_attributes>
+Public Sub LoadModulesBackUI()
+bg=white</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>426</x>
-      <y>894</y>
-      <w>48</w>
-      <h>24</h>
+      <x>378</x>
+      <y>1057</y>
+      <w>56</w>
+      <h>28</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1..1</panel_attributes>
@@ -493,10 +512,10 @@ m1=1..1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>858</x>
-      <y>906</y>
-      <w>60</w>
-      <h>18</h>
+      <x>882</x>
+      <y>1071</y>
+      <w>70</w>
+      <h>21</h>
     </coordinates>
     <panel_attributes>lt=-&gt;</panel_attributes>
     <additional_attributes>10.0;10.0;80.0;10.0</additional_attributes>
@@ -504,12 +523,198 @@ m1=1..1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>612</x>
-      <y>900</y>
-      <w>48</w>
-      <h>18</h>
+      <x>595</x>
+      <y>1064</y>
+      <w>56</w>
+      <h>21</h>
     </coordinates>
     <panel_attributes>lt=-&gt;</panel_attributes>
     <additional_attributes>10.0;10.0;60.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>378</x>
+      <y>1288</y>
+      <w>63</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1..1</panel_attributes>
+    <additional_attributes>70.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>1316</x>
+      <y>595</y>
+      <w>476</w>
+      <h>294</h>
+    </coordinates>
+    <panel_attributes>etra.com.ado.ole
+--
+bg=orange
+layer=-1
+bg=#a29bfe</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>945</x>
+      <y>651</y>
+      <w>343</w>
+      <h>203</h>
+    </coordinates>
+    <panel_attributes>ADODocument
+--
+private table as String
+private database as String
+
+--
+
+public sub AddDocument(DocumentObj as DocumentObj)
+private sub getLasID(DocumentObj as DocumentObj)
+public sub GetDocumentByID(DocumentObj as DocumentObj)
+Public Function GetDocuemntsByUser(UserObj As UserObj, Optional DocumentType As String = Nothing) As SortedList(Of Integer, DocumentObj)
+Private Function GetQueryStr(DocumentObj As DocumentObj, Type As TypeQuery, Optional where As Dictionary(Of String, String) = Nothing) As String
+Private Function CreateQuery(DocumentObj As DocumentObj, Type As TypeQuery, Optional Where As Dictionary(Of String, String) = Nothing) As String
+
+--
+Enum TypeQuery
+        Insert = 0
+        Update = 1
+        SelectInfo = 2
+        
+layer=7
+bg=#fab1a0</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>868</x>
+      <y>182</y>
+      <w>826</w>
+      <h>315</h>
+    </coordinates>
+    <panel_attributes>eservices_core.com.database.ole
+Ole Database controller
+--
+bg=#a29bfe
+layer=-1
+
+group=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1393</x>
+      <y>231</y>
+      <w>287</w>
+      <h>224</h>
+    </coordinates>
+    <panel_attributes>OleConnectionsProperty
+--
+
+Dim _Name As String
+Dim _ConectionString As String
+Dim _Connection As OleDbConnection
+Dim _Adap As OleDbDataAdapter
+Dim _Command As OleDbCommand
+
+Public Property Name() As String
+Public Property ConectionString() As String
+Public ReadOnly Property Connection() As OleDbConnection
+Public Property Adap() As OleDbDataAdapter
+Public Property Command() As OleDbCommand
+Public Sub SetUpConnection()
+--
+
+
+bg=#55efc4
+group=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>875</x>
+      <y>245</y>
+      <w>476</w>
+      <h>182</h>
+    </coordinates>
+    <panel_attributes>OleDBConnectionObj
+--
+Protected connections As New Collection
+Protected connection As com.database.ole.OleConnectionsProperty
+--
+
+Public Sub New()
+Public Sub New(ByVal ConnectionProperty As com.database.ole.OleConnectionsProperty)
+Protected Sub OpenDB(ByVal DB As String)
+Protected Sub CreateConnection(ByVal ConnectionName As String, ByVal DatabaseToOpen As String)  
+Protected Sub CloseDB()
+Protected Sub CloseDB(ByVal DB As String)
+Public Sub SetCommand(Query As String)
+Public Sub SetDataAdapter() 
+
+
+layer=4
+bg=#55efc4
+group=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1337</x>
+      <y>315</y>
+      <w>77</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;instanceOf&gt;&gt;
+layer=5
+
+group=2</panel_attributes>
+    <additional_attributes>20.0;20.0;80.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>266</x>
+      <y>385</y>
+      <w>826</w>
+      <h>280</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;470.0;240.0;1160.0;240.0;1160.0;380.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>672</x>
+      <y>847</y>
+      <w>504</w>
+      <h>476</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=0..n
+layer=10
+</panel_attributes>
+    <additional_attributes>10.0;650.0;690.0;650.0;700.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>833</x>
+      <y>42</y>
+      <w>287</w>
+      <h>217</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;390.0;290.0</additional_attributes>
   </element>
 </diagram>

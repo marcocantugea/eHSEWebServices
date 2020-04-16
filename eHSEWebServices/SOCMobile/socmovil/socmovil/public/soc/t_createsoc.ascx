@@ -23,6 +23,17 @@
             ADOSOCCard.SaveSOCCard(newsoccard)
             showsuccess_msg = True
             
+            'agrega la unfo del usuario si esta en session
+            If Not IsNothing(Session("user_loged")) Then
+                Dim user_logged As eservices_core.com.objects.UserObj = Session("user_loged")
+                newsoccard.setDocumentDate(Date.Now)
+                newsoccard.setCreatedByUserObj(user_logged)
+                
+                Dim ADODocument As New eservices_core.com.ado.ADODocument
+                ADODocument.AddDocument(newsoccard)
+                
+            End If
+            
             'Crea galleta para el nombre del usuario
             If Request.Cookies("NombreSOCCard") Is Nothing Then
                 Dim aCookie As New HttpCookie("NombreSOCCard")
@@ -80,7 +91,7 @@ End If
 
 <script>
     $("#btn_yes").click(function () {
-        window.location.href = "index.aspx?p=p_createsoc";
+        window.location.href = "index.aspx?p=soc/p_createsoc";
     });
     $("#btn_no").click(function () {
         window.location.href = "index.aspx";

@@ -1,6 +1,8 @@
-﻿Namespace com.objects
+﻿Imports etra.com.ado.ole
+
+Namespace com.objects
     Public Class TRAObj
-        Inherits eservices_core.com.objects.DoclumentObj
+        Inherits eservices_core.com.objects.DocumentObj
 
         Private _tra_ID As Integer = -1
         Private _tra_Unit As String
@@ -445,8 +447,18 @@
 
         Public Overrides Sub getObjData()
             Dim type As Type = Me.GetType()
-            Me.setTypeOfObj(type.Name)
+            Me.setTypeOfObj(type.FullName)
             Me.setIDObjField("tra_ID")
+        End Sub
+
+        Public Overrides Sub LoadInfoByID()
+            Dim idfromdocument As Integer = Me.getIdOfDocument
+            If idfromdocument > 0 Then
+                _tra_ID = idfromdocument
+                Dim ADOTRA As New ADOTRA
+                ADOTRA.GetTRAbyID(Me)
+            End If
+
         End Sub
     End Class
 End Namespace

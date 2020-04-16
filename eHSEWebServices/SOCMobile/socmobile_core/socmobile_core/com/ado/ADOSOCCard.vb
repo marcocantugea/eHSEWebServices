@@ -20,6 +20,28 @@ Namespace com.ado.ole
                 OpenDB(database)
                 SetCommand(qbuilder.Query)
                 connection.Command.ExecuteNonQuery()
+                GetLasID(SOCCardObj)
+            Catch ex As Exception
+                Throw
+            Finally
+                CloseDB()
+            End Try
+        End Sub
+
+        Public Sub GetLasID(SOCCardObj As SOCCardObj)
+            Try
+                OpenDB(database)
+                SetCommand("select max(id) as MAXID from " & table)
+                SetDataAdapter()
+                Dim dts As New DataSet
+                connection.Adap.Fill(dts)
+                If dts.Tables.Count > 0 Then
+                    If dts.Tables(0).Rows.Count > 0 Then
+                        For Each row As DataRow In dts.Tables(0).Rows
+                            SOCCardObj.id = row("MAXID")
+                        Next
+                    End If
+                End If
             Catch ex As Exception
                 Throw
             Finally
@@ -28,22 +50,24 @@ Namespace com.ado.ole
         End Sub
 
         Public Sub GetSocCardByUserName(InfoUser As InfoUserObj, listofsoccards As List(Of SOCCardObj), Optional initialdate As Date = Nothing, Optional endate As Date = Nothing, Optional FieldsToSelect As SOCCardObj = Nothing)
-            Dim listdocuments As List(Of DoclumentObj)
+            Dim listdocuments As List(Of DocumentObj)
 
             listdocuments = GetSocCardByUserName(InfoUser, initialdate, endate, FieldsToSelect)
 
-            If Not IsNothing(listdocuments) And listdocuments.Count > 0 Then
-                For Each document As DoclumentObj In listdocuments
-                    If document.getTypeOfObj.Equals("SOCCardObj") Then
-                        Dim found_card As SOCCardObj = CType(document, SOCCardObj)
-                        listofsoccards.Add(found_card)
-                    End If
-                Next
+            If Not IsNothing(listdocuments) Then
+                If listdocuments.Count > 0 Then
+                    For Each document As DocumentObj In listdocuments
+                        If document.getTypeOfObj.Contains("SOCCardObj") Then
+                            Dim found_card As SOCCardObj = CType(document, SOCCardObj)
+                            listofsoccards.Add(found_card)
+                        End If
+                    Next
+                End If
             End If
         End Sub
 
-        Public Function GetSocCardByUserName(InfoUser As InfoUserObj, Optional initialdate As Date = Nothing, Optional endate As Date = Nothing, Optional FieldsToSelect As SOCCardObj = Nothing) As List(Of DoclumentObj)
-            Dim listofsoccars As List(Of DoclumentObj)
+        Public Function GetSocCardByUserName(InfoUser As InfoUserObj, Optional initialdate As Date = Nothing, Optional endate As Date = Nothing, Optional FieldsToSelect As SOCCardObj = Nothing) As List(Of DocumentObj)
+            Dim listofsoccars As List(Of DocumentObj)
             Dim SOCCardObj As New SOCCardObj
 
             Dim qbuilder As New QueryBuilder(Of SOCCardObj)
@@ -79,7 +103,7 @@ Namespace com.ado.ole
                 connection.Adap.Fill(dts)
                 If dts.Tables.Count > 0 Then
                     If dts.Tables(0).Rows.Count > 0 Then
-                        listofsoccars = New List(Of DoclumentObj)
+                        listofsoccars = New List(Of DocumentObj)
                         For Each row As DataRow In dts.Tables(0).Rows
                             Dim soccard As New SOCCardObj
                             For Each column As DataColumn In dts.Tables(0).Columns

@@ -32,7 +32,9 @@ Namespace com.database.ole
         Protected Sub OpenDB(ByVal DB As String) Implements com.database.DatabaseInterface.OpenDB
             Try
                 connection = connections.Item(DB)
-                connection.Connection.Open()
+                If Not connection.Connection.State = ConnectionState.Open Then
+                    connection.Connection.Open()
+                End If
             Catch ex As Exception
                 Throw
             End Try
