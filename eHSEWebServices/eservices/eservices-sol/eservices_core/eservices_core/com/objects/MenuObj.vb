@@ -6,7 +6,7 @@
         Private _pathlink As String
         Private _title As String
         Private _active As Boolean
-        Private _frontui As Boolean
+        Private _frontui As Byte
 
         Public Property id_menu As Integer
             Get
@@ -48,11 +48,11 @@
                 _active = value
             End Set
         End Property
-        Public Property frontui As Integer
+        Public Property frontui As Byte
             Get
                 Return _frontui
             End Get
-            Set(value As Integer)
+            Set(value As Byte)
                 _frontui = value
             End Set
         End Property

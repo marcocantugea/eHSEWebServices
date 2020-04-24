@@ -181,3 +181,6 @@ p_mysoccards_lbl_totalcards=Total Cards :
 p_mysoccards_lbl_thismonth=In This Month
 p_mytras_lbl_MainTitle=My TRAs
 p_mytras_lbl_trapin=TRA PIN
+lbl_statusdocument_draft=Document
+lbl_statusdocument_forsignature=Watting for Signature
+lbl_statusdocument_signed=Aproved

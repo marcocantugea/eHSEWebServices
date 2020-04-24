@@ -1,0 +1,1 @@
+CREATE TABLE `ehsewebservices`.`tbl_DocumentsPengindForApproval` ( `idPendingForApproval` INT NOT NULL AUTO_INCREMENT , `idDocument` INT NOT NULL , `UseridRequested` INT NOT NULL , `StatusOpenClose` TINYINT(4) NOT NULL , `idDeparment` INT NOT NULL , `UseridSigned` INT NOT NULL , PRIMARY KEY (`idPendingForApproval`)) ENGINE = InnoDB;

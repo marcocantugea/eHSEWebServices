@@ -15,6 +15,10 @@
             ADOTRa.GetTRAbyPIN(TRAobj)
             
             If TRAobj.tra_ID > 0 Then
+                TRAobj.LoadDocumentHeadInfo()
+                If TRAobj.getLock Then
+                    Throw New Exception("REDIRECT:TRAFormat.aspx?tra_id=" & Base64Con.EncodeBase64(TRAobj.tra_ID))
+                End If
                 TRAobj.traTasks = New List(Of etra.com.objects.TRATaskObj)
                 ADOTRa.GetTRAActivities(TRAobj.tra_ID, TRAobj.traTasks)
                 Me.Session("new_tra_insession") = TRAobj
@@ -24,7 +28,13 @@
                 Response.Redirect("../index.aspx?p=tra/p_tras")
             End If
         Catch ex As Exception
-            Response.Redirect("../index.aspx?p=tra/p_tras")
+            If ex.Message.Contains("REDIRECT") Then
+                Dim redirectvalues As String() = ex.Message.Split(":")
+                Response.Redirect(redirectvalues(1))
+            Else
+                Response.Redirect("../index.aspx?p=tra/p_tras")
+            End If
+            
         End Try
     End If
     

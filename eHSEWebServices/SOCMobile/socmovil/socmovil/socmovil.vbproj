@@ -119,10 +119,13 @@
     <Content Include="media\TRA-ES-Crear nuevo.mp4" />
     <Content Include="media\TRA-ES-NAVEGACION.mp4" />
     <Content Include="public\change_lang.aspx" />
+    <Content Include="public\document\t_loaddocument.aspx" />
+    <Content Include="public\document\t_sendforapproval.aspx" />
     <Content Include="public\header-section.ascx" />
     <Content Include="public\menu-control.ascx" />
     <Content Include="public\pagenotfound.ascx" />
     <Content Include="public\soc\p_createsoc.ascx" />
+    <Content Include="public\tra\p_confirmapproval.ascx" />
     <Content Include="public\tra\p_createTRA.ascx" />
     <Content Include="public\p_hsedep.ascx" />
     <Content Include="public\p_index.ascx" />
@@ -205,6 +208,20 @@
       <DependentUpon>change_lang.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="public\document\t_loaddocument.aspx.designer.vb">
+      <DependentUpon>t_loaddocument.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="public\document\t_loaddocument.aspx.vb">
+      <DependentUpon>t_loaddocument.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="public\document\t_sendforapproval.aspx.designer.vb">
+      <DependentUpon>t_sendforapproval.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="public\document\t_sendforapproval.aspx.vb">
+      <DependentUpon>t_sendforapproval.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="public\header-section.ascx.designer.vb">
       <DependentUpon>header-section.ascx</DependentUpon>
     </Compile>
@@ -238,6 +255,13 @@
     </Compile>
     <Compile Include="public\soc\p_createsoc.ascx.vb">
       <DependentUpon>p_createsoc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="public\tra\p_confirmapproval.ascx.designer.vb">
+      <DependentUpon>p_confirmapproval.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="public\tra\p_confirmapproval.ascx.vb">
+      <DependentUpon>p_confirmapproval.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="public\tra\p_createTRA.ascx.designer.vb">

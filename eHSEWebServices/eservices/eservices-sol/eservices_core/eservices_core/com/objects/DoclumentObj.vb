@@ -1,4 +1,6 @@
-﻿Namespace com.objects
+﻿Imports eservices_core.com.ado
+
+Namespace com.objects
     Public MustInherit Class DocumentObj
 
         Private _idDocument As Integer = -1
@@ -10,6 +12,9 @@
         Private _IdOfDocument As Integer ' Store the input id value {value id)
         Private _eSignatureFile As String 'save the file name of the signature 
         Private _CreatedByUserObj As UserObj
+        Private _idDocumentSatus As Integer
+        Private _locked As Byte
+        Private _DocumentStatusObj As DocumentStatusObj
 
         Public MustOverride Sub getObjData()
         Public MustOverride Sub LoadInfoByID()
@@ -96,6 +101,44 @@
             list_offields.Add("userid")
             Return list_offields
         End Function
+
+
+        Public Function getidDocumentStatus() As Integer
+            Return _idDocumentSatus
+        End Function
+
+        Public Sub setidDocumentStatus(value As Integer)
+            _idDocumentSatus = value
+        End Sub
+
+        Public Function getLock() As Byte
+            Return _locked
+        End Function
+
+        Public Sub setLock(value As Boolean)
+            _locked = value
+        End Sub
+
+        Public Sub setDocumentStatusObj(value As DocumentStatusObj)
+            _DocumentStatusObj = value
+        End Sub
+        Public Function getDocumentStatusObj() As DocumentStatusObj
+            If IsNothing(_DocumentStatusObj) And _idDocumentSatus > 0 Then
+                Dim ADODocumentStatus As New ADODocumentStatus
+                _DocumentStatusObj = New DocumentStatusObj
+                _DocumentStatusObj.idDocumentStatus = _idDocumentSatus
+                ADODocumentStatus.GetDocumentStatusByID(_DocumentStatusObj )
+            End If
+            Return _DocumentStatusObj
+        End Function
+
+        Public Sub LoadDocumentHeadInfo()
+            If _TypeOfObj.Length > 0 And _IDObjField.Length > 0 And _IdOfDocument > 0 Then
+                Dim ADODocument As New ADODocument
+
+                ADODocument.GetDocumentByObject(Me)
+            End If
+        End Sub
 
     End Class
 End Namespace

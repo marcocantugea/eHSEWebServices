@@ -1,4 +1,5 @@
 ﻿Imports etra.com.ado.ole
+Imports eservices_core.com.ado
 
 Namespace com.objects
     Public Class TRAObj
@@ -458,7 +459,6 @@ Namespace com.objects
                 Dim ADOTRA As New ADOTRA
                 ADOTRA.GetTRAbyID(Me)
             End If
-
         End Sub
     End Class
 End Namespace

@@ -71,6 +71,7 @@
     <Compile Include="com\ado\ADOCompany.vb" />
     <Compile Include="com\ado\ADODeparments.vb" />
     <Compile Include="com\ado\ADODocument.vb" />
+    <Compile Include="com\ado\ADODocumentStatus.vb" />
     <Compile Include="com\ado\ADOeSignatures.vb" />
     <Compile Include="com\ado\ADOModulesMenus.vb" />
     <Compile Include="com\ado\ADOProfile.vb" />
@@ -90,6 +91,8 @@
     <Compile Include="com\database\SQLSanitizeClass.vb" />
     <Compile Include="com\objects\CategoryObj.vb" />
     <Compile Include="com\objects\DoclumentObj.vb" />
+    <Compile Include="com\objects\DocumentPendingForApprovalObj.vb" />
+    <Compile Include="com\objects\DocumentStatusObj.vb" />
     <Compile Include="com\objects\eSignatureObj.vb" />
     <Compile Include="com\objects\InfoUserObj.vb" />
     <Compile Include="com\objects\CompanyObj.vb" />
@@ -100,6 +103,7 @@
     <Compile Include="com\objects\UserInfoCompanyObj.vb" />
     <Compile Include="com\objects\UserObj.vb" />
     <Compile Include="com\objects\WorkUnitObj.vb" />
+    <Compile Include="com\process\DocumentForApprovalProcess.vb" />
     <Compile Include="com\utilities\Base64Conversions.vb" />
     <Compile Include="com\utilities\EncriptWrapper.vb" />
     <Compile Include="com\utilities\PINGenerator.vb" />

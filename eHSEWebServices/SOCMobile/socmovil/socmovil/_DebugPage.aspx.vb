@@ -279,4 +279,5 @@ Public Class _DebugPage
         'Dim oType As Type = Type.GetType(ClassName)
         Return Activator.CreateInstance(ensambly, classtypename)
     End Function
+
 End Class

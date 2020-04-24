@@ -6,8 +6,8 @@
     <coordinates>
       <x>0</x>
       <y>924</y>
-      <w>1197</w>
-      <h>721</h>
+      <w>1414</w>
+      <h>749</h>
     </coordinates>
     <panel_attributes>eservices_core.com.object
 Objects Entities
@@ -35,6 +35,9 @@ _IDObjField: String {idfield}
 _IdOfDocument: Integer {value id)
 _eSignatureFile: String
 private _CreatedByUserObj as UserObj
+Private _idDocumentSatus As Integer
+Private _locked As Boolean
+Private _DocumentStatus As DocumentStatusObj
 --
 public mustoverride sub getObjData()
 Public MustOverride Sub LoadInfoByID()
@@ -59,7 +62,12 @@ public sub setCreatedByUserObj(UserObj as UserObj)
 public function getCreatedByUserObj() as UserObj
 Public Function GetFields() As List(Of String)
 Public Function getUserID() As Integer
-</panel_attributes>
+Public Sub setidDocumentStatus(value as integer)
+Public Function getDocumentStauts() as Integer
+public sub setLock(value as boolean)
+public function getlock() as boolean
+public sub setDocumentStatusObj(value as DocumentStatusObj)
+public function getDocumentStatusObj() as DocumentStatusObj</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -229,22 +237,21 @@ bg=white</panel_attributes>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>385</x>
+      <x>392</x>
       <y>581</y>
-      <w>910</w>
+      <w>1197</w>
       <h>315</h>
     </coordinates>
     <panel_attributes>eservices_core.com.ado
 Access Data Objects
 bg=#fdcb6e
-layer=-2
-group=4</panel_attributes>
+layer=-2</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>637</x>
+      <x>434</x>
       <y>651</y>
       <w>294</w>
       <h>210</h>
@@ -267,8 +274,7 @@ public Sub GetModuleByID(ModuleObj as ModuleObj,Optional frontui As Boolean = Fa
 public Sub GetMenuByID(MenuObj as MenuObj,Optional frontui As Boolean = False)
 
 layer=2
-bg=#fab1a0
-group=4</panel_attributes>
+bg=#fab1a0</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -401,47 +407,47 @@ group=5</panel_attributes>
     <coordinates>
       <x>266</x>
       <y>385</y>
-      <w>574</w>
+      <w>371</w>
       <h>280</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;260.0;280.0;260.0;800.0;380.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;260.0;280.0;260.0;510.0;380.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>784</x>
+      <x>581</x>
       <y>854</y>
-      <w>266</w>
+      <w>469</w>
       <h>140</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..n</panel_attributes>
-    <additional_attributes>360.0;180.0;10.0;10.0</additional_attributes>
+    <additional_attributes>650.0;180.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>763</x>
+      <x>574</x>
       <y>854</y>
-      <w>35</w>
+      <w>210</w>
       <h>133</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..n</panel_attributes>
-    <additional_attributes>10.0;170.0;30.0;10.0</additional_attributes>
+    <additional_attributes>280.0;170.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>511</x>
+      <x>448</x>
       <y>854</y>
-      <w>161</w>
+      <w>91</w>
       <h>133</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..n</panel_attributes>
-    <additional_attributes>10.0;170.0;210.0;10.0</additional_attributes>
+    <additional_attributes>100.0;170.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -544,25 +550,10 @@ m1=1..1</panel_attributes>
     <additional_attributes>70.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
-    <id>UMLPackage</id>
-    <coordinates>
-      <x>1316</x>
-      <y>595</y>
-      <w>476</w>
-      <h>294</h>
-    </coordinates>
-    <panel_attributes>etra.com.ado.ole
---
-bg=orange
-layer=-1
-bg=#a29bfe</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>945</x>
-      <y>651</y>
+      <x>770</x>
+      <y>658</y>
       <w>343</w>
       <h>203</h>
     </coordinates>
@@ -570,16 +561,21 @@ bg=#a29bfe</panel_attributes>
 --
 private table as String
 private database as String
-
+Private str_fields As New List(Of String)
+Sub New()
 --
 
 public sub AddDocument(DocumentObj as DocumentObj)
+protected sub AddDocumentForApproval(DocumentForApproval as DocumentPendingForApprovalObj)
 private sub getLasID(DocumentObj as DocumentObj)
 public sub GetDocumentByID(DocumentObj as DocumentObj)
 Public Function GetDocuemntsByUser(UserObj As UserObj, Optional DocumentType As String = Nothing) As SortedList(Of Integer, DocumentObj)
 Private Function GetQueryStr(DocumentObj As DocumentObj, Type As TypeQuery, Optional where As Dictionary(Of String, String) = Nothing) As String
 Private Function CreateQuery(DocumentObj As DocumentObj, Type As TypeQuery, Optional Where As Dictionary(Of String, String) = Nothing) As String
-
+Public Sub GetDocumentByObject(Document as DocumentObj)
+Public Sub LoadFields()
+Public Function GetFields() As String
+Public Sub SetValuesToFields(doc As DocumentObj, row As DataRow)
 --
 Enum TypeQuery
         Insert = 0
@@ -686,25 +682,25 @@ group=2</panel_attributes>
     <coordinates>
       <x>266</x>
       <y>385</y>
-      <w>826</w>
-      <h>280</h>
+      <w>651</w>
+      <h>287</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;470.0;240.0;1160.0;240.0;1160.0;380.0</additional_attributes>
+    <additional_attributes>10.0;10.0;470.0;240.0;910.0;240.0;910.0;390.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>672</x>
-      <y>847</y>
-      <w>504</w>
-      <h>476</h>
+      <y>749</y>
+      <w>497</w>
+      <h>574</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..n
 layer=10
 </panel_attributes>
-    <additional_attributes>10.0;650.0;690.0;650.0;700.0;10.0</additional_attributes>
+    <additional_attributes>10.0;790.0;690.0;790.0;690.0;10.0;630.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -716,5 +712,175 @@ layer=10
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;390.0;290.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>721</x>
+      <y>1344</y>
+      <w>231</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>DocumentStatusObj
+--
+private _idDocumentStatus as integer=-1
+private _status as string
+private _active as boolean
+private _label as string
+
+public property idDocumentStatus as Integer
+public property status as String
+public property active as boolean
+public property label as strin 
+
+
+bg=white</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1183</x>
+      <y>693</y>
+      <w>343</w>
+      <h>133</h>
+    </coordinates>
+    <panel_attributes>ADODocumentStatus
+--
+private const table as String
+private const database as String
+
+--
+
+public sub AddDocumentStatus(DocumentStatusObj as DocumentStatusObj)
+private sub getLasID(DocumentStatusObj as DocumentStatusObj)
+public sub GetDocumentStatusByID(DocumentStatusObj as DocumentStatusObj)
+
+layer=7
+bg=#fab1a0</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>672</x>
+      <y>1414</y>
+      <w>63</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1..1</panel_attributes>
+    <additional_attributes>70.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1008</x>
+      <y>1323</y>
+      <w>266</w>
+      <h>308</h>
+    </coordinates>
+    <panel_attributes>DocumentPendingForApprovalObj
+--
+private _idPendingForApproval as Integer =-1
+private _idDocument as Integer
+private _UseridRequested as Integer
+private _StatusOpenClose as Byte
+private _idDeparment as Integer
+private _UseridSigned as Integer
+private _DocumentObj as DocumentObj
+private _UserObjRequested as UserObj
+private _UserObjSigned as UserObj
+private _DeparmentObj as DeparmentsObj
+
+public property idPendingForApproval as Integer
+public property idDocument as Integer
+public property UseridRequested as Integer
+public property StatusOpenClose as Byte
+public property idDeparment as Integer
+public property UseridSigned as Integer
+public property DocumentObj as DocumentObj
+public property UserObjRequested as UserObj
+public property UserObjSigned as UserObj
+public property DeparmentObj as DeparmentsObj
+--
+
+public sub LoadData()
+Sub New()
+Sub New(idPendingForApproval as integer)
+
+bg=white</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>350</x>
+      <y>1442</y>
+      <w>658</w>
+      <h>217</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1..1</panel_attributes>
+    <additional_attributes>920.0;240.0;860.0;290.0;10.0;290.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>672</x>
+      <y>1533</y>
+      <w>350</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1..1</panel_attributes>
+    <additional_attributes>480.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>1477</x>
+      <y>924</y>
+      <w>483</w>
+      <h>441</h>
+    </coordinates>
+    <panel_attributes>com.process
+Process Bussines Logic
+--
+bg=yellow
+fg=black
+layer=-1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1491</x>
+      <y>1001</y>
+      <w>210</w>
+      <h>147</h>
+    </coordinates>
+    <panel_attributes>DocumentForApprovalProcess
+--
+
+
+--
+
+Public Sub SendDocumentForApproval(DocumentPendingForApprovalObj as DocumentPendingForApprovalObj)
+Private Sub AddDocumentForApproval(DocumentPendingForApprovalObj as DocumentPendingForApprovalObj) 
+
+bg=white</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1078</x>
+      <y>854</y>
+      <w>427</w>
+      <h>189</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0;510.0;100.0;510.0;250.0;590.0;250.0</additional_attributes>
   </element>
 </diagram>

@@ -101,32 +101,36 @@ Namespace com.database
                                     Dim v As String = member.GetValue(_Entity, Nothing)
                                     _Values.Add(v)
                                 End If
-                            Case "DateTime"
-                                If Not CType(member.GetValue(_Entity, Nothing), Date).ToString("mmddyyyy").Equals("00010001") Then
-                                    _Fields.Add(member.Name)
-                                    '20-Oct-2018
-                                    'Modificado para usar MYSQL
-                                    'Dim v As String = member.GetValue(_Entity, Nothing)
-                                    '_Values.Add("'" & v & "'")
-                                    Dim v As Date = CType(member.GetValue(_Entity, Nothing), Date)
-                                    _Values.Add("'" & v.ToString("yyyy-MM-dd") & "'")
-                                End If
-                            Case "Boolean"
-                                'Fix the problem with a false value is entered - 6-Ago-2017
-                                'remove if condition to validate if is true value
-                                'If CType(member.GetValue(_Entity, Nothing), Boolean) Then
-
-                                '21-Oct-2018
-                                'Aconidicionar insert para mysql
+                            Case "Byte"
                                 _Fields.Add(member.Name)
                                 Dim v As String = member.GetValue(_Entity, Nothing)
-                                If v Then
-                                    _Values.Add("1")
-                                Else
-                                    _Values.Add("0")
-                                End If
+                                _Values.Add(v)
+                            Case "DateTime"
+                    If Not CType(member.GetValue(_Entity, Nothing), Date).ToString("mmddyyyy").Equals("00010001") Then
+                        _Fields.Add(member.Name)
+                        '20-Oct-2018
+                        'Modificado para usar MYSQL
+                        'Dim v As String = member.GetValue(_Entity, Nothing)
+                        '_Values.Add("'" & v & "'")
+                        Dim v As Date = CType(member.GetValue(_Entity, Nothing), Date)
+                        _Values.Add("'" & v.ToString("yyyy-MM-dd") & "'")
+                    End If
+                            Case "Boolean"
+                    'Fix the problem with a false value is entered - 6-Ago-2017
+                    'remove if condition to validate if is true value
+                    'If CType(member.GetValue(_Entity, Nothing), Boolean) Then
 
-                                'End If
+                    '21-Oct-2018
+                    'Aconidicionar insert para mysql
+                    _Fields.Add(member.Name)
+                    Dim v As String = member.GetValue(_Entity, Nothing)
+                    If v Then
+                        _Values.Add("1")
+                    Else
+                        _Values.Add("0")
+                    End If
+
+                    'End If
 
 
 

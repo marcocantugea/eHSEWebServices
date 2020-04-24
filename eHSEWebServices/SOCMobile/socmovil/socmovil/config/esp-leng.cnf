@@ -181,3 +181,6 @@ p_mysoccards_lbl_totalcards=Total de Tarjetas :
 p_mysoccards_lbl_thismonth=En el Mes de
 p_mytras_lbl_MainTitle=Mis TRAs
 p_mytras_lbl_trapin=TRA PIN
+lbl_statusdocument_draft=Documento
+lbl_statusdocument_forsignature=En Espera por Firma
+lbl_statusdocument_signed=Approvado
