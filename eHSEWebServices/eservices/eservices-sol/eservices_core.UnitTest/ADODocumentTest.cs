@@ -86,6 +86,37 @@ namespace eservices_core.UnitTest
 
             Assert.True(ADODocuments.CheckExistDocumentForApproval(9),"Exist Document is false");
         }
+        [Test]
+        public void GetDocumentPendingForSignature_GetAllObjects_DisplayObjects()
+        {
+            ADODocument Docu = new ADODocument();
+            IDictionary<int, Object> values = new Dictionary<int, object>();
+            values = Docu.GetDocumentPendingForSignature(new int[] {3,4,5 });
+            foreach (KeyValuePair<int, object> index in values) {
+                Console.WriteLine("id record:{0} {1}", index.Key, index.Value );
+                List<object> a = (List<object>)index.Value;
+                foreach (var rowval in a) {
+                    var field = rowval.GetType().GetProperty("Name").GetValue(rowval, null);
 
+                    //var fieldvalue = rowval.GetType().GetProperty("Value").GetValue(rowval, null);
+                    Console.WriteLine("Field: {0} -- Value:{1}", field, GetValueList(a, field.ToString()));
+                }
+            }
+
+            Assert.IsNotNull(values, "Values dictorionary is null");
+            Assert.Greater(values.Count, 0, "No values in values dictonary");
+        }
+
+        public Object GetValueList(List<object> list,String Field) {
+            Object returnval=null;
+            foreach (var rowval in list) {
+                var l_field = rowval.GetType().GetProperty("Name").GetValue(rowval, null);
+                if (l_field == Field) {
+                    returnval = rowval.GetType().GetProperty("Value").GetValue(rowval, null);
+                }
+
+            }
+            return returnval;
+        }
     }
 }

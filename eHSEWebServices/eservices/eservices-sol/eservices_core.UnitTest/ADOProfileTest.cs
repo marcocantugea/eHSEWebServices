@@ -38,5 +38,24 @@ namespace eservices_core.UnitTest
             
 
         }
+
+        [Test]
+        public void ADOProfileTest_GetAccessDeparments_ReturnListOfIdDeparments() {
+            ADOProfile ADOProfile = new ADOProfile();
+            List<int> result = ADOProfile.GetAccessDeparments(3);
+            foreach (var u in result) {
+                Console.WriteLine(u);
+            }
+            Assert.IsNotNull(result, "The result var is empty");
+
+        }
+        [Test]
+        public void ADOProfileTest_ProfileObj_ReturnListOfIdDeparments() {
+            ProfileObj profile = new ProfileObj();
+            profile.idprofile = 2;
+            profile.GetAccessDeparments(3);
+            foreach (var i in profile.AccessDeparments) { Console.WriteLine(i); }
+            Assert.IsNotNull(profile.AccessDeparments, "The profile.accessDeparments is null");
+        }
     }
 }

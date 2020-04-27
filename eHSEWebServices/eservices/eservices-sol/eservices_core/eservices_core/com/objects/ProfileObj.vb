@@ -7,6 +7,38 @@ Namespace com.objects
         Private _profile As String
         Private _active As Boolean
         Private _Modules As Dictionary(Of Integer, ModuleObj)
+        Private _AccessDeparments As List(Of Integer)
+        Private _ADOProfile As New ADOProfile
+
+        Public Sub GetAccessDeparments(userid As Integer)
+            If _idprofile > 0 And userid > 0 And _idprofile > SysProfiles.Publico Then
+                If IsNothing(_AccessDeparments) Then
+                    _AccessDeparments = New List(Of Integer)
+                End If
+                _AccessDeparments = _ADOProfile.GetAccessDeparments(userid)
+            End If
+        End Sub
+
+        Public Sub AddAccessDeparment(idDeparment As Integer)
+            If _idprofile = SysProfiles.Supervisor Or _idprofile = SysProfiles.Administrator Then
+                If IsNothing(_AccessDeparments) Then
+                    _AccessDeparments = New List(Of Integer)
+                End If
+
+                AccessDeparments.Add(idDeparment)
+            End If
+        End Sub
+
+        Public Property AccessDeparments As List(Of Integer)
+            Get
+                Return _AccessDeparments
+
+            End Get
+            Set(value As List(Of Integer))
+                _AccessDeparments = value
+            End Set
+        End Property
+
 
         Public Property Modules As Dictionary(Of Integer, ModuleObj)
             Get
@@ -62,4 +94,10 @@ Namespace com.objects
         End Sub
 
     End Class
+
+    Public Enum SysProfiles
+        Publico = 1
+        Supervisor = 2
+        Administrator = 3
+    End Enum
 End Namespace

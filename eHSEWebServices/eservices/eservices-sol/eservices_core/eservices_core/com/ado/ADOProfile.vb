@@ -36,7 +36,6 @@ Namespace com.ado
                 CloseDB()
             End Try
         End Sub
-
         Public Sub GetProfileById(ProfileObj As ProfileObj)
             Dim qbuilder As New eservices_core.com.database.QueryBuilder(Of ProfileObj)
             qbuilder.TypeQuery = eservices_core.com.database.TypeQuery.SelectInfo
@@ -65,6 +64,29 @@ Namespace com.ado
                 CloseDB()
             End Try
         End Sub
+
+        Public Function GetAccessDeparments(userid As Integer) As List(Of Integer)
+            Dim resultlist As List(Of Integer)
+            Try
+                OpenDB("DB-EWEBSERVICES")
+                SetCommand("SELECT idDeparment from rel_supervisor_deparment where userid=" & userid.ToString)
+                SetDataAdapter()
+                Dim dts As New DataSet
+                connection.Adap.Fill(dts)
+                If dts.Tables.Count > 0 Then
+                    If dts.Tables(0).Rows.Count > 0 Then
+                        resultlist = New List(Of Integer)
+                        For Each row As DataRow In dts.Tables(0).Rows
+                            resultlist.Add(row("idDeparment"))
+                        Next
+                    End If
+                End If
+            Catch ex As Exception
+            Finally
+                CloseDB()
+            End Try
+            Return resultlist
+        End Function
 
     End Class
 End Namespace

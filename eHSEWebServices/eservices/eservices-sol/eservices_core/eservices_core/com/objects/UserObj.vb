@@ -88,6 +88,7 @@ Namespace com.objects
                 If _idprofile > 0 Then
                     ADOProfile.GetProfileById(_ProfileObj)
                     _ProfileObj.LoadModules(True)
+                    _ProfileObj.GetAccessDeparments(_userid)
                 End If
 
             Catch ex As Exception

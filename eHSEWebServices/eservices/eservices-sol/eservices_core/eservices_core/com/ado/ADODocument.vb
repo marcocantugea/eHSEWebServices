@@ -505,6 +505,44 @@ Namespace com.ado
             End Try
         End Sub
 
+        Public Function GetDocumentPendingForSignature(idDeparment As Integer()) As IDictionary(Of Integer, Object)
+            Dim ListofValues As New Dictionary(Of Integer, Object)
+            Try
+                OpenDB("DB-EWEBSERVICES")
+                Dim index As Integer = 0
+                Dim queryids As String
+                For Each i As Integer In idDeparment
+                    If index > 0 Then
+                        queryids = queryids & ","
+                    End If
+
+                    queryids = queryids & i.ToString()
+
+                    index += 1
+                Next
+                SetCommand("SELECT * from vw_documentsforapproval where idDeparment in (" & queryids & ")")
+                SetDataAdapter()
+                Dim dts As New DataSet
+                connection.Adap.Fill(dts)
+                If dts.Tables.Count > 0 Then
+                    If dts.Tables(0).Rows.Count > 0 Then
+                        For Each row As DataRow In dts.Tables(0).Rows
+                            Dim rowvalue As New List(Of Object)
+                            For Each colum As DataColumn In dts.Tables(0).Columns
+                                Dim rv = New With {Key .Name = colum.ColumnName, Key .Value = row(colum)}
+                                rowvalue.Add(rv)
+                            Next
+                            ListofValues.Add(row("idPendingForApproval"), rowvalue)
+                        Next
+                    End If
+                End If
+            Catch ex As Exception
+            Finally
+                CloseDB()
+            End Try
+            Return ListofValues
+        End Function
+
     End Class
     Enum TypeQuery
         Insert = 0
