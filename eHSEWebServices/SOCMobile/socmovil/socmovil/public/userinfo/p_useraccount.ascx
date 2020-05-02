@@ -142,7 +142,7 @@
                                             If Not IsNothing(idcompany) And idcompany > 0 And company.idCompany.Equals(idcompany) Then
                                                 selectedoption = "selected"
                                             Else
-                                                If company.idCompany = GlobalConfigReader.GetValue("DefaultIdCompany") Then
+                                                If company.idCompany = PageGlobalConfigReader.GetValue("DefaultIdCompany") Then
                                                     selectedoption = "selected"
                                                 End If
                                             End If
@@ -168,7 +168,7 @@
                                             If Not IsNothing(idunit) And idunit > 0 And idunit.Equals(unit.idWorkUnit) Then
                                                 selectedoption = "selected"
                                             Else
-                                                If unit.idWorkUnit = GlobalConfigReader.GetValue("DefaultIDWorkUnit") Then
+                                                If unit.idWorkUnit = PageGlobalConfigReader.GetValue("DefaultIDWorkUnit") Then
                                                     selectedoption = "selected"
                                                 End If
                                             End If

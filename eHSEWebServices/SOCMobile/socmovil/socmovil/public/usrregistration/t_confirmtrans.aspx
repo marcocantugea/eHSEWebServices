@@ -1,11 +1,6 @@
 ﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="t_confirmtrans.aspx.vb" Inherits="socmovil.t_confirmtrans" %>
 <%
-    ''obtiene el lenguaje que esta en session.
-    'Dim lang_configreader As socmobile_core.com.configuration.GlobalConfReader = CType(Me.Session("lang_obj"), socmobile_core.com.configuration.GlobalConfReader)
-    ''Obtiene la configuracion globals
-    'Dim GlobalConfigReader As New socmobile_core.com.configuration.GlobalConfReader
-    'GlobalConfigReader.LoadFileSetting(HttpContext.Current.Request.PhysicalApplicationPath & System.Configuration.ConfigurationManager.AppSettings("GlobalConfigFile"))
-    LoadConfig()
+    LoadConfiguration()
     
     Dim SQLSanitize As New eservices_core.com.database.SQLSanitizeClass
     
@@ -37,7 +32,7 @@
                 new_UserObj.user_email = email
                 new_UserObj.user_pwd = encrypt.EncryptData(rqs_passwor)
                 Try
-                    new_UserObj.idprofile = Integer.Parse(GlobalConfigReader.GetValue("publicprofileid"))
+                    new_UserObj.idprofile = Integer.Parse(PageGlobalConfigReader.GetValue("publicprofileid"))
                 Catch ex As Exception
                     new_UserObj.idprofile = 1
                 End Try
@@ -47,12 +42,12 @@
 
                 new_UserInfoCompany.employeenum = userlogin
                 Try
-                    new_UserInfoCompany.idCompany = Integer.Parse(GlobalConfigReader.GetValue("DefaultIdCompany"))
+                    new_UserInfoCompany.idCompany = Integer.Parse(PageGlobalConfigReader.GetValue("DefaultIdCompany"))
                 Catch ex As Exception
                     new_UserInfoCompany.idCompany = 0
                 End Try
                 Try
-                    new_UserInfoCompany.idWorkUnit = Integer.Parse(GlobalConfigReader.GetValue("DefaultIdCompany"))
+                    new_UserInfoCompany.idWorkUnit = Integer.Parse(PageGlobalConfigReader.GetValue("DefaultIdCompany"))
                 Catch ex As Exception
                     new_UserInfoCompany.idWorkUnit = 0
                 End Try

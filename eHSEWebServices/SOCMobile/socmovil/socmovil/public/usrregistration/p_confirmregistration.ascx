@@ -18,21 +18,21 @@
 <div class="container-fluid" id="view_desktop">
     <div class="container text-center">
         <div class="m-3">
-            <span class="display-3" id="p_usreg_lbl_titlepage"><% Response.Write(lang_configreader.GetValue("p_confirmregistration_lblMain_Title")) %></span>
+            <span class="display-3" id="p_usreg_lbl_titlepage"><% Response.Write(Pagelang_configreader.GetValue("p_confirmregistration_lblMain_Title"))%></span>
         </div>
         <div class="container border rounded-lg bg-light">
             <form id="frm_userreg" class="needs-validation" novalidate >
                 <div class="row mb-3">
                         <div class="col">
                             <span class="display-4" id="p_usreg_lbl_titleform">
-                                <% Response.Write(lang_configreader.GetValue("p_confirmregistration_lblMain_Subtitle")) %>
+                                <% Response.Write(Pagelang_configreader.GetValue("p_confirmregistration_lblMain_Subtitle"))%>
                             </span>
                         </div>
                  </div>
                 <div class="row mb-3">
                         <div class="col">
                             <span class="lead">
-                                <% Response.Write(lang_configreader.GetValue("p_confirmregistration_lblMain_completename")) %>
+                                <% Response.Write(Pagelang_configreader.GetValue("p_confirmregistration_lblMain_completename"))%>
                             </span>
                         </div>
                  </div>
@@ -46,7 +46,7 @@
                 <div class="row mb-3">
                         <div class="col-lg mb-3">
                             <span class="lead">
-                                <%Response.Write(lang_configreader.GetValue("p_confirmregistration_lblMain_email")) %>
+                                <%Response.Write(Pagelang_configreader.GetValue("p_confirmregistration_lblMain_email"))%>
                             </span>
                             <div class="">
                                 <%--<input type="email" class="form-control" placeholder="email" name="email" id="email" required>
@@ -61,7 +61,7 @@
                         </div>
                     <div class="col-lg">
                             <span class="lead">
-                              <% Response.Write(lang_configreader.GetValue("p_confirmregistration_lblMain_userlogin")) %>
+                              <% Response.Write(Pagelang_configreader.GetValue("p_confirmregistration_lblMain_userlogin"))%>
                             </span>
                         <div class="">
                             <%--<input type="text" class="form-control" placeholder="Numero de empleado" id="user" name="userlogin" required>
@@ -77,13 +77,13 @@
                  </div>
                 <div class="row m-2">
                         <div class="col-lg text-right p-4">
-                          <button type="button" id="btn_back" class="form-control btn btn-block btn-danger" > <% Response.Write(lang_configreader.GetValue("lbl_back")) %></button>
+                          <button type="button" id="btn_back" class="form-control btn btn-block btn-danger" > <% Response.Write(Pagelang_configreader.GetValue("lbl_back"))%></button>
                         </div>
                      <%--<div class="col-sm text-left p-4">
                             
                         </div>--%>
                      <div class="col-lg text-left p-4">
-                            <button type="button" id="btn_save" class="form-control btn btn-block btn-success" > <% Response.Write(lang_configreader.GetValue("lbl_save")) %></button>
+                            <button type="button" id="btn_save" class="form-control btn btn-block btn-success" > <% Response.Write(Pagelang_configreader.GetValue("lbl_save"))%></button>
                         </div>
                  </div>
             </form>

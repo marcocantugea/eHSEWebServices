@@ -32,7 +32,7 @@
 <div class="container">
     <div class="row">
         <div class="col  text-center p-1 align-middle">
-            <img class="border border-1 m-1" src="../<% Response.Write(GlobalConfigReader.GetValue("logo"))%>" alt="Grupo R Exploracion Marina" style="width:200px; background-color:white ">
+            <img class="border border-1 m-1" src="../<% Response.Write(PageGlobalConfigReader.GetValue("logo"))%>" alt="Grupo R Exploracion Marina" style="width:200px; background-color:white ">
         </div>
         <div class="col text-center align-middle">
             <span class="h6"><br /> <% GetLbl("p_createsoc_title_SOCCard") %></span>

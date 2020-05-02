@@ -29,7 +29,7 @@
         showloadeddata = True
     Else
         new_tra_inssession = New etra.com.objects.TRAObj
-        new_tra_inssession.tra_Unit = GlobalConfigReader.GetValue("main_unit")
+        new_tra_inssession.tra_Unit = PageGlobalConfigReader.GetValue("main_unit")
         new_tra_inssession.tra_Date = Date.Now
         new_tra_inssession.tra_Hazard_Access_NA = True
         new_tra_inssession.tra_Hazard_Comms_NA = True
@@ -67,7 +67,7 @@
   <span class="h4  text-success" id="messagesave"></span>
 </div>
 <div class="container-fluid mt-3 mb-3">
-    <span class="h4 "><%Response.Write(lang_configreader.GetValue("p_createTRA_lblMainTitle"))%></span>
+    <span class="h4 "><%GetLbl("p_createTRA_lblMainTitle")%></span>
 </div>
 
 <div class="ml-2" >
@@ -103,7 +103,7 @@
                         </td>
                         <td class="cell-td-value">
                             <span class="">
-                                <input type="text" class="form-control form-control-sm" id="txt_unit" name="unit" value="<% Response.Write(GlobalConfigReader.GetValue("main_unit"))%>" readonly />
+                                <input type="text" class="form-control form-control-sm" id="txt_unit" name="unit" value="<% Response.Write(PageGlobalConfigReader.GetValue("main_unit"))%>" readonly />
                             </span> 
                         </td>
                         <td class="cell-header">
@@ -1228,7 +1228,7 @@
             <div class="col">
                 <div class="form-group">
                     <label for="txt_sm_unit">Unidad/Unidad</label>
-                    <input type="text" class="form-control" id="txt_sm_unit" name="sm_unit" value="<% Response.Write(GlobalConfigReader.GetValue("main_unit"))%>" placeholder="" readonly >
+                    <input type="text" class="form-control" id="txt_sm_unit" name="sm_unit" value="<% Response.Write(PageGlobalConfigReader.GetValue("main_unit"))%>" placeholder="" readonly >
                 </div>
             </div>
         </div>

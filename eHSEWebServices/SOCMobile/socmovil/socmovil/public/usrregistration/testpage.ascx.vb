@@ -1,5 +1,5 @@
 ﻿Public Class testpage
-    Inherits System.Web.UI.UserControl
+    Inherits PageControllerClass
     Implements IntUserSession
 
 

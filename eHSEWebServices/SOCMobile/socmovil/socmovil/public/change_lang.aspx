@@ -1,12 +1,10 @@
 ﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="change_lang.aspx.vb" Inherits="socmovil.change_lang" %>
 <%
-    Dim GlobalConfigReader As New socmobile_core.com.configuration.GlobalConfReader
-    GlobalConfigReader.LoadFileSetting(HttpContext.Current.Request.PhysicalApplicationPath & System.Configuration.ConfigurationManager.AppSettings("GlobalConfigFile"))
-
+    LoadConfiguration()
     
     If Request.QueryString.Count > 0 Then
         Dim new_lang As String = Request.QueryString("lang")
-        If GlobalConfigReader.GetValue("language").Contains(new_lang) Then
+        If PageGlobalConfigReader.GetValue("language").Contains(new_lang) Then
             If Not IsNothing(Me.Session("LANG")) Then
                 Me.Session("LANG") = new_lang
                 Dim aCookie As HttpCookie = HttpContext.Current.Request.Cookies("LANG")
@@ -28,6 +26,8 @@
                 End If
             End If
         End If
+        Me.Session("_lang_configreader") = Nothing
+        Me.Session("_GlobalConfigReader") = Nothing
         Response.Redirect(Request.UrlReferrer.ToString)
     End If
     

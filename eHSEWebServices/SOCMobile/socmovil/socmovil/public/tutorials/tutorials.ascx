@@ -11,10 +11,10 @@
 
 <div class="containter-fluid text-center" id="Tutorials_desktop">
     <div class="mt-3 mb-3">
-        <span class="display-3"> <%Response.Write(lang_configreader.GetValue("p_tutorials_lblMain"))%> </span>
+        <span class="display-3"> <%GetLbl("p_tutorials_lblMain")%> </span>
     </div>
     <div class="container mb-4">
-        <span class="display-4"><%Response.Write(lang_configreader.GetValue("p_tutorials_lblTitleTRA"))%></span>
+        <span class="display-4"><%GetLbl("p_tutorials_lblTitleTRA")%></span>
     </div>
 
 <%--TRA - Como crear un TRA desde mobil--%>
@@ -155,10 +155,10 @@
 </div>
 <div class="containter-fluid text-center" id="Tutorials_movil">
     <div class="mt-3 mb-3">
-        <span class="h1"> <%Response.Write(lang_configreader.GetValue("p_tutorials_lblMain"))%>  </span>
+        <span class="h1"> <%GetLbl("p_tutorials_lblMain")%>  </span>
     </div>
     <div class="container mb-4">
-        <span class="h4"><%Response.Write(lang_configreader.GetValue("p_tutorials_lblTitleTRA"))%></span>
+        <span class="h4"><%GetLbl("p_tutorials_lblTitleTRA")%></span>
     </div>
 <%--TRA- Crear un nuevo tra desde mi movil--%>
     <div class="row border-top">

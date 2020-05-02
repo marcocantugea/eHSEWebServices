@@ -3,9 +3,9 @@ Imports etra.com.objects
 Imports etra.com.ado.ole
 Imports System.Runtime.Remoting
 Public Class _DebugPage
-    Inherits System.Web.UI.Page
+    Inherits PageBaseController
 
-    Dim UnitOfWork As New eservices_datamanager.UnitOfWork
+    'Dim UnitOfWork As New eservices_datamanager.UnitOfWork
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Dim SOCTestObj As New objects.SOCCardObj
@@ -279,4 +279,11 @@ Public Class _DebugPage
         Return Activator.CreateInstance(ensambly, classtypename)
     End Function
 
+    Protected Sub Button15_Click(sender As Object, e As EventArgs) Handles Button15.Click
+        If UnitOfWork.Category.Exist(1) Then
+            Response.Write("exist")
+        Else
+            Response.Write("not exost")
+        End If
+    End Sub
 End Class

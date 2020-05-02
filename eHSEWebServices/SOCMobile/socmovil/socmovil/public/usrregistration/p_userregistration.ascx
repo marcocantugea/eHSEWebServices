@@ -25,64 +25,64 @@
 <div class="container-fluid" id="view_desktop">
     <div class="container text-center">
         <div class="m-3">
-            <span class="display-3" id="p_usreg_lbl_titlepage"><%Response.Write(lang_configreader.GetValue("p_userregistration_lblMain_Title")) %></span>
+            <span class="display-3" id="p_usreg_lbl_titlepage"><%GetLbl("p_userregistration_lblMain_Title")%></span>
         </div>
         <div class="container border rounded-lg bg-light">
             <form id="frm_userreg" class="needs-validation" method="post"  action="usrregistration/t_confirmtrans.aspx" novalidate >
                 <div class="row mb-3">
                         <div class="col">
                             <span class="display-4" id="p_usreg_lbl_titleform">
-                                <% Response.Write(lang_configreader.GetValue("p_userregistration_lblMain_Subtitle")) %>
+                                <% GetLbl("p_userregistration_lblMain_Subtitle")%>
                             </span>
                         </div>
                  </div>
                 <div class="row mb-3">
                         <div class="col text-left">
                             <span class="lead">
-                                <%Response.Write(lang_configreader.GetValue("p_userregistration_lblcompleteName")) %>
+                                <%GetLbl("p_userregistration_lblcompleteName")%>
                             </span>
                         </div>
                  </div>
                 <div class="row mb-3 ">
                     <div class="col-lg">
-                        <input type="text" class="form-control m-1" placeholder="<%Response.Write(lang_configreader.GetValue("p_userregistration_inputplaceholder_names"))%>" name="name" id="name" required value="<%If showinfo Then Response.Write(new_user.InfoUserObj.Nombre)%>" >
+                        <input type="text" class="form-control m-1" placeholder="<%GetLbl("p_userregistration_inputplaceholder_names")%>" name="name" id="name" required value="<%If showinfo Then Response.Write(new_user.InfoUserObj.Nombre)%>" >
                         <div class="invalid-feedback">
-                            <% Response.Write(lang_configreader.GetValue("p_userregistration_inputinvalid_names")) %>
+                            <% GetLbl("p_userregistration_inputinvalid_names")%>
                         </div>
                     </div>
                     <div class="col-lg">
-                        <input type="text" class="form-control m-1" placeholder="<%Response.Write(lang_configreader.GetValue("p_userregistration_inputplaceholder_lastname1"))%>" id="lastname1" name="lastname1" required  value="<%If showinfo Then Response.Write(new_user.InfoUserObj.apellido_pat)%>" >
+                        <input type="text" class="form-control m-1" placeholder="<%GetLbl("p_userregistration_inputplaceholder_lastname1")%>" id="lastname1" name="lastname1" required  value="<%If showinfo Then Response.Write(new_user.InfoUserObj.apellido_pat)%>" >
                         <div class="invalid-feedback m-1">
-                            <%Response.Write(lang_configreader.GetValue("p_userregistration_inputinvalid_lastname1")) %>
+                            <%GetLbl("p_userregistration_inputinvalid_lastname1")%>
                         </div>
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control m-1" placeholder="<%Response.Write(lang_configreader.GetValue("p_userregistration_inputplaceholder_lastname2"))%>" id="lastname2" name="lastname2"   value="<%If showinfo Then Response.Write(new_user.InfoUserObj.apellido_mat)%>">
+                        <input type="text" class="form-control m-1" placeholder="<%GetLbl("p_userregistration_inputplaceholder_lastname2")%>" id="lastname2" name="lastname2"   value="<%If showinfo Then Response.Write(new_user.InfoUserObj.apellido_mat)%>">
                         <div class="invalid-feedback">
-                            <% Response.Write(lang_configreader.GetValue("p_userregistration_inputinvalid_lastname2"))%>
+                            <% GetLbl("p_userregistration_inputinvalid_lastname2")%>
                         </div>
                     </div>
                 </div>
                 <div class="row mb-3">
                         <div class="col-lg text-left mb-3">
                             <span class="lead">
-                               <% Response.Write(lang_configreader.GetValue("p_userregistration_lblemail")) %>
+                               <% GetLbl("p_userregistration_lblemail")%>
                             </span>
                             <div class="text-left">
-                                <input type="email" class="form-control" placeholder="<% Response.Write(lang_configreader.GetValue("p_userregistration_inputplaceholder_email")) %>" name="email" id="email" required value="<%If showinfo Then Response.Write(new_user.user_email)%>">
+                                <input type="email" class="form-control" placeholder="<% GetLbl("p_userregistration_inputplaceholder_email")%>" name="email" id="email" required value="<%If showinfo Then Response.Write(new_user.user_email)%>">
                                 <div class="invalid-feedback">
-                                    <% Response.Write(lang_configreader.GetValue("p_userregistration_inputinvalid_email")) %>
+                                    <% GetLbl("p_userregistration_inputinvalid_email")%>
                                 </div>
                             </div>
                         </div>
                     <div class="col-lg text-left">
                             <span class="lead">
-                              <% Response.Write(lang_configreader.GetValue("p_userregistration_lbluserlogin")) %>
+                              <% GetLbl("p_userregistration_lbluserlogin")%>
                             </span>
                         <div class="text-left">
-                            <input type="text" class="form-control" placeholder="<% Response.Write(lang_configreader.GetValue("p_userregistration_inputplaceholder_userlogin")) %>" id="user" name="userlogin" required value="<%If showinfo Then Response.Write(new_user.UserInfoCompanyObj.employeenum)%>">
+                            <input type="text" class="form-control" placeholder="<% GetLbl("p_userregistration_inputplaceholder_userlogin")%>" id="user" name="userlogin" required value="<%If showinfo Then Response.Write(new_user.UserInfoCompanyObj.employeenum)%>">
                             <div class="invalid-feedback">
-                                <% Response.Write(lang_configreader.GetValue("p_userregistration_inputinvalid_userlogin")) %>
+                                <% GetLbl("p_userregistration_inputinvalid_userlogin")%>
                             </div>
                         </div>
                         </div>
@@ -90,23 +90,23 @@
                 <div class="row mb-3">
                     <div class="col text-left">
                         <span class="lead">
-                            <% Response.Write(lang_configreader.GetValue("p_userregistration_lblnewpassword")) %>
+                            <% GetLbl("p_userregistration_lblnewpassword")%>
                         </span>
                         <div class="text-left">
-                            <input type="password" class="form-control" placeholder="<% Response.Write(lang_configreader.GetValue("p_userregistration_inputplaceholder_newpassword")) %>" id="password" name="password" required>
+                            <input type="password" class="form-control" placeholder="<% GetLbl("p_userregistration_inputplaceholder_newpassword")%>" id="password" name="password" required>
                             <div class="text-danger" id="lbl_nomatchpass">
-                                <% Response.Write(lang_configreader.GetValue("p_userregistration_inputinvalid_newpassword")) %>
+                                <% GetLbl("p_userregistration_inputinvalid_newpassword")%>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm text-left">
                         <span class="lead">
-                            <% Response.Write(lang_configreader.GetValue("p_userregistration_lblconfirmpassword")) %>
+                            <% GetLbl("p_userregistration_lblconfirmpassword")%>
                         </span>
                         <div class="text-left">
-                            <input type="password" class="form-control" placeholder="<% Response.Write(lang_configreader.GetValue("p_userregistration_inputplaceholder_newpassword")) %>" id="passwordval" required>
+                            <input type="password" class="form-control" placeholder="<% GetLbl("p_userregistration_inputplaceholder_newpassword")%>" id="passwordval" required>
                             <div class="text-danger" id="lbl_nomatchpass2">
-                                <% Response.Write(lang_configreader.GetValue("p_userregistration_inputinvalid_invalidconfirmpassword")) %>
+                                <% GetLbl("p_userregistration_inputinvalid_invalidconfirmpassword")%>
                             </div>
                         </div>
                     </div>
@@ -115,7 +115,7 @@
                     <div class="col-sm">
                         <div class="col text-left ml-2">
                             <input class="form-check-input" type="checkbox" id="showpass" value="showpass">
-                            <label class="form-check-label" for="showpass"><% Response.Write(lang_configreader.GetValue("p_userregistration_inputcheck_showpass")) %></label>
+                            <label class="form-check-label" for="showpass"><% GetLbl("p_userregistration_inputcheck_showpass")%></label>
                         </div>
                     </div>
                 </div>
@@ -127,7 +127,7 @@
                             
                         </div>
                      <div class="col text-left p-4">
-                            <button type="submit" id="btn_continue" class="form-control btn btn-primary" > <%Response.Write(lang_configreader.GetValue("lbl_continue")) %></button>
+                            <button type="submit" id="btn_continue" class="form-control btn btn-primary" > <%GetLbl("lbl_continue")%></button>
                             <input type="hidden"  id="transaction" value="<%Response.Write(enc_transaction_num)%>" name="transaction" />
                         </div>
                  </div>

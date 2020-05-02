@@ -47,7 +47,7 @@
     <div class="row">
         <div class="container text-center m-3">
             <span class="h4">
-                <% Response.Write(lang_configreader.GetValue("p_tras_MainTitile"))%>
+                <% GetLbl("p_tras_MainTitile")%>
             </span>
         </div>
         <div class="container ">
@@ -55,10 +55,10 @@
                 <div class="col-lg mb-3 ">
                     <div class="input-group">
                       <div class="input-group-prepend">
-                        <label class="input-group-text" for="departments_option"><% Response.Write(lang_configreader.GetValue("p_tras_lbl_deparments"))%></label>
+                        <label class="input-group-text" for="departments_option"><% GetLbl("p_tras_lbl_deparments")%></label>
                       </div>
                       <select class="custom-select" id="departments_option">
-                        <option value="Todos" selected><% Response.Write(lang_configreader.GetValue("p_tras_value_all")) %></option>
+                        <option value="Todos" selected><% GetLbl("p_tras_value_all") %></option>
                         <%
                             For Each dep_item As etra.com.objects.TRADeparment In list_department
                                 Dim selecteddep As Boolean = False
@@ -74,9 +74,9 @@
                 <div class="col text-left">
                       <div class="input-group">
                           <div class="input-group-prepend">
-                              <label class="input-group-text" for="txt_loadTRA"><%Response.Write(lang_configreader.GetValue("p_tras_lbl_opentra"))%></label>
+                              <label class="input-group-text" for="txt_loadTRA"><%GetLbl("p_tras_lbl_opentra")%></label>
                               <input id="txt_loadTRA" type="text" class="form-control" aria-label="" aria-describedby="inputGroup-sizing-default" value="" maxlength="4" style="width: 70px;" />
-                              <button type="button" id="btn_opentra" class="btn btn-sm btn-success "><%Response.Write(lang_configreader.GetValue("p_tras_lbl_btn_opentra"))%></button>
+                              <button type="button" id="btn_opentra" class="btn btn-sm btn-success "><%GetLbl("p_tras_lbl_btn_opentra")%></button>
                           </div>
                       </div>
                      
@@ -86,13 +86,13 @@
                 <div class="col mt-3">
                     <div class="input-group">
                       <div class="input-group-prepend">
-                        <span class="input-group-text" id="seachtradesc"><% Response.Write(lang_configreader.GetValue("p_tras_lbl_findtra")) %></span>
+                        <span class="input-group-text" id="seachtradesc"><% GetLbl("p_tras_lbl_findtra") %></span>
                       </div>
                       <input id="txt_searchtext" type="text" class="form-control" aria-label="" aria-describedby="inputGroup-sizing-default" value=" <% If show_clear_filter Then Response.Write(str_to_search)%>">
                         <%
                             If show_clear_filter Then
                         %>
-                      <button type="button"  id="clearfiltertext" class="btn btn-sm btn-info "><% Response.Write(lang_configreader.GetValue("p_tras_lbl_cleanfilter"))%></button>
+                      <button type="button"  id="clearfiltertext" class="btn btn-sm btn-info "><% GetLbl("p_tras_lbl_cleanfilter")%></button>
                         <%
                         End If
                          %>
@@ -101,10 +101,10 @@
                 <div class="col-lg  mt-2 p-2">
                     <div class="row">
                         <div class="col-lg mb-3 ">
-                            <button type="button" id="setfilter" class="btn btn-block btn-primary"> <% Response.Write(lang_configreader.GetValue("p_tras_lbl_searchtra")) %></button>
+                            <button type="button" id="setfilter" class="btn btn-block btn-primary"> <% GetLbl("p_tras_lbl_searchtra") %></button>
                         </div>
                         <div class="col-lg mb-3">
-                            <button type="button" id="createnewtra" class="btn btn-block btn-success"><% Response.Write(lang_configreader.GetValue("p_tras_lbl_newTRA")) %></button>
+                            <button type="button" id="createnewtra" class="btn btn-block btn-success"><% GetLbl("p_tras_lbl_newTRA")%></button>
                         </div>
                     </div>
                     
@@ -113,7 +113,7 @@
         </div>
         <div class="container border item-aling-center table-responsive-sm">
             <div class="container mb-3 mt-3 text-center">
-                <span class="h3"><%Response.Write(lang_configreader.GetValue("p_tras_lbl_titletable")) %></span>
+                <span class="h3"><%GetLbl("p_tras_lbl_titletable")%></span>
             </div>
             <table class="table table-hover table-bordered">
                 <%
@@ -122,12 +122,12 @@
                 <thead class="thead-light">
                     <tr>
                         <th colspan="3" scope="col" class="" style="background-color:ghostwhite">
-                            <span class="h4"><% Response.Write(lang_configreader.GetValue("p_tras_lbl_cell_deparments"))%> <%Response.Write(dep_item.cDep_Name)%></span>
+                            <span class="h4"><% GetLbl("p_tras_lbl_cell_deparments")%> <%Response.Write(dep_item.cDep_Name)%></span>
                         </th>
                     </tr>
                     <tr class="text-center">
-                        <th><% Response.Write(lang_configreader.GetValue("p_tras_lbl_cell_TRADescription"))%></th>
-                         <th colspan="2"><% Response.Write(lang_configreader.GetValue("p_tras_lbl_cell_Options"))%></th>
+                        <th><% GetLbl("p_tras_lbl_cell_TRADescription")%></th>
+                         <th colspan="2"><% GetLbl("p_tras_lbl_cell_Options")%></th>
                     </tr>
                 </thead>
                 <%
@@ -153,9 +153,9 @@
                 <tr>
                     <td><% Response.Write(tra_item.tra_Activity_Job)%></td>
                     <td class="text-center">
-                       <button type="button" class="btn btn-primary btn-sm m-1" id="showtra_<%Response.Write(Base64Con.EncodeBase64( tra_item.tra_ID))%>"><% Response.Write(lang_configreader.GetValue("p_tras_lbl_btn_open"))%></button>
-                        <button type="button" class="btn btn-primary btn-sm m-1" id="sendspoolprint_<%Response.Write(Base64Con.EncodeBase64(tra_item.tra_ID))%>" ><% Response.Write(lang_configreader.GetValue("p_tras_lbl_btn_Print"))%></button>
-                        <button type="button" class="btn btn-primary btn-sm m-1" id="clonetra_<%Response.Write(Base64Con.EncodeBase64( tra_item.tra_ID))%>"><% Response.Write(lang_configreader.GetValue("p_tras_lbl_btn_clone"))%></button>
+                       <button type="button" class="btn btn-primary btn-sm m-1" id="showtra_<%Response.Write(Base64Con.EncodeBase64( tra_item.tra_ID))%>"><% GetLbl("p_tras_lbl_btn_open")%></button>
+                        <button type="button" class="btn btn-primary btn-sm m-1" id="sendspoolprint_<%Response.Write(Base64Con.EncodeBase64(tra_item.tra_ID))%>" ><% GetLbl("p_tras_lbl_btn_Print")%></button>
+                        <button type="button" class="btn btn-primary btn-sm m-1" id="clonetra_<%Response.Write(Base64Con.EncodeBase64( tra_item.tra_ID))%>"><% GetLbl("p_tras_lbl_btn_clone")%></button>
                     </td>
                 </tr>
                 <%
@@ -164,7 +164,7 @@
             Else
                     %>
                 <tr class="text-center">
-                    <td colspan="2"><% Response.Write(lang_configreader.GetValue("p_tras_lbl_notdocfound"))%></td>
+                    <td colspan="2"><% GetLbl("p_tras_lbl_notdocfound")%></td>
                 </tr>
                     <%
                 End If

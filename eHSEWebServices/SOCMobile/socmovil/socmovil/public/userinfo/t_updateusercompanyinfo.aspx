@@ -1,8 +1,8 @@
 ﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="t_updateusercompanyinfo.aspx.vb" Inherits="socmovil.t_updateusercompanyinfo" %>
 <%
-    Dim GlobalConfigReader As New socmobile_core.com.configuration.GlobalConfReader
-    GlobalConfigReader.LoadFileSetting(HttpContext.Current.Request.PhysicalApplicationPath & System.Configuration.ConfigurationManager.AppSettings("GlobalConfigFile"))
-        
+    
+    LoadConfiguration()
+    
     Dim SQLSanitize As New eservices_core.com.database.SQLSanitizeClass
     Dim encrypt As New eservices_core.com.utilities.EncriptWrapper(System.Configuration.ConfigurationManager.AppSettings("enc-key"))
     
@@ -27,7 +27,7 @@
                     upt_user.idinfocompany = SessionUser.UserObjSession.idinfocompany 
                     upt_user.guard = guardia
                     upt_user.idCompany = Integer.Parse(str_idcompany)
-                    upt_user.idWorkUnit = Integer.Parse(GlobalConfigReader.GetValue("DefaultIDWorkUnit"))
+                    upt_user.idWorkUnit = Integer.Parse(PageGlobalConfigReader.GetValue("DefaultIDWorkUnit"))
                     upt_user.idDeparment = Integer.Parse(str_deparment)
                     upt_user.idcategory = Integer.Parse(str_category)
                     

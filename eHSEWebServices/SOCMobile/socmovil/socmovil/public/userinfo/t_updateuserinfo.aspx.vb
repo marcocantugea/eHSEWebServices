@@ -1,5 +1,5 @@
 ﻿Public Class t_updateuserinfo
-    Inherits System.Web.UI.Page
+    Inherits PageBaseController
     Implements IntUserSession
 
     Private _SessionUser As UserStateClass

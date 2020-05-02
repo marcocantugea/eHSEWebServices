@@ -61,14 +61,14 @@
     
 %>
 <div class="container text-center p-4">
-    <p class="display-4"><% Response.Write(lang_configreader.GetValue("t_createsoc_lbl_titile_thanks"))%></p>
-    <p class="display-4"><% Response.Write(lang_configreader.GetValue("t_createsoc_lbl_titile_othercard")) %></p>
+    <p class="display-4"><% GetLbl("t_createsoc_lbl_titile_thanks")%></p>
+    <p class="display-4"><% GetLbl("t_createsoc_lbl_titile_othercard")%></p>
      <div class="row">
        <div class="col text-left">
-           <button type="button" class="btn btn-success btn-lg btn-block" id="btn_yes"> <% Response.Write(lang_configreader.GetValue("lbl_yes"))%> </button>
+           <button type="button" class="btn btn-success btn-lg btn-block" id="btn_yes"> <% GetLbl("lbl_yes")%> </button>
        </div>
        <div class="col text-rigth">
-           <button type="button" class="btn btn-danger btn-lg btn-block" id="btn_no"> <% Response.Write(lang_configreader.GetValue("lbl_no")) %> </button>
+           <button type="button" class="btn btn-danger btn-lg btn-block" id="btn_no"> <% GetLbl("lbl_no") %> </button>
        </div>
    </div>
 </div>
@@ -76,10 +76,10 @@
 Else
 %>
 <div class="container text-center p-4">
-    <p class="display-4 text-danger"><% Response.Write(lang_configreader.GetValue("t_createsoc_lbl_titile_errormain"))%> </p>
-    <p class="display-4"><% Response.Write(lang_configreader.GetValue("t_createsoc_lbl_subtitile_error"))%> </p>
+    <p class="display-4 text-danger"><% GetLbl("t_createsoc_lbl_titile_errormain")%> </p>
+    <p class="display-4"><% GetLbl("t_createsoc_lbl_subtitile_error")%> </p>
 
-    <button type="button" class="btn btn-primary btn-lg btn-block" id="btn_no"><% Response.Write(lang_configreader.GetValue("t_createsoc_lbl_buttonback"))%>  </button>
+    <button type="button" class="btn btn-primary btn-lg btn-block" id="btn_no"><% GetLbl("t_createsoc_lbl_buttonback")%>  </button>
     <input type="hidden" id="error" value="<% Response.Write(error_message)%>"
    </div>
 </div>

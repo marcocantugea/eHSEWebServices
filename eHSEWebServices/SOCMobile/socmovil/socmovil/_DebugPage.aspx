@@ -52,6 +52,10 @@
        <h1>Debug Page</h1>
 
     </div>
+        <asp:Button ID="Button15" runat="server" Text="Test unit of work" />
+        <br />
+        <br />
+        <br />
         <asp:Button ID="Button1" runat="server" Text="Button" />
         <asp:Button ID="Button2" runat="server" Text="Button" />
         <asp:Button ID="Button3" runat="server" Text="Button" />

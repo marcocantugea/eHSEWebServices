@@ -1,5 +1,5 @@
 ﻿Public Class t_saveuserreg
-    Inherits System.Web.UI.Page
+    Inherits PageBaseController
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 

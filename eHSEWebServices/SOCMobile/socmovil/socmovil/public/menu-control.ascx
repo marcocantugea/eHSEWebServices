@@ -8,11 +8,11 @@
     'Carga menu en un objeto diccionario.
     Dim viewclass As New socmovil.view_classes
     Dim menus As New Dictionary(Of String, String)
-    viewclass.ParseMenusItems(lang_configreader.GetValue("menus"), menus)
+    viewclass.ParseMenusItems(Pagelang_configreader.GetValue("menus"), menus)
     
     'Carga menu de usuario
     Dim usr_menus As New Dictionary(Of String, String)
-    viewclass.ParseMenusItems(lang_configreader.GetValue("menus_user"), usr_menus)
+    viewclass.ParseMenusItems(Pagelang_configreader.GetValue("menus_user"), usr_menus)
     
     ' revisa la session del usuario
     
@@ -53,11 +53,11 @@
 <%--Menu de inicio--%>
          <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-         <img src="../images/log2-icon-png.png" style="vertical-align: middle; height:15px; width:15px;"  /> <%Response.Write(lang_configreader.GetValue("lbl_myprofile"))%>
+         <img src="../images/log2-icon-png.png" style="vertical-align: middle; height:15px; width:15px;"  /> <%Response.Write(Pagelang_configreader.GetValue("lbl_myprofile"))%>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
         <% If Not userlogged Then%>
-          <a class="dropdown-item" href="index.aspx?p=p_login"><%Response.Write(lang_configreader.GetValue("lbl_login"))%></a>
+          <a class="dropdown-item" href="index.aspx?p=p_login"><%Response.Write(Pagelang_configreader.GetValue("lbl_login"))%></a>
          <%
          Else
              For Each Menu As KeyValuePair(Of String, String) In usr_menus
@@ -84,12 +84,12 @@
              %>--%>
             <hr />
             <%--Menu comun de usuarios con privilegios--%>
-            <% If userlogged And user_loged.idprofile <> Integer.Parse(GlobalConfigReader.GetValue("publicprofileid")) Then%>
+            <% If userlogged And user_loged.idprofile <> Integer.Parse(PageGlobalConfigReader.GetValue("publicprofileid")) Then%>
             <a class="dropdown-item" href="index.aspx?p=signatures/p_usersignature"><%GetLbl("menu-control_lbl_electronicsignature") %></a>
            
              <hr />
             <% End If%>
-            <a class="dropdown-item" href="t_logoff.aspx"><%Response.Write(lang_configreader.GetValue("lbl_logout"))%></a>
+            <a class="dropdown-item" href="t_logoff.aspx"><%Response.Write(Pagelang_configreader.GetValue("lbl_logout"))%></a>
             <%
         End If
             %>

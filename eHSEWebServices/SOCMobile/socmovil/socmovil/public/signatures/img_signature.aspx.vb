@@ -1,7 +1,7 @@
 ﻿Imports System.Drawing
 Public Class img_signature
-    Inherits System.Web.UI.Page
-    Implements IntUserSession, IntPageControllerClass
+    Inherits PageBaseController
+    Implements IntUserSession
 
     Private _SessionUser As UserStateClass
     Private pagecontrollerclass As New PageControllerClass
@@ -23,34 +23,7 @@ Public Class img_signature
 
     End Sub
 
-    Public Sub GetLbl(value As String) Implements IntPageControllerClass.GetLbl
-        Response.Write(pagecontrollerclass.lang_configreader.Getlbl(value))
-    End Sub
-
-    Public ReadOnly Property GlobalConfigReader As socmobile_core.com.configuration.GlobalConfReader Implements IntPageControllerClass.GlobalConfigReader
-        Get
-            Return pagecontrollerclass.GlobalConfigReader.Configuration
-        End Get
-    End Property
-
-    Public ReadOnly Property lang_configreader As socmobile_core.com.configuration.GlobalConfReader Implements IntPageControllerClass.lang_configreader
-        Get
-            Return pagecontrollerclass.lang_configreader.Configuration
-        End Get
-    End Property
-
-    Public Sub LoadConfiguration() Implements IntPageControllerClass.LoadConfiguration
-        pagecontrollerclass.LoadConfiguration(HttpContext.Current.Request.PhysicalApplicationPath & System.Configuration.ConfigurationManager.AppSettings("GlobalConfigFile"))
-    End Sub
-
-    Public Sub LoadLanguage() Implements IntPageControllerClass.LoadLanguage
-        pagecontrollerclass.LoadLangConfig(CType(Me.Session("lang_obj"), socmobile_core.com.configuration.GlobalConfReader))
-    End Sub
-
-    Public Sub LoadLanguage(session As HttpSessionState) Implements IntPageControllerClass.LoadLanguage
-        pagecontrollerclass.LoadLangConfig(CType(session("lang_obj"), socmobile_core.com.configuration.GlobalConfReader))
-    End Sub
-
+    
     Public Sub LoadUserSession() Implements IntUserSession.LoadUserSession
         _SessionUser = New socmovil.UserStateClass(Me.Session, Me.Response)
     End Sub

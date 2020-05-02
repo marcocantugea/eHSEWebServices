@@ -1,8 +1,7 @@
 ﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="t_updateuserinfo.aspx.vb" Inherits="socmovil.t_updateuserinfo" %>
 <% 
     
-    Dim GlobalConfigReader As New socmobile_core.com.configuration.GlobalConfReader
-    GlobalConfigReader.LoadFileSetting(HttpContext.Current.Request.PhysicalApplicationPath & System.Configuration.ConfigurationManager.AppSettings("GlobalConfigFile"))
+    LoadConfiguration()
     
     Dim SQLSanitize As New eservices_core.com.database.SQLSanitizeClass
     Dim encrypt As New eservices_core.com.utilities.EncriptWrapper(System.Configuration.ConfigurationManager.AppSettings("enc-key"))

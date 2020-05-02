@@ -31,23 +31,23 @@
 <div class="container-fliud text-center">
     <div class="container mt-3 mb-3">
         <span class="display-4 ">
-            <%Response.Write(lang_configreader.GetValue("p_messagesavereg_lblmain_title")) %>
+            <%Response.Write(Pagelang_configreader.GetValue("p_messagesavereg_lblmain_title"))%>
         </span>
     </div>
     <div class="container " id="message">
         <span class="h4">
-            <%Response.Write(lang_configreader.GetValue(lbl))%>
+            <%Response.Write(Pagelang_configreader.GetValue(lbl))%>
         </span>
     </div>
     <div class="container mt-5 mb-5">
         <div class="row">
             <div class="col">
                 <% If error_msg Then%>
-                 <button type="button" class="btn btn-danger btn-block" id="btn_backtoregister" ><%Response.Write(lang_configreader.GetValue("p_messagesavereg_lblmain_btnback")) %></button>
+                 <button type="button" class="btn btn-danger btn-block" id="btn_backtoregister" ><%Response.Write(Pagelang_configreader.GetValue("p_messagesavereg_lblmain_btnback"))%></button>
                 <% End If%>
             </div>
             <div class="col">
-                <button type="button"  class="btn btn-primary btn-block" id="btn_confirmar"><%Response.Write(lang_configreader.GetValue("lbl_ok")) %></button>
+                <button type="button"  class="btn btn-primary btn-block" id="btn_confirmar"><%Response.Write(Pagelang_configreader.GetValue("lbl_ok"))%></button>
             </div>
             <div class="col">
 

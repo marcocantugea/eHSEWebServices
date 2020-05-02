@@ -34,7 +34,7 @@
             Else
                 Response.Redirect("../index.aspx?p=tra/p_tras")
             End If
-            
+            'Throw
         End Try
     End If
     
@@ -77,6 +77,7 @@
             End If
             
         Catch ex As Exception
+            'Throw 
             Response.Redirect("../index.aspx?p=tra/p_tras")
         End Try
     End If

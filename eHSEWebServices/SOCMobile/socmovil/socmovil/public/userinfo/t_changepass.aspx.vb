@@ -1,5 +1,5 @@
 ﻿Public Class t_changepass
-    Inherits System.Web.UI.Page
+    Inherits PageBaseController
     Implements IntUserSession
 
     Private _SessionUser As UserStateClass

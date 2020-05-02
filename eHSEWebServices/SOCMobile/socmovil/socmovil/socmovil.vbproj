@@ -180,6 +180,9 @@
     <Compile Include="classes\LanguageClass.vb">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="classes\PageBaseController.vb">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="classes\PageControllerClass.vb">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -377,7 +380,7 @@
     </Compile>
     <Compile Include="public\tra\TRAFormatWord.aspx.vb">
       <DependentUpon>TRAFormatWord.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="public\tra\TRAFormat.aspx.designer.vb">
       <DependentUpon>TRAFormat.aspx</DependentUpon>
@@ -503,7 +506,7 @@
     </Compile>
     <Compile Include="public\usrregistration\t_confirmtrans.aspx.vb">
       <DependentUpon>t_confirmtrans.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="public\usrregistration\t_saveuserreg.aspx.designer.vb">
       <DependentUpon>t_saveuserreg.aspx</DependentUpon>
