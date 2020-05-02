@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8637C518-B23C-48DF-9D0F-FFE6E462C980}</ProjectGuid>
+    <ProjectGuid>{5B7D13C3-5507-4196-ADE9-E99960923D7D}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>eservices_core</RootNamespace>
-    <AssemblyName>eservices_core</AssemblyName>
+    <RootNamespace>eservices_datamanager</RootNamespace>
+    <AssemblyName>eservices_datamanager</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
@@ -19,7 +19,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>eservices_core.xml</DocumentationFile>
+    <DocumentationFile>eservices_datamanager.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -28,7 +28,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>eservices_core.xml</DocumentationFile>
+    <DocumentationFile>eservices_datamanager.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
@@ -44,10 +44,6 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MySql.Data, Version=8.0.19.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\SOCMobile\external libraries\mysql\v4.0\MySql.Data.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -67,47 +63,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="com\ado\ADOCategory.vb" />
-    <Compile Include="com\ado\ADOCompany.vb" />
-    <Compile Include="com\ado\ADODeparments.vb" />
-    <Compile Include="com\ado\ADODocument.vb" />
-    <Compile Include="com\ado\ADODocumentStatus.vb" />
-    <Compile Include="com\ado\ADOeSignatures.vb" />
-    <Compile Include="com\ado\ADOModulesMenus.vb" />
-    <Compile Include="com\ado\ADOProfile.vb" />
-    <Compile Include="com\ado\ADOUser.vb" />
-    <Compile Include="com\ado\ADOUserUtilities.vb" />
-    <Compile Include="com\ado\ADOWorkUnit.vb" />
-    <Compile Include="com\configuration\AppConfigFileSettings.vb" />
-    <Compile Include="com\configuration\GlobalConfReader.vb" />
-    <Compile Include="com\database\OleConnectionProperties.vb" />
-    <Compile Include="com\database\DatabaseInterface.vb" />
-    <Compile Include="com\database\MySQLConnectionObj.vb" />
-    <Compile Include="com\database\MySQLConnectionProperties.vb" />
-    <Compile Include="com\database\ODBCConnectionObj.vb" />
-    <Compile Include="com\database\ODBCConnectionProperties.vb" />
-    <Compile Include="com\database\OleDBConnectionObj.vb" />
-    <Compile Include="com\database\QueryBuilder.vb" />
-    <Compile Include="com\database\SQLSanitizeClass.vb" />
-    <Compile Include="com\interfaces\IADORepository.vb" />
-    <Compile Include="com\objects\CategoryObj.vb" />
-    <Compile Include="com\objects\DoclumentObj.vb" />
-    <Compile Include="com\objects\DocumentPendingForApprovalObj.vb" />
-    <Compile Include="com\objects\DocumentStatusObj.vb" />
-    <Compile Include="com\objects\eSignatureObj.vb" />
-    <Compile Include="com\objects\InfoUserObj.vb" />
-    <Compile Include="com\objects\CompanyObj.vb" />
-    <Compile Include="com\objects\DeparmentsObj.vb" />
-    <Compile Include="com\objects\MenuObj.vb" />
-    <Compile Include="com\objects\ModuleObj.vb" />
-    <Compile Include="com\objects\ProfileObj.vb" />
-    <Compile Include="com\objects\UserInfoCompanyObj.vb" />
-    <Compile Include="com\objects\UserObj.vb" />
-    <Compile Include="com\objects\WorkUnitObj.vb" />
-    <Compile Include="com\process\DocumentForApprovalProcess.vb" />
-    <Compile Include="com\utilities\Base64Conversions.vb" />
-    <Compile Include="com\utilities\EncriptWrapper.vb" />
-    <Compile Include="com\utilities\PINGenerator.vb" />
+    <Compile Include="Interfaces\IUnitWork.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -123,6 +79,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="UnitOfWork.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -144,7 +101,18 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="com\files\" />
+    <ProjectReference Include="..\..\..\SOCMobile\socmobile_core\socmobile_core\socmobile_core.vbproj">
+      <Project>{6a959de1-23e9-4b71-a240-a74b1dd46be9}</Project>
+      <Name>socmobile_core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\eservices_core\eservices_core\eservices_core.vbproj">
+      <Project>{8637c518-b23c-48df-9d0f-ffe6e462c980}</Project>
+      <Name>eservices_core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\etras_core\etra\etra.vbproj">
+      <Project>{0b393039-3aa6-4b37-a16c-111d061bd6c7}</Project>
+      <Name>etra</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

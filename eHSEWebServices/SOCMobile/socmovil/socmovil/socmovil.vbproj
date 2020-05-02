@@ -180,7 +180,9 @@
     <Compile Include="classes\LanguageClass.vb">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="classes\PageControllerClass.vb" />
+    <Compile Include="classes\PageControllerClass.vb">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="classes\UserStateClass.vb" />
     <Compile Include="classes\view-classes.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -565,6 +567,10 @@
     <ProjectReference Include="..\..\..\eservices\eservices-sol\eservices_core\eservices_core\eservices_core.vbproj">
       <Project>{8637c518-b23c-48df-9d0f-ffe6e462c980}</Project>
       <Name>eservices_core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\eservices\eservices-sol\eservices_datamanager\eservices_datamanager.vbproj">
+      <Project>{5b7d13c3-5507-4196-ade9-e99960923d7d}</Project>
+      <Name>eservices_datamanager</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\eservices\eservices-sol\etras_core\etra\etra.vbproj">
       <Project>{0b393039-3aa6-4b37-a16c-111d061bd6c7}</Project>

@@ -1,9 +1,15 @@
 ﻿Imports eservices_core.com.objects
+Imports eservices_core.com.interface
+Imports eservices_core.com.database
 
 Namespace com.ado
 
     Public NotInheritable Class ADOCategory
         Inherits com.database.mysql.MySQLConnectionObj
+        Implements IADORepository(Of CategoryObj)
+
+        Private table As String = "tbl_categoy"
+        Private Database As String = "DB-EWEBSERVICES"
 
         Public Sub GetCategories(list_categories As List(Of CategoryObj))
             Dim category As New CategoryObj
@@ -74,5 +80,82 @@ Namespace com.ado
             End Try
         End Sub
 
+        Public Sub Add(item As CategoryObj) Implements IADORepository(Of CategoryObj).Add
+            If IsNothing(item) Then
+                Throw New NullReferenceException
+            End If
+
+            Try
+                OpenDB(Database)
+                Dim qbuilder As New QueryBuilder(Of CategoryObj)
+                qbuilder.TypeQuery = com.database.TypeQuery.Insert
+                qbuilder.Entity = item
+                qbuilder.BuildInsert(table)
+
+                SetCommand(qbuilder.Query)
+                connection.Command.ExecuteNonQuery()
+            Catch ex As Exception
+                Throw
+            Finally
+                CloseDB()
+            End Try
+
+        End Sub
+
+        Public Sub Delete(item As CategoryObj) Implements IADORepository(Of CategoryObj).Delete
+            If IsNothing(item) Then
+                Throw New NullReferenceException
+            End If
+
+            Try
+                OpenDB(Database)
+                SetCommand("delete * from " & table & " where idcategory=" & item.idcategory)
+                connection.Command.ExecuteNonQuery()
+            Catch ex As Exception
+                Throw
+            Finally
+                CloseDB()
+            End Try
+        End Sub
+
+        Public Function Exist(id As Integer) As Boolean Implements IADORepository(Of CategoryObj).Exist
+            Dim existrecord As Boolean = False
+            Try
+                OpenDB(Database)
+                SetCommand("select count(1) as ExistRecord from " & table & " where idcategory=" & id.ToString)
+                SetDataAdapter()
+                Dim dts As New DataSet
+                connection.Adap.Fill(dts)
+                If dts.Tables.Count > 0 Then
+                    If dts.Tables(0).Rows.Count > 0 Then
+                        For Each row As DataRow In dts.Tables(0).Rows
+                            If Not IsDBNull(row("ExistRecord")) Then
+                                If Integer.Parse(row("ExistRecord")) > 0 Then
+                                    existrecord = True
+                                End If
+                            End If
+                        Next
+                    End If
+                End If
+            Catch ex As Exception
+                Throw
+            Finally
+                CloseDB()
+            End Try
+
+            Return existrecord
+        End Function
+
+        Public Function Exist(query As Func(Of CategoryObj, Boolean)) As Boolean Implements IADORepository(Of CategoryObj).Exist
+            Throw New NotImplementedException
+        End Function
+
+        Public Function FindBy(query As Func(Of CategoryObj, Boolean)) As ICollection(Of CategoryObj) Implements IADORepository(Of CategoryObj).FindBy
+            Throw New NotImplementedException
+        End Function
+
+        Public Function GetById(id As Integer) As CategoryObj Implements IADORepository(Of CategoryObj).GetById
+            Throw New NotImplementedException
+        End Function
     End Class
 End Namespace

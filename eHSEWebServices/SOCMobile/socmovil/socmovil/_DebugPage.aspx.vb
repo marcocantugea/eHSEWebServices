@@ -5,6 +5,8 @@ Imports System.Runtime.Remoting
 Public Class _DebugPage
     Inherits System.Web.UI.Page
 
+    Dim UnitOfWork As New eservices_datamanager.UnitOfWork
+
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Dim SOCTestObj As New objects.SOCCardObj
         SOCTestObj.Nombre = "Marco CAntu Gea"
@@ -19,9 +21,10 @@ Public Class _DebugPage
 
 
     Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim ADOUsuarios As New ado.ole.ADOUsuarios
         Dim list_usuarios As New Dictionary(Of String, socmobile_core.com.objects.UsuariosObj)
-        ADOUsuarios.GetUserNames(list_usuarios)
+        UnitOfWork.SOCCardUsuarios.GetUserNames(list_usuarios)
+
+
 
         For Each item As KeyValuePair(Of String, socmobile_core.com.objects.UsuariosObj) In list_usuarios
             Response.Write(item.Key.ToString)
@@ -45,8 +48,7 @@ Public Class _DebugPage
         new_Tra.traTasks = list_task
 
 
-        Dim ADOTRA As New ADOTRA
-        ADOTRA.SaveTRA(new_Tra)
+        UnitOfWork.TRA.SaveTRA(new_Tra)
 
     End Sub
 
@@ -61,9 +63,9 @@ Public Class _DebugPage
         deparment.cDep_Name = "Electrical"
 
         Dim listoftra As New List(Of TRAObj)
-        Dim ADOTRA As New ADOTRA
 
-        ADOTRA.GetTRAsByDeparment(tra_fields, deparment, listoftra)
+
+        UnitOfWork.TRA.GetTRAsByDeparment(tra_fields, deparment, listoftra)
 
         Response.Write(listoftra.Count)
 
@@ -75,8 +77,8 @@ Public Class _DebugPage
 
     Protected Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         Dim list_Task As New List(Of etra.com.objects.TRATaskObj)
-        Dim ADOTRA As New ADOTRA
-        ADOTRA.GetTRAActivities(1, list_Task)
+
+        UnitOfWork.TRA.GetTRAActivities(1, list_Task)
         Dim encript As New eservices_core.com.utilities.EncriptWrapper(System.Configuration.ConfigurationSettings.AppSettings("enc-key"))
         For Each item As etra.com.objects.TRATaskObj In list_Task
             Dim value As String = encript.EncryptData(item.traR_TaskSteps)
@@ -89,11 +91,10 @@ Public Class _DebugPage
         'Dim ADOUser As New eservices_core.com.ado.ADOUser
         'ADOUser.RegisterUser(New eservices_core.com.objects.UserObj)
 
-        Dim adoUserutilities As New eservices_core.com.ado.ADOUserUtilities
 
         Dim newlist As New Dictionary(Of String, String)
 
-        adoUserutilities.GetEmployeeNumberList(newlist)
+        UnitOfWork.UserUtilities.GetEmployeeNumberList(newlist)
 
         For Each item As KeyValuePair(Of String, String) In newlist
             Response.Write(item.Key & " - " & item.Value & "<br/>")
@@ -103,21 +104,20 @@ Public Class _DebugPage
 
     Protected Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
         Dim encript As New eservices_core.com.utilities.EncriptWrapper(System.Configuration.ConfigurationSettings.AppSettings("enc-key"))
-        Dim adouser As New eservices_core.com.ado.ADOUser
 
         Dim userobj As New eservices_core.com.objects.UserObj
         userobj.user_login = "10009825"
         userobj.user_pwd = encript.EncryptData("123sdfsdfsf")
 
-        adouser.LoginUser(userobj)
+        UnitOfWork.User.LoginUser(userobj)
 
     End Sub
 
     Protected Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
-        Dim adocompanies As New eservices_core.com.ado.ADOCompany
+
 
         Dim list_companies As New List(Of eservices_core.com.objects.CompanyObj)
-        adocompanies.GetAllCompanies(list_companies)
+        UnitOfWork.Company.GetAllCompanies(list_companies)
 
         Response.Write(list_companies.ToString())
         For Each company As eservices_core.com.objects.CompanyObj In list_companies
@@ -147,7 +147,7 @@ Public Class _DebugPage
     End Sub
 
     Protected Sub Button10_Click(sender As Object, e As EventArgs) Handles Button10.Click
-        Dim ADO As New etra.com.ado.ole.ADOTRA
+
         Dim tra_fields As New etra.com.objects.TRAObj
         tra_fields.tra_ID = -7
         tra_fields.tra_Activity_Job = "-7"
@@ -156,7 +156,7 @@ Public Class _DebugPage
 
         Dim listoftra As New List(Of etra.com.objects.TRAObj)
         Dim listofdocuments As New List(Of eservices_core.com.objects.DocumentObj)
-        ADO.GetTRABy(tra_fields, listoftra, "tra_ID>0")
+        UnitOfWork.TRA.GetTRABy(tra_fields, listoftra, "tra_ID>0")
 
         For Each item As etra.com.objects.TRAObj In listoftra
             'Response.Write(item.ToString + "<br/>")
@@ -172,9 +172,8 @@ Public Class _DebugPage
         Dim profile As New eservices_core.com.objects.ProfileObj
         profile.idprofile = 1
 
-        Dim ADOModulesMenu As New eservices_core.com.ado.ADOModulesMenus
 
-        ADOModulesMenu.GetModulesMenusByProfile(profile)
+        UnitOfWork.ModulesMenus.GetModulesMenusByProfile(profile)
 
         For Each item As KeyValuePair(Of Integer, eservices_core.com.objects.ModuleObj) In profile.Modules
             Response.Write(item.Value.title & "---><br />")

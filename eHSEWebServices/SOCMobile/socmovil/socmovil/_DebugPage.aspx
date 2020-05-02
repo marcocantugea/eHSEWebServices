@@ -1,5 +1,8 @@
 ﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="_DebugPage.aspx.vb" Inherits="socmovil._DebugPage" %>
 <%
+    
+    Dim UnitOfWork As New eservices_datamanager.UnitOfWork
+    UnitOfWork.TRA.GetTRAbyPIN(New etra.com.objects.TRAObj())
     'Dim pingenerator As New eservices_core.com.utilities.PINGenerator
     
     'Response.Write(pingenerator.GeneratePIN4digit)
@@ -34,6 +37,7 @@
     'For Each item As etra.com.objects.TRAObj In listoftra
     '    Response.Write(item.ToString + "<br/>")
     'Next
+   
    
 %>
 <!DOCTYPE html>
