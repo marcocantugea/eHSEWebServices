@@ -27,8 +27,7 @@
                     new_userobj.idprofile = SessionUser.UserObjSession.idprofile
 
                     Try
-                        Dim ADOUser As New eservices_core.com.ado.ADOUser
-                        ADOUser.UpdateUserPass(new_userobj)
+                        UnitOfWork.User.UpdateUserPass(new_userobj)
                     Catch ex As Exception
                         Response.Redirect("../index.aspx?p=userinfo/p_useraccount&pe=true")
                     End Try

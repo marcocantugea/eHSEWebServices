@@ -10,7 +10,7 @@
     If Not IsNothing(Request.QueryString("d")) Then
         'decodificar el id en base64
         Dim idDocument As Integer
-        Dim ADODocument As New eservices_core.com.ado.ADODocument()
+        
         Dim document_loaded As Object
         Try
             idDocument = Integer.Parse(base64.DecodeBase64(Request.QueryString("d")))
@@ -19,7 +19,7 @@
         End Try
         'cargar el objeto del documento
         If idDocument > 0 Then
-            document_loaded = ADODocument.GetDocumentByID(idDocument, SessionUser.UserObjSession)
+            document_loaded = UnitOfWork.Documents.GetDocumentByID(idDocument, SessionUser.UserObjSession)
             Dim doc As eservices_core.com.objects.DocumentObj = CType(document_loaded, eservices_core.com.objects.DocumentObj)
             
             'ver que tipo de documento es 

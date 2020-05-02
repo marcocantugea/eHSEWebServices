@@ -31,10 +31,9 @@
                     Response.Redirect("../index.aspx?p=signatures/p_usersignature&e=true")
                 End Try
               
-                Dim ADOSignature As New eservices_core.com.ado.ADOeSignatures
-                Dim ADOUser As New eservices_core.com.ado.ADOUser
+                
                 Try
-                    ADOSignature.RegisterSignature(new_signature)
+                    UnitOfWork.Signatures.RegisterSignature(new_signature)
                     
                     'actualiza la informacion en session
                     SessionUser.UserObjSession.idsignature = new_signature.idsignature
@@ -50,7 +49,7 @@
                     upt_userlogin.active = SessionUser.UserObjSession.active
                     upt_userlogin.AgreeSignatureTerms = SessionUser.UserObjSession.AgreeSignatureTerms
                     
-                    ADOUser.UpdateUserLogin(upt_userlogin)
+                    UnitOfWork.User.UpdateUserLogin(upt_userlogin)
                     
                 Catch ex As Exception
                     Response.Redirect("../index.aspx?p=signatures/p_usersignature&e=true")

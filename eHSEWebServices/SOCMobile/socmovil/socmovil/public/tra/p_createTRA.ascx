@@ -7,12 +7,12 @@
     LoadLanguage()
     
     
-    Dim ADOTRA As New etra.com.ado.ole.ADOTRA
+    
     Dim PINGenerator As New eservices_core.com.utilities.PINGenerator
     Dim showloadeddata As Boolean = False
     
     Dim list_department As New List(Of etra.com.objects.TRADeparment)
-    ADOTRA.GetDeparmentsName(list_department)
+    UnitOfWork.TRA.GetDeparmentsName(list_department)
     
     
     'utilidad para convertir string a base64
@@ -49,7 +49,7 @@
         
         Dim gen_pin As Boolean = True
         While gen_pin
-            If ADOTRA.DuplicatePIN(pin_save) Then
+            If UnitOfWork.TRA.DuplicatePIN(pin_save) Then
                 pin_save = Integer.Parse(PINGenerator.GeneratePIN4digit)
             Else
                 gen_pin = False

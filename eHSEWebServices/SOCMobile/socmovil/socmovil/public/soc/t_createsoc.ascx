@@ -19,8 +19,8 @@
         newsoccard.SOC_Computadora = Request.ServerVariables("REMOTE_ADDR")
         
         Try
-            Dim ADOSOCCard As New socmobile_core.com.ado.ole.ADOSOCCard
-            ADOSOCCard.SaveSOCCard(newsoccard)
+            
+            UnitOfWork.SOCCard.SaveSOCCard(newsoccard)
             showsuccess_msg = True
             
             'agrega la unfo del usuario si esta en session
@@ -29,8 +29,8 @@
                 newsoccard.setDocumentDate(Date.Now)
                 newsoccard.setCreatedByUserObj(user_logged)
                 
-                Dim ADODocument As New eservices_core.com.ado.ADODocument
-                ADODocument.AddDocument(newsoccard)
+                
+                UnitOfWork.Documents.AddDocument(newsoccard)
                 
             End If
             

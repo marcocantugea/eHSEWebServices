@@ -3,8 +3,8 @@
     LoadConfiguration()
     LoadLanguage()
     
-    Dim ADODocuments As New eservices_core.com.ado.ADODocument
-    Dim list As SortedList(Of Integer, eservices_core.com.objects.DocumentObj) = ADODocuments.GetDocuemntsByUser(SessionUser.UserObjSession, "TRA")
+    
+    Dim list As SortedList(Of Integer, eservices_core.com.objects.DocumentObj) = UnitOfWork.Documents.GetDocuemntsByUser(SessionUser.UserObjSession, "TRA")
     Dim base64code As New eservices_core.com.utilities.Base64Conversions
     Dim currentpage As String = "../index.aspx?p=tra%2fp_mytras"
     Dim show_duplicateapproval As Boolean = False

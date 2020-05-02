@@ -4,12 +4,12 @@
     LoadLanguage()
     Dim Base64 As New eservices_core.com.utilities.Base64Conversions
     
-    Dim ADODocuments As New eservices_core.com.ado.ADODocument
+    
     
     Dim listofdocuments As Dictionary(Of Integer, Object)
     Dim listofdeparments As Integer() = SessionUser.UserObjSession.ProfileObj.AccessDeparments.ToArray
     
-    listofdocuments = ADODocuments.GetDocumentPendingForSignature(listofdeparments)
+    listofdocuments = UnitOfWork.Documents.GetDocumentPendingForSignature(listofdeparments)
 %>
 <div class="container text-center">
     <div class="mt-3 mb-3">

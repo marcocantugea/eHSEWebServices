@@ -11,9 +11,9 @@
     
     
     'Obtiene el nombre de todos los empleados registrados.
-    Dim ADOUsuarios As New socmobile_core.com.ado.ole.ADOUsuarios
+    
     Dim list_nombres As New Dictionary(Of String, socmobile_core.com.objects.UsuariosObj)
-    ADOUsuarios.GetUserNames(list_nombres)
+    UnitOfWork.SOCCardUsuarios.GetUserNames(list_nombres)
     Dim capt_soc As New socmobile_core.com.objects.SOCCardObj
     
     'modificacion para obtener el nombre si el usuario esta en session

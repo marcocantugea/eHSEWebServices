@@ -39,8 +39,8 @@
                 infouser.name_emerg_contanct = emergency_contact_name
                 
                 Try
-                    Dim ADOUser As New eservices_core.com.ado.ADOUser
-                    ADOUser.UpdateUserInfo(infouser)
+                    
+                    UnitOfWork.User.UpdateUserInfo(infouser)
                     'actualiza session
                     SessionUser.RefreshUserSession()
                     

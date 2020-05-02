@@ -13,15 +13,12 @@
     Dim list_workunits As New List(Of eservices_core.com.objects.WorkUnitObj)
     Dim list_deparment As New List(Of eservices_core.com.objects.DeparmentsObj)
     Dim list_categories As New List(Of eservices_core.com.objects.CategoryObj)
-    Dim ADOCompany As New eservices_core.com.ado.ADOCompany
-    Dim ADOWorkunit As New eservices_core.com.ado.ADOWorkUnit
-    Dim ADODeparments As New eservices_core.com.ado.ADODeparments
-    Dim ADOCategory As New eservices_core.com.ado.ADOCategory
+
     
-    ADOCompany.GetAllCompanies(list_companies)
-    ADOWorkunit.GetWorkUnits(list_workunits)
-    ADODeparments.GetDeparments(list_deparment)
-    ADOCategory.GetCategories(list_categories)
+    UnitOfWork.Company.GetAllCompanies(list_companies)
+    UnitOfWork.WorkUnit.GetWorkUnits(list_workunits)
+    UnitOfWork.Deparments.GetDeparments(list_deparment)
+    UnitOfWork.Category.GetCategories(list_categories)
 
     Dim viewclass As New socmovil.view_classes()
     Dim enc_transaction_num As String = viewclass.MakeTransaction

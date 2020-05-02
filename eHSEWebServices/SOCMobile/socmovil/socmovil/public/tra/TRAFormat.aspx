@@ -4,7 +4,7 @@
     'utilidad para convertir string a base64
     Dim Base64Con As New eservices_core.com.utilities.Base64Conversions
     Dim tra_found As New etra.com.objects.TRAObj
-    Dim ADOTRA As New etra.com.ado.ole.ADOTRA
+    
     Dim loadfromsession As Boolean = False
     Dim show_As_word As Boolean = False
     Dim printfunction As Boolean = False
@@ -20,7 +20,7 @@
                 'si es entero carga el tra solicitado
                 tra_found.tra_ID = int_tra_id
                 
-                ADOTRA.GetTRAbyID(tra_found)
+                UnitOfWork.TRA.GetTRAbyID(tra_found)
             Catch ex As Exception
                 'Throw
                 Response.Redirect("../index.aspx")
@@ -228,7 +228,7 @@
                                 list_task = tra_found.traTasks
                             End If
                         Else
-                            ADOTRA.GetTRAActivities(tra_found.tra_ID, list_task)
+                            UnitOfWork.TRA.GetTRAActivities(tra_found.tra_ID, list_task)
                         End If
                        
                         

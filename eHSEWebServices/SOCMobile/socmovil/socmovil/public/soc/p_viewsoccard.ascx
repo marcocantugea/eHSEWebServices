@@ -10,11 +10,11 @@
     Dim capt_soc As New socmobile_core.com.objects.SOCCardObj
     
     If Not IsNothing(Request.QueryString("soc")) Then
-        Dim ADOSOCCard As New socmobile_core.com.ado.ole.ADOSOCCard
+       
         Dim idsoc As String = Base64Encoder.DecodeBase64(Request.QueryString("soc"))
         If IsNumeric(idsoc) Then
             capt_soc.id = Integer.Parse(idsoc)
-            ADOSOCCard.GetSocCardByID(capt_soc)
+            UnitOfWork.SOCCard.GetSocCardByID(capt_soc)
         End If
     Else
         Response.Redirect("index.aspx")

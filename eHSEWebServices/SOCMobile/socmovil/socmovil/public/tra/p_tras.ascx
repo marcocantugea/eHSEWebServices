@@ -11,14 +11,14 @@
     Dim Base64Con As New eservices_core.com.utilities.Base64Conversions
     
     'Obtiene los departamentos
-    Dim ADOTRAS As New etra.com.ado.ole.ADOTRA
+  
     
     Dim list_department As New List(Of etra.com.objects.TRADeparment)
     Dim list_department_show As New List(Of etra.com.objects.TRADeparment)
     Dim dept_name_sel As String
     Dim show_clear_filter As Boolean = False
     
-    ADOTRAS.GetDeparmentsName(list_department)
+    UnitOfWork.TRA.GetDeparmentsName(list_department)
     
     If Not IsNothing(Request.QueryString("dep")) Then
         Dim dept_sel As New etra.com.objects.TRADeparment
@@ -141,9 +141,9 @@
                     
                     If show_clear_filter Then
                         Dim query_search As String = "tra_Activity_job LIKE ""%" & SQLSanitize.SanitizeSTR(str_to_search) & "%"";"
-                        ADOTRAS.GetTRAsByDeparment(tra_fields, dep_item, listoftra, query_search)
+                        UnitOfWork.TRA.GetTRAsByDeparment(tra_fields, dep_item, listoftra, query_search)
                     Else
-                        ADOTRAS.GetTRAsByDeparment(tra_fields, dep_item, listoftra)
+                        UnitOfWork.TRA.GetTRAsByDeparment(tra_fields, dep_item, listoftra)
                     End If
                     
                     

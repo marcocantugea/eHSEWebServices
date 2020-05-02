@@ -6,7 +6,7 @@
     
     Dim Base64encoder As New eservices_core.com.utilities.Base64Conversions
     Dim listSOCCards As New List(Of socmobile_core.com.objects.SOCCardObj)
-    Dim ADOSOCCARD As New socmobile_core.com.ado.ole.ADOSOCCard
+    
     Dim Fields As New socmobile_core.com.objects.SOCCardObj
     Fields.id = -7
     Fields.Fecha = New DateTime(1, 1, 1)
@@ -21,7 +21,7 @@
     Dim calculateLastDayOfTheMonth = DateTime.Now
     Dim lastDayOfTheMonth = New DateTime(calculateLastDayOfTheMonth.Year, calculateLastDayOfTheMonth.Month, DateTime.DaysInMonth(calculateLastDayOfTheMonth.Year, calculateLastDayOfTheMonth.Month))
     
-    ADOSOCCARD.GetSocCardByUserName(SessionUser.UserObjSession.InfoUserObj, listSOCCards, firstDayOfTheMonth, lastDayOfTheMonth, Fields)
+    UnitOfWork.SOCCard.GetSocCardByUserName(SessionUser.UserObjSession.InfoUserObj, listSOCCards, firstDayOfTheMonth, lastDayOfTheMonth, Fields)
 %>
 <div class="container text-center">
     <div class="mt-3 mb-3">

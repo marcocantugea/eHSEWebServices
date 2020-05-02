@@ -7,12 +7,12 @@
     If Not IsNothing(Request.QueryString("trapin")) Then
         Try
             Dim tra_pin As Integer = Integer.Parse(Request.QueryString("trapin"))
-            Dim ADOTRa As New etra.com.ado.ole.ADOTRA
+            
             
             Dim TRAobj As New etra.com.objects.TRAObj
             TRAobj.pin_save = tra_pin
             
-            ADOTRa.GetTRAbyPIN(TRAobj)
+            UnitOfWork.TRA.GetTRAbyPIN(TRAobj)
             
             If TRAobj.tra_ID > 0 Then
                 TRAobj.LoadDocumentHeadInfo()
@@ -20,7 +20,7 @@
                     Throw New Exception("REDIRECT:TRAFormat.aspx?tra_id=" & Base64Con.EncodeBase64(TRAobj.tra_ID))
                 End If
                 TRAobj.traTasks = New List(Of etra.com.objects.TRATaskObj)
-                ADOTRa.GetTRAActivities(TRAobj.tra_ID, TRAobj.traTasks)
+                UnitOfWork.TRA.GetTRAActivities(TRAobj.tra_ID, TRAobj.traTasks)
                 Me.Session("new_tra_insession") = TRAobj
                 load_success = True
                 'Response.Write("TRA_Loaded")
@@ -44,13 +44,13 @@
             Dim str_tra_id As String = Base64Con.DecodeBase64(requested_tra_id)
             Dim int_tra_id As Integer = Integer.Parse(str_tra_id)
             Dim tra_tofind As New etra.com.objects.TRAObj
-            Dim ADOTRa As New etra.com.ado.ole.ADOTRA
+            
             
             tra_tofind.tra_ID = int_tra_id
-            ADOTRa.GetTRAbyID(tra_tofind)
+            UnitOfWork.TRA.GetTRAbyID(tra_tofind)
             If tra_tofind.tra_ID > 0 Then
                 tra_tofind.traTasks = New List(Of etra.com.objects.TRATaskObj)
-                ADOTRa.GetTRAActivities(tra_tofind.tra_ID, tra_tofind.traTasks)
+                UnitOfWork.TRA.GetTRAActivities(tra_tofind.tra_ID, tra_tofind.traTasks)
                 
                 For Each activiti As etra.com.objects.TRATaskObj In tra_tofind.traTasks
                     activiti.traR_Id = -1
@@ -64,7 +64,7 @@
                 Dim pin_save As Integer = PINGenerator.GeneratePIN4digit
                 Dim gen_pin As Boolean = True
                 While gen_pin
-                    If ADOTRa.DuplicatePIN(pin_save) Then
+                    If UnitOfWork.TRA.DuplicatePIN(pin_save) Then
                         pin_save = Integer.Parse(PINGenerator.GeneratePIN4digit)
                     Else
                         gen_pin = False

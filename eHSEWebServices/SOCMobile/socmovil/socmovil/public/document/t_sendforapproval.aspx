@@ -7,7 +7,7 @@
      
      If Not IsNothing(Request.QueryString("d")) And Not IsNothing(Request.QueryString("pp")) Then
          Dim idDocument As Integer
-         Dim ADODocument As New eservices_core.com.ado.ADODocument()
+         
          Dim Process As New eservices_core.com.process.DocumentForApprovalProcess
          Dim document_loaded As Object
          Dim parentpage As String
@@ -20,7 +20,7 @@
          End Try
          
          If idDocument > 0 Then
-             document_loaded = ADODocument.GetDocumentByID(idDocument, SessionUser.UserObjSession)
+             document_loaded = UnitOfWork.Documents.GetDocumentByID(idDocument, SessionUser.UserObjSession)
              Dim doc As eservices_core.com.objects.DocumentObj = CType(document_loaded, eservices_core.com.objects.DocumentObj)
              doc.LoadInfoByID()
              Try

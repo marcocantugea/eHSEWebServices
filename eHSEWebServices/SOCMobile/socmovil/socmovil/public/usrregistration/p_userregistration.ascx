@@ -16,10 +16,10 @@
     End If
     
     'carga la lista de empleados
-    Dim ADOUserUtilities As New eservices_core.com.ado.ADOUserUtilities
+   
     Dim EmployeeList As New Dictionary(Of String, String)
     
-    ADOUserUtilities.GetEmployeeNumberList(EmployeeList)
+    UnitOfWork.UserUtilities.GetEmployeeNumberList(EmployeeList)
     
 %>
 <div class="container-fluid" id="view_desktop">

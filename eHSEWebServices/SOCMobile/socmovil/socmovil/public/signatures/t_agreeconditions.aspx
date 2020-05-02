@@ -23,8 +23,7 @@
                     UpdateUserObj.idInfoUser = -1
                     UpdateUserObj.idprofile = -1
                     
-                    Dim ADOUser As New eservices_core.com.ado.ADOUser
-                    ADOUser.UpdateUserLogin(UpdateUserObj)
+                    UnitOfWork.User.UpdateUserLogin(UpdateUserObj)
                     
                     SessionUser.UserObjSession.AgreeSignatureTerms = True
                     

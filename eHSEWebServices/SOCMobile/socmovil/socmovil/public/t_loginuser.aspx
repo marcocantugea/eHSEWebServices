@@ -6,7 +6,7 @@
     ' sql sanitize variables
     Dim SQLSanitize As New eservices_core.com.database.SQLSanitizeClass
     'Data access obj
-    Dim ADOUsers As New eservices_core.com.ado.ADOUser
+    
     
     If Not IsNothing(Request.Form("transaction")) Then
         Dim raw_transaction As String = Request.Form("transaction")
@@ -25,7 +25,7 @@
                 log_user.user_pwd = encrypt.EncryptData(str_pass)
                 
                 Try
-                    ADOUsers.LoginUser(log_user)
+                    UnitOfWork.User.LoginUser(log_user)
                     Me.Session("user_loged") = log_user
                 Catch ex As Exception
                     Response.Redirect("index.aspx?p=p_login&e=true")

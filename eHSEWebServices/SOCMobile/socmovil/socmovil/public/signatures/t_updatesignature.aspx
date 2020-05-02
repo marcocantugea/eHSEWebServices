@@ -11,7 +11,7 @@
     upt_userlogin.userid = SessionUser.UserObjSession.userid
     upt_userlogin.active = SessionUser.UserObjSession.active
 
-    Dim ADOuser As New eservices_core.com.ado.ADOUser
+    
    
 
     'actualiza firma electornica
@@ -19,11 +19,11 @@
     upt_esignarure.idsignature = SessionUser.UserObjSession.eSignature.idsignature
     upt_esignarure.iduser = 0
     
-    Dim ADOSignature As New eservices_core.com.ado.ADOeSignatures
+    
     
     Try
-        ADOuser.UpdateUserLogin(upt_userlogin)
-        ADOSignature.UpdateSignature(upt_esignarure)
+        UnitOfWork.User.UpdateUserLogin(upt_userlogin)
+        UnitOfWork.Signatures.UpdateSignature(upt_esignarure)
         
         'actualizar session de usuario
         SessionUser.UserObjSession.idsignature = 0

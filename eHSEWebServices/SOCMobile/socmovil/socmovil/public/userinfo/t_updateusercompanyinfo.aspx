@@ -31,9 +31,9 @@
                     upt_user.idDeparment = Integer.Parse(str_deparment)
                     upt_user.idcategory = Integer.Parse(str_category)
                     
-                    Dim ADOUSer As New eservices_core.com.ado.ADOUser
+                 
                     
-                    ADOUSer.UpdateInfoUserCompany(upt_user)
+                    UnitOfWork.User.UpdateInfoUserCompany(upt_user)
                     
                     'actualizar la info de session del usuario.
                     SessionUser.UserObjSession.UserInfoCompanyObj.guard = guardia
