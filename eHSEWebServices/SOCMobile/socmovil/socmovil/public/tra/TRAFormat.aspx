@@ -1,8 +1,7 @@
 ﻿
 <%@ Page Language="vb" AutoEventWireup="false" CodeBehind="TRAFormat.aspx.vb" Inherits="socmovil.TRAFormat"%>
 <%
-    'utilidad para convertir string a base64
-    Dim Base64Con As New eservices_core.com.utilities.Base64Conversions
+   
     Dim tra_found As New etra.com.objects.TRAObj
     
     Dim loadfromsession As Boolean = False
@@ -12,7 +11,7 @@
     If Not IsNothing(Request.QueryString) Then
         If Not IsNothing(Request.QueryString("tra_id")) Then
             Dim requested_tra_id As String = Request.QueryString("tra_id")
-            Dim str_tra_id As String = Base64Con.DecodeBase64(requested_tra_id)
+            Dim str_tra_id As String = Base64Encoder.DecodeBase64(requested_tra_id)
             Try
                 'revisa si el valor del querystring es entero
                 Dim int_tra_id As Integer = Integer.Parse(str_tra_id)

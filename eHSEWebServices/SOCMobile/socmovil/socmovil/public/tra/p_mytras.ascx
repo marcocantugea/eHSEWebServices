@@ -5,7 +5,7 @@
     
     
     Dim list As SortedList(Of Integer, eservices_core.com.objects.DocumentObj) = UnitOfWork.Documents.GetDocuemntsByUser(SessionUser.UserObjSession, "TRA")
-    Dim base64code As New eservices_core.com.utilities.Base64Conversions
+    
     Dim currentpage As String = "../index.aspx?p=tra%2fp_mytras"
     Dim show_duplicateapproval As Boolean = False
     If Not IsNothing(Request.QueryString("ed")) Then
@@ -57,12 +57,12 @@
                         <% If Not tra.getLock Then%>
                         <button type="button" class="btn btn-primary" id="btn_opentra_<%=tra.pin_save%>" > <%GetLbl("lbl_edit") %></button>
                         <% Else%>
-                        <button type="button" class="btn btn-primary" id="btn_viewtra_<%=base64code.EncodeBase64(tra.tra_ID)%>" > <%GetLbl("lbl_see") %></button>
+                        <button type="button" class="btn btn-primary" id="btn_viewtra_<%=Base64Encoder.EncodeBase64(tra.tra_ID)%>" > <%GetLbl("lbl_see") %></button>
                          <% End If%>
                     </td>
                     <td>
                         <% If tra.getDocumentStatusObj.idDocumentStatus = eservices_core.com.ado.DocumentStatus.Draft Then%>
-                        <button type="button" class="btn btn-sm btn-warning text-white" id="btn_sendforapproval_<%=base64code.EncodeBase64(tra.getidDocument())%>">Enviar para aprobaci&oacute;n</button>
+                        <button type="button" class="btn btn-sm btn-warning text-white" id="btn_sendforapproval_<%=Base64Encoder.EncodeBase64(tra.getidDocument())%>">Enviar para aprobaci&oacute;n</button>
                        <% End If%>
                     </td>
                 </tr>
@@ -83,7 +83,7 @@
     $("button[id*='btn_sendforapproval_']").click(function () {
         var id = this.id;
         var values = id.split("_");
-        document.location.href = "index.aspx?p=tra%2fp_confirmapproval&d=" + values[2]+"&pp=<%=base64code.EncodeBase64(currentpage)%>";
+        document.location.href = "index.aspx?p=tra%2fp_confirmapproval&d=" + values[2]+"&pp=<%=Base64Encoder.EncodeBase64(currentpage)%>";
     });
 
     $("button[id*='btn_viewtra_']").click(function () {

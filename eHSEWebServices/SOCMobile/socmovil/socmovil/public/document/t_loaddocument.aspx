@@ -3,7 +3,7 @@
 
     LoadConfiguration()
     LoadLanguage()
-    Dim base64 As New eservices_core.com.utilities.Base64Conversions
+    
     Dim open_tra As Boolean = False
     Dim tra_id As String
     
@@ -13,7 +13,7 @@
         
         Dim document_loaded As Object
         Try
-            idDocument = Integer.Parse(base64.DecodeBase64(Request.QueryString("d")))
+            idDocument = Integer.Parse(Base64Encoder.DecodeBase64(Request.QueryString("d")))
         Catch ex As Exception
             Response.Redirect(Request.UrlReferrer.ToString)
         End Try
@@ -26,7 +26,7 @@
             If doc.getTypeOfObj().Contains("TRA") Then
                 'Dim tra As etra.com.objects.TRAObj = CType(doc, etra.com.objects.TRAObj)
                 open_tra = True
-                tra_id = base64.EncodeBase64(doc.getIdOfDocument)
+                tra_id = Base64Encoder.EncodeBase64(doc.getIdOfDocument)
             End If  
         End If
         

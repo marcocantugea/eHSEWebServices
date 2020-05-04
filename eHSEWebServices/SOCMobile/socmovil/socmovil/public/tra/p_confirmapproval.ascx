@@ -4,14 +4,14 @@
     LoadConfiguration()
     LoadLanguage()
 
-    Dim Base64 As New eservices_core.com.utilities.Base64Conversions
+    
     Dim idDocument As Integer = -1
     Dim parentpage As String
     
     If Not IsNothing(Request.QueryString("d")) And Not IsNothing(Request.QueryString("pp")) Then
         Try
-            idDocument = Integer.Parse(Base64.DecodeBase64(Request.QueryString("d")))
-            parentpage = Base64.DecodeBase64(Request.QueryString("pp"))
+            idDocument = Integer.Parse(Base64Encoder.DecodeBase64(Request.QueryString("d")))
+            parentpage = Base64Encoder.DecodeBase64(Request.QueryString("pp"))
         Catch ex As Exception
             Response.Redirect("../index.aspx")
         End Try
@@ -29,14 +29,14 @@
         </span>
         <div class="row mt-3">
             <div class="col">
-                <button type="button" class="btn btn-primary" id="btn_showdocument_<%=Base64.EncodeBase64(idDocument)%>">Ver Documento</button>
+                <button type="button" class="btn btn-primary" id="btn_showdocument_<%=Base64Encoder.EncodeBase64(idDocument)%>">Ver Documento</button>
                 <br />
                 <br />
             </div>
         </div>
         <div class="row mt-4">
             <div class="col text-right mr-4">
-                <button type="button" class="btn btn-success text-white" style="width:170px;" id="btn_yes_<%=Base64.EncodeBase64(idDocument)%>">Si</button>
+                <button type="button" class="btn btn-success text-white" style="width:170px;" id="btn_yes_<%=Base64Encoder.EncodeBase64(idDocument)%>">Si</button>
             </div>
             <div class="col text-left ml-4">
                 <button type="button" class="btn btn-danger text-white" style="width:170px;">No</button>
@@ -54,6 +54,6 @@
     $("button[id*='btn_yes_']").click(function () {
         var id = this.id;
         var values = id.split("_");
-        document.location.href = "document/t_sendforapproval.aspx?d=" + values[2] +"&pp=<%=Base64.EncodeBase64(parentpage)%>";
+        document.location.href = "document/t_sendforapproval.aspx?d=" + values[2] +"&pp=<%=Base64Encoder.EncodeBase64(parentpage)%>";
     });
 </script>

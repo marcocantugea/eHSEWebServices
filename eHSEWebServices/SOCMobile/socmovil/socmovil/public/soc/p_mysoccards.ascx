@@ -3,8 +3,7 @@
     LoadConfiguration()
     LoadLanguage()
     
-    
-    Dim Base64encoder As New eservices_core.com.utilities.Base64Conversions
+  
     Dim listSOCCards As New List(Of socmobile_core.com.objects.SOCCardObj)
     
     Dim Fields As New socmobile_core.com.objects.SOCCardObj
@@ -50,7 +49,7 @@
                     <td><% Response.Write(soc.Ubicacion)%></td>
                     <td><% Response.Write(soc.Observacion)%></td>
                     <td>
-                         <button type="button" class="btn btn-primary" id="btn_showcard_<% Response.Write(Base64encoder.EncodeBase64(soc.id))%>"> <%GetLbl("lbl_see") %></button>
+                         <button type="button" class="btn btn-primary" id="btn_showcard_<% Response.Write(Base64Encoder.EncodeBase64(soc.id))%>"> <%GetLbl("lbl_see") %></button>
                     </td>
                 </tr>
                 <%
@@ -86,7 +85,7 @@
                     <td><% Response.Write(soc.Ubicacion)%></td>
                     <td><% Response.Write(soc.Observacion)%></td>
                     <td>
-                        <button type="button" class="btn btn-primary" id="btn_showcard_<% Response.Write(Base64encoder.EncodeBase64(soc.id))%>">  <%GetLbl("lbl_see") %></button>
+                        <button type="button" class="btn btn-primary" id="btn_showcard_<% Response.Write(Base64Encoder.EncodeBase64(soc.id))%>">  <%GetLbl("lbl_see") %></button>
                     </td>
                 </tr>
                 <%

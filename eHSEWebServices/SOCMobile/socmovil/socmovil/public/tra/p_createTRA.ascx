@@ -14,10 +14,6 @@
     Dim list_department As New List(Of etra.com.objects.TRADeparment)
     UnitOfWork.TRA.GetDeparmentsName(list_department)
     
-    
-    'utilidad para convertir string a base64
-    Dim Base64Con As New eservices_core.com.utilities.Base64Conversions
-    
     Dim new_tra_inssession As etra.com.objects.TRAObj
     
     If Not IsNothing(Request.QueryString("newtra")) Then

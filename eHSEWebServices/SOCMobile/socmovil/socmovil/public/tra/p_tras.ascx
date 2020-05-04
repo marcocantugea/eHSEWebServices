@@ -7,9 +7,6 @@
     
     Dim SQLSanitize As New eservices_core.com.database.SQLSanitizeClass
     
-    'utilidad para convertir string a base64
-    Dim Base64Con As New eservices_core.com.utilities.Base64Conversions
-    
     'Obtiene los departamentos
   
     
@@ -153,9 +150,9 @@
                 <tr>
                     <td><% Response.Write(tra_item.tra_Activity_Job)%></td>
                     <td class="text-center">
-                       <button type="button" class="btn btn-primary btn-sm m-1" id="showtra_<%Response.Write(Base64Con.EncodeBase64( tra_item.tra_ID))%>"><% GetLbl("p_tras_lbl_btn_open")%></button>
-                        <button type="button" class="btn btn-primary btn-sm m-1" id="sendspoolprint_<%Response.Write(Base64Con.EncodeBase64(tra_item.tra_ID))%>" ><% GetLbl("p_tras_lbl_btn_Print")%></button>
-                        <button type="button" class="btn btn-primary btn-sm m-1" id="clonetra_<%Response.Write(Base64Con.EncodeBase64( tra_item.tra_ID))%>"><% GetLbl("p_tras_lbl_btn_clone")%></button>
+                       <button type="button" class="btn btn-primary btn-sm m-1" id="showtra_<%Response.Write(Base64Encoder.EncodeBase64(tra_item.tra_ID))%>"><% GetLbl("p_tras_lbl_btn_open")%></button>
+                        <button type="button" class="btn btn-primary btn-sm m-1" id="sendspoolprint_<%Response.Write(Base64Encoder.EncodeBase64(tra_item.tra_ID))%>" ><% GetLbl("p_tras_lbl_btn_Print")%></button>
+                        <button type="button" class="btn btn-primary btn-sm m-1" id="clonetra_<%Response.Write(Base64Encoder.EncodeBase64(tra_item.tra_ID))%>"><% GetLbl("p_tras_lbl_btn_clone")%></button>
                     </td>
                 </tr>
                 <%

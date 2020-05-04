@@ -2,7 +2,7 @@
 <% 
     LoadConfiguration()
     
-    Dim Base64Con As New eservices_core.com.utilities.Base64Conversions
+    
     Dim SQLSanitize As New eservices_core.com.database.SQLSanitizeClass
     Dim encrypt As New eservices_core.com.utilities.EncriptWrapper(System.Configuration.ConfigurationManager.AppSettings("enc-key"))
 
@@ -24,7 +24,7 @@
                 
                 'encripta la imagen cardada
                 Dim file As New IO.FileInfo(imagepath)
-                Dim NewFileName As String = Base64Con.EncodeBase64(SessionUser.UserObjSession.FullName() & Date.Now().ToString("yyyyMMddhhmm"))
+                Dim NewFileName As String = Base64Encoder.EncodeBase64(SessionUser.UserObjSession.FullName() & Date.Now().ToString("yyyyMMddhhmm"))
                 Try
                     new_signature.signaturepath = EncrypSignature(file.Name, NewFileName)
                 Catch ex As Exception

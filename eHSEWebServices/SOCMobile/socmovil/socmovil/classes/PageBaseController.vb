@@ -5,6 +5,7 @@
     Private _lang_configreader As LanguageClass
     Private _GlobalConfigReader As ConfigurationClass
     Private _UnitofWork As eservices_datamanager.UnitOfWork
+    Private _Base64 As eservices_core.com.utilities.Base64Conversions
 
     Public ReadOnly Property UnitOfWork As eservices_datamanager.UnitOfWork
         Get
@@ -101,6 +102,16 @@
     Public ReadOnly Property Pagelang_configreader As socmobile_core.com.configuration.GlobalConfReader Implements IntPageControllerClass.Pagelang_configreader
         Get
             Return lang_configreader.Configuration
+        End Get
+    End Property
+
+    Public ReadOnly Property Base64Encoder As eservices_core.com.utilities.Base64Conversions Implements IntPageControllerClass.Base64Encoder
+        Get
+            If IsNothing(_Base64) Then
+                _Base64 = New eservices_core.com.utilities.Base64Conversions
+            End If
+
+            Return _Base64
         End Get
     End Property
 End Class

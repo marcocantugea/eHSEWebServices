@@ -5,7 +5,6 @@
     ''obtiene el lenguaje que esta en session y la configuracion global
     LoadLanguage()
     LoadConfiguration()
-    Dim Base64Encoder As New eservices_core.com.utilities.Base64Conversions
     
     Dim capt_soc As New socmobile_core.com.objects.SOCCardObj
     

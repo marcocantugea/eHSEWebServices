@@ -125,6 +125,7 @@
     <Content Include="public\menu-control.ascx" />
     <Content Include="public\pagenotfound.ascx" />
     <Content Include="public\soc\p_createsoc.ascx" />
+    <Content Include="public\supervisor\p_confirmsignature.ascx" />
     <Content Include="public\supervisor\p_docforsig.ascx" />
     <Content Include="public\tra\p_confirmapproval.ascx" />
     <Content Include="public\tra\p_createTRA.ascx" />
@@ -261,6 +262,13 @@
     </Compile>
     <Compile Include="public\soc\p_createsoc.ascx.vb">
       <DependentUpon>p_createsoc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="public\supervisor\p_confirmsignature.ascx.designer.vb">
+      <DependentUpon>p_confirmsignature.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="public\supervisor\p_confirmsignature.ascx.vb">
+      <DependentUpon>p_confirmsignature.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="public\supervisor\p_docforsig.ascx.designer.vb">

@@ -2,7 +2,6 @@
 <% 
     LoadConfiguration()
     LoadLanguage()
-    Dim Base64 As New eservices_core.com.utilities.Base64Conversions
     
     
     
@@ -44,9 +43,9 @@
                 <td ><%=CType(GetValueList(values, "DocumentDate"), Date).ToString("dd MMM yyyy")%></td>
                 <td ><%PrintValueList(values, "UserNameRequested") %></td>
                 <td > 
-                    <button type="button" id="btn_preview_<%=Base64.EncodeBase64(GetValueList(values, "idDocument"))%>" class="btn btn-sm btn-primary mr-2 mb-2">Ver</button>
+                    <button type="button" id="btn_preview_<%=Base64Encoder.EncodeBase64(GetValueList(values, "idDocument"))%>" class="btn btn-sm btn-primary mr-2 mb-2">Ver</button>
                     <button type="button" id="btn_reject_" class="btn btn-sm btn-danger mr-2 mb-2">Rechazar</button>
-                     <button type="button" id="btn_sign_" class="btn btn-sm btn-success mr-2 mb-2">Firmar</button>
+                     <button type="button" id="btn_sign_<%=Base64Encoder.EncodeBase64(GetValueList(values, "idDocument"))%>" class="btn btn-sm btn-success mr-2 mb-2">Firmar</button>
                 </td>
             </tr>
             <%
@@ -60,5 +59,10 @@
         var id = this.id;
         var values = id.split("_");
         window.open("document/t_loaddocument.aspx?d=" + values[2]);
+    });
+    $("button[id*='btn_sign_']").click(function () {
+        var id = this.id;
+        var values = id.split("_");
+        document.location.href="index.aspx?p=supervisor/p_confirmsignature&d=" + values[2];
     });
 </script>

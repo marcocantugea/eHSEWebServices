@@ -3,7 +3,6 @@
      
      LoadConfiguration()
      LoadLanguage()
-     Dim base64 As New eservices_core.com.utilities.Base64Conversions
      
      If Not IsNothing(Request.QueryString("d")) And Not IsNothing(Request.QueryString("pp")) Then
          Dim idDocument As Integer
@@ -13,8 +12,8 @@
          Dim parentpage As String
          
          Try
-             idDocument = Integer.Parse(base64.DecodeBase64(Request.QueryString("d")))
-             parentpage= base64.DecodeBase64(Request.QueryString("pp"))
+             idDocument = Integer.Parse(Base64Encoder.DecodeBase64(Request.QueryString("d")))
+             parentpage = Base64Encoder.DecodeBase64(Request.QueryString("pp"))
          Catch ex As Exception
              Response.Redirect(Request.UrlReferrer.ToString)
          End Try

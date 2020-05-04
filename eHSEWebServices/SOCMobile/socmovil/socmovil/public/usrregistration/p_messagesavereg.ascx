@@ -4,16 +4,14 @@
     ''obtiene el lenguaje que esta en session y Obtiene la configuracion global
     LoadConfiguration()
     LoadLanguage()
-    
-    'utilidad para convertir string a base64
-    Dim Base64Con As New eservices_core.com.utilities.Base64Conversions
+
     
     Dim lbl As String
     Dim type_msg As String = ""
     Dim error_msg As Boolean = False
 
     If Not IsNothing(Request.QueryString("m")) And Not IsNothing(Request.QueryString("t")) Then
-        lbl = Base64Con.DecodeBase64(Request.QueryString("m"))
+        lbl = Base64Encoder.DecodeBase64(Request.QueryString("m"))
         type_msg = Request.QueryString("t")
         If type_msg.Equals("e") Then
             error_msg = True

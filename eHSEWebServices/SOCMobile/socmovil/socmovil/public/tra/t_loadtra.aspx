@@ -1,8 +1,6 @@
 ﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="t_loadtra.aspx.vb" Inherits="socmovil.t_loadtra" %>
 <% 
     Dim load_success As Boolean = False
-    'utilidad para convertir string a base64
-    Dim Base64Con As New eservices_core.com.utilities.Base64Conversions
     
     If Not IsNothing(Request.QueryString("trapin")) Then
         Try
@@ -17,7 +15,7 @@
             If TRAobj.tra_ID > 0 Then
                 TRAobj.LoadDocumentHeadInfo()
                 If TRAobj.getLock Then
-                    Throw New Exception("REDIRECT:TRAFormat.aspx?tra_id=" & Base64Con.EncodeBase64(TRAobj.tra_ID))
+                    Throw New Exception("REDIRECT:TRAFormat.aspx?tra_id=" & Base64Encoder.EncodeBase64(TRAobj.tra_ID))
                 End If
                 TRAobj.traTasks = New List(Of etra.com.objects.TRATaskObj)
                 UnitOfWork.TRA.GetTRAActivities(TRAobj.tra_ID, TRAobj.traTasks)
@@ -41,7 +39,7 @@
     If Not IsNothing(Request.QueryString("tra_id")) Then
         Try
             Dim requested_tra_id As String = Request.QueryString("tra_id")
-            Dim str_tra_id As String = Base64Con.DecodeBase64(requested_tra_id)
+            Dim str_tra_id As String = Base64Encoder.DecodeBase64(requested_tra_id)
             Dim int_tra_id As Integer = Integer.Parse(str_tra_id)
             Dim tra_tofind As New etra.com.objects.TRAObj
             
