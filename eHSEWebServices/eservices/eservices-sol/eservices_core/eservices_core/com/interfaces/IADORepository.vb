@@ -8,8 +8,11 @@ Namespace com.interface
         Sub Delete(item As TEntity)
         Function GetById(id As Integer) As TEntity
         Function Exist(id As Integer) As Boolean
-        Function Exist(query As Func(Of TEntity, Boolean)) As Boolean
-        Function FindBy(query As Func(Of TEntity, Boolean)) As ICollection(Of TEntity)
+        Function GetLastId() As TEntity
+        Sub GetLastId(item As TEntity)
+
+        'Function Exist(query As Func(Of TEntity, Boolean)) As Boolean
+        'Function FindBy(query As Func(Of TEntity, Boolean)) As ICollection(Of TEntity)
 
     End Interface
 End Namespace

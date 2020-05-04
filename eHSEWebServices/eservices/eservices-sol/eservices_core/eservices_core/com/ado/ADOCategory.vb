@@ -146,16 +146,41 @@ Namespace com.ado
             Return existrecord
         End Function
 
-        Public Function Exist(query As Func(Of CategoryObj, Boolean)) As Boolean Implements IADORepository(Of CategoryObj).Exist
-            Throw New NotImplementedException
-        End Function
-
-        Public Function FindBy(query As Func(Of CategoryObj, Boolean)) As ICollection(Of CategoryObj) Implements IADORepository(Of CategoryObj).FindBy
-            Throw New NotImplementedException
-        End Function
-
         Public Function GetById(id As Integer) As CategoryObj Implements IADORepository(Of CategoryObj).GetById
-            Throw New NotImplementedException
+            If id <= 0 Then
+                Return Nothing
+            End If
+            Dim Cagetory As New CategoryObj
+            Cagetory.idcategory = id
+            GetCategoryByID(Cagetory)
+            Return Cagetory
         End Function
+
+        Public Function GetLastId() As CategoryObj Implements IADORepository(Of CategoryObj).GetLastId
+            Dim category As New CategoryObj
+            GetLastId(category)
+            Return category
+        End Function
+
+        Public Sub GetLastId(item As CategoryObj) Implements IADORepository(Of CategoryObj).GetLastId
+            Try
+                OpenDB(Database)
+                SetCommand("select max(idDocument) as MAXID from " & table)
+                SetDataAdapter()
+                Dim dts As New DataSet
+                connection.Adap.Fill(dts)
+                If dts.Tables.Count > 0 Then
+                    If dts.Tables(0).Rows.Count > 0 Then
+                        For Each row As DataRow In dts.Tables(0).Rows
+                            item.idcategory = row("MAXID")
+                        Next
+                    End If
+                End If
+            Catch ex As Exception
+                Throw
+            Finally
+                CloseDB()
+            End Try
+        End Sub
     End Class
 End Namespace

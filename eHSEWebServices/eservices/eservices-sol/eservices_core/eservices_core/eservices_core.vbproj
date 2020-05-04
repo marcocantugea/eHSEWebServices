@@ -91,7 +91,8 @@
     <Compile Include="com\database\SQLSanitizeClass.vb" />
     <Compile Include="com\interfaces\IADORepository.vb" />
     <Compile Include="com\objects\CategoryObj.vb" />
-    <Compile Include="com\objects\DoclumentObj.vb" />
+    <Compile Include="com\base\DoclumentObj.vb" />
+    <Compile Include="com\objects\DocumentGeneric.vb" />
     <Compile Include="com\objects\DocumentPendingForApprovalObj.vb" />
     <Compile Include="com\objects\DocumentStatusObj.vb" />
     <Compile Include="com\objects\eSignatureObj.vb" />

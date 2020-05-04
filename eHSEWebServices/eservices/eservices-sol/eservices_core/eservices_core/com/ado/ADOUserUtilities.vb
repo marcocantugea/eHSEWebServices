@@ -1,6 +1,9 @@
-﻿Namespace com.ado
+﻿Imports eservices_core.com.interface
+
+Namespace com.ado
     Public NotInheritable Class ADOUserUtilities
         Inherits com.database.ole.OleDBConnectionObj
+        Implements IADORepository(Of Object)
 
         Public Sub GetEmployeeNumberList(list_emp As Dictionary(Of String, String))
             Try
@@ -28,5 +31,28 @@
 
         End Sub
 
+        Public Sub Add(item As Object) Implements IADORepository(Of Object).Add
+            Throw New NotImplementedException
+        End Sub
+
+        Public Sub Delete(item As Object) Implements IADORepository(Of Object).Delete
+            Throw New NotImplementedException
+        End Sub
+
+        Public Function Exist(id As Integer) As Boolean Implements IADORepository(Of Object).Exist
+            Return False
+        End Function
+
+        Public Function GetById(id As Integer) As Object Implements IADORepository(Of Object).GetById
+            Throw New NotImplementedException
+        End Function
+
+        Public Function GetLastId() As Object Implements IADORepository(Of Object).GetLastId
+            Throw New NotImplementedException
+        End Function
+
+        Public Sub GetLastId(item As Object) Implements IADORepository(Of Object).GetLastId
+            Throw New NotImplementedException
+        End Sub
     End Class
 End Namespace

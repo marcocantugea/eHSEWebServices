@@ -1,11 +1,13 @@
 ﻿Imports eservices_core.com.objects
+Imports eservices_core.com.interface
 Imports System.Text
 Namespace com.ado
     Public Class ADODocument
         Inherits com.database.mysql.MySQLConnectionObj
+        Implements IADORepository(Of DocumentObj)
 
-        Private table As String = "tbl_documents"
-        Private database As String = "DB-EWEBSERVICES"
+        Private Const table As String = "tbl_documents"
+        Private Const database As String = "DB-EWEBSERVICES"
         Private str_fields As New List(Of String)
 
         Sub New()
@@ -71,7 +73,7 @@ Namespace com.ado
             Return exist
         End Function
 
-        Private Sub getLasID(DocumentObj As DocumentObj)
+        Private Sub getLasID(DocumentObj As DocumentObj) Implements IADORepository(Of DocumentObj).GetLastId
             Try
                 OpenDB(database)
                 SetCommand("select max(idDocument) as MAXID from " & table)
@@ -541,6 +543,71 @@ Namespace com.ado
                 CloseDB()
             End Try
             Return ListofValues
+        End Function
+
+        Public Sub Add(item As DocumentObj) Implements IADORepository(Of DocumentObj).Add
+            If IsNothing(item) Then
+                Throw New NullReferenceException
+            End If
+            AddDocument(item)
+        End Sub
+
+        Public Sub Delete(item As DocumentObj) Implements IADORepository(Of DocumentObj).Delete
+            If IsNothing(item) Then
+                Throw New NullReferenceException
+            End If
+
+            Try
+                OpenDB(database)
+                SetCommand("delete * from " & table & " where idDocument=" & item.getidDocument)
+                connection.Command.ExecuteNonQuery()
+            Catch ex As Exception
+                Throw
+            Finally
+                CloseDB()
+            End Try
+        End Sub
+
+        Public Function Exist(id As Integer) As Boolean Implements IADORepository(Of DocumentObj).Exist
+            Dim existrecord As Boolean = False
+            Try
+                OpenDB(database)
+                SetCommand("select count(1) as ExistRecord from " & table & " where idDocument=" & id.ToString)
+                SetDataAdapter()
+                Dim dts As New DataSet
+                connection.Adap.Fill(dts)
+                If dts.Tables.Count > 0 Then
+                    If dts.Tables(0).Rows.Count > 0 Then
+                        For Each row As DataRow In dts.Tables(0).Rows
+                            If Not IsDBNull(row("ExistRecord")) Then
+                                If Integer.Parse(row("ExistRecord")) > 0 Then
+                                    existrecord = True
+                                End If
+                            End If
+                        Next
+                    End If
+                End If
+            Catch ex As Exception
+                Throw
+            Finally
+                CloseDB()
+            End Try
+
+            Return existrecord
+        End Function
+
+        Public Function GetById(id As Integer) As DocumentObj Implements IADORepository(Of DocumentObj).GetById
+            Return GetDocumentByID(id)
+        End Function
+
+        Public Sub GetById(id As Integer, item As DocumentObj)
+            item = GetDocumentByID(id)
+        End Sub
+
+        Public Function GetLastId() As DocumentObj Implements IADORepository(Of DocumentObj).GetLastId
+            Dim document As New DocumentGeneric
+            getLasID(document)
+            Return document
         End Function
 
     End Class

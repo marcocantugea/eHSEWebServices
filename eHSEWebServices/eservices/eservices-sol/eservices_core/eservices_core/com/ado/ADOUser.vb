@@ -1,14 +1,20 @@
-﻿
+﻿Imports eservices_core.com.interface
 Imports eservices_core.com.objects
 Imports MySql.Data.MySqlClient
 
 Namespace com.ado
     Public NotInheritable Class ADOUser
         Inherits com.database.mysql.MySQLConnectionObj
+        Implements IADORepository(Of UserObj)
+
+        Private Const Table As String = "tbl_userslogin"
+        Private Const TableInfoUser As String = "tbl_infouser"
+        Private Const TableInfoCompany As String = "tbl_userinfocompany"
+        Private Const Database As String = "DB-EWEBSERVICES"
 
         Public Sub RegisterUser(UserObj As UserObj)
             If Not IsNothing(UserObj) Then
-                    
+
                 'salva la info de usuario general
                 If Not IsNothing(UserObj.InfoUserObj) Then
                     Try
@@ -80,10 +86,10 @@ Namespace com.ado
             Dim qbuilder As New eservices_core.com.database.QueryBuilder(Of UserObj)
             qbuilder.TypeQuery = eservices_core.com.database.TypeQuery.SelectInfo
             qbuilder.Entity = fields
-            qbuilder.BuildSelect("tbl_userslogin")
+            qbuilder.BuildSelect(Table)
             qbuilder.AddToQueryParameterForSelect("user_login='" & UserObj.user_login & "' and user_pwd='" & UserObj.user_pwd & "'")
             Try
-                OpenDB("DB-EWEBSERVICES")
+                OpenDB(Database)
                 SetCommand(qbuilder.Query)
                 SetDataAdapter()
                 Dim dts As New DataSet
@@ -111,9 +117,9 @@ Namespace com.ado
             Dim qbuilder As New eservices_core.com.database.QueryBuilder(Of UserObj)
             qbuilder.TypeQuery = eservices_core.com.database.TypeQuery.Insert
             qbuilder.Entity = UserObj
-            qbuilder.BuildInsert("tbl_userslogin")
+            qbuilder.BuildInsert(Table)
             Try
-                OpenDB("DB-EWEBSERVICES")
+                OpenDB(Database)
                 SetCommand(qbuilder.Query)
                 connection.Command.ExecuteNonQuery()
             Catch ex As Exception
@@ -128,9 +134,9 @@ Namespace com.ado
             Dim qbuilder As New eservices_core.com.database.QueryBuilder(Of InfoUserObj)
             qbuilder.TypeQuery = eservices_core.com.database.TypeQuery.Insert
             qbuilder.Entity = InfoUserObj
-            qbuilder.BuildInsert("tbl_infouser")
+            qbuilder.BuildInsert(Table)
             Try
-                OpenDB("DB-EWEBSERVICES")
+                OpenDB(Database)
                 SetCommand(qbuilder.Query)
                 connection.Command.ExecuteNonQuery()
             Catch ex As Exception
@@ -144,9 +150,9 @@ Namespace com.ado
             Dim qbuilder As New eservices_core.com.database.QueryBuilder(Of UserInfoCompanyObj)
             qbuilder.TypeQuery = eservices_core.com.database.TypeQuery.Insert
             qbuilder.Entity = UserInfoCompany
-            qbuilder.BuildInsert("tbl_userinfocompany")
+            qbuilder.BuildInsert(Table)
             Try
-                OpenDB("DB-EWEBSERVICES")
+                OpenDB(Database)
                 SetCommand(qbuilder.Query)
                 connection.Command.ExecuteNonQuery()
             Catch ex As Exception
@@ -160,9 +166,9 @@ Namespace com.ado
             Dim qbuilder As New eservices_core.com.database.QueryBuilder(Of eSignatureObj)
             qbuilder.TypeQuery = eservices_core.com.database.TypeQuery.Insert
             qbuilder.Entity = eSignatureObj
-            qbuilder.BuildInsert("tbl_usersignature")
+            qbuilder.BuildInsert(Table)
             Try
-                OpenDB("DB-EWEBSERVICES")
+                OpenDB(Database)
                 SetCommand(qbuilder.Query)
                 connection.Command.ExecuteNonQuery()
             Catch ex As Exception
@@ -174,8 +180,8 @@ Namespace com.ado
 
         Private Sub GetUserLastID(UserObj As UserObj)
             Try
-                OpenDB("DB-EWEBSERVICES")
-                SetCommand("select max(userid) as MAXID from tbl_userslogin")
+                OpenDB(Database)
+                SetCommand("select max(userid) as MAXID from " & Table)
                 SetDataAdapter()
                 Dim dts As New DataSet
                 connection.Adap.Fill(dts)
@@ -196,8 +202,8 @@ Namespace com.ado
 
         Private Sub GetUserInfoLastID(InfoUserObj As InfoUserObj)
             Try
-                OpenDB("DB-EWEBSERVICES")
-                SetCommand("select max(idInfoUser) as MAXID from tbl_infouser")
+                OpenDB(Database)
+                SetCommand("select max(idInfoUser) as MAXID from " & TableInfoUser)
                 SetDataAdapter()
                 Dim dts As New DataSet
                 connection.Adap.Fill(dts)
@@ -218,8 +224,8 @@ Namespace com.ado
 
         Private Sub GetUserInfoCompanyLastID(InfoCompanyUserObj As UserInfoCompanyObj)
             Try
-                OpenDB("DB-EWEBSERVICES")
-                SetCommand("select max(idinfocompany) as MAXID from tbl_userinfocompany")
+                OpenDB(Database)
+                SetCommand("select max(idinfocompany) as MAXID from " & TableInfoCompany)
                 SetDataAdapter()
                 Dim dts As New DataSet
                 connection.Adap.Fill(dts)
@@ -241,8 +247,8 @@ Namespace com.ado
         Private Function ValidateRecordUserLogin(UserObj As UserObj) As Boolean
             Dim exist As Boolean = False
             Try
-                OpenDB("DB-EWEBSERVICES")
-                SetCommand("select count(1) as CountVal from tbl_userslogin where user_login='" & UserObj.user_login & "'")
+                OpenDB(Database)
+                SetCommand("select count(1) as CountVal from " & Table & " where user_login='" & UserObj.user_login & "'")
                 SetDataAdapter()
                 Dim dts As New DataSet
                 connection.Adap.Fill(dts)
@@ -270,8 +276,8 @@ Namespace com.ado
         Private Function ValidateRecordInfoUser(InfoUserObj As InfoUserObj) As Boolean
             Dim exist As Boolean = False
             Try
-                OpenDB("DB-EWEBSERVICES")
-                SetCommand("select count(1) as CountVal from tbl_infouser where UPPER(nombre)='" & InfoUserObj.Nombre.ToUpper & "' and UPPER(apellido_pat)='" & InfoUserObj.apellido_pat.ToUpper & "' and UPPER(apellido_mat)='" & InfoUserObj.apellido_mat.ToUpper & "'")
+                OpenDB(Database)
+                SetCommand("select count(1) as CountVal from " & Table & " where UPPER(nombre)='" & InfoUserObj.Nombre.ToUpper & "' and UPPER(apellido_pat)='" & InfoUserObj.apellido_pat.ToUpper & "' and UPPER(apellido_mat)='" & InfoUserObj.apellido_mat.ToUpper & "'")
                 SetDataAdapter()
                 Dim dts As New DataSet
                 connection.Adap.Fill(dts)
@@ -316,10 +322,10 @@ Namespace com.ado
             Dim qbuilder As New eservices_core.com.database.QueryBuilder(Of UserObj)
             qbuilder.TypeQuery = eservices_core.com.database.TypeQuery.SelectInfo
             qbuilder.Entity = UserObj
-            qbuilder.BuildSelect("tbl_userslogin", True)
+            qbuilder.BuildSelect(Table, True)
             qbuilder.AddToQueryParameterForSelect("userid=" & UserObj.userid & "")
             Try
-                OpenDB("DB-EWEBSERVICES")
+                OpenDB(Database)
                 SetCommand(qbuilder.Query)
                 SetDataAdapter()
                 Dim dts As New DataSet
@@ -351,10 +357,10 @@ Namespace com.ado
             Dim qbuilder As New eservices_core.com.database.QueryBuilder(Of InfoUserObj)
             qbuilder.TypeQuery = eservices_core.com.database.TypeQuery.SelectInfo
             qbuilder.Entity = InfoUserObj
-            qbuilder.BuildSelect("tbl_infouser", True)
+            qbuilder.BuildSelect(TableInfoUser, True)
             qbuilder.AddToQueryParameterForSelect("idInfoUser=" & idinfouser & "")
             Try
-                OpenDB("DB-EWEBSERVICES")
+                OpenDB(Database)
                 SetCommand(qbuilder.Query)
                 SetDataAdapter()
                 Dim dts As New DataSet
@@ -386,10 +392,10 @@ Namespace com.ado
             Dim qbuilder As New eservices_core.com.database.QueryBuilder(Of UserInfoCompanyObj)
             qbuilder.TypeQuery = eservices_core.com.database.TypeQuery.SelectInfo
             qbuilder.Entity = UserInfoCompanyObj
-            qbuilder.BuildSelect("tbl_userinfocompany", True)
+            qbuilder.BuildSelect(TableInfoCompany, True)
             qbuilder.AddToQueryParameterForSelect("idinfocompany=" & idinfocompany & "")
             Try
-                OpenDB("DB-EWEBSERVICES")
+                OpenDB(Database)
                 SetCommand(qbuilder.Query)
                 SetDataAdapter()
                 Dim dts As New DataSet
@@ -421,9 +427,9 @@ Namespace com.ado
             Dim qbuilder As New eservices_core.com.database.QueryBuilder(Of UserInfoCompanyObj)
             qbuilder.TypeQuery = eservices_core.com.database.TypeQuery.Insert
             qbuilder.Entity = InfoUsesrCompanyObj
-            qbuilder.BuildUpdate("tbl_userinfocompany", "idinfocompany", InfoUsesrCompanyObj.idinfocompany)
+            qbuilder.BuildUpdate(TableInfoCompany, "idinfocompany", InfoUsesrCompanyObj.idinfocompany)
             Try
-                OpenDB("DB-EWEBSERVICES")
+                OpenDB(Database)
                 SetCommand(qbuilder.Query)
                 connection.Command.ExecuteNonQuery()
             Catch ex As Exception
@@ -438,9 +444,9 @@ Namespace com.ado
             Dim qbuilder As New eservices_core.com.database.QueryBuilder(Of InfoUserObj)
             qbuilder.TypeQuery = eservices_core.com.database.TypeQuery.Insert
             qbuilder.Entity = Userinfo
-            qbuilder.BuildUpdate("tbl_infouser", "idInfoUser", Userinfo.idInfoUser)
+            qbuilder.BuildUpdate(TableInfoUser, "idInfoUser", Userinfo.idInfoUser)
             Try
-                OpenDB("DB-EWEBSERVICES")
+                OpenDB(Database)
                 SetCommand(qbuilder.Query)
                 connection.Command.ExecuteNonQuery()
             Catch ex As Exception
@@ -455,9 +461,9 @@ Namespace com.ado
             Dim qbuilder As New eservices_core.com.database.QueryBuilder(Of UserObj)
             qbuilder.TypeQuery = eservices_core.com.database.TypeQuery.Update
             qbuilder.Entity = UserObj
-            qbuilder.BuildUpdate("tbl_userslogin", "userid", UserObj.userid)
+            qbuilder.BuildUpdate(Table, "userid", UserObj.userid)
             Try
-                OpenDB("DB-EWEBSERVICES")
+                OpenDB(Database)
                 SetCommand(qbuilder.Query)
                 connection.Command.ExecuteNonQuery()
             Catch ex As Exception
@@ -466,6 +472,76 @@ Namespace com.ado
                 CloseDB()
 
             End Try
+        End Sub
+
+        Public Sub Add(item As UserObj) Implements IADORepository(Of UserObj).Add
+            If IsNothing(item) Then
+                Throw New NullReferenceException
+            End If
+
+            AddUserLogin(item)
+
+        End Sub
+
+        Public Sub Delete(item As UserObj) Implements IADORepository(Of UserObj).Delete
+            If IsNothing(item) Then
+                Throw New NullReferenceException
+            End If
+
+            Try
+                OpenDB(Database)
+                SetCommand("delete * from " & Table & " where idcategory=" & item.userid)
+                connection.Command.ExecuteNonQuery()
+            Catch ex As Exception
+                Throw
+            Finally
+                CloseDB()
+            End Try
+        End Sub
+
+        Public Function Exist(id As Integer) As Boolean Implements IADORepository(Of UserObj).Exist
+            Dim existrecord As Boolean = False
+            Try
+                OpenDB(Database)
+                SetCommand("select count(1) as ExistRecord from " & Table & " where userid=" & id.ToString)
+                SetDataAdapter()
+                Dim dts As New DataSet
+                connection.Adap.Fill(dts)
+                If dts.Tables.Count > 0 Then
+                    If dts.Tables(0).Rows.Count > 0 Then
+                        For Each row As DataRow In dts.Tables(0).Rows
+                            If Not IsDBNull(row("ExistRecord")) Then
+                                If Integer.Parse(row("ExistRecord")) > 0 Then
+                                    existrecord = True
+                                End If
+                            End If
+                        Next
+                    End If
+                End If
+            Catch ex As Exception
+                Throw
+            Finally
+                CloseDB()
+            End Try
+
+            Return existrecord
+        End Function
+
+        Public Function GetById(id As Integer) As UserObj Implements IADORepository(Of UserObj).GetById
+            Dim UserObj As New UserObj
+            UserObj.userid = id
+            GetUserByID(UserObj)
+            Return UserObj
+        End Function
+
+        Public Function GetLastId() As UserObj Implements IADORepository(Of UserObj).GetLastId
+            Dim UserObj As New UserObj
+            GetLastId(UserObj)
+            Return UserObj
+        End Function
+
+        Public Sub GetLastId(item As UserObj) Implements IADORepository(Of UserObj).GetLastId
+            GetUserLastID(item)
         End Sub
     End Class
 End Namespace

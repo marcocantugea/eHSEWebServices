@@ -1,11 +1,15 @@
 ﻿Imports eservices_core.com.objects
+Imports eservices_core.com.interface
+
 Namespace com.ado
     Public Class ADOModulesMenus
         Inherits com.database.mysql.MySQLConnectionObj
+        Implements IADORepository(Of ModuleObj)
 
         Private Const table_modules As String = "tbl_modules"
         Private Const table_menus As String = "tbl_menus"
         Private Const Database As String = "DB-EWEBSERVICES"
+
 
         Public Sub AddModule(ModuleObj As ModuleObj)
             Dim qbuilder As New eservices_core.com.database.QueryBuilder(Of ModuleObj)
@@ -190,5 +194,74 @@ Namespace com.ado
         End Sub
 
 
+        Public Sub Add(item As ModuleObj) Implements IADORepository(Of ModuleObj).Add
+            If IsNothing(item) Then
+                Throw New NullReferenceException
+            End If
+
+            AddModule(item)
+
+        End Sub
+
+        Public Sub Delete(item As ModuleObj) Implements IADORepository(Of ModuleObj).Delete
+            If IsNothing(item) Then
+                Throw New NullReferenceException
+            End If
+
+            Try
+                OpenDB(Database)
+                SetCommand("delete * from " & table_modules & " where id_module=" & item.id_module)
+                connection.Command.ExecuteNonQuery()
+            Catch ex As Exception
+                Throw
+            Finally
+                CloseDB()
+            End Try
+        End Sub
+
+        Public Function Exist(id As Integer) As Boolean Implements IADORepository(Of ModuleObj).Exist
+            Dim existrecord As Boolean = False
+            Try
+                OpenDB(Database)
+                SetCommand("select count(1) as ExistRecord from " & table_modules & " where id_module=" & id.ToString)
+                SetDataAdapter()
+                Dim dts As New DataSet
+                connection.Adap.Fill(dts)
+                If dts.Tables.Count > 0 Then
+                    If dts.Tables(0).Rows.Count > 0 Then
+                        For Each row As DataRow In dts.Tables(0).Rows
+                            If Not IsDBNull(row("ExistRecord")) Then
+                                If Integer.Parse(row("ExistRecord")) > 0 Then
+                                    existrecord = True
+                                End If
+                            End If
+                        Next
+                    End If
+                End If
+            Catch ex As Exception
+                Throw
+            Finally
+                CloseDB()
+            End Try
+
+            Return existrecord
+        End Function
+
+        Public Function GetById(id As Integer) As ModuleObj Implements IADORepository(Of ModuleObj).GetById
+            Dim ModuleObj As New ModuleObj
+            ModuleObj.id_module = id
+            GetModuleByID(ModuleObj)
+            Return ModuleObj
+        End Function
+
+        Public Function GetLastId() As ModuleObj Implements IADORepository(Of ModuleObj).GetLastId
+            Dim ModuleObj As New ModuleObj
+            GetLastIDModule(ModuleObj)
+            Return ModuleObj
+        End Function
+
+        Public Sub GetLastId(item As ModuleObj) Implements IADORepository(Of ModuleObj).GetLastId
+            GetLastId(item)
+        End Sub
     End Class
 End Namespace
