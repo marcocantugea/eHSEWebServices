@@ -1,5 +1,6 @@
 ﻿Imports eservices_core.com.objects
 Imports eservices_core.com.interface
+Imports eservices_core.com.database
 
 Namespace com.ado
     Public Class ADODeparments
@@ -12,10 +13,10 @@ Namespace com.ado
         Public Sub GetDeparments(list_deparmentobj As List(Of DeparmentsObj))
             Dim deparment As New DeparmentsObj
 
-            Dim qbuilder As New eservices_core.com.database.QueryBuilder(Of DeparmentsObj)
-            qbuilder.TypeQuery = eservices_core.com.database.TypeQuery.SelectInfo
+            Dim qbuilder As New QueryBuilder(Of DeparmentsObj)
+            qbuilder.TypeQuery = TypeQuery.SelectInfo
             qbuilder.Entity = deparment
-            qbuilder.BuildSelect(table, True)
+            qbuilder.BuildSelect(Table, True)
             qbuilder.AddToQueryParameterForSelect("active=1")
             qbuilder.AddOrderByField("DeparmentName")
             Try
@@ -83,9 +84,9 @@ Namespace com.ado
             End If
 
             Try
-                OpenDB(database)
-                Dim qbuilder As New eservices_core.com.database.QueryBuilder(Of DeparmentsObj)
-                qbuilder.TypeQuery = eservices_core.com.database.TypeQuery.SelectInfo
+                OpenDB(Database)
+                Dim qbuilder As New QueryBuilder(Of DeparmentsObj)
+                qbuilder.TypeQuery = TypeQuery.SelectInfo
                 qbuilder.Entity = item
                 qbuilder.BuildSelect(Table, True)
                 SetCommand(qbuilder.Query)
@@ -170,6 +171,26 @@ Namespace com.ado
                         Next
                     End If
                 End If
+            Catch ex As Exception
+                Throw
+            Finally
+                CloseDB()
+            End Try
+        End Sub
+
+        Public Sub Update(item As DeparmentsObj) Implements IADORepository(Of DeparmentsObj).Update
+            If IsNothing(item) Then
+                Throw New NullReferenceException
+            End If
+
+            Try
+                OpenDB(Database)
+                Dim qbuilder As New QueryBuilder(Of DeparmentsObj)
+                qbuilder.TypeQuery = TypeQuery.Update
+                qbuilder.Entity = item
+                qbuilder.BuildUpdate(Table, "idDeparment=" & item.idDeparment)
+                SetCommand(qbuilder.Query)
+                connection.Command.ExecuteNonQuery()
             Catch ex As Exception
                 Throw
             Finally

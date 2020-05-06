@@ -4,7 +4,6 @@
     LoadLanguage()
     
     
-    
     Dim listofdocuments As Dictionary(Of Integer, Object)
     Dim listofdeparments As Integer() = SessionUser.UserObjSession.ProfileObj.AccessDeparments.ToArray
     
@@ -44,7 +43,7 @@
                 <td ><%PrintValueList(values, "UserNameRequested") %></td>
                 <td > 
                     <button type="button" id="btn_preview_<%=Base64Encoder.EncodeBase64(GetValueList(values, "idDocument"))%>" class="btn btn-sm btn-primary mr-2 mb-2">Ver</button>
-                    <button type="button" id="btn_reject_" class="btn btn-sm btn-danger mr-2 mb-2">Rechazar</button>
+                    <button type="button" id="btn_reject_<%=Base64Encoder.EncodeBase64(GetValueList(values, "idDocument"))%>" class="btn btn-sm btn-danger mr-2 mb-2">Rechazar</button>
                      <button type="button" id="btn_sign_<%=Base64Encoder.EncodeBase64(GetValueList(values, "idDocument"))%>" class="btn btn-sm btn-success mr-2 mb-2">Firmar</button>
                 </td>
             </tr>
@@ -64,5 +63,10 @@
         var id = this.id;
         var values = id.split("_");
         document.location.href="index.aspx?p=supervisor/p_confirmsignature&d=" + values[2];
+    });
+    $("button[id*='btn_reject_']").click(function () {
+        var id = this.id;
+        var values = id.split("_");
+        document.location.href = "index.aspx?p=supervisor/p_confirmreject&d=" + values[2];
     });
 </script>

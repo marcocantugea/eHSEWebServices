@@ -182,5 +182,26 @@ Namespace com.ado
                 CloseDB()
             End Try
         End Sub
+
+        Public Sub Update(item As CategoryObj) Implements IADORepository(Of CategoryObj).Update
+            If IsNothing(item) Then
+                Throw New NullReferenceException
+            End If
+
+            Try
+                OpenDB(Database)
+                Dim qbuilder As New QueryBuilder(Of CategoryObj)
+                qbuilder.TypeQuery = com.database.TypeQuery.Update
+                qbuilder.Entity = item
+                qbuilder.BuildUpdate(table, "idcategory=" & item.idcategory)
+                SetCommand(qbuilder.Query)
+                connection.Command.ExecuteNonQuery()
+            Catch ex As Exception
+                Throw
+            Finally
+                CloseDB()
+            End Try
+
+        End Sub
     End Class
 End Namespace

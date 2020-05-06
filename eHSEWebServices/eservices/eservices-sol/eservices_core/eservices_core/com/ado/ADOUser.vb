@@ -1,6 +1,7 @@
 ﻿Imports eservices_core.com.interface
 Imports eservices_core.com.objects
 Imports MySql.Data.MySqlClient
+Imports eservices_core.com.database
 
 Namespace com.ado
     Public NotInheritable Class ADOUser
@@ -83,8 +84,8 @@ Namespace com.ado
             fields.user_login = "-7"
             fields.user_pwd = "-7"
 
-            Dim qbuilder As New eservices_core.com.database.QueryBuilder(Of UserObj)
-            qbuilder.TypeQuery = eservices_core.com.database.TypeQuery.SelectInfo
+            Dim qbuilder As New QueryBuilder(Of UserObj)
+            qbuilder.TypeQuery = TypeQuery.SelectInfo
             qbuilder.Entity = fields
             qbuilder.BuildSelect(Table)
             qbuilder.AddToQueryParameterForSelect("user_login='" & UserObj.user_login & "' and user_pwd='" & UserObj.user_pwd & "'")
@@ -114,8 +115,8 @@ Namespace com.ado
         End Sub
 
         Private Sub AddUserLogin(UserObj As UserObj)
-            Dim qbuilder As New eservices_core.com.database.QueryBuilder(Of UserObj)
-            qbuilder.TypeQuery = eservices_core.com.database.TypeQuery.Insert
+            Dim qbuilder As New QueryBuilder(Of UserObj)
+            qbuilder.TypeQuery = TypeQuery.Insert
             qbuilder.Entity = UserObj
             qbuilder.BuildInsert(Table)
             Try
@@ -131,8 +132,8 @@ Namespace com.ado
         End Sub
 
         Private Sub AddUserInfo(InfoUserObj As InfoUserObj)
-            Dim qbuilder As New eservices_core.com.database.QueryBuilder(Of InfoUserObj)
-            qbuilder.TypeQuery = eservices_core.com.database.TypeQuery.Insert
+            Dim qbuilder As New QueryBuilder(Of InfoUserObj)
+            qbuilder.TypeQuery = TypeQuery.Insert
             qbuilder.Entity = InfoUserObj
             qbuilder.BuildInsert(Table)
             Try
@@ -147,8 +148,8 @@ Namespace com.ado
         End Sub
 
         Private Sub AddUserInfoCompany(UserInfoCompany As UserInfoCompanyObj)
-            Dim qbuilder As New eservices_core.com.database.QueryBuilder(Of UserInfoCompanyObj)
-            qbuilder.TypeQuery = eservices_core.com.database.TypeQuery.Insert
+            Dim qbuilder As New QueryBuilder(Of UserInfoCompanyObj)
+            qbuilder.TypeQuery = TypeQuery.Insert
             qbuilder.Entity = UserInfoCompany
             qbuilder.BuildInsert(Table)
             Try
@@ -163,8 +164,8 @@ Namespace com.ado
         End Sub
 
         Private Sub AddUserSignature(eSignatureObj As eSignatureObj)
-            Dim qbuilder As New eservices_core.com.database.QueryBuilder(Of eSignatureObj)
-            qbuilder.TypeQuery = eservices_core.com.database.TypeQuery.Insert
+            Dim qbuilder As New QueryBuilder(Of eSignatureObj)
+            qbuilder.TypeQuery = TypeQuery.Insert
             qbuilder.Entity = eSignatureObj
             qbuilder.BuildInsert(Table)
             Try
@@ -319,8 +320,8 @@ Namespace com.ado
         End Sub
 
         Private Sub getUserLoginByID(UserObj As UserObj)
-            Dim qbuilder As New eservices_core.com.database.QueryBuilder(Of UserObj)
-            qbuilder.TypeQuery = eservices_core.com.database.TypeQuery.SelectInfo
+            Dim qbuilder As New QueryBuilder(Of UserObj)
+            qbuilder.TypeQuery = TypeQuery.SelectInfo
             qbuilder.Entity = UserObj
             qbuilder.BuildSelect(Table, True)
             qbuilder.AddToQueryParameterForSelect("userid=" & UserObj.userid & "")
@@ -354,8 +355,8 @@ Namespace com.ado
         End Sub
 
         Private Sub getUserInfoByID(InfoUserObj As InfoUserObj, idinfouser As Integer)
-            Dim qbuilder As New eservices_core.com.database.QueryBuilder(Of InfoUserObj)
-            qbuilder.TypeQuery = eservices_core.com.database.TypeQuery.SelectInfo
+            Dim qbuilder As New QueryBuilder(Of InfoUserObj)
+            qbuilder.TypeQuery = TypeQuery.SelectInfo
             qbuilder.Entity = InfoUserObj
             qbuilder.BuildSelect(TableInfoUser, True)
             qbuilder.AddToQueryParameterForSelect("idInfoUser=" & idinfouser & "")
@@ -389,8 +390,8 @@ Namespace com.ado
         End Sub
 
         Private Sub getCompanyUserInfoByID(UserInfoCompanyObj As UserInfoCompanyObj, idinfocompany As Integer)
-            Dim qbuilder As New eservices_core.com.database.QueryBuilder(Of UserInfoCompanyObj)
-            qbuilder.TypeQuery = eservices_core.com.database.TypeQuery.SelectInfo
+            Dim qbuilder As New QueryBuilder(Of UserInfoCompanyObj)
+            qbuilder.TypeQuery = TypeQuery.SelectInfo
             qbuilder.Entity = UserInfoCompanyObj
             qbuilder.BuildSelect(TableInfoCompany, True)
             qbuilder.AddToQueryParameterForSelect("idinfocompany=" & idinfocompany & "")
@@ -424,8 +425,8 @@ Namespace com.ado
         End Sub
 
         Public Sub UpdateInfoUserCompany(InfoUsesrCompanyObj As UserInfoCompanyObj)
-            Dim qbuilder As New eservices_core.com.database.QueryBuilder(Of UserInfoCompanyObj)
-            qbuilder.TypeQuery = eservices_core.com.database.TypeQuery.Insert
+            Dim qbuilder As New QueryBuilder(Of UserInfoCompanyObj)
+            qbuilder.TypeQuery = TypeQuery.Insert
             qbuilder.Entity = InfoUsesrCompanyObj
             qbuilder.BuildUpdate(TableInfoCompany, "idinfocompany", InfoUsesrCompanyObj.idinfocompany)
             Try
@@ -441,8 +442,8 @@ Namespace com.ado
         End Sub
 
         Public Sub UpdateUserInfo(Userinfo As InfoUserObj)
-            Dim qbuilder As New eservices_core.com.database.QueryBuilder(Of InfoUserObj)
-            qbuilder.TypeQuery = eservices_core.com.database.TypeQuery.Insert
+            Dim qbuilder As New QueryBuilder(Of InfoUserObj)
+            qbuilder.TypeQuery = TypeQuery.Insert
             qbuilder.Entity = Userinfo
             qbuilder.BuildUpdate(TableInfoUser, "idInfoUser", Userinfo.idInfoUser)
             Try
@@ -458,8 +459,8 @@ Namespace com.ado
         End Sub
 
         Public Sub UpdateUserLogin(UserObj As UserObj)
-            Dim qbuilder As New eservices_core.com.database.QueryBuilder(Of UserObj)
-            qbuilder.TypeQuery = eservices_core.com.database.TypeQuery.Update
+            Dim qbuilder As New QueryBuilder(Of UserObj)
+            qbuilder.TypeQuery = TypeQuery.Update
             qbuilder.Entity = UserObj
             qbuilder.BuildUpdate(Table, "userid", UserObj.userid)
             Try
@@ -542,6 +543,26 @@ Namespace com.ado
 
         Public Sub GetLastId(item As UserObj) Implements IADORepository(Of UserObj).GetLastId
             GetUserLastID(item)
+        End Sub
+
+        Public Sub Update(item As UserObj) Implements IADORepository(Of UserObj).Update
+            If IsNothing(item) Then
+                Throw New NullReferenceException
+            End If
+
+            Try
+                OpenDB(Database)
+                Dim qbuilder As New QueryBuilder(Of UserObj)
+                qbuilder.TypeQuery = TypeQuery.Update
+                qbuilder.Entity = item
+                qbuilder.BuildUpdate(Table, "userid=" & item.userid)
+                SetCommand(qbuilder.Query)
+                connection.Command.ExecuteNonQuery()
+            Catch ex As Exception
+                Throw
+            Finally
+                CloseDB()
+            End Try
         End Sub
     End Class
 End Namespace

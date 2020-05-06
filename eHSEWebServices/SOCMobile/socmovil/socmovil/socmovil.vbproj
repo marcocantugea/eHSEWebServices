@@ -41,6 +41,10 @@
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="itextsharp, Version=5.5.13.1, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\..\..\eservices\eservices-sol\packages\iTextSharp.5.5.13.1\lib\itextsharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -92,6 +96,7 @@
     <Content Include="css\TRA-view.css" />
     <Content Include="favicon.png" />
     <Content Include="images\background_electronic_tra.jpg" />
+    <Content Include="images\document-approval-signed.gif" />
     <Content Include="images\EN-LANG-FLAG.gif" />
     <Content Include="images\ES-LANG-FLAG.gif" />
     <Content Include="images\gr-logo1.png" />
@@ -124,9 +129,13 @@
     <Content Include="public\header-section.ascx" />
     <Content Include="public\menu-control.ascx" />
     <Content Include="public\pagenotfound.ascx" />
+    <Content Include="public\supervisor\t_rejectdocument.aspx" />
     <Content Include="public\soc\p_createsoc.ascx" />
+    <Content Include="public\supervisor\p_confirmreject.ascx" />
     <Content Include="public\supervisor\p_confirmsignature.ascx" />
     <Content Include="public\supervisor\p_docforsig.ascx" />
+    <Content Include="public\supervisor\p_signeddocumentsuccess.ascx" />
+    <Content Include="public\supervisor\t_signdocument.aspx" />
     <Content Include="public\tra\p_confirmapproval.ascx" />
     <Content Include="public\tra\p_createTRA.ascx" />
     <Content Include="public\p_hsedep.ascx" />
@@ -142,6 +151,7 @@
     <Content Include="public\signatures\t_uploadimage.aspx" />
     <Content Include="public\soc\p_mysoccards.ascx" />
     <Content Include="public\soc\p_viewsoccard.ascx" />
+    <Content Include="public\tra\TRAFormatExport.aspx" />
     <Content Include="public\tra\TRAFormatWord.aspx" />
     <Content Include="public\tra\TRAFormat.aspx" />
     <Content Include="public\tutorials\tutorials.ascx" />
@@ -257,11 +267,25 @@
       <DependentUpon>pagenotfound.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="public\supervisor\t_rejectdocument.aspx.designer.vb">
+      <DependentUpon>t_rejectdocument.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="public\supervisor\t_rejectdocument.aspx.vb">
+      <DependentUpon>t_rejectdocument.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="public\soc\p_createsoc.ascx.designer.vb">
       <DependentUpon>p_createsoc.ascx</DependentUpon>
     </Compile>
     <Compile Include="public\soc\p_createsoc.ascx.vb">
       <DependentUpon>p_createsoc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="public\supervisor\p_confirmreject.ascx.designer.vb">
+      <DependentUpon>p_confirmreject.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="public\supervisor\p_confirmreject.ascx.vb">
+      <DependentUpon>p_confirmreject.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="public\supervisor\p_confirmsignature.ascx.designer.vb">
@@ -277,6 +301,20 @@
     <Compile Include="public\supervisor\p_docforsig.ascx.vb">
       <DependentUpon>p_docforsig.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="public\supervisor\p_signeddocumentsuccess.ascx.designer.vb">
+      <DependentUpon>p_signeddocumentsuccess.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="public\supervisor\p_signeddocumentsuccess.ascx.vb">
+      <DependentUpon>p_signeddocumentsuccess.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="public\supervisor\t_signdocument.aspx.designer.vb">
+      <DependentUpon>t_signdocument.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="public\supervisor\t_signdocument.aspx.vb">
+      <DependentUpon>t_signdocument.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="public\tra\p_confirmapproval.ascx.designer.vb">
       <DependentUpon>p_confirmapproval.ascx</DependentUpon>
@@ -382,6 +420,13 @@
     <Compile Include="public\soc\p_viewsoccard.ascx.vb">
       <DependentUpon>p_viewsoccard.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="public\tra\TRAFormatExport.aspx.designer.vb">
+      <DependentUpon>TRAFormatExport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="public\tra\TRAFormatExport.aspx.vb">
+      <DependentUpon>TRAFormatExport.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="public\tra\TRAFormatWord.aspx.designer.vb">
       <DependentUpon>TRAFormatWord.aspx</DependentUpon>
@@ -562,6 +607,7 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+    <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

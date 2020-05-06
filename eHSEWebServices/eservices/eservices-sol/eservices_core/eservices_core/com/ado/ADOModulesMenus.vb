@@ -1,5 +1,6 @@
 ﻿Imports eservices_core.com.objects
 Imports eservices_core.com.interface
+Imports eservices_core.com.database
 
 Namespace com.ado
     Public Class ADOModulesMenus
@@ -12,8 +13,8 @@ Namespace com.ado
 
 
         Public Sub AddModule(ModuleObj As ModuleObj)
-            Dim qbuilder As New eservices_core.com.database.QueryBuilder(Of ModuleObj)
-            qbuilder.TypeQuery = eservices_core.com.database.TypeQuery.Insert
+            Dim qbuilder As New QueryBuilder(Of ModuleObj)
+            qbuilder.TypeQuery = TypeQuery.Insert
             qbuilder.Entity = ModuleObj
             qbuilder.BuildInsert(table_modules)
             Try
@@ -28,8 +29,8 @@ Namespace com.ado
             End Try
         End Sub
         Public Sub AddMenu(MenuObj As MenuObj)
-            Dim qbuilder As New eservices_core.com.database.QueryBuilder(Of MenuObj)
-            qbuilder.TypeQuery = eservices_core.com.database.TypeQuery.Insert
+            Dim qbuilder As New QueryBuilder(Of MenuObj)
+            qbuilder.TypeQuery = TypeQuery.Insert
             qbuilder.Entity = MenuObj
             qbuilder.BuildInsert(table_menus)
             Try
@@ -123,8 +124,8 @@ Namespace com.ado
         End Sub
 
         Public Sub GetModuleByID(ModuleObj As ModuleObj, Optional frontui As Boolean = False)
-            Dim qbuilder As New eservices_core.com.database.QueryBuilder(Of ModuleObj)
-            qbuilder.TypeQuery = eservices_core.com.database.TypeQuery.SelectInfo
+            Dim qbuilder As New QueryBuilder(Of ModuleObj)
+            qbuilder.TypeQuery = TypeQuery.SelectInfo
             qbuilder.Entity = ModuleObj
             qbuilder.BuildSelect(table_modules, True)
             qbuilder.AddToQueryParameterForSelect("id_module=" & ModuleObj.id_module & "")
@@ -158,8 +159,8 @@ Namespace com.ado
             End Try
         End Sub
         Public Sub GetMenuByID(MenuObj As MenuObj, Optional frontui As Boolean = False)
-            Dim qbuilder As New eservices_core.com.database.QueryBuilder(Of MenuObj)
-            qbuilder.TypeQuery = eservices_core.com.database.TypeQuery.SelectInfo
+            Dim qbuilder As New QueryBuilder(Of MenuObj)
+            qbuilder.TypeQuery = TypeQuery.SelectInfo
             qbuilder.Entity = MenuObj
             qbuilder.BuildSelect(table_menus, True)
             qbuilder.AddToQueryParameterForSelect("id_menu=" & MenuObj.id_menu & "")
@@ -262,6 +263,26 @@ Namespace com.ado
 
         Public Sub GetLastId(item As ModuleObj) Implements IADORepository(Of ModuleObj).GetLastId
             GetLastId(item)
+        End Sub
+
+        Public Sub Update(item As ModuleObj) Implements IADORepository(Of ModuleObj).Update
+            If IsNothing(item) Then
+                Throw New NullReferenceException
+            End If
+
+            Try
+                OpenDB(Database)
+                Dim qbuilder As New QueryBuilder(Of ModuleObj)
+                qbuilder.TypeQuery = TypeQuery.Update
+                qbuilder.Entity = item
+                qbuilder.BuildUpdate(table_modules, "id_module=" & item.id_module)
+                SetCommand(qbuilder.Query)
+                connection.Command.ExecuteNonQuery()
+            Catch ex As Exception
+                Throw
+            Finally
+                CloseDB()
+            End Try
         End Sub
     End Class
 End Namespace

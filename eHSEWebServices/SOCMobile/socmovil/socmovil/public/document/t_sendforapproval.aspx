@@ -24,10 +24,11 @@
              doc.LoadInfoByID()
              Try
                  Process.SendDocumentForApproval(doc)
-                 Response.Redirect(parentpage)
              Catch ex As Exception
                  Response.Redirect(parentpage & "&ed=true")
              End Try
+             
+             Response.Redirect(parentpage)
          End If
      End If
 

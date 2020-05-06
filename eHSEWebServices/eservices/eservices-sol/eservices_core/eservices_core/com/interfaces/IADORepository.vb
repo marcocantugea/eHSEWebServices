@@ -10,6 +10,7 @@ Namespace com.interface
         Function Exist(id As Integer) As Boolean
         Function GetLastId() As TEntity
         Sub GetLastId(item As TEntity)
+        Sub Update(item As TEntity)
 
         'Function Exist(query As Func(Of TEntity, Boolean)) As Boolean
         'Function FindBy(query As Func(Of TEntity, Boolean)) As ICollection(Of TEntity)

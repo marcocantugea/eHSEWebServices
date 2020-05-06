@@ -7,7 +7,6 @@ Namespace com.ado
         Inherits com.database.mysql.MySQLConnectionObj
         Implements IADORepository(Of ProfileObj)
 
-
         Private Const Table As String = "tbl_profiles"
         Private Const Database As String = "DB-EWEBSERVICES"
 
@@ -101,11 +100,11 @@ Namespace com.ado
             End If
 
             Try
-                OpenDB(database)
+                OpenDB(Database)
                 Dim qbuilder As New QueryBuilder(Of ProfileObj)
                 qbuilder.TypeQuery = com.database.TypeQuery.Insert
                 qbuilder.Entity = item
-                qbuilder.BuildInsert(table)
+                qbuilder.BuildInsert(Table)
 
                 SetCommand(qbuilder.Query)
                 connection.Command.ExecuteNonQuery()
@@ -190,6 +189,26 @@ Namespace com.ado
                         Next
                     End If
                 End If
+            Catch ex As Exception
+                Throw
+            Finally
+                CloseDB()
+            End Try
+        End Sub
+
+        Public Sub Update(item As ProfileObj) Implements IADORepository(Of ProfileObj).Update
+            If IsNothing(item) Then
+                Throw New NullReferenceException
+            End If
+
+            Try
+                OpenDB(Database)
+                Dim qbuilder As New QueryBuilder(Of ProfileObj)
+                qbuilder.TypeQuery = TypeQuery.Update
+                qbuilder.Entity = item
+                qbuilder.BuildUpdate(Table, "idprofile=" & item.idprofile)
+                SetCommand(qbuilder.Query)
+                connection.Command.ExecuteNonQuery()
             Catch ex As Exception
                 Throw
             Finally

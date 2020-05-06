@@ -1,5 +1,5 @@
 ﻿Imports eservices_core.com.interface
-
+Imports eservices_core.com.ado
 Namespace com.ado
     Public NotInheritable Class ADOUserUtilities
         Inherits com.database.ole.OleDBConnectionObj
@@ -52,6 +52,10 @@ Namespace com.ado
         End Function
 
         Public Sub GetLastId(item As Object) Implements IADORepository(Of Object).GetLastId
+            Throw New NotImplementedException
+        End Sub
+
+        Public Sub Update(item As Object) Implements IADORepository(Of Object).Update
             Throw New NotImplementedException
         End Sub
     End Class

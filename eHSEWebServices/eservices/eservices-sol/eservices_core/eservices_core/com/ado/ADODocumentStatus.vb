@@ -1,5 +1,6 @@
 ﻿Imports eservices_core.com.objects
 Imports eservices_core.com.interface
+Imports eservices_core.com.database
 Namespace com.ado
     Public Class ADODocumentStatus
         Inherits com.database.mysql.MySQLConnectionObj
@@ -10,8 +11,8 @@ Namespace com.ado
         Private Const database As String = "DB-EWEBSERVICES"
 
         Public Sub AddDocumentStatus(DocumentStatusObj As DocumentStatusObj)
-            Dim qbuilder As New eservices_core.com.database.QueryBuilder(Of DocumentStatusObj)
-            qbuilder.TypeQuery = eservices_core.com.database.TypeQuery.Insert
+            Dim qbuilder As New QueryBuilder(Of DocumentStatusObj)
+            qbuilder.TypeQuery = TypeQuery.Insert
             qbuilder.Entity = DocumentStatusObj
             qbuilder.BuildInsert(table)
             Try
@@ -47,8 +48,8 @@ Namespace com.ado
             End Try
         End Sub
         Public Sub GetDocumentStatusByID(DocumentStatusObj As DocumentStatusObj)
-            Dim qbuilder As New eservices_core.com.database.QueryBuilder(Of DocumentStatusObj)
-            qbuilder.TypeQuery = eservices_core.com.database.TypeQuery.SelectInfo
+            Dim qbuilder As New QueryBuilder(Of DocumentStatusObj)
+            qbuilder.TypeQuery = TypeQuery.SelectInfo
             qbuilder.Entity = DocumentStatusObj
             qbuilder.BuildSelect(table, True)
             qbuilder.AddToQueryParameterForSelect("idDocumentStatus=" & DocumentStatusObj.idDocumentStatus & "")
@@ -142,5 +143,24 @@ Namespace com.ado
             Return documentstatus
         End Function
 
+        Public Sub Update(item As DocumentStatusObj) Implements IADORepository(Of DocumentStatusObj).Update
+            If IsNothing(item) Then
+                Throw New NullReferenceException
+            End If
+
+            Try
+                OpenDB(database)
+                Dim qbuilder As New QueryBuilder(Of DocumentStatusObj)
+                qbuilder.TypeQuery = TypeQuery.Update
+                qbuilder.Entity = item
+                qbuilder.BuildUpdate(table, "idDocumentStatus=" & item.idDocumentStatus)
+                SetCommand(qbuilder.Query)
+                connection.Command.ExecuteNonQuery()
+            Catch ex As Exception
+                Throw
+            Finally
+                CloseDB()
+            End Try
+        End Sub
     End Class
 End Namespace

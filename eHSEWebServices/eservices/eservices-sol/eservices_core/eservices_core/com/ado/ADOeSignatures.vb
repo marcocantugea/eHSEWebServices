@@ -185,5 +185,24 @@ Namespace com.ado
             Return signature
         End Function
 
+        Public Sub Update(item As eSignatureObj) Implements IADORepository(Of eSignatureObj).Update
+            If IsNothing(item) Then
+                Throw New NullReferenceException
+            End If
+
+            Try
+                OpenDB(Database)
+                Dim qbuilder As New QueryBuilder(Of eSignatureObj)
+                qbuilder.TypeQuery = TypeQuery.Update
+                qbuilder.Entity = item
+                qbuilder.BuildUpdate(Table, "idsignature=" & item.idsignature)
+                SetCommand(qbuilder.Query)
+                connection.Command.ExecuteNonQuery()
+            Catch ex As Exception
+                Throw
+            Finally
+                CloseDB()
+            End Try
+        End Sub
     End Class
 End Namespace

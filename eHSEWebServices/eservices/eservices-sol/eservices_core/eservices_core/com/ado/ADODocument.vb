@@ -1,5 +1,6 @@
 ﻿Imports eservices_core.com.objects
 Imports eservices_core.com.interface
+Imports eservices_core.com.database
 Imports System.Text
 Namespace com.ado
     Public Class ADODocument
@@ -30,13 +31,26 @@ Namespace com.ado
         End Sub
 
         Public Sub AddDocumentForApproval(DocumentForApproval As DocumentPendingForApprovalObj)
-            Dim qbuilder As New eservices_core.com.database.QueryBuilder(Of DocumentPendingForApprovalObj)
-            qbuilder.TypeQuery = eservices_core.com.database.TypeQuery.Insert
+            Dim qbuilder As New QueryBuilder(Of DocumentPendingForApprovalObj)
+            qbuilder.TypeQuery = TypeQuery.Insert
             qbuilder.Entity = DocumentForApproval
             qbuilder.BuildInsert("tbl_DocumentsPengindForApproval")
             Try
                 OpenDB(database)
                 SetCommand(qbuilder.Query)
+                connection.Command.ExecuteNonQuery()
+            Catch ex As Exception
+                Throw
+            Finally
+                CloseDB()
+
+            End Try
+        End Sub
+
+        Public Sub RemoveDocumentForApproval(DocumentForApproval As DocumentPendingForApprovalObj)
+            Try
+                OpenDB(database)
+                SetCommand("DELETE FROM tbl_documentspengindforapproval WHERE idDocument=" & DocumentForApproval.idDocument)
                 connection.Command.ExecuteNonQuery()
             Catch ex As Exception
                 Throw
@@ -71,6 +85,18 @@ Namespace com.ado
                 Throw
             End Try
             Return exist
+        End Function
+
+        Public Function CloseDocumentPendingForApproval(iddocument As Integer, userid As Integer)
+            Try
+                OpenDB(database)
+                Dim query As String = "update tbl_DocumentsPengindForApproval set UseridSigned=" & userid.ToString & ", StatusOpenClose=0 where idDocument=" & iddocument.ToString
+                SetCommand(query)
+                connection.Command.ExecuteNonQuery()
+            Catch ex As Exception
+            Finally
+                CloseDB()
+            End Try
         End Function
 
         Private Sub getLasID(DocumentObj As DocumentObj) Implements IADORepository(Of DocumentObj).GetLastId
@@ -137,17 +163,23 @@ Namespace com.ado
             Return document
         End Function
 
-        Public Function GetDocuemntsByUser(UserObj As UserObj, Optional DocumentType As String = Nothing) As SortedList(Of Integer, DocumentObj)
+        Public Function GetDocuemntsByUser(UserObj As UserObj, Optional DocumentType As String = Nothing, Optional documentstatus As DocumentStatus = 0) As SortedList(Of Integer, DocumentObj)
             Dim ListOfOdcuments As New SortedList(Of Integer, DocumentObj)
             Try
                 OpenDB(database)
                 Dim query As String
-                If Not IsNothing(DocumentType) Then
-                    query = "select " & GetFields() & " from " & table & " where userid=" & UserObj.userid.ToString & " and TypeOfObj like '%." & DocumentType & "%' order by documentdate"
-                Else
+                query = "select " & GetFields() & " from " & table & " where userid=" & UserObj.userid.ToString
 
-                    query = "select " & GetFields() & " from " & table & " where userid=" & UserObj.userid.ToString & " order by documentdate"
+                If Not IsNothing(DocumentType) Then
+                    query += " and TypeOfObj like '%." & DocumentType & "%'"
                 End If
+
+                If documentstatus > 0 Then
+                    query += " and idDocumentStatus=" & documentstatus
+                End If
+                Dim orderby As String = " order by documentdate desc"
+
+                query += orderby
 
                 SetCommand(query)
                 SetDataAdapter()
@@ -176,6 +208,7 @@ Namespace com.ado
             Finally
                 CloseDB()
             End Try
+
             Return ListOfOdcuments
         End Function
 
@@ -510,7 +543,7 @@ Namespace com.ado
         Public Function GetDocumentPendingForSignature(idDeparment As Integer()) As IDictionary(Of Integer, Object)
             Dim ListofValues As New Dictionary(Of Integer, Object)
             Try
-                OpenDB("DB-EWEBSERVICES")
+                OpenDB(database)
                 Dim index As Integer = 0
                 Dim queryids As String
                 For Each i As Integer In idDeparment
@@ -597,7 +630,41 @@ Namespace com.ado
         End Function
 
         Public Function GetById(id As Integer) As DocumentObj Implements IADORepository(Of DocumentObj).GetById
-            Return GetDocumentByID(id)
+            If id <= 0 Then
+                Return Nothing
+            End If
+
+            Dim documentObj As New DocumentGeneric
+            documentObj.idDocument = id
+            Try
+                OpenDB(database)
+                Dim qbuilder As New QueryBuilder(Of DocumentGeneric)
+                qbuilder.TypeQuery = com.database.TypeQuery.SelectInfo
+                qbuilder.Entity = documentObj
+                qbuilder.BuildSelect(table, True)
+                qbuilder.AddToQueryParameterForSelect("idDocument=" & id)
+                SetCommand(qbuilder.Query)
+                SetDataAdapter()
+                Dim dts As New DataSet
+                connection.Adap.Fill(dts)
+                If dts.Tables.Count > 0 Then
+                    If dts.Tables(0).Rows.Count > 0 Then
+                        For Each row As DataRow In dts.Tables(0).Rows
+                            For Each column As DataColumn In dts.Tables(0).Columns
+                                If Not IsDBNull(row(column.ColumnName)) Then
+                                    documentObj.GetType.GetProperty(column.ColumnName).SetValue(documentObj, row(column.ColumnName), Nothing)
+                                End If
+                            Next
+                        Next
+                    End If
+                End If
+
+            Catch ex As Exception
+            Finally
+                CloseDB()
+            End Try
+
+            Return documentObj
         End Function
 
         Public Sub GetById(id As Integer, item As DocumentObj)
@@ -610,6 +677,26 @@ Namespace com.ado
             Return document
         End Function
 
+
+        Public Sub Update(item As DocumentObj) Implements IADORepository(Of DocumentObj).Update
+            If IsNothing(item) Then
+                Throw New NullReferenceException
+            End If
+
+            Try
+                OpenDB(database)
+                Dim qbuilder As New QueryBuilder(Of DocumentObj)
+                qbuilder.TypeQuery = TypeQuery.Update
+                qbuilder.Entity = item
+                qbuilder.BuildUpdate(table, "idDocument=" & item.getidDocument)
+                SetCommand(qbuilder.Query)
+                connection.Command.ExecuteNonQuery()
+            Catch ex As Exception
+                Throw
+            Finally
+                CloseDB()
+            End Try
+        End Sub
     End Class
     Enum TypeQuery
         Insert = 0

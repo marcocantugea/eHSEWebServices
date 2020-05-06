@@ -1,5 +1,6 @@
 ﻿Imports eservices_core.com.objects
 Imports eservices_core.com.interface
+Imports eservices_core.com.database
 
 Namespace com.ado
     Public NotInheritable Class ADOCompany
@@ -12,8 +13,8 @@ Namespace com.ado
         Public Sub GetAllCompanies(CompanyList As List(Of com.objects.CompanyObj))
             Dim companyobj As New com.objects.CompanyObj
 
-            Dim qbuilder As New eservices_core.com.database.QueryBuilder(Of CompanyObj)
-            qbuilder.TypeQuery = eservices_core.com.database.TypeQuery.SelectInfo
+            Dim qbuilder As New QueryBuilder(Of CompanyObj)
+            qbuilder.TypeQuery = TypeQuery.SelectInfo
             qbuilder.Entity = companyobj
             qbuilder.BuildSelect(Table, True)
             qbuilder.AddToQueryParameterForSelect("active=1")
@@ -44,8 +45,8 @@ Namespace com.ado
         End Sub
 
         Public Sub GetCompanyByID(CompanyObj As CompanyObj)
-            Dim qbuilder As New eservices_core.com.database.QueryBuilder(Of CompanyObj)
-            qbuilder.TypeQuery = eservices_core.com.database.TypeQuery.SelectInfo
+            Dim qbuilder As New QueryBuilder(Of CompanyObj)
+            qbuilder.TypeQuery = TypeQuery.SelectInfo
             qbuilder.Entity = CompanyObj
             qbuilder.BuildSelect(Table, True)
             qbuilder.AddToQueryParameterForSelect("idCompany=" & CompanyObj.idCompany)
@@ -79,8 +80,8 @@ Namespace com.ado
 
             Try
                 OpenDB(Database)
-                Dim qbuilder As New eservices_core.com.database.QueryBuilder(Of CompanyObj)
-                qbuilder.TypeQuery = eservices_core.com.database.TypeQuery.SelectInfo
+                Dim qbuilder As New QueryBuilder(Of CompanyObj)
+                qbuilder.TypeQuery = TypeQuery.SelectInfo
                 qbuilder.Entity = item
                 qbuilder.BuildSelect(Table, True)
                 SetCommand(qbuilder.Query)
@@ -165,6 +166,26 @@ Namespace com.ado
                         Next
                     End If
                 End If
+            Catch ex As Exception
+                Throw
+            Finally
+                CloseDB()
+            End Try
+        End Sub
+
+        Public Sub Update(item As CompanyObj) Implements IADORepository(Of CompanyObj).Update
+            If IsNothing(item) Then
+                Throw New NullReferenceException
+            End If
+
+            Try
+                OpenDB(Database)
+                Dim qbuilder As New QueryBuilder(Of CompanyObj)
+                qbuilder.TypeQuery = TypeQuery.Update
+                qbuilder.Entity = item
+                qbuilder.BuildUpdate(Table, "idCompany=" & item.idCompany)
+                SetCommand(qbuilder.Query)
+                connection.Command.ExecuteNonQuery()
             Catch ex As Exception
                 Throw
             Finally

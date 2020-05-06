@@ -37,7 +37,15 @@
     'For Each item As etra.com.objects.TRAObj In listoftra
     '    Response.Write(item.ToString + "<br/>")
     'Next
-   
+    
+    Dim list As SortedList(Of Integer, eservices_core.com.objects.DocumentObj)
+    Dim user As New eservices_core.com.objects.UserObj
+    user.userid = 3
+    list = UnitOfWork.Documents.GetDocuemntsByUser(user)
+    
+    For Each item As KeyValuePair(Of Integer, eservices_core.com.objects.DocumentObj) In list.Where(Function(c) c.Value.getidDocumentStatus().Equals(3))
+        Response.Write(item.Value.getDocumentStatusObj.label)
+    Next
    
 %>
 <!DOCTYPE html>

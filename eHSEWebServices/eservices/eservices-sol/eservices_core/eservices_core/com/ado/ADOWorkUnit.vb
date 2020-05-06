@@ -173,5 +173,25 @@ Namespace com.ado
                 CloseDB()
             End Try
         End Sub
+
+        Public Sub Update(item As WorkUnitObj) Implements IADORepository(Of WorkUnitObj).Update
+            If IsNothing(item) Then
+                Throw New NullReferenceException
+            End If
+
+            Try
+                OpenDB(Database)
+                Dim qbuilder As New QueryBuilder(Of WorkUnitObj)
+                qbuilder.TypeQuery = TypeQuery.Update
+                qbuilder.Entity = item
+                qbuilder.BuildUpdate(Table, "idWorkUnit=" & item.idWorkUnit)
+                SetCommand(qbuilder.Query)
+                connection.Command.ExecuteNonQuery()
+            Catch ex As Exception
+                Throw
+            Finally
+                CloseDB()
+            End Try
+        End Sub
     End Class
 End Namespace

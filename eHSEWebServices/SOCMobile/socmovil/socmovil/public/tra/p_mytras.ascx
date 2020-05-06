@@ -3,14 +3,24 @@
     LoadConfiguration()
     LoadLanguage()
     
+    Dim docstatus As Integer = 0
+    If Not IsNothing(Request.QueryString("fe")) Then
+        Try
+            docstatus = Integer.Parse(Request.QueryString("fe"))
+        Catch ex As Exception
+
+        End Try
+    End If
     
-    Dim list As SortedList(Of Integer, eservices_core.com.objects.DocumentObj) = UnitOfWork.Documents.GetDocuemntsByUser(SessionUser.UserObjSession, "TRA")
+    Dim list As SortedList(Of Integer, eservices_core.com.objects.DocumentObj) = UnitOfWork.Documents.GetDocuemntsByUser(SessionUser.UserObjSession, "TRA", docstatus)
     
     Dim currentpage As String = "../index.aspx?p=tra%2fp_mytras"
     Dim show_duplicateapproval As Boolean = False
     If Not IsNothing(Request.QueryString("ed")) Then
         show_duplicateapproval = True
     End If
+    
+   
 %>
 <% If show_duplicateapproval Then%>
 <div class="container bg-danger text-white text-center p-3 mt-4">
@@ -24,6 +34,22 @@
         <span class="display-4">
             <%GetLbl("p_mytras_lbl_MainTitle")%>
         </span>
+    </div>
+    <div class="mt-4  text-left">
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="cmb_selectstatus">Estatus</label>
+                    <select id="cmb_selectstatus" class="form-control rounded">
+                        <option <%If docstatus = 1 Then Response.Write("selected")%> value="1">Documento</option>
+                        <option <%If docstatus = 2 Then Response.Write("selected")%>  value="2">En Espera por Firma</option>
+                        <option <%If docstatus = 3 Then Response.Write("selected")%>  value="3">Approvado</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col"></div>
+            <div class="col"></div>
+        </div>
     </div>
     <div class="">
         <table class="table table-striped table-hover mt-3 text-left">
@@ -90,5 +116,10 @@
         var id = this.id;
         var values = id.split("_");
         window.open("tra/TRAFormat.aspx?tra_id="+ values[2]);
+    });
+
+    $("#cmb_selectstatus").change(function () {
+        var selected = $(this).val();
+        document.location.href = "index.aspx?p=tra/p_mytras&fe="+selected 
     });
 </script>
