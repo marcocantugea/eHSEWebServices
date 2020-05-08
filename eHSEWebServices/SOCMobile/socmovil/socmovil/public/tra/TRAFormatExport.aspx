@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="TRAFormatExport.aspx.vb" Inherits="socmovil.TRAFormatExport" %>
+
 <%
     
     Dim tra_found As New etra.com.objects.TRAObj
@@ -43,6 +44,9 @@
     If Not IsNothing(Request.QueryString("printview")) Then
         printfunction = True
     End If
+    
+    tra_found.LoadDocumentHeadInfo()
+    Dim filename As String = tra_found.geteSignatureFile
     
 %>
 <!DOCTYPE html>
@@ -1531,6 +1535,7 @@
                         </td>
                         <td colspan="2" style="text-align:center;font-size:10pt;font-weight:bold;" >
                             <span  >
+                               
                                 <br />
                                 <%Response.Write(tra_found.tra_permit_holder)%>
                             </span>
@@ -1542,7 +1547,12 @@
                             </span>
                         </td>
                         <td style="width:200px;text-align:center;font-size:10pt;font-weight:bold;">
-                            <span>
+                            <span style="position:relative;">
+                                 <% If tra_found.getidDocumentStatus = eservices_core.com.ado.DocumentStatus.Signed Then%>
+                                <div style="position: absolute; top: -60px;">
+                                    <img src="../signatures/img_signature.aspx?d=<%=Base64Encoder.EncodeBase64(tra_found.getidDocument) %>" />
+                                </div>
+                                <% End If%>
                                 <br />
                                  <%Response.Write(tra_found.tra_permit_autority)%>
                             </span>
@@ -1666,9 +1676,12 @@
      %>
     <script>
         window.print();
+        
     </script>
 <%
 End If
     %>
 </body>
 </html>
+
+

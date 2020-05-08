@@ -177,7 +177,8 @@ Namespace com.ado
                 If documentstatus > 0 Then
                     query += " and idDocumentStatus=" & documentstatus
                 End If
-                Dim orderby As String = " order by documentdate desc"
+
+                Dim orderby As String = " order by documentdate "
 
                 query += orderby
 

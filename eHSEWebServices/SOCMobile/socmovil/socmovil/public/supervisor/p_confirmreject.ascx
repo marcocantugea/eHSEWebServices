@@ -1,5 +1,8 @@
 ﻿<%@ Control Language="vb" AutoEventWireup="false" CodeBehind="p_confirmreject.ascx.vb" Inherits="socmovil.p_confirmreject" %>
 <% 
+    LoadConfiguration()
+    LoadLanguage()
+    
     
     If IsNothing(Request.QueryString) Then
         Response.Redirect(Request.UrlReferrer.ToString)
@@ -25,17 +28,17 @@
 %>
 <div class="container text-center">
     <div class="mt-4 mb-4">
-        <span class="display-4"> Confirmar Rechazo de Documento por firma</span>
+        <span class="display-4"> <%GetLbl("p_confirmreject_lbl_maintitle") %> </span>
     </div>
     <div class="h3 mt-5">
-        <span>¿Desea rechazar documento?</span>
+        <span> <%GetLbl("p_confirmreject_lbl_questionreject") %> </span>
     </div>
     <div class="row mt-4 mb-5">
         <div class="col text-right mr-4">
-            <button type="button" class="btn btn-success btn-lg" id="btn_yes_<%=Base64Encoder.EncodeBase64(documentid.ToString()) %>" >&nbsp;&nbsp;&nbsp;&nbsp;SI&nbsp;&nbsp;&nbsp;&nbsp;</button>
+            <button type="button" class="btn btn-success btn-lg" id="btn_yes_<%=Base64Encoder.EncodeBase64(documentid.ToString()) %>" >&nbsp;&nbsp;&nbsp;&nbsp;<%GetLbl("lbl_yes")%>&nbsp;&nbsp;&nbsp;&nbsp;</button>
         </div>
         <div class="col text-left ml-4">
-            <button type="button" class="btn btn-danger btn-lg" id="btn_no" >&nbsp;&nbsp;&nbsp;&nbsp;NO&nbsp;&nbsp;&nbsp;&nbsp;</button>
+            <button type="button" class="btn btn-danger btn-lg" id="btn_no" >&nbsp;&nbsp;&nbsp;&nbsp;<%GetLbl("lbl_no")%>&nbsp;&nbsp;&nbsp;&nbsp;</button>
         </div>
     </div>
 </div>

@@ -1208,9 +1208,9 @@
         <tr>
             <td colspan="2" class="text-right p-2">
                 <%--<button type="button" class="btn btn-success " style="margin-right:50px; " id="btn_downloadmsword" >Descargar en Formato Word</button>--%>
-                <button type="button" class="btn btn-success" style="margin-right:50px; " id="btn_savemytra" >Guardar TRA</button>
-                <button type="button" class="btn btn-primary " style="margin-right:50px; " id="btn_viewformat" >Ver en Formato</button>
-                <button type="button" class="btn btn-warning " style="margin-right:50px; " id="btn_printformat" >Imprimir</button>
+                <button type="button" class="btn btn-success" style="margin-right:50px; " id="btn_savemytra" ><%GetLbl("p_createTRA_button_lblSavetra")%></button>
+                <button type="button" class="btn btn-primary " style="margin-right:50px; " id="btn_viewformat" ><%GetLbl("p_createTRA_button_lblPreview")%></button>
+                <button type="button" class="btn btn-warning " style="margin-right:50px; " id="btn_printformat" ><%GetLbl("p_tras_lbl_btn_Print") %></button>
             </td> 
         </tr>
     </table>
@@ -2043,8 +2043,8 @@
         </div>
         <div class="row">
             <div class="container">
-                <button type="button" class="btn btn-success btn-block mb-3" id="btn_sm_savetra" >Guardar TRA </button>
-                <button type="button" class="btn btn-primary btn-block mb-3" id="btn_sm_viewformat">Ver en Formato </button>
+                <button type="button" class="btn btn-success btn-block mb-3" id="btn_sm_savetra" ><%GetLbl("p_createTRA_button_lblSavetra")%></button>
+                <button type="button" class="btn btn-primary btn-block mb-3" id="btn_sm_viewformat"><%GetLbl("p_createTRA_button_lblPreview") %> </button>
                 <%--<button type="button" class="btn btn-warning btn-block mb-3">Imprimir </button>--%>
             </div>
         </div>

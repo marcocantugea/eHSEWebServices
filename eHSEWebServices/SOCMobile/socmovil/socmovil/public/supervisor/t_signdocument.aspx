@@ -23,6 +23,10 @@
         Response.Redirect("../index.aspx")
     End Try
    
+    Try
+        
+   
+    
     If session_transaction.Equals(requested_transaction) Then
         Dim sanitize_password As String = SQLSanitize.SanitizeSTR(Request.Form("password"))
         Dim real_pass As String = encrypt.EncryptData(System.Configuration.ConfigurationSettings.AppSettings("enc-key") & sanitize_password)
@@ -53,11 +57,12 @@
         Catch ex As Exception
             Response.Write(ex.Message.ToString)
             Response.Redirect("../index.aspx")
-        End Try
-      
-        Response.Redirect("../index.aspx?p=supervisor/p_signeddocumentsuccess&d=" & Base64Encoder.EncodeBase64(post_iddocument))
-        Response.Write(post_iddocument)
+            End Try
       
     End If
+    Catch ex As Exception
+        Response.Redirect("../index.aspx")
+    End Try
     
+    Response.Redirect("../index.aspx?p=supervisor/p_signeddocumentsuccess&d=" & Base64Encoder.EncodeBase64(post_iddocument))
 %>

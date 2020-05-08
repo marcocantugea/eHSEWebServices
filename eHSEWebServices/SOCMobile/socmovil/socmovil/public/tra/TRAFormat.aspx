@@ -45,6 +45,8 @@
         printfunction = True
     End If
     
+    tra_found.LoadDocumentHeadInfo()
+    Dim filename As String = tra_found.geteSignatureFile
 %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -325,181 +327,6 @@
                     <%
                          Next
                      %>
-                    <%--<tr class="table-values">
-                        <td class="first-col">
-                           <span></span>
-                        </td>
-                        <td style="width:170px;">
-                            <span></span>
-                        </td>
-                        <td style="width:170px;">
-                            <span></span>
-                        </td>
-                        <td style="width:170px;">
-                            <span></span>
-                        </td>
-                        <td>
-                            <span></span>
-                        </td>
-                        <td>
-                            <span></span>
-                        </td>
-                        <td>
-                            <span></span>
-                        </td>
-                        <td style="width:180px;">
-                           <span></span>
-                        </td>
-                        <td style="text-align:center;">
-                            <span></span>
-                        </td>
-                        <td>
-                            <span></span>
-                        </td>
-                        <td>
-                            <span></span>
-                        </td>
-                    </tr>
-                    <tr class="table-values">
-                        <td class="first-col">
-                           <span></span>
-                        </td>
-                        <td style="width:170px;">
-                            <span></span>
-                        </td>
-                        <td style="width:170px;">
-                            <span></span>
-                        </td>
-                        <td style="width:170px;">
-                            <span></span>
-                        </td>
-                        <td>
-                            <span></span>
-                        </td>
-                        <td>
-                            <span></span>
-                        </td>
-                        <td>
-                            <span></span>
-                        </td>
-                        <td style="width:180px;">
-                           <span></span>
-                        </td>
-                        <td style="text-align:center;">
-                            <span></span>
-                        </td>
-                        <td>
-                            <span></span>
-                        </td>
-                        <td>
-                            <span></span>
-                        </td>
-                    </tr>
-                    <tr class="table-values">
-                        <td class="first-col">
-                           <span></span>
-                        </td>
-                        <td style="width:170px;">
-                            <span></span>
-                        </td>
-                        <td style="width:170px;">
-                            <span></span>
-                        </td>
-                        <td style="width:170px;">
-                            <span></span>
-                        </td>
-                        <td>
-                            <span></span>
-                        </td>
-                        <td>
-                            <span></span>
-                        </td>
-                        <td>
-                            <span></span>
-                        </td>
-                        <td style="width:180px;">
-                           <span></span>
-                        </td>
-                        <td style="text-align:center;">
-                            <span></span>
-                        </td>
-                        <td>
-                            <span></span>
-                        </td>
-                        <td>
-                            <span></span>
-                        </td>
-                    </tr>
-                    <tr class="table-values">
-                        <td class="first-col">
-                           <span></span>
-                        </td>
-                        <td style="width:170px;">
-                            <span></span>
-                        </td>
-                        <td style="width:170px;">
-                            <span></span>
-                        </td>
-                        <td style="width:170px;">
-                            <span></span>
-                        </td>
-                        <td>
-                            <span></span>
-                        </td>
-                        <td>
-                            <span></span>
-                        </td>
-                        <td>
-                            <span></span>
-                        </td>
-                        <td style="width:180px;">
-                           <span></span>
-                        </td>
-                        <td style="text-align:center;">
-                            <span></span>
-                        </td>
-                        <td>
-                            <span></span>
-                        </td>
-                        <td>
-                            <span></span>
-                        </td>
-                    </tr>
-                    <tr class="table-values">
-                        <td class="first-col">
-                           <span></span>
-                        </td>
-                        <td style="width:170px;">
-                            <span></span>
-                        </td>
-                        <td style="width:170px;">
-                            <span></span>
-                        </td>
-                        <td style="width:170px;">
-                            <span></span>
-                        </td>
-                        <td>
-                            <span></span>
-                        </td>
-                        <td>
-                            <span></span>
-                        </td>
-                        <td>
-                            <span></span>
-                        </td>
-                        <td style="width:180px;">
-                           <span></span>
-                        </td>
-                        <td style="text-align:center;">
-                            <span></span>
-                        </td>
-                        <td>
-                            <span></span>
-                        </td>
-                        <td>
-                            <span></span>
-                        </td>
-                    </tr>--%>
 
                     <%--Termina tabla de llenado--%>
                 </table>
@@ -1180,6 +1007,7 @@
                             <span >
                                <% Response.Write(tra_found.tra_ApplicableProcedure)%>
                             </span>
+                            
                         </td>
                     </tr>
                     <tr style="height:20px;">
@@ -1201,9 +1029,19 @@
                             </span>
                         </td>
                         <td style="width:200px;text-align:center;font-size:10pt;font-weight:bold;">
-                            <span>
+                            
+                            <span style="position:relative;"> 
+                                <% If tra_found.getidDocumentStatus = eservices_core.com.ado.DocumentStatus.Signed Then
+                                 %>
+                                <div style="position: absolute; top: -60px;">
+                                    <img src="../signatures/img_signature.aspx?d=<%=Base64Encoder.EncodeBase64(tra_found.getidDocument) %>" height="150px;" />
+                                </div>
                                 <br />
-                                 <%Response.Write(tra_found.tra_permit_autority)%>
+                                <%=tra_found.getApprovalBy.FullName%>
+                                <% Else %>
+                                <br />
+                                <%Response.Write(tra_found.tra_permit_autority)%>
+                                <% End If%>
                             </span>
                         </td>
                     </tr>

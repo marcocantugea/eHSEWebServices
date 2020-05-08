@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eservices_core.UnitTest", "
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "eservices_datamanager", "eservices_datamanager\eservices_datamanager.vbproj", "{5B7D13C3-5507-4196-ADE9-E99960923D7D}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "eservices_documents", "eservices_documents\eservices_documents\eservices_documents.vbproj", "{92691DD3-E722-48AC-B0BE-4DCD2360701B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{5B7D13C3-5507-4196-ADE9-E99960923D7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B7D13C3-5507-4196-ADE9-E99960923D7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B7D13C3-5507-4196-ADE9-E99960923D7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92691DD3-E722-48AC-B0BE-4DCD2360701B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92691DD3-E722-48AC-B0BE-4DCD2360701B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92691DD3-E722-48AC-B0BE-4DCD2360701B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92691DD3-E722-48AC-B0BE-4DCD2360701B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

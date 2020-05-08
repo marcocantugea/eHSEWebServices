@@ -12,17 +12,17 @@
 <div class="container text-center">
     <div class="mt-3 mb-3">
         <span class="display-4">
-            Documentos por Firmar Electronica
+           <%GetLbl("p_docforsig_lbl_maintitle") %>
         </span>
     </div>
     <div>
         <table class="table">
             <tr>
-                <th scope="col">Departamento</th>
-                <th scope="col">Tipo de Documento</th>
-                <th scope="col">Fecha de Solicitud</th>
-                <th scope="col">Solicitante</th>
-                <th scope="col">Opciones</th>
+                <th scope="col"><%GetLbl("p_docforsig_table_lbldeparment")%></th>
+                <th scope="col"><%GetLbl("p_docforsig_table_lbldoctype")%></th>
+                <th scope="col"><%GetLbl("p_docforsig_table_lblrequestdate")%></th>
+                <th scope="col"><%GetLbl("p_docforsig_table_lblrequestor")%></th>
+                <th scope="col"><%GetLbl("lbl_Options")%></th>
             </tr>
             <%
                 For Each item As KeyValuePair(Of Integer, Object) In listofdocuments
@@ -42,9 +42,9 @@
                 <td ><%=CType(GetValueList(values, "DocumentDate"), Date).ToString("dd MMM yyyy")%></td>
                 <td ><%PrintValueList(values, "UserNameRequested") %></td>
                 <td > 
-                    <button type="button" id="btn_preview_<%=Base64Encoder.EncodeBase64(GetValueList(values, "idDocument"))%>" class="btn btn-sm btn-primary mr-2 mb-2">Ver</button>
-                    <button type="button" id="btn_reject_<%=Base64Encoder.EncodeBase64(GetValueList(values, "idDocument"))%>" class="btn btn-sm btn-danger mr-2 mb-2">Rechazar</button>
-                     <button type="button" id="btn_sign_<%=Base64Encoder.EncodeBase64(GetValueList(values, "idDocument"))%>" class="btn btn-sm btn-success mr-2 mb-2">Firmar</button>
+                    <button type="button" id="btn_preview_<%=Base64Encoder.EncodeBase64(GetValueList(values, "idDocument"))%>" class="btn btn-sm btn-primary mr-2 mb-2"><%GetLbl("lbl_see") %></button>
+                    <button type="button" id="btn_reject_<%=Base64Encoder.EncodeBase64(GetValueList(values, "idDocument"))%>" class="btn btn-sm btn-danger mr-2 mb-2"><%GetLbl("lbl_reject") %></button>
+                    <button type="button" id="btn_sign_<%=Base64Encoder.EncodeBase64(GetValueList(values, "idDocument"))%>" class="btn btn-sm btn-success mr-2 mb-2"><%GetLbl("lbl_sign")%></button>
                 </td>
             </tr>
             <%

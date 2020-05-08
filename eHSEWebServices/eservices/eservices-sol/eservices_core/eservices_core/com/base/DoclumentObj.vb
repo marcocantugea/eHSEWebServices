@@ -15,6 +15,7 @@ Namespace com.objects
         Private _idDocumentSatus As Integer
         Private _locked As Byte
         Private _DocumentStatusObj As DocumentStatusObj
+        Private _ApprovalBy As UserObj
 
         Public MustOverride Sub getObjData()
         Public MustOverride Sub LoadInfoByID()
@@ -22,6 +23,20 @@ Namespace com.objects
         Sub New()
 
         End Sub
+
+        Public Function getApprovalBy() As UserObj
+            Dim User As UserObj
+            If _DocumentAprovalByID > 0 Then
+                Dim ADOUser As New ADOUser
+                User = New UserObj
+                User.userid = _DocumentAprovalByID
+                ADOUser.GetUserByID(User)
+                User.Loadinfo()
+                _ApprovalBy = User
+            End If
+            Return _ApprovalBy
+        End Function
+
         Public Function getidDocument() As Integer
             Return _idDocument
         End Function

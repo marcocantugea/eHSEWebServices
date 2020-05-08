@@ -105,13 +105,13 @@
     %>
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-         <% Response.Write(ModuleDocument.title)%>  </a>
+         <% GetLbl(ModuleDocument.label)%>  </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <%
                 If ModuleDocument.MenuList.Count > 0 Then
                     For Each item As eservices_core.com.objects.MenuObj In ModuleDocument.MenuList
              %>
-             <a class="dropdown-item" href="<% Response.Write(item.pathlink)%>"><% Response.Write(item.title)%></a>
+             <a class="dropdown-item" href="<% Response.Write(item.pathlink)%>"><% GetLbl(item.label)%></a>
             <%
             Next
             End If

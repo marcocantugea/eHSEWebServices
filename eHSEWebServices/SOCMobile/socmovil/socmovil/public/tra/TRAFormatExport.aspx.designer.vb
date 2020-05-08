@@ -11,5 +11,5 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class TRAFormat
+Partial Public Class TRAFormatExport
 End Class

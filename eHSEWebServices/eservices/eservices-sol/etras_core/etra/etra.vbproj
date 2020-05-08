@@ -44,6 +44,9 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="itextsharp">
+      <HintPath>..\..\..\..\..\..\ejercicios\HTMLToImg\HTMLToImg\packages\iTextSharp.5.5.13.1\lib\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -102,7 +105,9 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="com\pdf\tra\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\eservices_core\eservices_core\eservices_core.vbproj">
       <Project>{8637c518-b23c-48df-9d0f-ffe6e462c980}</Project>
